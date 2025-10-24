@@ -12,10 +12,10 @@ const Opportunities = () => {
 
   const opportunities = [
     {
-      title: "Midlands Wheat Yield Fund",
+      title: "Kaduna Rice Yield Fund",
       image: wheatField,
-      region: "Midlands",
-      minInvestment: "£5,000",
+      region: "Kaduna",
+      minInvestment: "₦2,000,000",
       roi: "10-12%",
       duration: "12 months",
       slotsAvailable: 8,
@@ -24,8 +24,8 @@ const Opportunities = () => {
     {
       title: "Sustainable Farming Project",
       image: sustainableFarm,
-      region: "Scotland",
-      minInvestment: "£10,000",
+      region: "Ogun",
+      minInvestment: "₦4,000,000",
       roi: "8-10%",
       duration: "24 months",
       slotsAvailable: 15,
@@ -34,38 +34,38 @@ const Opportunities = () => {
     {
       title: "Equipment Leasing Programme",
       image: farmEquipment,
-      region: "Wales",
-      minInvestment: "£7,500",
+      region: "Kano",
+      minInvestment: "₦3,000,000",
       roi: "9-11%",
       duration: "18 months",
       slotsAvailable: 3,
       type: "Equipment",
     },
     {
-      title: "Yorkshire Dairy Farm Investment",
+      title: "Plateau Dairy Farm Investment",
       image: sustainableFarm,
-      region: "Yorkshire",
-      minInvestment: "£15,000",
+      region: "Plateau",
+      minInvestment: "₦6,000,000",
       roi: "11-13%",
       duration: "36 months",
       slotsAvailable: 12,
       type: "Livestock",
     },
     {
-      title: "Kent Organic Vegetable Farm",
+      title: "Lagos Organic Vegetable Farm",
       image: wheatField,
-      region: "Kent",
-      minInvestment: "£8,000",
+      region: "Lagos",
+      minInvestment: "₦3,200,000",
       roi: "9-11%",
       duration: "18 months",
       slotsAvailable: 6,
       type: "Crop Yield",
     },
     {
-      title: "Cornwall Renewable Energy Farm",
+      title: "Niger Renewable Energy Farm",
       image: sustainableFarm,
-      region: "Cornwall",
-      minInvestment: "£20,000",
+      region: "Niger",
+      minInvestment: "₦8,000,000",
       roi: "12-14%",
       duration: "60 months",
       slotsAvailable: 4,
@@ -88,7 +88,7 @@ const Opportunities = () => {
             Investment Opportunities
           </h1>
           <p className="text-lg text-primary-foreground/90 max-w-2xl mx-auto">
-            Explore transparent agricultural investment opportunities across the UK with verified returns and sustainable impact.
+            Explore transparent agricultural investment opportunities across Nigeria with verified returns and sustainable impact.
           </p>
         </div>
       </section>
@@ -104,12 +104,12 @@ const Opportunities = () => {
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="all">All Regions</SelectItem>
-                  <SelectItem value="Midlands">Midlands</SelectItem>
-                  <SelectItem value="Scotland">Scotland</SelectItem>
-                  <SelectItem value="Wales">Wales</SelectItem>
-                  <SelectItem value="Yorkshire">Yorkshire</SelectItem>
-                  <SelectItem value="Kent">Kent</SelectItem>
-                  <SelectItem value="Cornwall">Cornwall</SelectItem>
+                  <SelectItem value="Kaduna">Kaduna</SelectItem>
+                  <SelectItem value="Ogun">Ogun</SelectItem>
+                  <SelectItem value="Kano">Kano</SelectItem>
+                  <SelectItem value="Plateau">Plateau</SelectItem>
+                  <SelectItem value="Lagos">Lagos</SelectItem>
+                  <SelectItem value="Niger">Niger</SelectItem>
                 </SelectContent>
               </Select>
 

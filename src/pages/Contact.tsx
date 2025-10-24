@@ -85,11 +85,11 @@ const Contact = () => {
                           <SelectValue placeholder="Select amount range" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="5k-10k">£5,000 - £10,000</SelectItem>
-                          <SelectItem value="10k-25k">£10,000 - £25,000</SelectItem>
-                          <SelectItem value="25k-50k">£25,000 - £50,000</SelectItem>
-                          <SelectItem value="50k-100k">£50,000 - £100,000</SelectItem>
-                          <SelectItem value="100k+">£100,000+</SelectItem>
+                          <SelectItem value="2m-5m">₦2,000,000 - ₦5,000,000</SelectItem>
+                          <SelectItem value="5m-10m">₦5,000,000 - ₦10,000,000</SelectItem>
+                          <SelectItem value="10m-25m">₦10,000,000 - ₦25,000,000</SelectItem>
+                          <SelectItem value="25m-50m">₦25,000,000 - ₦50,000,000</SelectItem>
+                          <SelectItem value="50m+">₦50,000,000+</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
@@ -143,14 +143,14 @@ const Contact = () => {
                     <Mail className="h-5 w-5 text-primary mt-0.5" />
                     <div>
                       <p className="font-medium">Email</p>
-                      <p className="text-sm text-muted-foreground">info@agroinvesthub.com</p>
+                      <p className="text-sm text-muted-foreground">info@agroinvesthub.ng</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <Phone className="h-5 w-5 text-primary mt-0.5" />
                     <div>
                       <p className="font-medium">Phone</p>
-                      <p className="text-sm text-muted-foreground">+44 20 1234 5678</p>
+                      <p className="text-sm text-muted-foreground">+234 803 456 7890</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
@@ -158,9 +158,9 @@ const Contact = () => {
                     <div>
                       <p className="font-medium">Office</p>
                       <p className="text-sm text-muted-foreground">
-                        London Agriculture House<br />
-                        123 Farm Street<br />
-                        London, EC1A 1BB
+                        AgroInvest Hub Plaza<br />
+                        15 Ahmadu Bello Way, Victoria Island<br />
+                        Lagos, Nigeria
                       </p>
                     </div>
                   </div>
@@ -170,7 +170,7 @@ const Contact = () => {
                       <p className="font-medium">Business Hours</p>
                       <p className="text-sm text-muted-foreground">
                         Monday - Friday<br />
-                        9:00 AM - 6:00 PM GMT
+                        8:00 AM - 5:00 PM WAT
                       </p>
                     </div>
                   </div>
@@ -186,7 +186,7 @@ const Contact = () => {
                     Our investment advisors typically respond to inquiries within 2 hours during business hours.
                   </p>
                   <p className="text-sm">
-                    For urgent matters, please call us directly at +44 20 1234 5678.
+                    For urgent matters, please call us directly at +234 803 456 7890.
                   </p>
                 </CardContent>
               </Card>
@@ -212,7 +212,7 @@ const Contact = () => {
               },
               {
                 q: "Is there a minimum investment amount?",
-                a: "Most opportunities start at £5,000, though some specialized projects may have higher minimums.",
+                a: "Most opportunities start at ₦2,000,000, though some specialized projects may have higher minimums.",
               },
               {
                 q: "How long does the investment process take?",

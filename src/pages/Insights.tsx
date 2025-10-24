@@ -27,8 +27,8 @@ const Insights = () => {
       readTime: "6 min read",
     },
     {
-      title: "The Future of Sustainable Farming in the UK",
-      excerpt: "Exploring government initiatives, carbon credits, and the growing demand for sustainable food production in post-Brexit Britain.",
+      title: "The Future of Sustainable Farming in Nigeria",
+      excerpt: "Exploring government initiatives, carbon credits, and the growing demand for sustainable food production in Nigeria's agricultural sector.",
       category: "Industry Trends",
       date: "December 28, 2024",
       readTime: "7 min read",

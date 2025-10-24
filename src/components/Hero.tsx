@@ -20,7 +20,7 @@ const Hero = () => {
       <div className="container mx-auto px-4 z-10 py-20">
         <div className="max-w-3xl animate-fade-in">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 text-primary-foreground leading-tight">
-            Unlock Sustainable Returns: Invest in UK Agriculture Today
+            Unlock Sustainable Returns: Invest in Nigerian Agriculture Today
           </h1>
           <p className="text-xl md:text-2xl mb-8 text-primary-foreground/90">
             Yields up to 12% with transparent, low-risk opportunities
@@ -42,7 +42,7 @@ const Hero = () => {
             </div>
             <div className="flex items-center gap-2 bg-background/90 backdrop-blur-sm px-4 py-2 rounded-full">
               <Shield className="h-5 w-5 text-primary" />
-              <span className="text-sm font-medium">FCA Regulated</span>
+              <span className="text-sm font-medium">SEC Regulated</span>
             </div>
             <div className="flex items-center gap-2 bg-background/90 backdrop-blur-sm px-4 py-2 rounded-full">
               <Leaf className="h-5 w-5 text-primary" />

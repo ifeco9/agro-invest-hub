@@ -14,7 +14,7 @@ const Home = () => {
     {
       icon: Leaf,
       title: "Sustainable Impact",
-      description: "Invest in eco-friendly agricultural projects that preserve farmland and promote sustainable farming practices across the UK.",
+      description: "Invest in eco-friendly agricultural projects that preserve farmland and promote sustainable farming practices across Nigeria.",
     },
     {
       icon: TrendingUp,
@@ -24,16 +24,16 @@ const Home = () => {
     {
       icon: Shield,
       title: "Easy Entry",
-      description: "Start investing from £5,000 with our simple three-step process. FCA regulated platform ensuring security and compliance.",
+      description: "Start investing from ₦2,000,000 with our simple three-step process. SEC regulated platform ensuring security and compliance.",
     },
   ];
 
   const opportunities = [
     {
-      title: "Midlands Wheat Yield Fund",
+      title: "Kaduna Rice Yield Fund",
       image: wheatField,
-      region: "Midlands, UK",
-      minInvestment: "£5,000",
+      region: "Kaduna State",
+      minInvestment: "₦2,000,000",
       roi: "10-12%",
       duration: "12 months",
       slotsAvailable: 8,
@@ -42,8 +42,8 @@ const Home = () => {
     {
       title: "Sustainable Farming Project",
       image: sustainableFarm,
-      region: "Scotland, UK",
-      minInvestment: "£10,000",
+      region: "Ogun State",
+      minInvestment: "₦4,000,000",
       roi: "8-10%",
       duration: "24 months",
       slotsAvailable: 15,
@@ -52,8 +52,8 @@ const Home = () => {
     {
       title: "Equipment Leasing Programme",
       image: farmEquipment,
-      region: "Wales, UK",
-      minInvestment: "£7,500",
+      region: "Kano State",
+      minInvestment: "₦3,000,000",
       roi: "9-11%",
       duration: "18 months",
       slotsAvailable: 3,
@@ -63,13 +63,13 @@ const Home = () => {
 
   const testimonials = [
     {
-      name: "John Davidson",
+      name: "Chukwudi Okafor",
       role: "Private Investor",
-      content: "Expressed interest in the £10k wheat yields project. Excited for the 15% projected ROI! The process was straightforward and transparent.",
+      content: "Expressed interest in the ₦4M rice yields project. Excited for the 15% projected ROI! The process was straightforward and transparent.",
       rating: 5,
     },
     {
-      name: "Sarah Mitchell",
+      name: "Amina Bello",
       role: "Investment Portfolio Manager",
       content: "AgroInvest Hub provides excellent agricultural investment opportunities. Their sustainability focus aligns perfectly with our ESG goals.",
       rating: 5,
@@ -77,8 +77,8 @@ const Home = () => {
   ];
 
   const stats = [
-    { value: "£50M+", label: "Investment Interest" },
-    { value: "200+", label: "Acres Preserved" },
+    { value: "₦20B+", label: "Investment Interest" },
+    { value: "200+", label: "Hectares Preserved" },
     { value: "500+", label: "Active Investors" },
     { value: "12%", label: "Average Returns" },
   ];
@@ -225,7 +225,7 @@ const Home = () => {
           <div className="mt-8 flex flex-wrap gap-4 justify-center">
             <div className="flex items-center gap-2 text-primary-foreground">
               <CheckCircle className="h-5 w-5" />
-              <span className="text-sm">FCA Regulated</span>
+              <span className="text-sm">SEC Regulated</span>
             </div>
             <div className="flex items-center gap-2 text-primary-foreground">
               <CheckCircle className="h-5 w-5" />

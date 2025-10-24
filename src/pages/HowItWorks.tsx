@@ -9,7 +9,7 @@ const HowItWorks = () => {
       number: "1",
       icon: Search,
       title: "Discover Opportunities",
-      description: "Browse our curated selection of verified agricultural investments across UK regions. Each opportunity includes detailed performance data, risk assessments, and projected returns.",
+      description: "Browse our curated selection of verified agricultural investments across Nigerian states. Each opportunity includes detailed performance data, risk assessments, and projected returns.",
       details: [
         "Interactive map showing farm locations",
         "Comprehensive project documentation",
@@ -46,8 +46,8 @@ const HowItWorks = () => {
   const benefits = [
     {
       icon: Shield,
-      title: "FCA Regulated",
-      description: "Fully compliant with UK financial regulations, ensuring your investments are protected.",
+      title: "SEC Regulated",
+      description: "Fully compliant with Nigerian financial regulations, ensuring your investments are protected.",
     },
     {
       icon: FileText,
@@ -155,7 +155,7 @@ const HowItWorks = () => {
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Get Started?</h2>
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Join hundreds of investors who are already earning sustainable returns from UK agriculture.
+            Join hundreds of investors who are already earning sustainable returns from Nigerian agriculture.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" asChild>

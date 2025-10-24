@@ -91,14 +91,14 @@ const Footer = () => {
               <Input type="email" placeholder="Your email" className="flex-1" />
               <Button size="sm">Subscribe</Button>
             </div>
-            <div className="mt-4 space-y-2 text-sm text-muted-foreground">
+              <div className="mt-4 space-y-2 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
                 <Mail className="h-4 w-4" />
-                <span>info@agroinvesthub.com</span>
+                <span>info@agroinvesthub.ng</span>
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="h-4 w-4" />
-                <span>+44 20 1234 5678</span>
+                <span>+234 803 456 7890</span>
               </div>
             </div>
           </div>
@@ -106,7 +106,7 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-border text-center text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} AgroInvest Hub. All rights reserved. FCA Regulated.</p>
+          <p>&copy; {new Date().getFullYear()} AgroInvest Hub. All rights reserved. SEC Regulated.</p>
         </div>
       </div>
     </footer>

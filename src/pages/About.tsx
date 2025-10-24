@@ -46,8 +46,8 @@ const About = () => {
   ];
 
   const achievements = [
-    { value: "£50M+", label: "Total Investment Interest" },
-    { value: "200+", label: "Acres Preserved" },
+    { value: "₦20B+", label: "Total Investment Interest" },
+    { value: "200+", label: "Hectares Preserved" },
     { value: "500+", label: "Active Investors" },
     { value: "15+", label: "Partner Farms" },
   ];
@@ -61,7 +61,7 @@ const About = () => {
             About AgroInvest Hub
           </h1>
           <p className="text-lg text-primary-foreground/90 max-w-2xl mx-auto">
-            Connecting investors with sustainable agricultural opportunities across the UK since 2020.
+            Connecting investors with sustainable agricultural opportunities across Nigeria since 2020.
           </p>
         </div>
       </section>
@@ -74,7 +74,7 @@ const About = () => {
             <p className="text-lg text-muted-foreground mb-6">
               We believe that sustainable agriculture should be accessible to all investors, not just institutional players. 
               AgroInvest Hub democratizes agricultural investment by providing transparent, verified opportunities that 
-              generate competitive returns while supporting UK farmers and preserving our agricultural heritage.
+              generate competitive returns while supporting Nigerian farmers and preserving our agricultural heritage.
             </p>
             <p className="text-lg text-muted-foreground">
               Through rigorous due diligence, ongoing monitoring, and complete transparency, we ensure that every 
@@ -166,10 +166,10 @@ const About = () => {
           </div>
           <div className="flex flex-wrap justify-center gap-8">
             {[
-              "FCA Regulated",
+              "SEC Regulated",
               "Sustainable Farming Award 2023",
-              "UK Green Investment Certified",
-              "Member of Agricultural Investment Association",
+              "Nigerian Green Investment Certified",
+              "Member of Agricultural Investment Association of Nigeria",
             ].map((cert, index) => (
               <div
                 key={index}
@@ -187,7 +187,7 @@ const About = () => {
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Invest?</h2>
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Join our community of investors supporting sustainable UK agriculture.
+            Join our community of investors supporting sustainable Nigerian agriculture.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" asChild>

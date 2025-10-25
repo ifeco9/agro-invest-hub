@@ -8,6 +8,7 @@ interface OpportunityCardProps {
   title: string;
   image: string;
   region: string;
+  crop: string;
   minInvestment: string;
   roi: string;
   duration: string;
@@ -19,6 +20,7 @@ const OpportunityCard = ({
   title,
   image,
   region,
+  crop,
   minInvestment,
   roi,
   duration,
@@ -41,9 +43,14 @@ const OpportunityCard = ({
 
       <CardHeader>
         <h3 className="text-xl font-semibold mb-2">{title}</h3>
-        <div className="flex items-center text-sm text-muted-foreground">
-          <MapPin className="h-4 w-4 mr-1" />
-          {region}
+        <div className="flex items-center justify-between text-sm text-muted-foreground">
+          <div className="flex items-center">
+            <MapPin className="h-4 w-4 mr-1" />
+            {region}
+          </div>
+          <Badge variant="outline" className="text-xs">
+            {crop}
+          </Badge>
         </div>
       </CardHeader>
 

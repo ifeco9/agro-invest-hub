@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 import OpportunityCard from "@/components/OpportunityCard";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -9,12 +10,14 @@ import farmEquipment from "@/assets/farm-equipment.jpg";
 const Opportunities = () => {
   const [regionFilter, setRegionFilter] = useState("all");
   const [typeFilter, setTypeFilter] = useState("all");
+  const [cropFilter, setCropFilter] = useState("all");
 
   const opportunities = [
     {
       title: "Kaduna Rice Yield Fund",
       image: wheatField,
       region: "Kaduna",
+      crop: "Rice",
       minInvestment: "₦2,000,000",
       roi: "10-12%",
       duration: "12 months",
@@ -22,9 +25,10 @@ const Opportunities = () => {
       type: "Crop Yield",
     },
     {
-      title: "Sustainable Farming Project",
+      title: "Ogun Cassava Processing Investment",
       image: sustainableFarm,
       region: "Ogun",
+      crop: "Cassava",
       minInvestment: "₦4,000,000",
       roi: "8-10%",
       duration: "24 months",
@@ -32,19 +36,21 @@ const Opportunities = () => {
       type: "Sustainable",
     },
     {
-      title: "Equipment Leasing Programme",
-      image: farmEquipment,
+      title: "Kano Wheat Farming Project",
+      image: wheatField,
       region: "Kano",
+      crop: "Wheat",
       minInvestment: "₦3,000,000",
       roi: "9-11%",
       duration: "18 months",
       slotsAvailable: 3,
-      type: "Equipment",
+      type: "Crop Yield",
     },
     {
-      title: "Plateau Dairy Farm Investment",
+      title: "Plateau Dairy & Maize Farm",
       image: sustainableFarm,
       region: "Plateau",
+      crop: "Maize",
       minInvestment: "₦6,000,000",
       roi: "11-13%",
       duration: "36 months",
@@ -52,9 +58,10 @@ const Opportunities = () => {
       type: "Livestock",
     },
     {
-      title: "Lagos Organic Vegetable Farm",
+      title: "Lagos Beans Cultivation Hub",
       image: wheatField,
       region: "Lagos",
+      crop: "Beans",
       minInvestment: "₦3,200,000",
       roi: "9-11%",
       duration: "18 months",
@@ -62,21 +69,89 @@ const Opportunities = () => {
       type: "Crop Yield",
     },
     {
-      title: "Niger Renewable Energy Farm",
+      title: "South-South Palm Oil Investment",
       image: sustainableFarm,
-      region: "Niger",
+      region: "Rivers",
+      crop: "Palm Oil",
       minInvestment: "₦8,000,000",
       roi: "12-14%",
       duration: "60 months",
       slotsAvailable: 4,
       type: "Sustainable",
     },
+    {
+      title: "Benue Yam Production Fund",
+      image: wheatField,
+      region: "Benue",
+      crop: "Yam",
+      minInvestment: "₦2,500,000",
+      roi: "10-12%",
+      duration: "12 months",
+      slotsAvailable: 10,
+      type: "Crop Yield",
+    },
+    {
+      title: "Enugu Egusi (Melon) Seed Farm",
+      image: sustainableFarm,
+      region: "Enugu",
+      crop: "Egusi",
+      minInvestment: "₦1,800,000",
+      roi: "11-13%",
+      duration: "9 months",
+      slotsAvailable: 7,
+      type: "Crop Yield",
+    },
+    {
+      title: "Kebbi Sorghum Yield Project",
+      image: wheatField,
+      region: "Kebbi",
+      crop: "Sorghum",
+      minInvestment: "₦2,200,000",
+      roi: "9-11%",
+      duration: "15 months",
+      slotsAvailable: 9,
+      type: "Crop Yield",
+    },
+    {
+      title: "Borno Millet Farming Initiative",
+      image: sustainableFarm,
+      region: "Borno",
+      crop: "Millet",
+      minInvestment: "₦1,900,000",
+      roi: "8-10%",
+      duration: "12 months",
+      slotsAvailable: 11,
+      type: "Crop Yield",
+    },
+    {
+      title: "Kogi Soybeans Investment Fund",
+      image: wheatField,
+      region: "Kogi",
+      crop: "Soybeans",
+      minInvestment: "₦3,500,000",
+      roi: "10-12%",
+      duration: "18 months",
+      slotsAvailable: 5,
+      type: "Crop Yield",
+    },
+    {
+      title: "Equipment Leasing Programme",
+      image: farmEquipment,
+      region: "Multi-State",
+      crop: "Various",
+      minInvestment: "₦5,000,000",
+      roi: "9-11%",
+      duration: "24 months",
+      slotsAvailable: 8,
+      type: "Equipment",
+    },
   ];
 
   const filteredOpportunities = opportunities.filter((opp) => {
     const matchesRegion = regionFilter === "all" || opp.region === regionFilter;
     const matchesType = typeFilter === "all" || opp.type === typeFilter;
-    return matchesRegion && matchesType;
+    const matchesCrop = cropFilter === "all" || opp.crop === cropFilter;
+    return matchesRegion && matchesType && matchesCrop;
   });
 
   return (
@@ -97,7 +172,7 @@ const Opportunities = () => {
       <section className="py-8 bg-secondary border-b border-border">
         <div className="container mx-auto px-4">
           <div className="flex flex-col sm:flex-row gap-4 items-center justify-between">
-            <div className="flex items-center gap-4 w-full sm:w-auto">
+            <div className="flex flex-wrap items-center gap-4 w-full sm:w-auto">
               <Select value={regionFilter} onValueChange={setRegionFilter}>
                 <SelectTrigger className="w-full sm:w-48">
                   <SelectValue placeholder="Select Region" />
@@ -109,7 +184,13 @@ const Opportunities = () => {
                   <SelectItem value="Kano">Kano</SelectItem>
                   <SelectItem value="Plateau">Plateau</SelectItem>
                   <SelectItem value="Lagos">Lagos</SelectItem>
-                  <SelectItem value="Niger">Niger</SelectItem>
+                  <SelectItem value="Rivers">Rivers</SelectItem>
+                  <SelectItem value="Benue">Benue</SelectItem>
+                  <SelectItem value="Enugu">Enugu</SelectItem>
+                  <SelectItem value="Kebbi">Kebbi</SelectItem>
+                  <SelectItem value="Borno">Borno</SelectItem>
+                  <SelectItem value="Kogi">Kogi</SelectItem>
+                  <SelectItem value="Multi-State">Multi-State</SelectItem>
                 </SelectContent>
               </Select>
 
@@ -125,6 +206,27 @@ const Opportunities = () => {
                   <SelectItem value="Livestock">Livestock</SelectItem>
                 </SelectContent>
               </Select>
+
+              <Select value={cropFilter} onValueChange={setCropFilter}>
+                <SelectTrigger className="w-full sm:w-48">
+                  <SelectValue placeholder="Crop Type" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">All Crops</SelectItem>
+                  <SelectItem value="Rice">Rice</SelectItem>
+                  <SelectItem value="Cassava">Cassava</SelectItem>
+                  <SelectItem value="Wheat">Wheat</SelectItem>
+                  <SelectItem value="Maize">Maize</SelectItem>
+                  <SelectItem value="Beans">Beans</SelectItem>
+                  <SelectItem value="Palm Oil">Palm Oil</SelectItem>
+                  <SelectItem value="Yam">Yam</SelectItem>
+                  <SelectItem value="Egusi">Egusi (Melon)</SelectItem>
+                  <SelectItem value="Sorghum">Sorghum</SelectItem>
+                  <SelectItem value="Millet">Millet</SelectItem>
+                  <SelectItem value="Soybeans">Soybeans</SelectItem>
+                  <SelectItem value="Various">Various</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
 
             <div className="text-sm text-muted-foreground">
@@ -138,11 +240,23 @@ const Opportunities = () => {
       <section className="py-12 bg-background">
         <div className="container mx-auto px-4">
           {filteredOpportunities.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <motion.div 
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+            >
               {filteredOpportunities.map((opportunity, index) => (
-                <OpportunityCard key={index} {...opportunity} />
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: index * 0.1 }}
+                >
+                  <OpportunityCard {...opportunity} />
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           ) : (
             <div className="text-center py-16">
               <p className="text-lg text-muted-foreground mb-4">
@@ -153,6 +267,7 @@ const Opportunities = () => {
                 onClick={() => {
                   setRegionFilter("all");
                   setTypeFilter("all");
+                  setCropFilter("all");
                 }}
               >
                 Clear Filters

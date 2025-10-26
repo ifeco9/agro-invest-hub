@@ -2,9 +2,12 @@ import { useState } from "react";
 import OpportunityCard from "@/components/OpportunityCard";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import wheatField from "@/assets/wheat-field.jpg";
-import sustainableFarm from "@/assets/sustainable-farm.jpg";
-import farmEquipment from "@/assets/farm-equipment.jpg";
+import riceFarm from "@/assets/new/rice-farm.jpg";
+import sustainableFarm from "@/assets/new/sustainable-farm.jpg";
+import farmEquipment from "@/assets/new/farm-equipment.jpg";
+import dairyFarm from "@/assets/new/dairy-farm.jpg";
+import vegetableFarm from "@/assets/new/vegetable-farm.jpg";
+import solarFarm from "@/assets/new/solar-farm.jpg";
 
 const Opportunities = () => {
   const [regionFilter, setRegionFilter] = useState("all");
@@ -13,7 +16,7 @@ const Opportunities = () => {
   const opportunities = [
     {
       title: "Kaduna Rice Yield Fund",
-      image: wheatField,
+      image: riceFarm,
       region: "Kaduna",
       minInvestment: "₦2,000,000",
       roi: "10-12%",
@@ -43,7 +46,7 @@ const Opportunities = () => {
     },
     {
       title: "Plateau Dairy Farm Investment",
-      image: sustainableFarm,
+      image: dairyFarm,
       region: "Plateau",
       minInvestment: "₦6,000,000",
       roi: "11-13%",
@@ -53,7 +56,7 @@ const Opportunities = () => {
     },
     {
       title: "Lagos Organic Vegetable Farm",
-      image: wheatField,
+      image: vegetableFarm,
       region: "Lagos",
       minInvestment: "₦3,200,000",
       roi: "9-11%",
@@ -63,7 +66,7 @@ const Opportunities = () => {
     },
     {
       title: "Niger Renewable Energy Farm",
-      image: sustainableFarm,
+      image: solarFarm,
       region: "Niger",
       minInvestment: "₦8,000,000",
       roi: "12-14%",

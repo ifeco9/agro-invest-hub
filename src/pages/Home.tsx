@@ -5,9 +5,9 @@ import TestimonialCard from "@/components/TestimonialCard";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Leaf, Shield, TrendingUp, ArrowRight, CheckCircle } from "lucide-react";
-import wheatField from "@/assets/wheat-field.jpg";
-import sustainableFarm from "@/assets/sustainable-farm.jpg";
-import farmEquipment from "@/assets/farm-equipment.jpg";
+import riceFarm from "@/assets/new/rice-farm.jpg";
+import sustainableFarm from "@/assets/new/sustainable-farm.jpg";
+import farmEquipment from "@/assets/new/farm-equipment.jpg";
 
 const Home = () => {
   const features = [
@@ -31,7 +31,7 @@ const Home = () => {
   const opportunities = [
     {
       title: "Kaduna Rice Yield Fund",
-      image: wheatField,
+      image: riceFarm,
       region: "Kaduna State",
       minInvestment: "₦2,000,000",
       roi: "10-12%",

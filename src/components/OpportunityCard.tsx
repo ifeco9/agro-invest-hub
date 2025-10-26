@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 interface OpportunityCardProps {
   title: string;
-  image: string;
+  image?: string;
   region: string;
   crop: string;
   minInvestment: string;
@@ -30,7 +30,13 @@ const OpportunityCard = ({
   return (
     <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 animate-scale-in">
       <div className="relative h-48 overflow-hidden">
-        <img src={image} alt={title} className="w-full h-full object-cover" />
+        {image ? (
+          <img src={image} alt={title} className="w-full h-full object-cover" />
+        ) : (
+          <div className="w-full h-full bg-gradient-primary flex items-center justify-center">
+            <span className="text-primary-foreground text-lg font-semibold">{type}</span>
+          </div>
+        )}
         <Badge className="absolute top-4 right-4 bg-background/90 text-foreground hover:bg-background">
           {type}
         </Badge>

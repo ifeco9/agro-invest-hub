@@ -1,15 +1,9 @@
+
+
 import { useState } from "react";
-import { motion } from "framer-motion";
 import OpportunityCard from "@/components/OpportunityCard";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import riceFarm from "@/assets/new/rice-farm.jpg";
-import sustainableFarm from "@/assets/new/sustainable-farm.jpg";
-import farmEquipment from "@/assets/new/farm-equipment.jpg";
-import dairyFarm from "@/assets/new/dairy-farm.jpg";
-import vegetableFarm from "@/assets/new/vegetable-farm.jpg";
-import solarFarm from "@/assets/new/solar-farm.jpg";
-import wheatField from "@/assets/wheat-field.jpg";
 
 const Opportunities = () => {
   const [regionFilter, setRegionFilter] = useState("all");
@@ -19,7 +13,7 @@ const Opportunities = () => {
   const opportunities = [
     {
       title: "Kaduna Rice Yield Fund",
-      image: riceFarm,
+      image: "https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=800&h=600&fit=crop",
       region: "Kaduna",
       crop: "Rice",
       minInvestment: "₦2,000,000",
@@ -30,7 +24,7 @@ const Opportunities = () => {
     },
     {
       title: "Ogun Cassava Processing Investment",
-      image: sustainableFarm,
+      image: "https://images.unsplash.com/photo-1597427157407-84809a0c5d80?w=800&h=600&fit=crop",
       region: "Ogun",
       crop: "Cassava",
       minInvestment: "₦4,000,000",
@@ -41,7 +35,7 @@ const Opportunities = () => {
     },
     {
       title: "Kano Wheat Farming Project",
-      image: wheatField,
+      image: "https://images.unsplash.com/photo-1597427157407-84809a0c5d80?w=800&h=600&fit=crop",
       region: "Kano",
       crop: "Wheat",
       minInvestment: "₦3,000,000",
@@ -52,7 +46,7 @@ const Opportunities = () => {
     },
     {
       title: "Plateau Dairy & Maize Farm",
-      image: sustainableFarm,
+      image: "https://images.unsplash.com/photo-1597427157407-84809a0c5d80?w=800&h=600&fit=crop",
       region: "Plateau",
       crop: "Maize",
       minInvestment: "₦6,000,000",
@@ -63,7 +57,7 @@ const Opportunities = () => {
     },
     {
       title: "Lagos Beans Cultivation Hub",
-      image: wheatField,
+      image: "https://images.unsplash.com/photo-1597427157407-84809a0c5d80?w=800&h=600&fit=crop",
       region: "Lagos",
       crop: "Beans",
       minInvestment: "₦3,200,000",
@@ -74,7 +68,7 @@ const Opportunities = () => {
     },
     {
       title: "South-South Palm Oil Investment",
-      image: sustainableFarm,
+      image: "https://images.unsplash.com/photo-1597427157407-84809a0c5d80?w=800&h=600&fit=crop",
       region: "Rivers",
       crop: "Palm Oil",
       minInvestment: "₦8,000,000",
@@ -85,7 +79,7 @@ const Opportunities = () => {
     },
     {
       title: "Benue Yam Production Fund",
-      image: wheatField,
+      image: "https://images.unsplash.com/photo-1597427157407-84809a0c5d80?w=800&h=600&fit=crop",
       region: "Benue",
       crop: "Yam",
       minInvestment: "₦2,500,000",
@@ -96,7 +90,7 @@ const Opportunities = () => {
     },
     {
       title: "Enugu Egusi (Melon) Seed Farm",
-      image: sustainableFarm,
+      image: "https://images.unsplash.com/photo-1597427157407-84809a0c5d80?w=800&h=600&fit=crop",
       region: "Enugu",
       crop: "Egusi",
       minInvestment: "₦1,800,000",
@@ -107,7 +101,7 @@ const Opportunities = () => {
     },
     {
       title: "Kebbi Sorghum Yield Project",
-      image: wheatField,
+      image: "https://images.unsplash.com/photo-1597427157407-84809a0c5d80?w=800&h=600&fit=crop",
       region: "Kebbi",
       crop: "Sorghum",
       minInvestment: "₦2,200,000",
@@ -118,7 +112,7 @@ const Opportunities = () => {
     },
     {
       title: "Borno Millet Farming Initiative",
-      image: sustainableFarm,
+      image: "https://images.unsplash.com/photo-1597427157407-84809a0c5d80?w=800&h=600&fit=crop",
       region: "Borno",
       crop: "Millet",
       minInvestment: "₦1,900,000",
@@ -129,7 +123,7 @@ const Opportunities = () => {
     },
     {
       title: "Kogi Soybeans Investment Fund",
-      image: wheatField,
+      image: "https://images.unsplash.com/photo-1597427157407-84809a0c5d80?w=800&h=600&fit=crop",
       region: "Kogi",
       crop: "Soybeans",
       minInvestment: "₦3,500,000",
@@ -140,7 +134,7 @@ const Opportunities = () => {
     },
     {
       title: "Equipment Leasing Programme",
-      image: farmEquipment,
+      image: "https://images.unsplash.com/photo-1597427157407-84809a0c5d80?w=800&h=600&fit=crop",
       region: "Multi-State",
       crop: "Various",
       minInvestment: "₦5,000,000",
@@ -244,23 +238,13 @@ const Opportunities = () => {
       <section className="py-12 bg-background">
         <div className="container mx-auto px-4">
           {filteredOpportunities.length > 0 ? (
-            <motion.div 
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-            >
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredOpportunities.map((opportunity, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: index * 0.1 }}
-                >
+                <div key={index}>
                   <OpportunityCard {...opportunity} />
-                </motion.div>
+                </div>
               ))}
-            </motion.div>
+            </div>
           ) : (
             <div className="text-center py-16">
               <p className="text-lg text-muted-foreground mb-4">

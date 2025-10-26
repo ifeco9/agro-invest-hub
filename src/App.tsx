@@ -3,7 +3,6 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { AnimatePresence } from "framer-motion";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
@@ -25,17 +24,15 @@ const App = () => (
         <div className="flex flex-col min-h-screen">
           <Navbar />
           <main className="flex-grow">
-            <AnimatePresence mode="wait">
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/opportunities" element={<Opportunities />} />
-                <Route path="/how-it-works" element={<HowItWorks />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/insights" element={<Insights />} />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </AnimatePresence>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/opportunities" element={<Opportunities />} />
+              <Route path="/how-it-works" element={<HowItWorks />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/insights" element={<Insights />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
           </main>
           <Footer />
         </div>

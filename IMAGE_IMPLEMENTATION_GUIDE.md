@@ -3,107 +3,175 @@
 ## Overview
 This guide provides detailed instructions for implementing the researched images for each investment opportunity. All images have been selected with regional authenticity, licensing compliance, and optimization in mind.
 
-## Image Implementation Plan
+## Current Image Implementation
+
+All opportunities now use working placeholder images from Unsplash. These are temporary placeholders that should be replaced with your researched images from the specific platforms you identified.
+
+### Current Placeholder Images:
+- Most opportunities: `https://images.unsplash.com/photo-1597427157407-84809a0c5d80?w=800&h=600&fit=crop`
+- Some opportunities: `https://images.unsplash.com/photo-1605000797499-95a51c5269ae?w=800&h=600&fit=crop`
+
+These placeholders are working correctly and display generic agricultural imagery.
+
+## Your Detailed Image Research Implementation Plan
+
+Based on your research, here are the specific images you should source for each opportunity:
 
 ### 1. Kaduna Rice Yield Fund (Rice fields in northern Nigeria)
 
-**Primary Image:**
-- URL: `https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=800&h=600&fit=crop`
-- Alt Text: "Kaduna Rice Field - Sustainable Yield Investment"
-- Description: Aerial view of flooded rice fields under blue skies
-- Optimization: Already optimized for web (800x600)
+**Image 1:** Lush green rice paddies at harvest in northern Nigeria.
+- Source: Adobe Stock - Rice Field Nigeria
+- Description: Aerial view of flooded rice fields under blue skies, evoking abundance and sustainability in Kaduna's landscape.
+- License Note: Royalty-free from Adobe Stock.
 
-**Secondary Image:**
+**Image 2:** Farmers harvesting rice in a vibrant Nigerian field.
 - Source: iStock - Nigeria Rice Farm
-- Implementation: Replace placeholder URL with actual image after sourcing
+- Description: Close-up of golden rice stalks with workers, highlighting community-driven yields.
+- License Note: Royalty-free from iStock.
+- Optimization Tip: Crop to focus on green tones for your palette.
 
 ### 2. Ogun Cassava Processing Investment (Cassava farms in southwestern Nigeria)
 
-**Primary Image:**
-- URL: `https://images.unsplash.com/photo-1597427157407-84809a0c5d80?w=800&h=600&fit=crop`
-- Alt Text: "Ogun Cassava Farm - Processing Investment"
-- Description: Lush green cassava leaves in fertile soil
-- Optimization: Already optimized for web (800x600)
+**Image 1:** Rows of cassava plants in a rural Ogun-like farm.
+- Source: iStock - Nigeria Cassava Farm
+- Description: Lush green cassava leaves in fertile soil, showing processing potential.
+- License Note: Royalty-free from iStock.
+
+**Image 2:** Cassava harvesting in Nigerian countryside.
+- Source: Dreamstime - Cassava Farm Nigeria
+- Description: Workers gathering tubers, emphasizing sustainable processing in Ogun's humid climate.
+- License Note: Royalty-free from Dreamstime.
+- Optimization Tip: Add subtle black text overlay for ROI stats.
 
 ### 3. Kano Wheat Farming Project (Wheat fields in northern Nigeria)
 
-**Primary Image:**
-- URL: `https://images.unsplash.com/photo-1597427157407-84809a0c5d80?w=800&h=600&fit=crop`
-- Alt Text: "Kano Wheat Field - Farming Project"
-- Description: Golden wheat fields swaying in dry winds
-- Optimization: Already optimized for web (800x600)
+**Image 1:** Golden wheat fields swaying in Kano's dry winds.
+- Source: iStock - Nigeria Wheat Farm
+- Description: Expansive wheat crop under clear skies, capturing northern resilience.
+- License Note: Royalty-free from iStock.
+
+**Image 2:** Farmer in wheat field at dawn.
+- Source: Dreamstime - Nigeria Wheat Agriculture
+- Description: Traditional farming scene with sheaves, ideal for evoking 9-11% ROI growth.
+- License Note: Royalty-free from Dreamstime.
+- Optimization Tip: Use fade-in animation on hover for engagement.
 
 ### 4. Plateau Dairy & Maize Farm (Maize fields with livestock hints in central Nigeria)
 
-**Primary Image:**
-- URL: `https://images.unsplash.com/photo-1597427157407-84809a0c5d80?w=800&h=600&fit=crop`
-- Alt Text: "Plateau Maize Field - Dairy Farm"
-- Description: Vibrant maize rows in highlands
-- Optimization: Already optimized for web (800x600)
+**Image 1:** Vibrant maize rows in Plateau's highlands.
+- Source: Getty - Nigeria Maize Farm
+- Description: Tall green maize stalks with distant cattle, blending crop and livestock themes.
+- License Note: Royalty-free from Getty Images.
+
+**Image 2:** Harvesting maize in Nigerian plateau fields.
+- Source: iStock - Maize Plantation Nigeria
+- Description: Close-up of ripe cobs, symbolizing high yields in cooler Plateau climate.
+- License Note: Royalty-free from iStock.
+- Optimization Tip: Pair with a subtle white overlay for duration details.
 
 ### 5. Lagos Beans Cultivation Hub (Beans fields in urban-rural Lagos)
 
-**Primary Image:**
-- URL: `https://images.unsplash.com/photo-1597427157407-84809a0c5d80?w=800&h=600&fit=crop`
-- Alt Text: "Lagos Beans Farm - Cultivation Hub"
-- Description: Fresh bean pods in farm plot
-- Optimization: Already optimized for web (800x600)
+**Image 1:** Fresh bean pods in a Lagos-area farm plot.
+- Source: Dreamstime - Nigeria Beans Farm
+- Description: Close-up of climbing bean vines, reflecting urban-adjacent cultivation.
+- License Note: Royalty-free from Dreamstime.
+
+**Image 2:** Diverse bean varieties in Nigerian soil.
+- Source: iStock - Nigeria Beans Agriculture
+- Description: Heap of harvested beans with green foliage, easy to understand for investors.
+- License Note: Royalty-free from iStock.
+- Optimization Tip: Scale for mobile responsiveness in your card grid.
 
 ### 6. South-South Palm Oil Investment (Palm oil plantations in Rivers State)
 
-**Primary Image:**
-- URL: `https://images.unsplash.com/photo-1597427157407-84809a0c5d80?w=800&h=600&fit=crop`
-- Alt Text: "Rivers Palm Oil Plantation - Investment"
-- Description: Towering palm trees in tropical groves
-- Optimization: Already optimized for web (800x600)
+**Image 1:** Towering palm trees in Rivers' tropical groves.
+- Source: iStock - African Oil Palm Nigeria
+- Description: Dense palm plantation at sunrise, conveying long-term 12-14% ROI.
+- License Note: Royalty-free from iStock.
+
+**Image 2:** Palm oil fruits ready for harvest.
+- Source: Vecteezy - Palm Oil Plantation
+- Description: Red bunches on trees, authentic to South-South oil-rich regions.
+- License Note: Royalty-free from Vecteezy.
+- Optimization Tip: Add urgency badge ("Limited Slots") with green accent.
 
 ### 7. Benue Yam Production Fund (Yam farms in Benue's fertile belts)
 
-**Primary Image:**
-- URL: `https://images.unsplash.com/photo-1597427157407-84809a0c5d80?w=800&h=600&fit=crop`
-- Alt Text: "Benue Yam Farm - Production Fund"
-- Description: Yam tubers piled in fields
-- Optimization: Already optimized for web (800x600)
+**Image 1:** Yam tubers piled in Benue fields.
+- Source: Getty - Nigeria Yam Farm
+- Description: Freshly dug yams with vines, highlighting quick 12-month cycles.
+- License Note: Royalty-free from Getty Images.
+
+**Image 2:** Yam cultivation in rural Nigeria.
+- Source: iStock - African Yam Agriculture
+- Description: Mounded yam hills in soil, evoking Benue's "food basket" status.
+- License Note: Royalty-free from iStock.
+- Optimization Tip: Use black borders for high contrast on white backgrounds.
 
 ### 8. Enugu Egusi (Melon) Seed Farm (Egusi melon vines in Enugu)
 
-**Primary Image:**
-- URL: `https://images.unsplash.com/photo-1597427157407-84809a0c5d80?w=800&h=600&fit=crop`
-- Alt Text: "Enugu Egusi Melon Farm - Seed Production"
-- Description: Egusi vines creeping across soil
-- Optimization: Already optimized for web (800x600)
+**Image 1:** Egusi vines creeping across Enugu soil.
+- Source: Dreamstime - Egusi Melon Farm
+- Description: White-fleshed melons on vines, focused on seed production.
+- License Note: Royalty-free from Dreamstime.
+
+**Image 2:** Harvested egusi seeds in Nigerian field.
+- Source: ECHOcommunity - Egusi Melon (creative commons images)
+- Description: Close-up of egusi plants intercropped with maize, true to Enugu practices.
+- License Note: Creative Commons (free with attribution).
+- Optimization Tip: Tooltip on hover for "Egusi" term explanation.
 
 ### 9. Kebbi Sorghum Yield Project (Sorghum fields in Kebbi)
 
-**Primary Image:**
-- URL: `https://images.unsplash.com/photo-1597427157407-84809a0c5d80?w=800&h=600&fit=crop`
-- Alt Text: "Kebbi Sorghum Field - Yield Project"
-- Description: Tall sorghum stalks in savanna
-- Optimization: Already optimized for web (800x600)
+**Image 1:** Tall sorghum stalks in Kebbi's savanna.
+- Source: Adobe Stock - Sorghum Field Nigeria
+- Description: Ripening sorghum heads under sun, symbolizing drought-resistant yields.
+- License Note: Royalty-free from Adobe Stock.
+
+**Image 2:** Nigerian sorghum farm landscape.
+- Source: Dreamstime - Sorghum Farm Nigeria
+- Description: Expansive field with Gawlo palm backdrop, authentic to Kebbi.
+- License Note: Royalty-free from Dreamstime.
+- Optimization Tip: Animate scroll-reveal for field depth.
 
 ### 10. Borno Millet Farming Initiative (Millet fields in Borno)
 
-**Primary Image:**
-- URL: `https://images.unsplash.com/photo-1597427157407-84809a0c5d80?w=800&h=600&fit=crop`
-- Alt Text: "Borno Millet Farm - Initiative"
-- Description: Golden millet spikes with farmers
-- Optimization: Already optimized for web (800x600)
+**Image 1:** Millet crops in arid Borno terrain.
+- Source: Getty - Nigeria Millet Farm
+- Description: Golden millet spikes with farmers, resilient to Borno's climate.
+- License Note: Royalty-free from Getty Images.
+
+**Image 2:** Millet harvesting in northern Nigeria.
+- Source: iStock - Millet Agriculture Nigeria
+- Description: Bundles of millet in field, emphasizing community farming.
+- License Note: Royalty-free from iStock.
+- Optimization Tip: Compress for quick load on dashboard views.
 
 ### 11. Kogi Soybeans Investment Fund (Soybean fields in Kogi)
 
-**Primary Image:**
-- URL: `https://images.unsplash.com/photo-1597427157407-84809a0c5d80?w=800&h=600&fit=crop`
-- Alt Text: "Kogi Soybean Farm - Investment Fund"
-- Description: Lush soybean rows in farmlands
-- Optimization: Already optimized for web (800x600)
+**Image 1:** Lush soybean rows in Kogi's central farmlands.
+- Source: iStock - Soybean Farm Nigeria
+- Description: Green pods on plants, showcasing nitrogen-fixing benefits.
+- License Note: Royalty-free from iStock.
+
+**Image 2:** Soybean field at maturity.
+- Source: Dreamstime - Soybean Farm
+- Description: Aerial view of uniform rows, ideal for multi-crop rotation visuals.
+- License Note: Royalty-free from Dreamstime.
+- Optimization Tip: Integrate with your ROI calculator slider.
 
 ### 12. Equipment Leasing Programme (Agricultural machinery in multi-state Nigeria)
 
-**Primary Image:**
-- URL: `https://images.unsplash.com/photo-1597427157407-84809a0c5d80?w=800&h=600&fit=crop`
-- Alt Text: "Nigeria Agricultural Equipment - Leasing Programme"
-- Description: Tractors and tools in fields
-- Optimization: Already optimized for web (800x600)
+**Image 1:** Tractors and tools in Nigerian fields.
+- Source: Depositphotos - Agricultural Machinery Nigeria
+- Description: Modern tractors plowing soil, representing leasing accessibility.
+- License Note: Royalty-free from Depositphotos.
+
+**Image 2:** Farm equipment lineup for leasing.
+- Source: iStock - Nigeria Agricultural Equipment
+- Description: Harvesters and plows in action, versatile for multi-state use.
+- License Note: Royalty-free from iStock.
+- Optimization Tip: Add icons overlay for "Various Crops" filter.
 
 ## Implementation Steps
 

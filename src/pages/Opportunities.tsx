@@ -13,7 +13,7 @@ const Opportunities = () => {
   const opportunities = [
     {
       title: "Kaduna Rice Yield Fund",
-      image: "https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=800&h=600&fit=crop",
+      image: "https://images.unsplash.com/photo-1597427157407-84809a0c5d80?w=800&h=600&fit=crop",
       region: "Kaduna",
       crop: "Rice",
       minInvestment: "₦2,000,000",
@@ -24,7 +24,7 @@ const Opportunities = () => {
     },
     {
       title: "Ogun Cassava Processing Investment",
-      image: "https://images.unsplash.com/photo-1597427157407-84809a0c5d80?w=800&h=600&fit=crop",
+      image: "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?w=800&h=600&fit=crop",
       region: "Ogun",
       crop: "Cassava",
       minInvestment: "₦4,000,000",
@@ -46,7 +46,7 @@ const Opportunities = () => {
     },
     {
       title: "Plateau Dairy & Maize Farm",
-      image: "https://images.unsplash.com/photo-1597427157407-84809a0c5d80?w=800&h=600&fit=crop",
+      image: "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?w=800&h=600&fit=crop",
       region: "Plateau",
       crop: "Maize",
       minInvestment: "₦6,000,000",
@@ -68,7 +68,7 @@ const Opportunities = () => {
     },
     {
       title: "South-South Palm Oil Investment",
-      image: "https://images.unsplash.com/photo-1597427157407-84809a0c5d80?w=800&h=600&fit=crop",
+      image: "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?w=800&h=600&fit=crop",
       region: "Rivers",
       crop: "Palm Oil",
       minInvestment: "₦8,000,000",
@@ -90,7 +90,7 @@ const Opportunities = () => {
     },
     {
       title: "Enugu Egusi (Melon) Seed Farm",
-      image: "https://images.unsplash.com/photo-1597427157407-84809a0c5d80?w=800&h=600&fit=crop",
+      image: "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?w=800&h=600&fit=crop",
       region: "Enugu",
       crop: "Egusi",
       minInvestment: "₦1,800,000",
@@ -112,7 +112,7 @@ const Opportunities = () => {
     },
     {
       title: "Borno Millet Farming Initiative",
-      image: "https://images.unsplash.com/photo-1597427157407-84809a0c5d80?w=800&h=600&fit=crop",
+      image: "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?w=800&h=600&fit=crop",
       region: "Borno",
       crop: "Millet",
       minInvestment: "₦1,900,000",
@@ -134,7 +134,7 @@ const Opportunities = () => {
     },
     {
       title: "Equipment Leasing Programme",
-      image: "https://images.unsplash.com/photo-1597427157407-84809a0c5d80?w=800&h=600&fit=crop",
+      image: "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?w=800&h=600&fit=crop",
       region: "Multi-State",
       crop: "Various",
       minInvestment: "₦5,000,000",

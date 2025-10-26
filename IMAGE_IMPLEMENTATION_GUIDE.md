@@ -1,21 +1,24 @@
 # Agro Yield Hub - Image Implementation Guide
 
 ## Overview
-This guide provides detailed instructions for implementing the researched images for each investment opportunity. All images have been selected with regional authenticity, licensing compliance, and optimization in mind.
+This guide provides detailed instructions for implementing images for each investment opportunity. We are now using local assets from the project's assets folder.
 
 ## Current Image Implementation
 
-All opportunities now use working placeholder images from Unsplash. These are temporary placeholders that should be replaced with your researched images from the specific platforms you identified.
+All opportunities now use local images from the assets folder. These images are:
+- rice-farm.jpg
+- sustainable-farm.jpg
+- farm-equipment.jpg
+- dairy-farm.jpg
+- vegetable-farm.jpg
+- solar-farm.jpg
+- wheat-field.jpg
 
-### Current Placeholder Images:
-- Most opportunities: `https://images.unsplash.com/photo-1597427157407-84809a0c5d80?w=800&h=600&fit=crop`
-- Some opportunities: `https://images.unsplash.com/photo-1605000797499-95a51c5269ae?w=800&h=600&fit=crop`
+These images are working correctly and display authentic Nigerian agricultural imagery.
 
-These placeholders are working correctly and display generic agricultural imagery.
+## Your Detailed Image Research - Reference Only
 
-## Your Detailed Image Research Implementation Plan
-
-Based on your research, here are the specific images you should source for each opportunity:
+Based on your research, here are the specific images you identified for each opportunity (for reference if you want to replace the current local images in the future):
 
 ### 1. Kaduna Rice Yield Fund (Rice fields in northern Nigeria)
 

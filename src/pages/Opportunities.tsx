@@ -4,6 +4,13 @@ import { useState } from "react";
 import OpportunityCard from "@/components/OpportunityCard";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import riceFarm from "@/assets/new/rice-farm.jpg";
+import sustainableFarm from "@/assets/new/sustainable-farm.jpg";
+import farmEquipment from "@/assets/new/farm-equipment.jpg";
+import dairyFarm from "@/assets/new/dairy-farm.jpg";
+import vegetableFarm from "@/assets/new/vegetable-farm.jpg";
+import solarFarm from "@/assets/new/solar-farm.jpg";
+import wheatField from "@/assets/wheat-field.jpg";
 
 const Opportunities = () => {
   const [regionFilter, setRegionFilter] = useState("all");
@@ -13,7 +20,7 @@ const Opportunities = () => {
   const opportunities = [
     {
       title: "Kaduna Rice Yield Fund",
-      image: "https://images.unsplash.com/photo-1597427157407-84809a0c5d80?w=800&h=600&fit=crop",
+      image: riceFarm,
       region: "Kaduna",
       crop: "Rice",
       minInvestment: "₦2,000,000",
@@ -24,7 +31,7 @@ const Opportunities = () => {
     },
     {
       title: "Ogun Cassava Processing Investment",
-      image: "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?w=800&h=600&fit=crop",
+      image: sustainableFarm,
       region: "Ogun",
       crop: "Cassava",
       minInvestment: "₦4,000,000",
@@ -35,7 +42,7 @@ const Opportunities = () => {
     },
     {
       title: "Kano Wheat Farming Project",
-      image: "https://images.unsplash.com/photo-1597427157407-84809a0c5d80?w=800&h=600&fit=crop",
+      image: wheatField,
       region: "Kano",
       crop: "Wheat",
       minInvestment: "₦3,000,000",
@@ -46,7 +53,7 @@ const Opportunities = () => {
     },
     {
       title: "Plateau Dairy & Maize Farm",
-      image: "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?w=800&h=600&fit=crop",
+      image: dairyFarm,
       region: "Plateau",
       crop: "Maize",
       minInvestment: "₦6,000,000",
@@ -57,7 +64,7 @@ const Opportunities = () => {
     },
     {
       title: "Lagos Beans Cultivation Hub",
-      image: "https://images.unsplash.com/photo-1597427157407-84809a0c5d80?w=800&h=600&fit=crop",
+      image: vegetableFarm,
       region: "Lagos",
       crop: "Beans",
       minInvestment: "₦3,200,000",
@@ -68,7 +75,7 @@ const Opportunities = () => {
     },
     {
       title: "South-South Palm Oil Investment",
-      image: "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?w=800&h=600&fit=crop",
+      image: sustainableFarm,
       region: "Rivers",
       crop: "Palm Oil",
       minInvestment: "₦8,000,000",
@@ -79,7 +86,7 @@ const Opportunities = () => {
     },
     {
       title: "Benue Yam Production Fund",
-      image: "https://images.unsplash.com/photo-1597427157407-84809a0c5d80?w=800&h=600&fit=crop",
+      image: wheatField,
       region: "Benue",
       crop: "Yam",
       minInvestment: "₦2,500,000",
@@ -90,7 +97,7 @@ const Opportunities = () => {
     },
     {
       title: "Enugu Egusi (Melon) Seed Farm",
-      image: "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?w=800&h=600&fit=crop",
+      image: vegetableFarm,
       region: "Enugu",
       crop: "Egusi",
       minInvestment: "₦1,800,000",
@@ -101,7 +108,7 @@ const Opportunities = () => {
     },
     {
       title: "Kebbi Sorghum Yield Project",
-      image: "https://images.unsplash.com/photo-1597427157407-84809a0c5d80?w=800&h=600&fit=crop",
+      image: wheatField,
       region: "Kebbi",
       crop: "Sorghum",
       minInvestment: "₦2,200,000",
@@ -112,7 +119,7 @@ const Opportunities = () => {
     },
     {
       title: "Borno Millet Farming Initiative",
-      image: "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?w=800&h=600&fit=crop",
+      image: sustainableFarm,
       region: "Borno",
       crop: "Millet",
       minInvestment: "₦1,900,000",
@@ -123,7 +130,7 @@ const Opportunities = () => {
     },
     {
       title: "Kogi Soybeans Investment Fund",
-      image: "https://images.unsplash.com/photo-1597427157407-84809a0c5d80?w=800&h=600&fit=crop",
+      image: wheatField,
       region: "Kogi",
       crop: "Soybeans",
       minInvestment: "₦3,500,000",
@@ -134,7 +141,7 @@ const Opportunities = () => {
     },
     {
       title: "Equipment Leasing Programme",
-      image: "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?w=800&h=600&fit=crop",
+      image: farmEquipment,
       region: "Multi-State",
       crop: "Various",
       minInvestment: "₦5,000,000",

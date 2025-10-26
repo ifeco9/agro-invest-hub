@@ -5,9 +5,9 @@ import TestimonialCard from "@/components/TestimonialCard";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Leaf, Shield, TrendingUp, ArrowRight, CheckCircle } from "lucide-react";
-import riceFarm from "@/assets/new/rice-farm.jpg";
-import sustainableFarm from "@/assets/new/sustainable-farm.jpg";
-import farmEquipment from "@/assets/new/farm-equipment.jpg";
+import riceFarm from "@/assets/Kaduna Rice Yield Fund.jpeg";
+import sustainableFarm from "@/assets/Ogun Cassava Processing Investment.jpeg";
+import farmEquipment from "@/assets/farm-equipment.jpg";
 
 const Home = () => {
   const features = [

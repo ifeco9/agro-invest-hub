@@ -4,13 +4,18 @@ import { useState } from "react";
 import OpportunityCard from "@/components/OpportunityCard";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import riceFarm from "@/assets/new/rice-farm.jpg";
-import sustainableFarm from "@/assets/new/sustainable-farm.jpg";
-import farmEquipment from "@/assets/new/farm-equipment.jpg";
-import dairyFarm from "@/assets/new/dairy-farm.jpg";
-import vegetableFarm from "@/assets/new/vegetable-farm.jpg";
-import solarFarm from "@/assets/new/solar-farm.jpg";
-import wheatField from "@/assets/wheat-field.jpg";
+import kadunaRice from "@/assets/Kaduna Rice Yield Fund.jpeg";
+import ogunCassava from "@/assets/Ogun Cassava Processing Investment.jpeg";
+import kanoWheat from "@/assets/Kano Wheat Farming Project.jpeg";
+import lagosBeans from "@/assets/Lagos Beans Cultivation Hub.jpeg";
+import southSouthPalm from "@/assets/South-South Palm Oil Investment.jpeg";
+import benueYam from "@/assets/Benue Yam Production Fund.jpeg";
+import enuguEgusi from "@/assets/Enugu Egusi Seed Farm.jpeg";
+import kebbiSorghum from "@/assets/Kebbi Sorghum Yield Project.jpeg";
+import bornoMillet from "@/assets/Borno Millet Farming Initiative.jpeg";
+import kogiSoybeans from "@/assets/Kogi Soybeans Investment Fund.jpeg";
+import farmEquipment from "@/assets/farm-equipment.jpg";
+import sustainableFarm from "@/assets/sustainable-farm.jpg";
 
 const Opportunities = () => {
   const [regionFilter, setRegionFilter] = useState("all");
@@ -20,7 +25,7 @@ const Opportunities = () => {
   const opportunities = [
     {
       title: "Kaduna Rice Yield Fund",
-      image: riceFarm,
+      image: kadunaRice,
       region: "Kaduna",
       crop: "Rice",
       minInvestment: "₦2,000,000",
@@ -31,7 +36,7 @@ const Opportunities = () => {
     },
     {
       title: "Ogun Cassava Processing Investment",
-      image: sustainableFarm,
+      image: ogunCassava,
       region: "Ogun",
       crop: "Cassava",
       minInvestment: "₦4,000,000",
@@ -42,7 +47,7 @@ const Opportunities = () => {
     },
     {
       title: "Kano Wheat Farming Project",
-      image: wheatField,
+      image: kanoWheat,
       region: "Kano",
       crop: "Wheat",
       minInvestment: "₦3,000,000",
@@ -53,7 +58,7 @@ const Opportunities = () => {
     },
     {
       title: "Plateau Dairy & Maize Farm",
-      image: dairyFarm,
+      image: sustainableFarm,
       region: "Plateau",
       crop: "Maize",
       minInvestment: "₦6,000,000",
@@ -64,7 +69,7 @@ const Opportunities = () => {
     },
     {
       title: "Lagos Beans Cultivation Hub",
-      image: vegetableFarm,
+      image: lagosBeans,
       region: "Lagos",
       crop: "Beans",
       minInvestment: "₦3,200,000",
@@ -75,7 +80,7 @@ const Opportunities = () => {
     },
     {
       title: "South-South Palm Oil Investment",
-      image: sustainableFarm,
+      image: southSouthPalm,
       region: "Rivers",
       crop: "Palm Oil",
       minInvestment: "₦8,000,000",
@@ -86,7 +91,7 @@ const Opportunities = () => {
     },
     {
       title: "Benue Yam Production Fund",
-      image: wheatField,
+      image: benueYam,
       region: "Benue",
       crop: "Yam",
       minInvestment: "₦2,500,000",
@@ -97,7 +102,7 @@ const Opportunities = () => {
     },
     {
       title: "Enugu Egusi (Melon) Seed Farm",
-      image: vegetableFarm,
+      image: enuguEgusi,
       region: "Enugu",
       crop: "Egusi",
       minInvestment: "₦1,800,000",
@@ -108,7 +113,7 @@ const Opportunities = () => {
     },
     {
       title: "Kebbi Sorghum Yield Project",
-      image: wheatField,
+      image: kebbiSorghum,
       region: "Kebbi",
       crop: "Sorghum",
       minInvestment: "₦2,200,000",
@@ -119,7 +124,7 @@ const Opportunities = () => {
     },
     {
       title: "Borno Millet Farming Initiative",
-      image: sustainableFarm,
+      image: bornoMillet,
       region: "Borno",
       crop: "Millet",
       minInvestment: "₦1,900,000",
@@ -130,7 +135,7 @@ const Opportunities = () => {
     },
     {
       title: "Kogi Soybeans Investment Fund",
-      image: wheatField,
+      image: kogiSoybeans,
       region: "Kogi",
       crop: "Soybeans",
       minInvestment: "₦3,500,000",

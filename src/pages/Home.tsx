@@ -8,8 +8,11 @@ import { Leaf, Shield, TrendingUp, ArrowRight, CheckCircle } from "lucide-react"
 import riceFarm from "@/assets/Kaduna Rice Yield Fund.jpeg";
 import sustainableFarm from "@/assets/Ogun Cassava Processing Investment.jpeg";
 import farmEquipment from "@/assets/farm-equipment.jpg";
+import { useState, useEffect } from "react";
 
 const Home = () => {
+  const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
+
   const features = [
     {
       icon: Leaf,
@@ -86,6 +89,17 @@ const Home = () => {
     { value: "12%", label: "Average Returns" },
   ];
 
+  // Auto-rotate testimonials every 6 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTestimonialIndex((prevIndex) => 
+        prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 6000);
+
+    return () => clearInterval(interval);
+  }, [testimonials.length]);
+
   return (
     <div className="min-h-screen">
       <Hero />
@@ -94,8 +108,8 @@ const Home = () => {
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Why Choose AgroInvest Hub?</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-teal-900">Why Choose Drecan Commodities?</h2>
+            <p className="text-lg text-teal-800 max-w-2xl mx-auto">
               Transparent, sustainable, and profitable agricultural investment opportunities designed for modern investors.
             </p>
           </div>
@@ -108,15 +122,15 @@ const Home = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 bg-primary">
+      <section className="py-16 bg-teal-600">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
               <div key={index} className="text-center animate-fade-in">
-                <div className="text-3xl md:text-4xl font-bold text-primary-foreground mb-2">
+                <div className="text-3xl md:text-4xl font-bold text-white mb-2">
                   {stat.value}
                 </div>
-                <div className="text-sm text-primary-foreground/80">{stat.label}</div>
+                <div className="text-sm text-white/80">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -124,12 +138,12 @@ const Home = () => {
       </section>
 
       {/* Featured Opportunities */}
-      <section className="py-20 bg-secondary">
+      <section className="py-20 bg-mint-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Investment Opportunities</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Explore our curated selection of high-yield agricultural investments across the UK.
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-teal-900">Featured Investment Opportunities</h2>
+            <p className="text-lg text-teal-800 max-w-2xl mx-auto">
+              Explore our curated selection of high-yield agricultural investments across Nigeria.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
@@ -175,16 +189,16 @@ const Home = () => {
               },
             ].map((item, index) => (
               <div key={index} className="text-center animate-slide-up" style={{ animationDelay: `${index * 0.1}s` }}>
-                <div className="w-16 h-16 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+                <div className="w-16 h-16 bg-teal-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
                   {item.step}
                 </div>
-                <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                <p className="text-muted-foreground">{item.description}</p>
+                <h3 className="text-xl font-semibold mb-2 text-teal-900">{item.title}</h3>
+                <p className="text-teal-800">{item.description}</p>
               </div>
             ))}
           </div>
           <div className="text-center mt-12">
-            <Button size="lg" asChild>
+            <Button size="lg" className="bg-teal-600 hover:bg-teal-700 text-white" asChild>
               <Link to="/how-it-works">Learn More</Link>
             </Button>
           </div>
@@ -192,49 +206,74 @@ const Home = () => {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 bg-secondary">
+      <section className="py-20 bg-mint-100">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">What Investors Say</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-teal-900">What Investors Say</h2>
+            <p className="text-lg text-teal-800 max-w-2xl mx-auto">
               Join hundreds of satisfied investors growing their portfolios sustainably.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {testimonials.map((testimonial, index) => (
-              <TestimonialCard key={index} {...testimonial} />
-            ))}
+          <div className="max-w-4xl mx-auto">
+            <div className="relative overflow-hidden">
+              <div 
+                className="flex transition-transform duration-500 ease-in-out"
+                style={{ transform: `translateX(-${currentTestimonialIndex * 100}%)` }}
+              >
+                {testimonials.map((testimonial, index) => (
+                  <div key={index} className="w-full flex-shrink-0 px-4">
+                    <TestimonialCard {...testimonial} />
+                  </div>
+                ))}
+              </div>
+            </div>
+            
+            {/* Testimonial indicators */}
+            <div className="flex justify-center mt-6 space-x-2">
+              {testimonials.map((_, index) => (
+                <button
+                  key={index}
+                  className={`w-3 h-3 rounded-full transition-colors ${
+                    index === currentTestimonialIndex 
+                      ? 'bg-teal-600' 
+                      : 'bg-mint-200'
+                  }`}
+                  onClick={() => setCurrentTestimonialIndex(index)}
+                  aria-label={`View testimonial ${index + 1}`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-primary">
+      <section className="py-20 bg-mint-100">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary-foreground">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-teal-900">
             Ready to Grow Your Portfolio?
           </h2>
-          <p className="text-lg text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
-            Join our community of investors and start earning sustainable returns from UK agriculture.
+          <p className="text-lg text-teal-800 mb-8 max-w-2xl mx-auto">
+            Join our community of investors and start earning sustainable returns from Nigerian agriculture.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="xl" variant="hero" className="bg-background text-foreground hover:bg-background/90" asChild>
+            <Button size="xl" className="bg-teal-600 hover:bg-teal-700 text-white" asChild>
               <Link to="/contact">Reserve Your Spot</Link>
             </Button>
-            <Button size="xl" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary" asChild>
+            <Button size="xl" variant="outline" className="border-teal-600 text-teal-600 hover:bg-teal-50" asChild>
               <Link to="/opportunities">Browse Opportunities</Link>
             </Button>
           </div>
           <div className="mt-8 flex flex-wrap gap-4 justify-center">
-            <div className="flex items-center gap-2 text-primary-foreground">
+            <div className="flex items-center gap-2 text-teal-800">
               <CheckCircle className="h-5 w-5" />
               <span className="text-sm">SEC Regulated</span>
             </div>
-            <div className="flex items-center gap-2 text-primary-foreground">
+            <div className="flex items-center gap-2 text-teal-800">
               <CheckCircle className="h-5 w-5" />
               <span className="text-sm">Transparent Reporting</span>
             </div>
-            <div className="flex items-center gap-2 text-primary-foreground">
+            <div className="flex items-center gap-2 text-teal-800">
               <CheckCircle className="h-5 w-5" />
               <span className="text-sm">Expert Support</span>
             </div>

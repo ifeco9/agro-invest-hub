@@ -54,26 +54,30 @@ const Insights = () => {
   return (
     <div className="min-h-screen pt-20">
       {/* Header */}
-      <section className="py-16 bg-gradient-primary">
+      <section className="py-16 bg-mint-50">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-primary-foreground">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-teal-900">
             Insights & Resources
           </h1>
-          <p className="text-lg text-primary-foreground/90 max-w-2xl mx-auto">
+          <p className="text-lg text-teal-800 max-w-2xl mx-auto">
             Stay informed with expert analysis, market trends, and educational content about agricultural investments.
           </p>
         </div>
       </section>
 
       {/* Categories */}
-      <section className="py-8 bg-secondary border-b border-border">
+      <section className="py-8 bg-mint-100 border-b border-mint-200">
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap gap-2 justify-center">
             {categories.map((category) => (
               <Badge
                 key={category}
                 variant={category === "All" ? "default" : "outline"}
-                className="cursor-pointer hover:bg-primary hover:text-primary-foreground transition-colors"
+                className={`cursor-pointer transition-colors ${
+                  category === "All" 
+                    ? "bg-teal-600 hover:bg-teal-700" 
+                    : "border-mint-200 text-teal-800 hover:bg-teal-600 hover:text-white"
+                }`}
               >
                 {category}
               </Badge>
@@ -87,16 +91,16 @@ const Insights = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {articles.map((article, index) => (
-              <Card key={index} className="flex flex-col hover:shadow-lg transition-all duration-300 hover:-translate-y-1 animate-fade-in">
+              <Card key={index} className="flex flex-col hover:shadow-lg transition-all duration-300 hover:-translate-y-1 animate-fade-in bg-mint-50 border border-mint-200">
                 <CardHeader>
-                  <Badge className="w-fit mb-2">{article.category}</Badge>
-                  <h3 className="text-xl font-semibold mb-2 line-clamp-2">{article.title}</h3>
+                  <Badge className="w-fit mb-2 bg-teal-600 hover:bg-teal-700">{article.category}</Badge>
+                  <h3 className="text-xl font-semibold mb-2 line-clamp-2 text-teal-900">{article.title}</h3>
                 </CardHeader>
                 <CardContent className="flex-grow">
-                  <p className="text-muted-foreground line-clamp-3">{article.excerpt}</p>
+                  <p className="text-teal-800 line-clamp-3">{article.excerpt}</p>
                 </CardContent>
                 <CardFooter className="flex flex-col gap-4">
-                  <div className="flex items-center justify-between w-full text-sm text-muted-foreground">
+                  <div className="flex items-center justify-between w-full text-sm text-teal-800">
                     <div className="flex items-center gap-1">
                       <Calendar className="h-4 w-4" />
                       {article.date}
@@ -106,7 +110,7 @@ const Insights = () => {
                       {article.readTime}
                     </div>
                   </div>
-                  <Button variant="outline" className="w-full group">
+                  <Button variant="outline" className="w-full group border-teal-600 text-teal-600 hover:bg-teal-50">
                     Read More 
                     <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </Button>
@@ -118,12 +122,12 @@ const Insights = () => {
       </section>
 
       {/* Newsletter CTA */}
-      <section className="py-20 bg-secondary">
+      <section className="py-20 bg-mint-100">
         <div className="container mx-auto px-4">
-          <Card className="max-w-2xl mx-auto text-center">
+          <Card className="max-w-2xl mx-auto text-center bg-mint-50 border border-mint-200">
             <CardHeader>
-              <h2 className="text-3xl font-bold mb-2">Stay Informed</h2>
-              <p className="text-muted-foreground">
+              <h2 className="text-3xl font-bold mb-2 text-teal-900">Stay Informed</h2>
+              <p className="text-teal-800">
                 Get the latest agricultural investment insights delivered to your inbox monthly.
               </p>
             </CardHeader>
@@ -132,11 +136,11 @@ const Insights = () => {
                 <input
                   type="email"
                   placeholder="Your email address"
-                  className="flex-1 px-4 py-2 rounded-md border border-input bg-background"
+                  className="flex-1 px-4 py-2 rounded-md border border-mint-200 bg-white focus:border-teal-600"
                 />
-                <Button size="lg">Subscribe</Button>
+                <Button size="lg" className="bg-teal-600 hover:bg-teal-700 text-white">Subscribe</Button>
               </div>
-              <p className="text-xs text-muted-foreground mt-4">
+              <p className="text-xs text-teal-800 mt-4">
                 No spam, unsubscribe anytime. We respect your privacy.
               </p>
             </CardContent>

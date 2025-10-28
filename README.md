@@ -1,73 +1,103 @@
-# Welcome to your Lovable project
+# AgroInvest Hub - Agricultural Investment Platform
 
-## Project info
+## Project Overview
+AgroInvest Hub is a comprehensive agricultural investment platform that connects investors with farming opportunities across Nigeria. The platform provides transparent, sustainable, and profitable investment opportunities in the agricultural sector.
 
-**URL**: https://lovable.dev/projects/82f45988-5366-4e09-be58-b80b14280c31
+## Recent Enhancements
 
-## How can I edit this code?
+### 1. Updated Logo Implementation
+- **Logo Source**: Using existing `src/assets/logo.jpg` file
+- **Desktop Version**: Full logo with "DRECAN COMMODITIES" text and italic tagline "From farm to the world" using attractive Playfair Display and Montserrat fonts
+- **Mobile Version**: Icon-only logo positioned on the far right of mobile navbar
+- **Hover Effect**: Subtle scale effect (1.05) on logo hover
 
-There are several ways of editing your application.
+### 2. Modern Color Scheme
+- **Primary**: Deep Navy Blue (`#1E3A5F`) for navbar, buttons, headings
+- **Secondary**: Muted Agricultural Green (`#4A7F4A`) for accents and secondary elements
+- **Accent**: Soft Sky Blue (`#4A90E2`) for CTAs, hover states, progress bars
+- **Background**: Clean White (`#FFFFFF`) with very light gray (`#F8FAFC`) for cards
+- **Text**: Dark Charcoal (`#2D3748`) for body, Navy for headings
+- **Green**: Used more prominently but in muted tones for a professional agricultural aesthetic
 
-**Use Lovable**
+### 3. Enhanced Interactive Web Design
+- **Opportunity Cards**:
+  - Hover effect: Lift (`translateY(-4px)`), soft shadow, image zoom-in (1.05x)
+  - "Reserve Now" button: Pulse animation when <3 slots left
+- **Navbar**:
+  - Active page underline slides in with liquid effect
+  - Mobile menu: Slide from right with backdrop blur
+- **Hero Section**:
+  - Background image parallax effect on scroll
+  - Headline letters fade in one by one on page load
+- **Testimonials**: 
+  - Auto-rotate every 6 seconds with smooth crossfade
+  - Navigation indicators for manual selection
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/82f45988-5366-4e09-be58-b80b14280c31) and start prompting.
+### 4. Consistent Updates Across All Pages
+All pages have been updated with the new logo, color scheme, and micro-interactions:
+- Homepage
+- Opportunities Page
+- How It Works
+- About Us
+- Insights/Blog
+- Contact/Reserve
+- Mobile Menu
 
-Changes made via Lovable will be committed automatically to this repo.
+## Technology Stack
+- **Frontend**: React 18 with TypeScript
+- **Styling**: Tailwind CSS with shadcn-ui components
+- **Build Tool**: Vite
+- **Routing**: React Router
+- **State Management**: React Hooks
 
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+## Project Structure
+```
+agro-yield-hub/
+├── public/              # Static assets (logos, favicon, etc.)
+├── src/
+│   ├── components/      # Reusable UI components
+│   │   ├── ui/          # shadcn-ui components
+│   │   └── custom/      # Custom components (Navbar, Hero, etc.)
+│   ├── pages/           # Page components
+│   ├── assets/          # Image assets
+│   ├── lib/             # Utility functions
+│   └── App.tsx          # Main application component
+├── tailwind.config.ts   # Tailwind CSS configuration
+└── package.json         # Dependencies and scripts
 ```
 
-**Edit a file directly in GitHub**
+## Key Components
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Logo Component
+Located at `src/components/Logo.tsx`, handles both full and icon variants with proper sizing and hover effects.
 
-**Use GitHub Codespaces**
+### Navbar Component
+Located at `src/components/Navbar.tsx`, features responsive design with logo positioning and mobile menu enhancements.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### OpportunityCard Component
+Located at `src/components/OpportunityCard.tsx`, includes hover animations and slot-based pulse effects.
 
-## What technologies are used for this project?
+### Hero Component
+Located at `src/components/Hero.tsx`, implements parallax scrolling and typewriter animation.
 
-This project is built with:
+### Home Page
+Located at `src/pages/Home.tsx`, features auto-rotating testimonials with crossfade transitions.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Setup Instructions
+1. Install dependencies: `npm install`
+2. Start development server: `npm run dev`
+3. Build for production: `npm run build`
+4. Preview production build: `npm run preview`
 
-## How can I deploy this project?
+## Development Notes
+- All styling uses Tailwind CSS classes only
+- Color scheme defined in `src/index.css` with HSL values
+- Animations defined in `tailwind.config.ts`
+- Responsive design follows mobile-first approach
+- Components are modular and reusable
 
-Simply open [Lovable](https://lovable.dev/projects/82f45988-5366-4e09-be58-b80b14280c31) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+## Custom Animations
+- `animate-fade-in`: Element fades in on load
+- `animate-slide-up`: Element slides up on load
+- `animate-scale-in`: Element scales in on load
+- `animate-pulse-slow`: Slow pulse effect for limited slots

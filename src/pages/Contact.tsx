@@ -31,12 +31,12 @@ const Contact = () => {
   return (
     <div className="min-h-screen pt-20">
       {/* Header */}
-      <section className="py-16 bg-gradient-primary">
+      <section className="py-16 bg-mint-50">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-primary-foreground">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-teal-900">
             Reserve Your Investment
           </h1>
-          <p className="text-lg text-primary-foreground/90 max-w-2xl mx-auto">
+          <p className="text-lg text-teal-800 max-w-2xl mx-auto">
             Express your interest in our agricultural investment opportunities. Our expert team is ready to guide you.
           </p>
         </div>
@@ -48,10 +48,10 @@ const Contact = () => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Contact Form */}
             <div className="lg:col-span-2">
-              <Card>
+              <Card className="bg-mint-50 border border-mint-200">
                 <CardHeader>
-                  <h2 className="text-2xl font-bold">Express Your Interest</h2>
-                  <p className="text-muted-foreground">
+                  <h2 className="text-2xl font-bold text-teal-900">Express Your Interest</h2>
+                  <p className="text-teal-800">
                     Fill out the form below and our team will contact you within 24 hours.
                   </p>
                 </CardHeader>
@@ -59,29 +59,29 @@ const Contact = () => {
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="space-y-2">
-                        <Label htmlFor="firstName">First Name *</Label>
-                        <Input id="firstName" required placeholder="John" />
+                        <Label htmlFor="firstName" className="text-teal-900">First Name *</Label>
+                        <Input id="firstName" required placeholder="John" className="border-mint-200 focus:border-teal-600" />
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="lastName">Last Name *</Label>
-                        <Input id="lastName" required placeholder="Smith" />
+                        <Label htmlFor="lastName" className="text-teal-900">Last Name *</Label>
+                        <Input id="lastName" required placeholder="Smith" className="border-mint-200 focus:border-teal-600" />
                       </div>
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="email">Email Address *</Label>
-                      <Input id="email" type="email" required placeholder="john.smith@example.com" />
+                      <Label htmlFor="email" className="text-teal-900">Email Address *</Label>
+                      <Input id="email" type="email" required placeholder="john.smith@example.com" className="border-mint-200 focus:border-teal-600" />
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="phone">Phone Number *</Label>
-                      <Input id="phone" type="tel" required placeholder="+44 7700 900000" />
+                      <Label htmlFor="phone" className="text-teal-900">Phone Number *</Label>
+                      <Input id="phone" type="tel" required placeholder="+44 7700 900000" className="border-mint-200 focus:border-teal-600" />
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="investmentAmount">Intended Investment Amount *</Label>
+                      <Label htmlFor="investmentAmount" className="text-teal-900">Intended Investment Amount *</Label>
                       <Select required>
-                        <SelectTrigger id="investmentAmount">
+                        <SelectTrigger id="investmentAmount" className="border-mint-200 focus:border-teal-600">
                           <SelectValue placeholder="Select amount range" />
                         </SelectTrigger>
                         <SelectContent>
@@ -95,9 +95,9 @@ const Contact = () => {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="interest">Area of Interest *</Label>
+                      <Label htmlFor="interest" className="text-teal-900">Area of Interest *</Label>
                       <Select required>
-                        <SelectTrigger id="interest">
+                        <SelectTrigger id="interest" className="border-mint-200 focus:border-teal-600">
                           <SelectValue placeholder="Select investment type" />
                         </SelectTrigger>
                         <SelectContent>
@@ -111,19 +111,20 @@ const Contact = () => {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="message">Additional Information</Label>
+                      <Label htmlFor="message" className="text-teal-900">Additional Information</Label>
                       <Textarea
                         id="message"
                         placeholder="Tell us about your investment goals or any questions you have..."
                         rows={4}
+                        className="border-mint-200 focus:border-teal-600"
                       />
                     </div>
 
-                    <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
+                    <Button type="submit" size="lg" className="w-full bg-teal-600 hover:bg-teal-700 text-white" disabled={isSubmitting}>
                       {isSubmitting ? "Submitting..." : "Submit Interest"}
                     </Button>
 
-                    <p className="text-xs text-muted-foreground text-center">
+                    <p className="text-xs text-teal-800 text-center">
                       By submitting this form, you agree to our Privacy Policy and Terms of Service.
                       No payment information is required at this stage.
                     </p>
@@ -134,41 +135,41 @@ const Contact = () => {
 
             {/* Contact Info */}
             <div className="space-y-6">
-              <Card>
+              <Card className="bg-mint-50 border border-mint-200">
                 <CardHeader>
-                  <h3 className="text-xl font-semibold">Contact Information</h3>
+                  <h3 className="text-xl font-semibold text-teal-900">Contact Information</h3>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex items-start gap-3">
-                    <Mail className="h-5 w-5 text-primary mt-0.5" />
+                    <Mail className="h-5 w-5 text-teal-600 mt-0.5" />
                     <div>
-                      <p className="font-medium">Email</p>
-                      <p className="text-sm text-muted-foreground">info@agroinvesthub.ng</p>
+                      <p className="font-medium text-teal-900">Email</p>
+                      <p className="text-sm text-teal-800">info@drecancommodities.com</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <Phone className="h-5 w-5 text-primary mt-0.5" />
+                    <Phone className="h-5 w-5 text-teal-600 mt-0.5" />
                     <div>
-                      <p className="font-medium">Phone</p>
-                      <p className="text-sm text-muted-foreground">+234 803 456 7890</p>
+                      <p className="font-medium text-teal-900">Phone</p>
+                      <p className="text-sm text-teal-800">+234 803 456 7890</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <MapPin className="h-5 w-5 text-primary mt-0.5" />
+                    <MapPin className="h-5 w-5 text-teal-600 mt-0.5" />
                     <div>
-                      <p className="font-medium">Office</p>
-                      <p className="text-sm text-muted-foreground">
-                        AgroInvest Hub Plaza<br />
+                      <p className="font-medium text-teal-900">Office</p>
+                      <p className="text-sm text-teal-800">
+                        Drecan Commodities Plaza<br />
                         15 Ahmadu Bello Way, Victoria Island<br />
                         Lagos, Nigeria
                       </p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <Clock className="h-5 w-5 text-primary mt-0.5" />
+                    <Clock className="h-5 w-5 text-teal-600 mt-0.5" />
                     <div>
-                      <p className="font-medium">Business Hours</p>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="font-medium text-teal-900">Business Hours</p>
+                      <p className="text-sm text-teal-800">
                         Monday - Friday<br />
                         8:00 AM - 5:00 PM WAT
                       </p>
@@ -177,7 +178,7 @@ const Contact = () => {
                 </CardContent>
               </Card>
 
-              <Card className="bg-primary text-primary-foreground">
+              <Card className="bg-teal-600 text-white">
                 <CardHeader>
                   <h3 className="text-xl font-semibold">Quick Response</h3>
                 </CardHeader>
@@ -196,11 +197,11 @@ const Contact = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 bg-secondary">
+      <section className="py-20 bg-mint-100">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-teal-900">Frequently Asked Questions</h2>
+            <p className="text-lg text-teal-800 max-w-2xl mx-auto">
               Quick answers to common questions about the investment process.
             </p>
           </div>
@@ -223,12 +224,12 @@ const Contact = () => {
                 a: "No, expressing your interest is completely free with no obligation to invest.",
               },
             ].map((faq, index) => (
-              <Card key={index}>
+              <Card key={index} className="bg-mint-50 border border-mint-200">
                 <CardHeader>
-                  <h3 className="font-semibold">{faq.q}</h3>
+                  <h3 className="font-semibold text-teal-900">{faq.q}</h3>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground">{faq.a}</p>
+                  <p className="text-teal-800">{faq.a}</p>
                 </CardContent>
               </Card>
             ))}

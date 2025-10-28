@@ -64,12 +64,12 @@ const HowItWorks = () => {
   return (
     <div className="min-h-screen pt-20">
       {/* Header */}
-      <section className="py-16 bg-gradient-primary">
+      <section className="py-16 bg-mint-50">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-primary-foreground">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-teal-900">
             How It Works
           </h1>
-          <p className="text-lg text-primary-foreground/90 max-w-2xl mx-auto">
+          <p className="text-lg text-teal-800 max-w-2xl mx-auto">
             Start your agricultural investment journey with our simple, transparent three-step process.
           </p>
         </div>
@@ -88,31 +88,31 @@ const HowItWorks = () => {
               >
                 <div className="flex-1">
                   <div className="flex items-center gap-4 mb-4">
-                    <div className="w-16 h-16 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-2xl font-bold">
+                    <div className="w-16 h-16 bg-teal-600 text-white rounded-full flex items-center justify-center text-2xl font-bold">
                       {step.number}
                     </div>
-                    <step.icon className="h-12 w-12 text-primary" />
+                    <step.icon className="h-12 w-12 text-teal-600" />
                   </div>
-                  <h2 className="text-3xl font-bold mb-4">{step.title}</h2>
-                  <p className="text-lg text-muted-foreground mb-6">{step.description}</p>
+                  <h2 className="text-3xl font-bold mb-4 text-teal-900">{step.title}</h2>
+                  <p className="text-lg text-teal-800 mb-6">{step.description}</p>
                   <ul className="space-y-2">
                     {step.details.map((detail, i) => (
                       <li key={i} className="flex items-start gap-2">
-                        <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                        <span className="text-muted-foreground">{detail}</span>
+                        <CheckCircle className="h-5 w-5 text-teal-600 mt-0.5 flex-shrink-0" />
+                        <span className="text-teal-800">{detail}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
                 <div className="flex-1">
-                  <Card className="shadow-xl">
+                  <Card className="shadow-xl bg-mint-50 border border-mint-200">
                     <CardHeader className="text-center">
-                      <div className="mx-auto w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-                        <step.icon className="h-12 w-12 text-primary" />
+                      <div className="mx-auto w-24 h-24 bg-teal-600/10 rounded-full flex items-center justify-center mb-4">
+                        <step.icon className="h-12 w-12 text-teal-600" />
                       </div>
-                      <h3 className="text-2xl font-semibold">Step {step.number}</h3>
+                      <h3 className="text-2xl font-semibold text-teal-900">Step {step.number}</h3>
                     </CardHeader>
-                    <CardContent className="text-center text-muted-foreground">
+                    <CardContent className="text-center text-teal-800">
                       {step.description}
                     </CardContent>
                   </Card>
@@ -124,25 +124,25 @@ const HowItWorks = () => {
       </section>
 
       {/* Benefits */}
-      <section className="py-20 bg-secondary">
+      <section className="py-20 bg-mint-100">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Why Trust AgroInvest Hub?</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-teal-900">Why Trust Drecan Commodities?</h2>
+            <p className="text-lg text-teal-800 max-w-2xl mx-auto">
               We prioritize transparency, security, and investor success in every aspect of our platform.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {benefits.map((benefit, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-all duration-300">
+              <Card key={index} className="text-center hover:shadow-lg transition-all duration-300 bg-mint-50 border border-mint-200">
                 <CardHeader>
-                  <div className="mx-auto w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-                    <benefit.icon className="h-8 w-8 text-primary" />
+                  <div className="mx-auto w-16 h-16 bg-teal-600/10 rounded-full flex items-center justify-center mb-4">
+                    <benefit.icon className="h-8 w-8 text-teal-600" />
                   </div>
-                  <h3 className="text-xl font-semibold">{benefit.title}</h3>
+                  <h3 className="text-xl font-semibold text-teal-900">{benefit.title}</h3>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground">{benefit.description}</p>
+                  <p className="text-teal-800">{benefit.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -153,15 +153,15 @@ const HowItWorks = () => {
       {/* CTA */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Get Started?</h2>
-          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-teal-900">Ready to Get Started?</h2>
+          <p className="text-lg text-teal-800 mb-8 max-w-2xl mx-auto">
             Join hundreds of investors who are already earning sustainable returns from Nigerian agriculture.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" asChild>
+            <Button size="lg" className="bg-teal-600 hover:bg-teal-700 text-white" asChild>
               <Link to="/opportunities">Browse Opportunities</Link>
             </Button>
-            <Button size="lg" variant="outline" asChild>
+            <Button size="lg" variant="outline" className="border-teal-600 text-teal-600 hover:bg-teal-50" asChild>
               <Link to="/contact">Speak with an Advisor</Link>
             </Button>
           </div>

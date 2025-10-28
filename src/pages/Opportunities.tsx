@@ -1,5 +1,3 @@
-
-
 import { useState } from "react";
 import OpportunityCard from "@/components/OpportunityCard";
 import { Button } from "@/components/ui/button";
@@ -167,19 +165,19 @@ const Opportunities = () => {
   return (
     <div className="min-h-screen pt-20">
       {/* Header */}
-      <section className="py-16 bg-gradient-primary">
+      <section className="py-16 bg-mint-50">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-primary-foreground">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-teal-900">
             Investment Opportunities
           </h1>
-          <p className="text-lg text-primary-foreground/90 max-w-2xl mx-auto">
+          <p className="text-lg text-teal-800 max-w-2xl mx-auto">
             Explore transparent agricultural investment opportunities across Nigeria with verified returns and sustainable impact.
           </p>
         </div>
       </section>
 
       {/* Filters */}
-      <section className="py-8 bg-secondary border-b border-border">
+      <section className="py-8 bg-mint-100 border-b border-mint-200">
         <div className="container mx-auto px-4">
           <div className="flex flex-col sm:flex-row gap-4 items-center justify-between">
             <div className="flex flex-wrap items-center gap-4 w-full sm:w-auto">
@@ -239,7 +237,7 @@ const Opportunities = () => {
               </Select>
             </div>
 
-            <div className="text-sm text-muted-foreground">
+            <div className="text-sm text-teal-800">
               Showing {filteredOpportunities.length} of {opportunities.length} opportunities
             </div>
           </div>
@@ -278,13 +276,15 @@ const Opportunities = () => {
       </section>
 
       {/* Info Section */}
-      <section className="py-16 bg-secondary">
+      <section className="py-16 bg-mint-50">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4">Can't Find What You're Looking For?</h2>
-          <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-bold mb-4 text-teal-900">Can't Find What You're Looking For?</h2>
+          <p className="text-teal-800 mb-6 max-w-2xl mx-auto">
             New opportunities are added regularly. Contact our team to discuss custom investment options or join our waitlist for upcoming projects.
           </p>
-          <Button size="lg">Contact Our Team</Button>
+          <Button size="lg" className="bg-teal-600 hover:bg-teal-700 text-white px-5 py-2 rounded-lg transition">
+            Contact Our Team
+          </Button>
         </div>
       </section>
     </div>

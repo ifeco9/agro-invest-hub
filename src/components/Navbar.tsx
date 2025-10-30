@@ -33,6 +33,11 @@ const Navbar = () => {
               <div className="hidden sm:block">
                 <Logo variant="full" />
               </div>
+              {/* DRECAN COMMODITIES text for desktop only */}
+              <div className="hidden sm:block ml-2">
+                <span className="font-bold text-lg text-teal-900">DRECAN COMMODITIES</span>
+                <span className="block text-xs text-teal-700 italic">from farm to the world</span>
+              </div>
             </div>
           </Link>
 

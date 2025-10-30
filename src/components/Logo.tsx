@@ -18,7 +18,7 @@ const Logo = ({ variant = "full", className, ...props }: LogoProps) => {
         <img 
           src={logoImage} 
           alt="DRECAN COMMODITIES" 
-          className="w-32 h-auto drop-shadow-sm rounded-full"
+          className="w-24 h-auto drop-shadow-sm rounded-full"
         />
       </div>
     );

@@ -6,9 +6,17 @@ interface LogoProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const Logo = ({ variant = "full", className, ...props }: LogoProps) => {
-  // For mobile view, we don't show any logo on the right
+  // For mobile view, we show a small logo
   if (variant === "mobile") {
-    return null;
+    return (
+      <div className={cn("flex items-center", className)} {...props}>
+        <img 
+          src={logoImage} 
+          alt="DRECAN COMMODITIES" 
+          className="w-10 h-10 object-contain rounded-full"
+        />
+      </div>
+    );
   }
 
   // For desktop view, we show the full logo with text
@@ -18,19 +26,19 @@ const Logo = ({ variant = "full", className, ...props }: LogoProps) => {
         <img 
           src={logoImage} 
           alt="DRECAN COMMODITIES" 
-          className="w-24 h-auto drop-shadow-sm rounded-full"
+          className="w-20 h-auto drop-shadow-sm rounded-full"
         />
       </div>
     );
   }
 
-  // Icon-only variant (not used in this update)
+  // Icon-only variant (used in footer)
   return (
     <div className={cn("flex items-center", className)} {...props}>
       <img 
         src={logoImage} 
         alt="DRECAN COMMODITIES" 
-        className="w-12 h-12 object-contain"
+        className="w-12 h-12 object-contain rounded-full"
       />
     </div>
   );

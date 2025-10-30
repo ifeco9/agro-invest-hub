@@ -26,12 +26,9 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 font-bold text-xl hover:opacity-80 transition-opacity">
             <div className="flex items-center">
-              {/* Full logo for desktop, icon only for mobile */}
+              {/* Full logo for desktop, no logo for mobile */}
               <div className="hidden sm:block">
                 <Logo variant="full" />
-              </div>
-              <div className="sm:hidden">
-                <Logo variant="icon" />
               </div>
             </div>
           </Link>
@@ -55,7 +52,7 @@ const Navbar = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center">
             <button
               className="md:hidden p-2"
               onClick={() => setIsOpen(!isOpen)}
@@ -63,12 +60,6 @@ const Navbar = () => {
             >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
-            {/* Mobile logo - only visible when menu is closed */}
-            {!isOpen && (
-              <div className="md:hidden">
-                <Logo variant="mobile" />
-              </div>
-            )}
           </div>
         </div>
 

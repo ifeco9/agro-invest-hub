@@ -4,7 +4,7 @@ import OpportunityCard from "@/components/OpportunityCard";
 import TestimonialCard from "@/components/TestimonialCard";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Leaf, Shield, TrendingUp, ArrowRight, CheckCircle } from "lucide-react";
+import { Leaf, Shield, TrendingUp, ArrowRight, CheckCircle, Users } from "lucide-react";
 import riceFarm from "@/assets/Kaduna Rice Yield Fund.jpeg";
 import sustainableFarm from "@/assets/Ogun Cassava Processing Investment.jpeg";
 import farmEquipment from "@/assets/farm-equipment.jpg";
@@ -205,6 +205,62 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Our Model */}
+      <section className="py-12 bg-mint-50">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-teal-900 text-center mb-8">The Drecan Model</h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="bg-white p-6 rounded-lg shadow-sm border border-mint-200">
+              <h3 className="font-bold text-teal-800">AI & Tech-Driven</h3>
+              <p className="mt-2 text-teal-700">Managing oil palm plantations with unparalleled transparency and sustainability.</p>
+            </div>
+            <div className="bg-white p-6 rounded-lg shadow-sm border border-mint-200">
+              <h3 className="font-bold text-teal-800">Economic Resilience</h3>
+              <p className="mt-2 text-teal-700">Profitable operations that attract forward-thinking investment.</p>
+            </div>
+            <div className="bg-white p-6 rounded-lg shadow-sm border border-mint-200">
+              <h3 className="font-bold text-teal-800">Social Impact</h3>
+              <p className="mt-2 text-teal-700">Community welfare, health, and security for Osun State and beyond.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Invest? */}
+      <section className="py-16 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-teal-900">Why Invest With Drecan?</h2>
+            <p className="text-lg text-teal-800 max-w-2xl mx-auto">
+              Our mission is to challenge the status quo with high-performance agriculture and ESG principles.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            <div className="text-center">
+              <div className="w-16 h-16 mx-auto mb-3 bg-teal-100 rounded-full flex items-center justify-center">
+                <TrendingUp className="w-8 h-8 text-teal-600" />
+              </div>
+              <h3 className="font-bold text-teal-900">Economic Resilience</h3>
+              <p className="text-teal-700 mt-2">Profitable operations that attract forward-thinking investment.</p>
+            </div>
+            <div className="text-center">
+              <div className="w-16 h-16 mx-auto mb-3 bg-teal-100 rounded-full flex items-center justify-center">
+                <Users className="w-8 h-8 text-teal-600" />
+              </div>
+              <h3 className="font-bold text-teal-900">Social Impact</h3>
+              <p className="text-teal-700 mt-2">Community welfare, health, and security for Osun State and beyond.</p>
+            </div>
+            <div className="text-center">
+              <div className="w-16 h-16 mx-auto mb-3 bg-teal-100 rounded-full flex items-center justify-center">
+                <Leaf className="w-8 h-8 text-teal-600" />
+              </div>
+              <h3 className="font-bold text-teal-900">Natural Resource Management</h3>
+              <p className="text-teal-700 mt-2">Cutting-edge conservation and sustainable land use practices.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Testimonials */}
       <section className="py-20 bg-mint-100">
         <div className="container mx-auto px-4">
@@ -253,6 +309,9 @@ const Home = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-teal-900">
             Ready to Grow Your Portfolio?
           </h2>
+          <p className="text-lg text-teal-800 mb-2 max-w-2xl mx-auto">
+            Agribusiness as a Force for Change — Invest in the Future
+          </p>
           <p className="text-lg text-teal-800 mb-8 max-w-2xl mx-auto">
             Join our community of investors and start earning sustainable returns from Nigerian agriculture.
           </p>

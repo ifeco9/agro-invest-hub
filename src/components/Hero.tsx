@@ -52,6 +52,11 @@ const Hero = () => {
             {displayedText}
             <span className="ml-1 inline-block w-1 h-16 bg-primary-foreground align-middle animate-pulse"></span>
           </h1>
+          <div className="text-center mt-4 mb-8">
+            <p className="text-teal-700 text-lg font-medium">
+              Established in Osun State in 2014 — Pioneers in Responsible Nigerian Agriculture
+            </p>
+          </div>
           <p className="text-xl md:text-2xl mb-8 text-primary-foreground/90">
             Yields up to 12% with transparent, low-risk opportunities
           </p>

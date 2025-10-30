@@ -170,8 +170,8 @@ const Opportunities = () => {
           <h1 className="text-4xl md:text-5xl font-bold mb-4 text-teal-900">
             Investment Opportunities
           </h1>
-          <p className="text-lg text-teal-800 max-w-2xl mx-auto">
-            Explore transparent agricultural investment opportunities across Nigeria with verified returns and sustainable impact.
+          <p className="text-lg text-teal-800 max-w-3xl mx-auto">
+            Backed by <strong>14+ years</strong> as a leading exporter of premium palm oil, cashew nuts, cocoa, and grains (corn, millet, wheat, beans, rice).
           </p>
         </div>
       </section>

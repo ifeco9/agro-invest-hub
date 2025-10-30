@@ -105,6 +105,14 @@ const Footer = () => {
           </div>
         </div>
 
+        {/* Trust Badges */}
+        <div className="flex flex-wrap justify-center gap-4 mt-6">
+          <span className="px-3 py-1 bg-teal-50 text-teal-700 text-xs font-medium rounded-full">Responsible Management Policy</span>
+          <span className="px-3 py-1 bg-teal-50 text-teal-700 text-xs font-medium rounded-full">Stakeholder-Developed</span>
+          <span className="px-3 py-1 bg-teal-50 text-teal-700 text-xs font-medium rounded-full">Full Supply Chain Standards</span>
+          <span className="px-3 py-1 bg-teal-50 text-teal-700 text-xs font-medium rounded-full">Customer-Rated Excellence</span>
+        </div>
+
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-mint-200 text-center text-sm text-teal-800">
           <p>&copy; {new Date().getFullYear()} Drecan Commodities. All rights reserved. SEC Regulated.</p>

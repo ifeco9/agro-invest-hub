@@ -8,8 +8,8 @@ const HowItWorks = () => {
     {
       number: "1",
       icon: Search,
-      title: "Discover Opportunities",
-      description: "Browse our curated selection of verified agricultural investments across Nigerian states. Each opportunity includes detailed performance data, risk assessments, and projected returns.",
+      title: "From Our Own Plantations",
+      description: "Integrated model: our plantations → secure storage — ethical, sustainable, and fully controlled.",
       details: [
         "Interactive map showing farm locations",
         "Comprehensive project documentation",

@@ -26,7 +26,10 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 font-bold text-xl hover:opacity-80 transition-opacity">
             <div className="flex items-center">
-              {/* Full logo for desktop, no logo for mobile */}
+              {/* Icon logo for mobile, full logo for desktop */}
+              <div className="block sm:hidden">
+                <Logo variant="mobile" />
+              </div>
               <div className="hidden sm:block">
                 <Logo variant="full" />
               </div>

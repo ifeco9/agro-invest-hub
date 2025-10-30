@@ -19,26 +19,26 @@ const Logo = ({ variant = "full", className, ...props }: LogoProps) => {
     );
   }
 
-  // For desktop view, we show the full logo with text
-  if (variant === "full") {
+  // Icon-only variant
+  if (variant === "icon") {
     return (
       <div className={cn("flex items-center", className)} {...props}>
         <img 
           src={logoImage} 
           alt="DRECAN COMMODITIES" 
-          className="w-16 h-auto drop-shadow-sm rounded-full"
+          className="w-12 h-12 object-contain rounded-full"
         />
       </div>
     );
   }
 
-  // Icon-only variant (used in footer)
+  // For desktop view, we show the full logo with text
   return (
     <div className={cn("flex items-center", className)} {...props}>
       <img 
         src={logoImage} 
         alt="DRECAN COMMODITIES" 
-        className="w-12 h-12 object-contain rounded-full"
+        className="w-16 h-auto drop-shadow-sm rounded-full"
       />
     </div>
   );

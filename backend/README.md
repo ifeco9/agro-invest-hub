@@ -1,8 +1,7 @@
 # AgroInvest Hub Backend
 
 This is the backend API for the AgroInvest Hub platform, built with Node.js, Express, and SQLite.
-
-## Features
+Features
 
 - User authentication (registration, login)
 - Investment opportunity management

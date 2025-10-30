@@ -105,7 +105,7 @@ const Home = () => {
       <Hero />
 
       {/* Features Section */}
-      <section className="py-20 bg-background">
+      <section className="py-8 md:py-12 px-4 md:px-6 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-teal-900">Why Choose Drecan Commodities?</h2>

@@ -2,201 +2,112 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Award, Users, Target, Leaf } from "lucide-react";
+import { useState, useEffect } from "react";
+import Logo from "@/components/Logo";
 
 const About = () => {
-  const team = [
-    {
-      name: "James Richardson",
-      role: "CEO & Founder",
-      bio: "20+ years in agricultural technology and sustainable farming investments.",
-    },
-    {
-      name: "Sarah Thompson",
-      role: "Chief Investment Officer",
-      bio: "Former investment banker specializing in agricultural commodities and ESG investments.",
-    },
-    {
-      name: "Michael Chen",
-      role: "Head of Farm Operations",
-      bio: "Agricultural scientist with expertise in crop yield optimization and sustainable practices.",
-    },
-  ];
+  const [visibleSections, setVisibleSections] = useState<Record<string, boolean>>({});
 
-  const values = [
-    {
-      icon: Leaf,
-      title: "Sustainability First",
-      description: "Every investment supports environmentally responsible farming practices and land preservation.",
-    },
-    {
-      icon: Award,
-      title: "Transparency",
-      description: "Complete visibility into farm performance, returns, and investment structures.",
-    },
-    {
-      icon: Users,
-      title: "Investor Success",
-      description: "Dedicated support and education to help investors make informed decisions.",
-    },
-    {
-      icon: Target,
-      title: "Proven Track Record",
-      description: "Consistent delivery of projected returns backed by verified farm data.",
-    },
-  ];
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisibleSections(prev => ({
+              ...prev,
+              [entry.target.id]: true
+            }));
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
 
-  const achievements = [
-    { value: "₦20B+", label: "Total Investment Interest" },
-    { value: "200+", label: "Hectares Preserved" },
-    { value: "500+", label: "Active Investors" },
-    { value: "15+", label: "Partner Farms" },
-  ];
+    const sections = document.querySelectorAll('[id^="section-"]');
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div className="min-h-screen pt-20">
       {/* Header */}
       <section className="py-16 bg-mint-50">
         <div className="container mx-auto px-4 text-center">
+          <div className="flex justify-center mb-6">
+            <Logo variant="full" />
+          </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-4 text-teal-900">
-            About Drecan Commodities
+            ABOUT US
           </h1>
-          <p className="text-lg text-teal-800 max-w-2xl mx-auto">
-            Connecting investors with sustainable agricultural opportunities across Nigeria since 2020.
+        </div>
+      </section>
+
+      {/* The Company Section */}
+      <section 
+        id="section-company" 
+        className={`py-8 md:py-12 px-4 md:px-6 bg-background transition-opacity duration-700 ${visibleSections['section-company'] ? 'opacity-100' : 'opacity-0'}`}
+      >
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-teal-900">THE COMPANY</h2>
+          <h3 className="text-2xl md:text-3xl font-semibold mb-6 text-teal-800">REVOLUTIONIZING NIGERIAN AGRICULTURE: THE DRECAN MODEL</h3>
+          
+          <p className="text-lg text-teal-800 mb-6">
+            Established in Osun State in 2014, Drecan Commodities & Oil Palm Company is a disruptive force in Nigerian agritech and agribusiness. We are not just another agricultural company; we are pioneers building a new standard for responsible tropical agriculture in Nigeria.
+          </p>
+          
+          <p className="text-lg text-teal-800 mb-6">
+            Our innovative, AI and tech-driven approach to managing our oil palm plantations and farms ensures unparalleled transparency and sustainability. This model is the core of our disruption, guaranteeing long-term economic viability while positively impacting our communities and environment.
           </p>
         </div>
       </section>
 
-      {/* Mission */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-teal-900">Our Mission</h2>
-            <p className="text-lg text-teal-800 mb-6">
-              We believe that sustainable agriculture should be accessible to all investors, not just institutional players. 
-              Drecan Commodities democratizes agricultural investment by providing transparent, verified opportunities that 
-              generate competitive returns while supporting Nigerian farmers and preserving our agricultural heritage.
-            </p>
-            <p className="text-lg text-teal-800">
-              Through rigorous due diligence, ongoing monitoring, and complete transparency, we ensure that every 
-              investment meets our high standards for both financial performance and environmental impact.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Achievements */}
-      <section className="py-16 bg-teal-600">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {achievements.map((achievement, index) => (
-              <div key={index} className="text-center animate-fade-in">
-                <div className="text-3xl md:text-4xl font-bold text-white mb-2">
-                  {achievement.value}
-                </div>
-                <div className="text-sm text-white/80">{achievement.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Values */}
-      <section className="py-20 bg-mint-100">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-teal-900">Our Values</h2>
-            <p className="text-lg text-teal-800 max-w-2xl mx-auto">
-              These core principles guide every decision we make and every investment we offer.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((value, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-all duration-300 bg-mint-50 border border-mint-200">
-                <CardHeader>
-                  <div className="mx-auto w-16 h-16 bg-teal-600/10 rounded-full flex items-center justify-center mb-4">
-                    <value.icon className="h-8 w-8 text-teal-600" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-teal-900">{value.title}</h3>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-teal-800">{value.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Team */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-teal-900">Meet Our Team</h2>
-            <p className="text-lg text-teal-800 max-w-2xl mx-auto">
-              Industry experts committed to your investment success and sustainable agriculture.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {team.map((member, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-all duration-300 bg-mint-50 border border-mint-200">
-                <CardHeader>
-                  <div className="mx-auto w-24 h-24 bg-teal-600/10 rounded-full flex items-center justify-center mb-4">
-                    <Users className="h-12 w-12 text-teal-600" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-teal-900">{member.name}</h3>
-                  <p className="text-sm text-teal-600">{member.role}</p>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-teal-800">{member.bio}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Certifications */}
-      <section className="py-20 bg-mint-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-teal-900">Certifications & Recognition</h2>
-            <p className="text-lg text-teal-800 max-w-2xl mx-auto">
-              Our commitment to excellence and compliance is recognized by leading industry bodies.
-            </p>
-          </div>
-          <div className="flex flex-wrap justify-center gap-8">
-            {[
-              "SEC Regulated",
-              "Sustainable Farming Award 2023",
-              "Nigerian Green Investment Certified",
-              "Member of Agricultural Investment Association of Nigeria",
-            ].map((cert, index) => (
-              <div
-                key={index}
-                className="bg-white border border-mint-200 rounded-lg px-6 py-4 font-medium text-teal-900 animate-fade-in"
-              >
-                {cert}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-teal-900">Ready to Invest?</h2>
-          <p className="text-lg text-teal-800 mb-8 max-w-2xl mx-auto">
-            Join our community of investors supporting sustainable Nigerian agriculture.
+      {/* Our Disruptive Ambition Section */}
+      <section 
+        id="section-ambition" 
+        className={`py-8 md:py-12 px-4 md:px-6 bg-mint-100 transition-opacity duration-700 ${visibleSections['section-ambition'] ? 'opacity-100' : 'opacity-0'}`}
+      >
+        <div className="max-w-4xl mx-auto">
+          <h3 className="text-2xl md:text-3xl font-semibold mb-6 text-teal-900">Our Disruptive Ambition: Redefining Tropical Agriculture</h3>
+          
+          <p className="text-lg text-teal-800 mb-6">
+            At Drecan, our mission is to challenge the status quo. We implement key initiatives that merge high-performance agriculture with robust social and environmental governance (ESG). Our integrated focus ensures:
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-teal-600 hover:bg-teal-700 text-white" asChild>
-              <Link to="/opportunities">View Opportunities</Link>
-            </Button>
-            <Button size="lg" variant="outline" className="border-teal-600 text-teal-600 hover:bg-teal-50" asChild>
-              <Link to="/contact">Contact Us</Link>
-            </Button>
-          </div>
+          
+          <ul className="list-disc list-inside text-lg text-teal-800 mb-6 space-y-3">
+            <li><span className="font-semibold">Economic Resilience:</span> Profitable and sustainable operations that attract forward-thinking investment.</li>
+            <li><span className="font-semibold">Social Impact:</span> Enhancing community welfare, health, and security for our employees and partners in Osun State and beyond.</li>
+            <li><span className="font-semibold">Natural Resource Management:</span> Implementing cutting-edge practices for conservation and sustainable land use.</li>
+          </ul>
+          
+          <p className="text-lg text-teal-800">
+            By leveraging AI technology and a commitment to ethical principles, Drecan is proving that agribusiness can be a powerful vehicle for positive change, creating a lasting, positive impact for all stakeholders and setting a new benchmark for the industry in Nigeria.
+          </p>
+        </div>
+      </section>
+
+      {/* Commitment Section */}
+      <section 
+        id="section-commitment" 
+        className={`py-8 md:py-12 px-4 md:px-6 bg-background transition-opacity duration-700 ${visibleSections['section-commitment'] ? 'opacity-100' : 'opacity-0'}`}
+      >
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-teal-900">COMMITMENT</h2>
+          <h3 className="text-2xl md:text-3xl font-semibold mb-6 text-teal-800">Sustainable Palm Oil & Food Commodities in Nigeria</h3>
+          
+          <p className="text-lg text-teal-800 mb-6">
+            For over 14 years, Drecan has been a cornerstone of sustainable agribusiness in Nigeria. We are a leading producer, supplier and exporter of premium palm oil products and essential food commodities, including cashew nuts, cocoa, and dried grains (corn, millet, wheat, beans, and rice).
+          </p>
+          
+          <p className="text-lg text-teal-800 mb-6">
+            Our integrated model—from our own plantations to our secure storage facilities—is built on a foundation of high-performance, ethical, and sustainable agriculture. We are committed to creating shared value that empowers our employees, partners, and local communities while protecting the environment.
+          </p>
+          
+          <h3 className="text-2xl md:text-3xl font-semibold mb-6 text-teal-800">Our Commitment to Sustainable & Responsible Agriculture in Africa</h3>
+          
+          <p className="text-lg text-teal-800">
+            Our approach is formalized in a comprehensive Responsible Management Policy, developed with input from local stakeholders. This policy guides our entire operation and extends to our subcontractors and suppliers, ensuring a consistent, high-standard value chain that is highly rated by our customers.
+          </p>
         </div>
       </section>
     </div>

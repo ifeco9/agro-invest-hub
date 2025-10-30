@@ -27,22 +27,26 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center">
+    <section className="relative min-h-screen flex items-center mb-0 pb-0">
       {/* Background Image with Overlay and Parallax */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 mb-0 pb-0 overflow-hidden">
         <div 
-          className="w-full h-full bg-cover bg-center"
+          className="w-full h-full bg-cover bg-center bg-no-repeat"
           style={{ 
             backgroundImage: `url(${heroImage})`,
             transform: "translateZ(-1px) scale(1.2)",
-            transformStyle: "preserve-3d"
+            transformStyle: "preserve-3d",
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+            width: "100%",
+            minWidth: "100%"
           }}
         />
         <div className="absolute inset-0 bg-gradient-hero" />
       </div>
 
       {/* Content */}
-      <div className="container mx-auto px-4 z-10 py-20">
+      <div className="container mx-auto px-4 z-10 py-20 mb-0 pb-0">
         <div className={`max-w-3xl ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
           <h1 className="text-4xl md:text-6xl font-bold mb-6 text-primary-foreground leading-tight">
             {displayedText}

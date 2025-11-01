@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, User } from "lucide-react";
 import Logo from "@/components/Logo";
+import { supabase } from "@/integrations/supabase/client";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [user, setUser] = useState<any>(null);
   const location = useLocation();
 
   const navLinks = [
@@ -15,7 +17,29 @@ const Navbar = () => {
     { name: "About Us", path: "/about" },
     { name: "Insights", path: "/insights" },
     { name: "Contact", path: "/contact" },
+    { name: "Shop", path: "/shop" },
   ];
+
+  useEffect(() => {
+    // Check user session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user || null);
+    });
+
+    // Listen for auth changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user || null);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  const handleSignOut = async () => {
+    const { error } = await supabase.auth.signOut();
+    if (error) {
+      console.error("Error signing out:", error);
+    }
+  };
 
   const isActive = (path: string) => location.pathname === path;
 
@@ -54,13 +78,41 @@ const Navbar = () => {
                 {link.name}
               </Link>
             ))}
-            <Button size="sm" asChild>
-              <Link to="/contact">Reserve Now</Link>
-            </Button>
+            
+            {/* Auth buttons for desktop */}
+            <div className="flex items-center gap-2">
+              {user ? (
+                <div className="flex items-center gap-2">
+                  <span className="text-sm text-muted-foreground hidden lg:inline">
+                    Hi, {user.email?.split('@')[0]}
+                  </span>
+                  <Button variant="outline" size="sm" onClick={handleSignOut}>
+                    Sign Out
+                  </Button>
+                </div>
+              ) : (
+                <Button size="sm" asChild>
+                  <Link to="/auth">Sign In</Link>
+                </Button>
+              )}
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="flex items-center">
+          <div className="flex items-center gap-2">
+            {/* Auth buttons for mobile */}
+            <div className="md:hidden">
+              {user ? (
+                <Button variant="outline" size="sm" onClick={handleSignOut}>
+                  Sign Out
+                </Button>
+              ) : (
+                <Button variant="outline" size="sm" asChild>
+                  <Link to="/auth">Sign In</Link>
+                </Button>
+              )}
+            </div>
+            
             <button
               className="md:hidden p-2"
               onClick={() => setIsOpen(!isOpen)}

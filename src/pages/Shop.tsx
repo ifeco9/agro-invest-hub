@@ -6,9 +6,23 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "sonner";
 import { ShoppingCart, Search, User, LogOut } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import InvestmentOpportunityCard from "@/components/InvestmentOpportunityCard";
+import kadunaRice from "@/assets/Kaduna Rice Yield Fund.jpeg";
+import ogunCassava from "@/assets/Ogun Cassava Processing Investment.jpeg";
+import kanoWheat from "@/assets/Kano Wheat Farming Project.jpeg";
+import lagosBeans from "@/assets/Lagos Beans Cultivation Hub.jpeg";
+import southSouthPalm from "@/assets/South-South Palm Oil Investment.jpeg";
+import benueYam from "@/assets/Benue Yam Production Fund.jpeg";
+import enuguEgusi from "@/assets/Enugu Egusi Seed Farm.jpeg";
+import kebbiSorghum from "@/assets/Kebbi Sorghum Yield Project.jpeg";
+import bornoMillet from "@/assets/Borno Millet Farming Initiative.jpeg";
+import kogiSoybeans from "@/assets/Kogi Soybeans Investment Fund.jpeg";
+import farmEquipment from "@/assets/farm-equipment.jpg";
+import sustainableFarm from "@/assets/sustainable-farm.jpg";
 
 interface Product {
   id: string;
@@ -25,6 +39,21 @@ interface CartItem extends Product {
   quantity: number;
 }
 
+interface InvestmentOpportunity {
+  id: string;
+  title: string;
+  image?: string;
+  region: string;
+  crop: string;
+  minInvestment: string;
+  roi: string;
+  duration: string;
+  slotsAvailable: number;
+  type: string;
+  description: string;
+  price: number;
+}
+
 interface UserProfile {
   display_name: string;
   email: string;
@@ -35,12 +64,191 @@ const Shop = () => {
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [cart, setCart] = useState<CartItem[]>([]);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [productSearchTerm, setProductSearchTerm] = useState("");
+  const [productCategory, setProductCategory] = useState("all");
   const [user, setUser] = useState<{ id: string; email: string } | null>(null);
   const [profile, setProfile] = useState<UserProfile | null>(null);
-  const [categories, setCategories] = useState<string[]>(["all"]);
+  const [productCategories, setProductCategories] = useState<string[]>(["all"]);
+  const [activeTab, setActiveTab] = useState("products");
   const navigate = useNavigate();
+
+  // Investment opportunities data
+  const investmentOpportunities: InvestmentOpportunity[] = [
+    {
+      id: "1",
+      title: "Kaduna Rice Yield Fund",
+      image: kadunaRice,
+      region: "Kaduna",
+      crop: "Rice",
+      minInvestment: "₦2,000,000",
+      roi: "10-12%",
+      duration: "12 months",
+      slotsAvailable: 8,
+      type: "Crop Yield",
+      description: "Invest in rice farming in Kaduna state",
+      price: 2000000,
+    },
+    {
+      id: "2",
+      title: "Ogun Cassava Processing Investment",
+      image: ogunCassava,
+      region: "Ogun",
+      crop: "Cassava",
+      minInvestment: "₦4,000,000",
+      roi: "8-10%",
+      duration: "24 months",
+      slotsAvailable: 15,
+      type: "Sustainable",
+      description: "Process cassava into various products",
+      price: 4000000,
+    },
+    {
+      id: "3",
+      title: "Kano Wheat Farming Project",
+      image: kanoWheat,
+      region: "Kano",
+      crop: "Wheat",
+      minInvestment: "₦3,000,000",
+      roi: "9-11%",
+      duration: "18 months",
+      slotsAvailable: 3,
+      type: "Crop Yield",
+      description: "Wheat farming project in Kano state",
+      price: 3000000,
+    },
+    {
+      id: "4",
+      title: "Plateau Dairy & Maize Farm",
+      image: sustainableFarm,
+      region: "Plateau",
+      crop: "Maize",
+      minInvestment: "₦6,000,000",
+      roi: "11-13%",
+      duration: "36 months",
+      slotsAvailable: 12,
+      type: "Livestock",
+      description: "Integrated dairy and maize farming",
+      price: 6000000,
+    },
+    {
+      id: "5",
+      title: "Lagos Beans Cultivation Hub",
+      image: lagosBeans,
+      region: "Lagos",
+      crop: "Beans",
+      minInvestment: "₦3,200,000",
+      roi: "9-11%",
+      duration: "18 months",
+      slotsAvailable: 6,
+      type: "Crop Yield",
+      description: "Beans cultivation in Lagos",
+      price: 3200000,
+    },
+    {
+      id: "6",
+      title: "South-South Palm Oil Investment",
+      image: southSouthPalm,
+      region: "Rivers",
+      crop: "Palm Oil",
+      minInvestment: "₦8,000,000",
+      roi: "12-14%",
+      duration: "60 months",
+      slotsAvailable: 4,
+      type: "Sustainable",
+      description: "Palm oil investment in South-South region",
+      price: 8000000,
+    },
+    {
+      id: "7",
+      title: "Benue Yam Production Fund",
+      image: benueYam,
+      region: "Benue",
+      crop: "Yam",
+      minInvestment: "₦2,500,000",
+      roi: "10-12%",
+      duration: "12 months",
+      slotsAvailable: 10,
+      type: "Crop Yield",
+      description: "Yam production in Benue state",
+      price: 2500000,
+    },
+    {
+      id: "8",
+      title: "Enugu Egusi (Melon) Seed Farm",
+      image: enuguEgusi,
+      region: "Enugu",
+      crop: "Egusi",
+      minInvestment: "₦1,800,000",
+      roi: "11-13%",
+      duration: "9 months",
+      slotsAvailable: 7,
+      type: "Crop Yield",
+      description: "Egusi seed farming in Enugu",
+      price: 1800000,
+    },
+    {
+      id: "9",
+      title: "Kebbi Sorghum Yield Project",
+      image: kebbiSorghum,
+      region: "Kebbi",
+      crop: "Sorghum",
+      minInvestment: "₦2,200,000",
+      roi: "9-11%",
+      duration: "15 months",
+      slotsAvailable: 9,
+      type: "Crop Yield",
+      description: "Sorghum farming in Kebbi state",
+      price: 2200000,
+    },
+    {
+      id: "10",
+      title: "Borno Millet Farming Initiative",
+      image: bornoMillet,
+      region: "Borno",
+      crop: "Millet",
+      minInvestment: "₦1,900,000",
+      roi: "8-10%",
+      duration: "12 months",
+      slotsAvailable: 11,
+      type: "Crop Yield",
+      description: "Millet farming in Borno state",
+      price: 1900000,
+    },
+    {
+      id: "11",
+      title: "Kogi Soybeans Investment Fund",
+      image: kogiSoybeans,
+      region: "Kogi",
+      crop: "Soybeans",
+      minInvestment: "₦3,500,000",
+      roi: "10-12%",
+      duration: "18 months",
+      slotsAvailable: 5,
+      type: "Crop Yield",
+      description: "Soybeans investment in Kogi state",
+      price: 3500000,
+    },
+    {
+      id: "12",
+      title: "Equipment Leasing Programme",
+      image: farmEquipment,
+      region: "Multi-State",
+      crop: "Various",
+      minInvestment: "₦5,000,000",
+      roi: "9-11%",
+      duration: "24 months",
+      slotsAvailable: 8,
+      type: "Equipment",
+      description: "Farm equipment leasing program",
+      price: 5000000,
+    },
+  ];
+
+  const [filteredOpportunities, setFilteredOpportunities] = useState<InvestmentOpportunity[]>(investmentOpportunities);
+  const [opportunitySearchTerm, setOpportunitySearchTerm] = useState("");
+  const [opportunityRegion, setOpportunityRegion] = useState("all");
+  const [opportunityType, setOpportunityType] = useState("all");
+  const [opportunityCrop, setOpportunityCrop] = useState("all");
 
   useEffect(() => {
     fetchProducts();
@@ -49,12 +257,19 @@ const Shop = () => {
 
   useEffect(() => {
     filterProducts();
-  }, [products, searchTerm, selectedCategory]);
+  }, [products, productSearchTerm, productCategory]);
+
+  useEffect(() => {
+    filterOpportunities();
+  }, [opportunitySearchTerm, opportunityRegion, opportunityType, opportunityCrop]);
 
   const checkUserSession = async () => {
     const { data: { session } } = await supabase.auth.getSession();
-    if (session) {
-      setUser(session.user);
+    if (session?.user) {
+      setUser({
+        id: session.user.id,
+        email: session.user.email || ""
+      });
       fetchUserProfile(session.user.id);
     }
   };
@@ -88,7 +303,7 @@ const Shop = () => {
       
       // Extract unique categories
       const uniqueCategories = Array.from(new Set((data || []).map(p => p.category).filter(Boolean))) as string[];
-      setCategories(["all", ...uniqueCategories]);
+      setProductCategories(["all", ...uniqueCategories]);
     }
     setLoading(false);
   };
@@ -97,19 +312,48 @@ const Shop = () => {
     let result = products;
     
     // Filter by search term
-    if (searchTerm) {
+    if (productSearchTerm) {
       result = result.filter(product => 
-        product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        product.description.toLowerCase().includes(searchTerm.toLowerCase())
+        product.name.toLowerCase().includes(productSearchTerm.toLowerCase()) ||
+        product.description.toLowerCase().includes(productSearchTerm.toLowerCase())
       );
     }
     
     // Filter by category
-    if (selectedCategory !== "all") {
-      result = result.filter(product => product.category === selectedCategory);
+    if (productCategory !== "all") {
+      result = result.filter(product => product.category === productCategory);
     }
     
     setFilteredProducts(result);
+  };
+
+  const filterOpportunities = () => {
+    let result = investmentOpportunities;
+    
+    // Filter by search term
+    if (opportunitySearchTerm) {
+      result = result.filter(opp => 
+        opp.title.toLowerCase().includes(opportunitySearchTerm.toLowerCase()) ||
+        opp.description.toLowerCase().includes(opportunitySearchTerm.toLowerCase())
+      );
+    }
+    
+    // Filter by region
+    if (opportunityRegion !== "all") {
+      result = result.filter(opp => opp.region === opportunityRegion);
+    }
+    
+    // Filter by type
+    if (opportunityType !== "all") {
+      result = result.filter(opp => opp.type === opportunityType);
+    }
+    
+    // Filter by crop
+    if (opportunityCrop !== "all") {
+      result = result.filter(opp => opp.crop === opportunityCrop);
+    }
+    
+    setFilteredOpportunities(result);
   };
 
   const handleAddToCart = (product: Product) => {
@@ -127,6 +371,35 @@ const Shop = () => {
     });
     
     toast.success(`${product.name} added to cart!`);
+  };
+
+  const handleAddOpportunityToCart = (opportunity: InvestmentOpportunity) => {
+    // Convert opportunity to product format for cart
+    const cartItem: Product = {
+      id: opportunity.id,
+      name: opportunity.title,
+      description: opportunity.description,
+      price: opportunity.price,
+      image: opportunity.image || "",
+      in_stock: opportunity.slotsAvailable > 0,
+      category: "Investment",
+      created_at: new Date().toISOString(),
+    };
+    
+    setCart(prevCart => {
+      const existingItem = prevCart.find(item => item.id === cartItem.id);
+      if (existingItem) {
+        return prevCart.map(item => 
+          item.id === cartItem.id 
+            ? { ...item, quantity: item.quantity + 1 } 
+            : item
+        );
+      } else {
+        return [...prevCart, { ...cartItem, quantity: 1 }];
+      }
+    });
+    
+    toast.success(`${opportunity.title} added to cart!`);
   };
 
   const handleRemoveFromCart = (productId: string) => {
@@ -164,10 +437,10 @@ const Shop = () => {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
           <div>
             <h1 className="text-4xl md:text-5xl font-bold text-teal-900 mb-2">
-              Premium Nigerian Commodities
+              Premium Nigerian Commodities & Investments
             </h1>
             <p className="text-lg text-teal-700">
-              Discover our selection of high-quality agricultural products directly from Nigerian farms
+              Discover our selection of high-quality agricultural products and investment opportunities
             </p>
           </div>
           
@@ -215,102 +488,211 @@ const Shop = () => {
           </div>
         </div>
 
-        {/* Search and filter controls */}
-        <div className="flex flex-col md:flex-row gap-4 mb-8">
-          <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-            <Input
-              placeholder="Search products..."
-              className="pl-10"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-          </div>
-          
-          <div className="w-full md:w-48">
-            <Label className="text-sm font-medium mb-2 block">Category</Label>
-            <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-              <SelectTrigger>
-                <SelectValue placeholder="Select category" />
-              </SelectTrigger>
-              <SelectContent>
-                {categories.map(category => (
-                  <SelectItem key={category} value={category}>
-                    {category === "all" ? "All Categories" : category}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-        </div>
+        {/* Tabs for Products and Investment Opportunities */}
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+          <TabsList className="grid w-full grid-cols-2 mb-8">
+            <TabsTrigger value="products">Products</TabsTrigger>
+            <TabsTrigger value="investments">Investment Opportunities</TabsTrigger>
+          </TabsList>
 
-        {/* Products grid */}
-        {filteredProducts.length === 0 ? (
-          <div className="text-center py-20">
-            <p className="text-xl text-muted-foreground">No products found matching your criteria.</p>
-            <Button 
-              variant="link" 
-              onClick={() => {
-                setSearchTerm("");
-                setSelectedCategory("all");
-              }}
-              className="mt-2"
-            >
-              Clear filters
-            </Button>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredProducts.map((product) => (
-              <Card key={product.id} className="overflow-hidden hover:shadow-xl transition-shadow">
-                <div className="aspect-video w-full overflow-hidden bg-muted">
-                  {product.image ? (
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center bg-teal-100">
-                      <ShoppingCart className="w-16 h-16 text-teal-400" />
+          <TabsContent value="products">
+            {/* Product Search and filter controls */}
+            <div className="flex flex-col md:flex-row gap-4 mb-8">
+              <div className="relative flex-1">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                <Input
+                  placeholder="Search products..."
+                  className="pl-10"
+                  value={productSearchTerm}
+                  onChange={(e) => setProductSearchTerm(e.target.value)}
+                />
+              </div>
+              
+              <div className="w-full md:w-48">
+                <Label className="text-sm font-medium mb-2 block">Category</Label>
+                <Select value={productCategory} onValueChange={setProductCategory}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select category" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {productCategories.map(category => (
+                      <SelectItem key={category} value={category}>
+                        {category === "all" ? "All Categories" : category}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
+
+            {/* Products grid */}
+            {filteredProducts.length === 0 ? (
+              <div className="text-center py-20">
+                <p className="text-xl text-muted-foreground">No products found matching your criteria.</p>
+                <Button 
+                  variant="link" 
+                  onClick={() => {
+                    setProductSearchTerm("");
+                    setProductCategory("all");
+                  }}
+                  className="mt-2"
+                >
+                  Clear filters
+                </Button>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {filteredProducts.map((product) => (
+                  <Card key={product.id} className="overflow-hidden hover:shadow-xl transition-shadow">
+                    <div className="aspect-video w-full overflow-hidden bg-muted">
+                      {product.image ? (
+                        <img
+                          src={product.image}
+                          alt={product.name}
+                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center bg-teal-100">
+                          <ShoppingCart className="w-16 h-16 text-teal-400" />
+                        </div>
+                      )}
                     </div>
-                  )}
-                </div>
-                <CardHeader>
-                  <div className="flex items-start justify-between">
-                    <CardTitle className="text-xl">{product.name}</CardTitle>
-                    {product.category && (
-                      <Badge variant="secondary">{product.category}</Badge>
-                    )}
-                  </div>
-                  <CardDescription>{product.description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex items-center justify-between">
-                    <span className="text-2xl font-bold text-teal-600">
-                      ₦{product.price.toLocaleString()}
-                    </span>
-                    {product.in_stock ? (
-                      <Badge className="bg-green-500">In Stock</Badge>
-                    ) : (
-                      <Badge variant="destructive">Out of Stock</Badge>
-                    )}
-                  </div>
-                </CardContent>
-                <CardFooter>
-                  <Button
-                    className="w-full"
-                    onClick={() => handleAddToCart(product)}
-                    disabled={!product.in_stock}
-                  >
-                    <ShoppingCart className="mr-2 h-4 w-4" />
-                    {product.in_stock ? "Add to Cart" : "Out of Stock"}
-                  </Button>
-                </CardFooter>
-              </Card>
-            ))}
-          </div>
-        )}
+                    <CardHeader>
+                      <div className="flex items-start justify-between">
+                        <CardTitle className="text-xl">{product.name}</CardTitle>
+                        {product.category && (
+                          <Badge variant="secondary">{product.category}</Badge>
+                        )}
+                      </div>
+                      <CardDescription>{product.description}</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="flex items-center justify-between">
+                        <span className="text-2xl font-bold text-teal-600">
+                          ₦{product.price.toLocaleString()}
+                        </span>
+                        {product.in_stock ? (
+                          <Badge className="bg-green-500">In Stock</Badge>
+                        ) : (
+                          <Badge variant="destructive">Out of Stock</Badge>
+                        )}
+                      </div>
+                    </CardContent>
+                    <CardFooter>
+                      <Button
+                        className="w-full"
+                        onClick={() => handleAddToCart(product)}
+                        disabled={!product.in_stock}
+                      >
+                        <ShoppingCart className="mr-2 h-4 w-4" />
+                        {product.in_stock ? "Add to Cart" : "Out of Stock"}
+                      </Button>
+                    </CardFooter>
+                  </Card>
+                ))}
+              </div>
+            )}
+          </TabsContent>
+
+          <TabsContent value="investments">
+            {/* Investment Opportunities Search and filter controls */}
+            <div className="flex flex-col sm:flex-row gap-4 mb-8">
+              <div className="relative flex-1">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                <Input
+                  placeholder="Search investment opportunities..."
+                  className="pl-10"
+                  value={opportunitySearchTerm}
+                  onChange={(e) => setOpportunitySearchTerm(e.target.value)}
+                />
+              </div>
+              
+              <Select value={opportunityRegion} onValueChange={setOpportunityRegion}>
+                <SelectTrigger className="w-full sm:w-48">
+                  <SelectValue placeholder="Select Region" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">All Regions</SelectItem>
+                  <SelectItem value="Kaduna">Kaduna</SelectItem>
+                  <SelectItem value="Ogun">Ogun</SelectItem>
+                  <SelectItem value="Kano">Kano</SelectItem>
+                  <SelectItem value="Plateau">Plateau</SelectItem>
+                  <SelectItem value="Lagos">Lagos</SelectItem>
+                  <SelectItem value="Rivers">Rivers</SelectItem>
+                  <SelectItem value="Benue">Benue</SelectItem>
+                  <SelectItem value="Enugu">Enugu</SelectItem>
+                  <SelectItem value="Kebbi">Kebbi</SelectItem>
+                  <SelectItem value="Borno">Borno</SelectItem>
+                  <SelectItem value="Kogi">Kogi</SelectItem>
+                  <SelectItem value="Multi-State">Multi-State</SelectItem>
+                </SelectContent>
+              </Select>
+
+              <Select value={opportunityType} onValueChange={setOpportunityType}>
+                <SelectTrigger className="w-full sm:w-48">
+                  <SelectValue placeholder="Investment Type" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">All Types</SelectItem>
+                  <SelectItem value="Crop Yield">Crop Yield</SelectItem>
+                  <SelectItem value="Sustainable">Sustainable</SelectItem>
+                  <SelectItem value="Equipment">Equipment</SelectItem>
+                  <SelectItem value="Livestock">Livestock</SelectItem>
+                </SelectContent>
+              </Select>
+
+              <Select value={opportunityCrop} onValueChange={setOpportunityCrop}>
+                <SelectTrigger className="w-full sm:w-48">
+                  <SelectValue placeholder="Crop Type" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">All Crops</SelectItem>
+                  <SelectItem value="Rice">Rice</SelectItem>
+                  <SelectItem value="Cassava">Cassava</SelectItem>
+                  <SelectItem value="Wheat">Wheat</SelectItem>
+                  <SelectItem value="Maize">Maize</SelectItem>
+                  <SelectItem value="Beans">Beans</SelectItem>
+                  <SelectItem value="Palm Oil">Palm Oil</SelectItem>
+                  <SelectItem value="Yam">Yam</SelectItem>
+                  <SelectItem value="Egusi">Egusi (Melon)</SelectItem>
+                  <SelectItem value="Sorghum">Sorghum</SelectItem>
+                  <SelectItem value="Millet">Millet</SelectItem>
+                  <SelectItem value="Soybeans">Soybeans</SelectItem>
+                  <SelectItem value="Various">Various</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+            {/* Investment Opportunities grid */}
+            {filteredOpportunities.length === 0 ? (
+              <div className="text-center py-20">
+                <p className="text-xl text-muted-foreground">No investment opportunities found matching your criteria.</p>
+                <Button 
+                  variant="link" 
+                  onClick={() => {
+                    setOpportunitySearchTerm("");
+                    setOpportunityRegion("all");
+                    setOpportunityType("all");
+                    setOpportunityCrop("all");
+                  }}
+                  className="mt-2"
+                >
+                  Clear filters
+                </Button>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {filteredOpportunities.map((opportunity) => (
+                  <InvestmentOpportunityCard 
+                    key={opportunity.id} 
+                    opportunity={opportunity} 
+                    onAddToCart={handleAddOpportunityToCart}
+                  />
+                ))}
+              </div>
+            )}
+          </TabsContent>
+        </Tabs>
 
         {/* Cart summary (if items in cart) */}
         {cart.length > 0 && (

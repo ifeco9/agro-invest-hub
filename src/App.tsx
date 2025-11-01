@@ -4,7 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect } from "react";
-import CircularNavbar from "./components/CircularNavbar";
+import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import Opportunities from "./pages/Opportunities";
@@ -13,8 +13,8 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Insights from "./pages/Insights";
 import NotFound from "./pages/NotFound";
-import Auth from "./pages/Auth";
-import Shop from "./pages/Shop";
+// import Auth from "./pages/Auth";
+// import Shop from "./pages/Shop";
 
 const queryClient = new QueryClient();
 
@@ -37,7 +37,7 @@ const App = () => (
       <BrowserRouter>
         <ScrollToTop />
         <div className="flex flex-col min-h-screen">
-          <CircularNavbar />
+          <Navbar />
           <main className="flex-grow">
             <Routes>
               <Route path="/" element={<Home />} />
@@ -46,8 +46,8 @@ const App = () => (
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/insights" element={<Insights />} />
-              <Route path="/auth" element={<Auth />} />
-              <Route path="/shop" element={<Shop />} />
+              {/* <Route path="/auth" element={<Auth />} /> */}
+              {/* <Route path="/shop" element={<Shop />} /> */}
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>

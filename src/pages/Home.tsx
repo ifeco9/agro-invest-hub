@@ -11,6 +11,7 @@ import farmEquipment from "@/assets/farm-equipment.jpg";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
+import PopSection from "@/components/PopSection";
 
 const Home = () => {
   const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
@@ -107,103 +108,73 @@ const Home = () => {
       <Hero />
 
       {/* Features Section */}
-      <motion.section 
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-        className="py-8 md:py-12 px-4 md:px-6 bg-background"
-      >
+      <section className="py-8 md:py-12 px-4 md:px-6 bg-background">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-teal-900">Why Choose Drecan Commodities?</h2>
-            <p className="text-lg text-teal-800 max-w-2xl mx-auto">
-              Transparent, sustainable, and profitable agricultural investment opportunities designed for modern investors.
-            </p>
-          </div>
+          <PopSection delay={0.1}>
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-teal-900">Why Choose Drecan Commodities?</h2>
+              <p className="text-lg text-teal-800 max-w-2xl mx-auto">
+                Transparent, sustainable, and profitable agricultural investment opportunities designed for modern investors.
+              </p>
+            </div>
+          </PopSection>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {features.map((feature, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
+              <PopSection key={index} delay={0.2 + index * 0.1}>
                 <FeatureCard {...feature} />
-              </motion.div>
+              </PopSection>
             ))}
           </div>
         </div>
-      </motion.section>
+      </section>
 
       {/* Stats Section */}
-      <motion.section 
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-        className="py-16 bg-teal-600"
-      >
+      <section className="py-16 bg-teal-600">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
-              <motion.div 
-                key={index} 
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="text-center animate-fade-in"
-              >
-                <div className="text-3xl md:text-4xl font-bold text-white mb-2">
-                  {stat.value}
+              <PopSection key={index} delay={0.1 + index * 0.1}>
+                <div className="text-center">
+                  <div className="text-3xl md:text-4xl font-bold text-white mb-2">
+                    {stat.value}
+                  </div>
+                  <div className="text-sm text-white/80">{stat.label}</div>
                 </div>
-                <div className="text-sm text-white/80">{stat.label}</div>
-              </motion.div>
+              </PopSection>
             ))}
           </div>
         </div>
-      </motion.section>
+      </section>
 
       {/* Featured Opportunities */}
-      <motion.section 
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-        className="py-20 bg-mint-50"
-      >
+      <section className="py-20 bg-mint-50">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-teal-900">Featured Investment Opportunities</h2>
-            <p className="text-lg text-teal-800 max-w-2xl mx-auto">
-              Explore our curated selection of high-yield agricultural investments across Nigeria.
-            </p>
-          </div>
+          <PopSection delay={0.1}>
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-teal-900">Featured Investment Opportunities</h2>
+              <p className="text-lg text-teal-800 max-w-2xl mx-auto">
+                Explore our curated selection of high-yield agricultural investments across Nigeria.
+              </p>
+            </div>
+          </PopSection>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             {opportunities.map((opportunity, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -8 }}
-              >
+              <PopSection key={index} delay={0.2 + index * 0.15}>
                 <OpportunityCard {...opportunity} />
-              </motion.div>
+              </PopSection>
             ))}
           </div>
-          <div className="text-center">
-            <Button size="lg" variant="outline" asChild>
-              <Link to="/opportunities">
-                View All Opportunities <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-          </div>
+          <PopSection delay={0.6}>
+            <div className="text-center">
+              <Button size="lg" variant="outline" asChild>
+                <Link to="/opportunities">
+                  View All Opportunities <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+            </div>
+          </PopSection>
         </div>
-      </motion.section>
+      </section>
 
       {/* How It Works */}
       <section className="py-20 bg-background">
@@ -252,20 +223,28 @@ const Home = () => {
       {/* Our Model */}
       <section className="py-12 bg-mint-50">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-teal-900 text-center mb-8">The Drecan Model</h2>
+          <PopSection delay={0.1}>
+            <h2 className="text-3xl font-bold text-teal-900 text-center mb-8">The Drecan Model</h2>
+          </PopSection>
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-white p-6 rounded-lg shadow-sm border border-mint-200">
-              <h3 className="font-bold text-teal-800">AI & Tech-Driven</h3>
-              <p className="mt-2 text-teal-700">Managing oil palm plantations with unparalleled transparency and sustainability.</p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-sm border border-mint-200">
-              <h3 className="font-bold text-teal-800">Economic Resilience</h3>
-              <p className="mt-2 text-teal-700">Profitable operations that attract forward-thinking investment.</p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-sm border border-mint-200">
-              <h3 className="font-bold text-teal-800">Social Impact</h3>
-              <p className="mt-2 text-teal-700">Community welfare, health, and security for Osun State and beyond.</p>
-            </div>
+            <PopSection delay={0.2}>
+              <div className="bg-white p-6 rounded-lg shadow-sm border border-mint-200">
+                <h3 className="font-bold text-teal-800">AI & Tech-Driven</h3>
+                <p className="mt-2 text-teal-700">Managing oil palm plantations with unparalleled transparency and sustainability.</p>
+              </div>
+            </PopSection>
+            <PopSection delay={0.3}>
+              <div className="bg-white p-6 rounded-lg shadow-sm border border-mint-200">
+                <h3 className="font-bold text-teal-800">Economic Resilience</h3>
+                <p className="mt-2 text-teal-700">Profitable operations that attract forward-thinking investment.</p>
+              </div>
+            </PopSection>
+            <PopSection delay={0.4}>
+              <div className="bg-white p-6 rounded-lg shadow-sm border border-mint-200">
+                <h3 className="font-bold text-teal-800">Social Impact</h3>
+                <p className="mt-2 text-teal-700">Community welfare, health, and security for Osun State and beyond.</p>
+              </div>
+            </PopSection>
           </div>
         </div>
       </section>
@@ -273,34 +252,42 @@ const Home = () => {
       {/* Why Invest? */}
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-teal-900">Why Invest With Drecan?</h2>
-            <p className="text-lg text-teal-800 max-w-2xl mx-auto">
-              Our mission is to challenge the status quo with high-performance agriculture and ESG principles.
-            </p>
-          </div>
+          <PopSection delay={0.1}>
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-teal-900">Why Invest With Drecan?</h2>
+              <p className="text-lg text-teal-800 max-w-2xl mx-auto">
+                Our mission is to challenge the status quo with high-performance agriculture and ESG principles.
+              </p>
+            </div>
+          </PopSection>
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            <div className="text-center">
-              <div className="w-16 h-16 mx-auto mb-3 bg-teal-100 rounded-full flex items-center justify-center">
-                <TrendingUp className="w-8 h-8 text-teal-600" />
+            <PopSection delay={0.2}>
+              <div className="text-center">
+                <div className="w-16 h-16 mx-auto mb-3 bg-teal-100 rounded-full flex items-center justify-center">
+                  <TrendingUp className="w-8 h-8 text-teal-600" />
+                </div>
+                <h3 className="font-bold text-teal-900">Economic Resilience</h3>
+                <p className="text-teal-700 mt-2">Profitable operations that attract forward-thinking investment.</p>
               </div>
-              <h3 className="font-bold text-teal-900">Economic Resilience</h3>
-              <p className="text-teal-700 mt-2">Profitable operations that attract forward-thinking investment.</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 mx-auto mb-3 bg-teal-100 rounded-full flex items-center justify-center">
-                <Users className="w-8 h-8 text-teal-600" />
+            </PopSection>
+            <PopSection delay={0.3}>
+              <div className="text-center">
+                <div className="w-16 h-16 mx-auto mb-3 bg-teal-100 rounded-full flex items-center justify-center">
+                  <Users className="w-8 h-8 text-teal-600" />
+                </div>
+                <h3 className="font-bold text-teal-900">Social Impact</h3>
+                <p className="text-teal-700 mt-2">Community welfare, health, and security for Osun State and beyond.</p>
               </div>
-              <h3 className="font-bold text-teal-900">Social Impact</h3>
-              <p className="text-teal-700 mt-2">Community welfare, health, and security for Osun State and beyond.</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 mx-auto mb-3 bg-teal-100 rounded-full flex items-center justify-center">
-                <Leaf className="w-8 h-8 text-teal-600" />
+            </PopSection>
+            <PopSection delay={0.4}>
+              <div className="text-center">
+                <div className="w-16 h-16 mx-auto mb-3 bg-teal-100 rounded-full flex items-center justify-center">
+                  <Leaf className="w-8 h-8 text-teal-600" />
+                </div>
+                <h3 className="font-bold text-teal-900">Natural Resource Management</h3>
+                <p className="text-teal-700 mt-2">Cutting-edge conservation and sustainable land use practices.</p>
               </div>
-              <h3 className="font-bold text-teal-900">Natural Resource Management</h3>
-              <p className="text-teal-700 mt-2">Cutting-edge conservation and sustainable land use practices.</p>
-            </div>
+            </PopSection>
           </div>
         </div>
       </section>

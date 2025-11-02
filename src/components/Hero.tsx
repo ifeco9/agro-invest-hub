@@ -7,14 +7,9 @@ import { useEffect, useState, useRef } from "react";
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [scrollY, setScrollY] = useState(0);
-  const [activeStatIndex, setActiveStatIndex] = useState(0);
   const titleText = "Invest in Nigerian Agriculture Today";
   const [displayedText, setDisplayedText] = useState("");
   const particlesRef = useRef<HTMLDivElement>(null);
-
-  // Animated statistics
-  const [stats, setStats] = useState({ investors: 0, returns: 0, projects: 0 });
-  const targetStats = { investors: 5000, returns: 12, projects: 50 };
 
   useEffect(() => {
     setIsVisible(true);
@@ -29,27 +24,6 @@ const Hero = () => {
         clearInterval(timer);
       }
     }, 50);
-
-    // Animate statistics counter
-    const duration = 2000;
-    const steps = 60;
-    const stepTime = duration / steps;
-    let currentStep = 0;
-
-    const statTimer = setInterval(() => {
-      if (currentStep < steps) {
-        currentStep++;
-        const progress = currentStep / steps;
-        setStats({
-          investors: Math.floor(targetStats.investors * progress),
-          returns: Math.floor(targetStats.returns * progress * 10) / 10,
-          projects: Math.floor(targetStats.projects * progress),
-        });
-      } else {
-        clearInterval(statTimer);
-        setStats(targetStats);
-      }
-    }, stepTime);
 
     // Parallax scroll effect
     const handleScroll = () => {
@@ -71,13 +45,12 @@ const Hero = () => {
 
     return () => {
       clearInterval(timer);
-      clearInterval(statTimer);
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center pb-20 overflow-hidden">
+    <section className="relative min-h-screen flex items-center pb-32 overflow-hidden">
       {/* Animated Gradient Background */}
       <div className="absolute inset-0 z-0 bg-gradient-to-br from-teal-900 via-teal-700 to-emerald-600 animate-gradient-shift" />
       
@@ -112,27 +85,11 @@ const Hero = () => {
               Established in Osun State in 2014 — Pioneers in Responsible Nigerian Agriculture
             </p>
           </div>
-          
-          {/* Animated Stats */}
-          <div className={`grid grid-cols-3 gap-6 mb-8 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <div className="text-center bg-white/10 backdrop-blur-md rounded-lg p-4 border border-white/20 hover:bg-white/20 transition-all">
-              <div className="text-3xl md:text-4xl font-bold text-white mb-1">{stats.investors.toLocaleString()}+</div>
-              <div className="text-sm text-emerald-200">Investors</div>
-            </div>
-            <div className="text-center bg-white/10 backdrop-blur-md rounded-lg p-4 border border-white/20 hover:bg-white/20 transition-all">
-              <div className="text-3xl md:text-4xl font-bold text-white mb-1">{stats.returns}%</div>
-              <div className="text-sm text-emerald-200">Avg Returns</div>
-            </div>
-            <div className="text-center bg-white/10 backdrop-blur-md rounded-lg p-4 border border-white/20 hover:bg-white/20 transition-all">
-              <div className="text-3xl md:text-4xl font-bold text-white mb-1">{stats.projects}+</div>
-              <div className="text-sm text-emerald-200">Projects</div>
-            </div>
-          </div>
 
-          <p className={`text-xl md:text-2xl mb-8 text-white/95 drop-shadow-lg transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <p className={`text-xl md:text-2xl mb-8 text-white/95 drop-shadow-lg transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             Yields up to 12% with transparent, low-risk opportunities
           </p>
-          <div className={`flex flex-col sm:flex-row gap-4 mb-12 transition-all duration-1000 delay-900 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className={`flex flex-col sm:flex-row gap-4 mb-12 transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <Button size="lg" className="bg-white text-teal-900 hover:bg-emerald-100 shadow-2xl hover:shadow-white/50 transition-all hover:scale-105 font-semibold text-lg px-8 py-6" asChild>
               <Link to="/opportunities">Explore Opportunities</Link>
             </Button>
@@ -142,7 +99,7 @@ const Hero = () => {
           </div>
 
           {/* Feature Pills */}
-          <div className={`flex flex-wrap gap-4 transition-all duration-1000 delay-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className={`flex flex-wrap gap-4 transition-all duration-1000 delay-800 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <div className="flex items-center gap-2 bg-white/15 backdrop-blur-md px-5 py-3 rounded-full border border-white/30 hover:bg-white/25 transition-all hover:scale-105 shadow-lg">
               <TrendingUp className="h-5 w-5 text-emerald-200" />
               <span className="text-sm font-semibold text-white">Proven Returns</span>
@@ -159,12 +116,6 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
-        <div className="w-6 h-10 border-2 border-white/50 rounded-full flex items-start justify-center p-2 bg-white/10 backdrop-blur-sm">
-          <div className="w-1.5 h-2 bg-white/70 rounded-full animate-pulse" />
-        </div>
-      </div>
     </section>
   );
 };

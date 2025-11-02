@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import OpportunityCard from "@/components/OpportunityCard";
+import PopSection from "@/components/PopSection";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import kadunaRice from "@/assets/Kaduna Rice Yield Fund.jpeg";
@@ -166,77 +167,64 @@ const Opportunities = () => {
   return (
     <div className="min-h-screen pt-20">
       {/* Header */}
-      <motion.section 
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="py-16 bg-mint-50"
-      >
+      <section className="py-16 bg-mint-50">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-8 text-teal-900">
-            Investment Opportunities
-          </h1>
+          <PopSection delay={0.1}>
+            <h1 className="text-4xl md:text-5xl font-bold mb-8 text-teal-900">
+              Investment Opportunities
+            </h1>
+          </PopSection>
           
           {/* 3 Investment Tiers */}
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12">
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              whileHover={{ y: -8 }}
-              className="bg-gradient-to-br from-teal-50 to-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all"
-            >
-              <h3 className="text-2xl font-bold text-teal-900 mb-2">Monthly Returns</h3>
-              <p className="text-teal-700 mb-4">Get paid every 30 days</p>
-              <p className="text-4xl font-bold text-teal-600 mb-4">10–12% ROI</p>
-              <ul className="text-left space-y-2 text-teal-800">
-                <li>✓ Ideal for cash flow needs</li>
-                <li>✓ Min: ₦2M</li>
-                <li>✓ Short-term commitment</li>
-              </ul>
-            </motion.div>
+            <PopSection delay={0.2}>
+              <div className="bg-gradient-to-br from-teal-50 to-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all">
+                <h3 className="text-2xl font-bold text-teal-900 mb-2">Monthly Returns</h3>
+                <p className="text-teal-700 mb-4">Get paid every 30 days</p>
+                <p className="text-4xl font-bold text-teal-600 mb-4">10–12% ROI</p>
+                <ul className="text-left space-y-2 text-teal-800">
+                  <li>✓ Ideal for cash flow needs</li>
+                  <li>✓ Min: ₦2M</li>
+                  <li>✓ Short-term commitment</li>
+                </ul>
+              </div>
+            </PopSection>
 
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              whileHover={{ y: -8 }}
-              className="bg-gradient-to-br from-emerald-50 to-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all border-2 border-emerald-200"
-            >
-              <div className="bg-emerald-600 text-white text-sm font-bold px-3 py-1 rounded-full inline-block mb-2">POPULAR</div>
-              <h3 className="text-2xl font-bold text-emerald-900 mb-2">1-Year Growth</h3>
-              <p className="text-emerald-700 mb-4">Annual payout plan</p>
-              <p className="text-4xl font-bold text-emerald-600 mb-4">18–22% ROI</p>
-              <ul className="text-left space-y-2 text-emerald-800">
-                <li>✓ Balanced growth strategy</li>
-                <li>✓ Min: ₦5M</li>
-                <li>✓ Best value option</li>
-              </ul>
-            </motion.div>
+            <PopSection delay={0.3}>
+              <div className="bg-gradient-to-br from-emerald-50 to-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all border-2 border-emerald-200">
+                <div className="bg-emerald-600 text-white text-sm font-bold px-3 py-1 rounded-full inline-block mb-2">POPULAR</div>
+                <h3 className="text-2xl font-bold text-emerald-900 mb-2">1-Year Growth</h3>
+                <p className="text-emerald-700 mb-4">Annual payout plan</p>
+                <p className="text-4xl font-bold text-emerald-600 mb-4">18–22% ROI</p>
+                <ul className="text-left space-y-2 text-emerald-800">
+                  <li>✓ Balanced growth strategy</li>
+                  <li>✓ Min: ₦5M</li>
+                  <li>✓ Best value option</li>
+                </ul>
+              </div>
+            </PopSection>
 
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              whileHover={{ y: -8 }}
-              className="bg-gradient-to-br from-teal-100 to-emerald-50 p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all"
-            >
-              <h3 className="text-2xl font-bold text-teal-900 mb-2">2-Year Legacy</h3>
-              <p className="text-teal-700 mb-4">Double your impact</p>
-              <p className="text-4xl font-bold text-teal-600 mb-4">30–35% ROI</p>
-              <ul className="text-left space-y-2 text-teal-800">
-                <li>✓ Maximum returns</li>
-                <li>✓ Min: ₦10M</li>
-                <li>✓ Long-term wealth building</li>
-              </ul>
-            </motion.div>
+            <PopSection delay={0.4}>
+              <div className="bg-gradient-to-br from-teal-100 to-emerald-50 p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all">
+                <h3 className="text-2xl font-bold text-teal-900 mb-2">2-Year Legacy</h3>
+                <p className="text-teal-700 mb-4">Double your impact</p>
+                <p className="text-4xl font-bold text-teal-600 mb-4">30–35% ROI</p>
+                <ul className="text-left space-y-2 text-teal-800">
+                  <li>✓ Maximum returns</li>
+                  <li>✓ Min: ₦10M</li>
+                  <li>✓ Long-term wealth building</li>
+                </ul>
+              </div>
+            </PopSection>
           </div>
 
-          <p className="text-lg text-teal-800 max-w-3xl mx-auto">
-            Backed by <strong>14+ years</strong> as a leading exporter of premium palm oil, cashew nuts, cocoa, and grains (corn, millet, wheat, beans, rice).
-          </p>
+          <PopSection delay={0.5}>
+            <p className="text-lg text-teal-800 max-w-3xl mx-auto">
+              Backed by <strong>14+ years</strong> as a leading exporter of premium palm oil, cashew nuts, cocoa, and grains (corn, millet, wheat, beans, rice).
+            </p>
+          </PopSection>
         </div>
-      </motion.section>
+      </section>
 
       {/* Filters */}
       <section className="py-8 bg-mint-100 border-b border-mint-200">
@@ -312,16 +300,9 @@ const Opportunities = () => {
           {filteredOpportunities.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredOpportunities.map((opportunity, index) => (
-                <motion.div 
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.05 }}
-                  viewport={{ once: true }}
-                  whileHover={{ y: -8 }}
-                >
+                <PopSection key={index} delay={0.1 + index * 0.05}>
                   <OpportunityCard {...opportunity} />
-                </motion.div>
+                </PopSection>
               ))}
             </div>
           ) : (

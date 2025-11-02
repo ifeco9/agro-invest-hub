@@ -9,6 +9,8 @@ import riceFarm from "@/assets/Kaduna Rice Yield Fund.jpeg";
 import sustainableFarm from "@/assets/Ogun Cassava Processing Investment.jpeg";
 import farmEquipment from "@/assets/farm-equipment.jpg";
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
 
 const Home = () => {
   const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
@@ -105,7 +107,13 @@ const Home = () => {
       <Hero />
 
       {/* Features Section */}
-      <section className="py-8 md:py-12 px-4 md:px-6 bg-background">
+      <motion.section 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="py-8 md:py-12 px-4 md:px-6 bg-background"
+      >
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-teal-900">Why Choose Drecan Commodities?</h2>
@@ -115,30 +123,57 @@ const Home = () => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {features.map((feature, index) => (
-              <FeatureCard key={index} {...feature} />
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <FeatureCard {...feature} />
+              </motion.div>
             ))}
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Stats Section */}
-      <section className="py-16 bg-teal-600">
+      <motion.section 
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="py-16 bg-teal-600"
+      >
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
-              <div key={index} className="text-center animate-fade-in">
+              <motion.div 
+                key={index} 
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="text-center animate-fade-in"
+              >
                 <div className="text-3xl md:text-4xl font-bold text-white mb-2">
                   {stat.value}
                 </div>
                 <div className="text-sm text-white/80">{stat.label}</div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Featured Opportunities */}
-      <section className="py-20 bg-mint-50">
+      <motion.section 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="py-20 bg-mint-50"
+      >
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-teal-900">Featured Investment Opportunities</h2>
@@ -148,7 +183,16 @@ const Home = () => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             {opportunities.map((opportunity, index) => (
-              <OpportunityCard key={index} {...opportunity} />
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -8 }}
+              >
+                <OpportunityCard {...opportunity} />
+              </motion.div>
             ))}
           </div>
           <div className="text-center">
@@ -159,7 +203,7 @@ const Home = () => {
             </Button>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* How It Works */}
       <section className="py-20 bg-background">

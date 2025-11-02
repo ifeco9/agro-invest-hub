@@ -437,10 +437,10 @@ const Shop = () => {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
           <div>
             <h1 className="text-4xl md:text-5xl font-bold text-teal-900 mb-2">
-              Premium Nigerian Commodities & Investments
+              Drecan Premium Commodities
             </h1>
             <p className="text-lg text-teal-700">
-              Discover our selection of high-quality agricultural products and investment opportunities
+              100% Nigerian, Farm-Fresh, Sustainably Sourced
             </p>
           </div>
           

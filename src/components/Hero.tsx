@@ -8,7 +8,7 @@ const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const [activeStatIndex, setActiveStatIndex] = useState(0);
-  const titleText = "Unlock Sustainable Returns: Invest in Nigerian Agriculture Today";
+  const titleText = "Invest in Nigerian Agriculture Today";
   const [displayedText, setDisplayedText] = useState("");
   const particlesRef = useRef<HTMLDivElement>(null);
 
@@ -77,7 +77,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center mb-0 pb-0 overflow-hidden">
+    <section className="relative min-h-screen flex items-center pb-20 overflow-hidden">
       {/* Animated Gradient Background */}
       <div className="absolute inset-0 z-0 bg-gradient-to-br from-teal-900 via-teal-700 to-emerald-600 animate-gradient-shift" />
       

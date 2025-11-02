@@ -14,11 +14,11 @@ const CircularNavbar = () => {
 
   const navLinks = [
     { name: "Home", path: "/" },
-    { name: "Opportunities", path: "/opportunities" },
-    { name: "How It Works", path: "/how-it-works" },
-    { name: "About Us", path: "/about" },
     { name: "Shop", path: "/shop" },
+    { name: "About Us", path: "/about" },
+    { name: "How It Works", path: "/how-it-works" },
     { name: "Insights", path: "/insights" },
+    { name: "Opportunities", path: "/opportunities" },
     { name: "Contact", path: "/contact" },
   ];
 

@@ -6,6 +6,7 @@ const userRoutes = require('./routes/users');
 const investmentRoutes = require('./routes/investments');
 const authRoutes = require('./routes/auth');
 const emailRoutes = require('./routes/email');
+const orderRoutes = require('./routes/orders');
 
 // Load environment variables
 dotenv.config();
@@ -26,6 +27,7 @@ app.use('/api/users', userRoutes);
 app.use('/api/investments', investmentRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/email', emailRoutes);
+app.use('/api/orders', orderRoutes);
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {

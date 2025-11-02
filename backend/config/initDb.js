@@ -2,6 +2,7 @@ const sequelize = require('./db');
 const User = require('../models/User');
 const Investment = require('../models/Investment');
 const InvestmentApplication = require('../models/InvestmentApplication');
+const Order = require('../models/Order');
 
 const initDb = async () => {
   try {

@@ -3,28 +3,17 @@ import { Link } from "react-router-dom";
 import { TrendingUp, Shield, Leaf } from "lucide-react";
 import heroImage from "@/assets/hero-farm.jpg";
 import { useEffect, useState, useRef } from "react";
+import { motion } from "framer-motion";
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const titleText = "Invest in Nigerian Agriculture Today";
-  const [displayedText, setDisplayedText] = useState("");
   const particlesRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setIsVisible(true);
     
-    // Animate letters one by one
-    let index = 0;
-    const timer = setInterval(() => {
-      if (index < titleText.length) {
-        setDisplayedText(titleText.substring(0, index + 1));
-        index++;
-      } else {
-        clearInterval(timer);
-      }
-    }, 50);
-
     // Parallax scroll effect
     const handleScroll = () => {
       setScrollY(window.scrollY);
@@ -33,26 +22,28 @@ const Hero = () => {
 
     // Create floating particles
     if (particlesRef.current) {
-      for (let i = 0; i < 30; i++) {
+      for (let i = 0; i < 20; i++) { // Reduced number of particles for better performance
         const particle = document.createElement('div');
         particle.className = 'particle';
         particle.style.left = `${Math.random() * 100}%`;
-        particle.style.animationDelay = `${Math.random() * 15}s`;
-        particle.style.animationDuration = `${15 + Math.random() * 10}s`;
+        particle.style.animationDelay = `${Math.random() * 10}s`; // Reduced animation delay
+        particle.style.animationDuration = `${10 + Math.random() * 5}s`; // Reduced animation duration
         particlesRef.current.appendChild(particle);
       }
     }
 
     return () => {
-      clearInterval(timer);
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
+  // Split text into words for animation
+  const words = titleText.split(" ");
+
   return (
     <section className="relative min-h-screen flex items-center pb-32 overflow-hidden">
       {/* Animated Gradient Background */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-br from-teal-900 via-teal-700 to-emerald-600 animate-gradient-shift" />
+      <div className="absolute inset-0 z-0 bg-gradient-to-br from-teal-900 via-teal-700 to-emerald-600" />
       
       {/* Background Image with Overlay and Parallax */}
       <div className="absolute inset-0 z-0 mb-0 pb-0 overflow-hidden">
@@ -60,7 +51,7 @@ const Hero = () => {
           className="w-full h-full bg-cover bg-center bg-no-repeat transition-transform duration-300"
           style={{ 
             backgroundImage: `url(${heroImage})`,
-            transform: `translateY(${scrollY * 0.5}px) scale(1.1)`,
+            transform: `translateY(${scrollY * 0.3}px) scale(1.1)`, // Reduced parallax effect
             backgroundPosition: "center",
             backgroundSize: "cover",
             width: "100%",
@@ -77,7 +68,22 @@ const Hero = () => {
       <div className="container mx-auto px-4 z-10 py-20 mb-0 pb-0">
         <div className={`max-w-3xl transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white leading-tight drop-shadow-2xl">
-            {displayedText}
+            {words.map((word, wordIndex) => (
+              <motion.span
+                key={wordIndex}
+                initial={{ opacity: 0, y: 20 }}
+                animate={isVisible ? { opacity: 1, y: 0 } : {}}
+                transition={{ 
+                  duration: 0.3, // Reduced duration for smoother performance
+                  delay: wordIndex * 0.05, // Reduced delay
+                  type: "tween", // Using tween instead of spring for better performance
+                  ease: "easeOut"
+                }}
+                className="inline-block mr-2"
+              >
+                {word}
+              </motion.span>
+            ))}
             <span className="ml-1 inline-block w-1 h-16 bg-white align-middle animate-pulse"></span>
           </h1>
           <div className={`text-center mt-4 mb-8 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>

@@ -75,7 +75,7 @@ const Orders = () => {
       case 'shipped':
         return 'bg-purple-100 text-purple-800';
       case 'delivered':
-        return 'bg-green-100 text-green-800';
+        return 'bg-teal-100 text-teal-800';
       case 'cancelled':
         return 'bg-red-100 text-red-800';
       default:

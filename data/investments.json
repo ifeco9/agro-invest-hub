@@ -1,0 +1,70 @@
+{
+  "investments": [
+    {
+      "id": "agrotrade",
+      "title": "AgroTrade Investment",
+      "description": "Short-term trading opportunities with consistent returns",
+      "minInvestment": "₦2,000,000",
+      "expectedROI": "8-12% annually",
+      "duration": "6-12 months",
+      "payoutFrequency": "Monthly",
+      "riskLevel": "Low-Medium",
+      "safety": [
+        "Backed by physical agricultural commodities",
+        "Transparent supply chain tracking",
+        "Monthly performance reports",
+        "Insurance coverage on stored commodities"
+      ],
+      "socialImpact": [
+        "Fair prices for 500+ local farmers",
+        "Affordable food access for 2,000+ families",
+        "Supports SDG 2: Zero Hunger",
+        "Creates 50+ seasonal employment opportunities"
+      ]
+    },
+    {
+      "id": "agrofarm",
+      "title": "AgroFarm Investment",
+      "description": "Long-term farming partnerships with higher returns",
+      "minInvestment": "₦5,000,000",
+      "expectedROI": "15-25% annually",
+      "duration": "12-24 months",
+      "payoutFrequency": "At harvest",
+      "riskLevel": "Medium",
+      "safety": [
+        "Professional farm management team",
+        "Regular farm inspection reports",
+        "Crop insurance coverage",
+        "Guaranteed buyback program"
+      ],
+      "socialImpact": [
+        "Empowers 200+ farming families",
+        "Provides technical training to local farmers",
+        "Supports SDG 8: Decent Work and Economic Growth",
+        "Improves rural infrastructure"
+      ]
+    },
+    {
+      "id": "agroreserve",
+      "title": "AgroReserve Investment",
+      "description": "Premium long-term investment with maximum returns",
+      "minInvestment": "₦10,000,000",
+      "expectedROI": "25-35% annually",
+      "duration": "24-36 months",
+      "payoutFrequency": "At maturity",
+      "riskLevel": "Medium-High",
+      "safety": [
+        "Land ownership documentation",
+        "Comprehensive risk management",
+        "Quarterly performance audits",
+        "Government-backed contracts"
+      ],
+      "socialImpact": [
+        "Creates 100+ permanent jobs",
+        "Develops sustainable farming practices",
+        "Supports SDG 12: Responsible Consumption",
+        "Contributes to rural economic development"
+      ]
+    }
+  ]
+}

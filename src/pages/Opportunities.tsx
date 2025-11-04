@@ -1,340 +1,567 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
-import OpportunityCard from "@/components/OpportunityCard";
-import PopSection from "@/components/PopSection";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import kadunaRice from "@/assets/Kaduna Rice Yield Fund.jpeg";
-import ogunCassava from "@/assets/Ogun Cassava Processing Investment.jpeg";
-import kanoWheat from "@/assets/Kano Wheat Farming Project.jpeg";
-import lagosBeans from "@/assets/Lagos Beans Cultivation Hub.jpeg";
-import southSouthPalm from "@/assets/South-South Palm Oil Investment.jpeg";
-import benueYam from "@/assets/Benue Yam Production Fund.jpeg";
-import enuguEgusi from "@/assets/Enugu Egusi Seed Farm.jpeg";
-import kebbiSorghum from "@/assets/Kebbi Sorghum Yield Project.jpeg";
-import bornoMillet from "@/assets/Borno Millet Farming Initiative.jpeg";
-import kogiSoybeans from "@/assets/Kogi Soybeans Investment Fund.jpeg";
-import farmEquipment from "@/assets/farm-equipment.jpg";
-import sustainableFarm from "@/assets/sustainable-farm.jpg";
+import { motion, AnimatePresence } from "framer-motion";
+import { TrendingUp, Clock, Users, Zap, Award, Shield } from "lucide-react";
 
 const Opportunities = () => {
-  const [regionFilter, setRegionFilter] = useState("all");
-  const [typeFilter, setTypeFilter] = useState("all");
-  const [cropFilter, setCropFilter] = useState("all");
+  const [investmentAmount, setInvestmentAmount] = useState(2000000);
+  const [showConfetti, setShowConfetti] = useState(false);
+  
+  // Simple confetti effect using CSS animations
+  const handleReserveSlot = () => {
+    setShowConfetti(true);
+    setTimeout(() => setShowConfetti(false), 3000);
+    
+    // Show alert
+    alert("Thank you for your interest! Our team will contact you shortly to finalize your reservation.");
+  };
 
-  const opportunities = [
-    {
-      title: "Kaduna Rice Yield Fund",
-      image: kadunaRice,
-      region: "Kaduna",
-      crop: "Rice",
-      minInvestment: "₦2,000,000",
-      roi: "10-12%",
-      duration: "12 months",
-      slotsAvailable: 8,
-      type: "Crop Yield",
-    },
-    {
-      title: "Ogun Cassava Processing Investment",
-      image: ogunCassava,
-      region: "Ogun",
-      crop: "Cassava",
-      minInvestment: "₦4,000,000",
-      roi: "8-10%",
-      duration: "24 months",
-      slotsAvailable: 15,
-      type: "Sustainable",
-    },
-    {
-      title: "Kano Wheat Farming Project",
-      image: kanoWheat,
-      region: "Kano",
-      crop: "Wheat",
-      minInvestment: "₦3,000,000",
-      roi: "9-11%",
-      duration: "18 months",
-      slotsAvailable: 3,
-      type: "Crop Yield",
-    },
-    {
-      title: "Plateau Dairy & Maize Farm",
-      image: sustainableFarm,
-      region: "Plateau",
-      crop: "Maize",
-      minInvestment: "₦6,000,000",
-      roi: "11-13%",
-      duration: "36 months",
-      slotsAvailable: 12,
-      type: "Livestock",
-    },
-    {
-      title: "Lagos Beans Cultivation Hub",
-      image: lagosBeans,
-      region: "Lagos",
-      crop: "Beans",
-      minInvestment: "₦3,200,000",
-      roi: "9-11%",
-      duration: "18 months",
-      slotsAvailable: 6,
-      type: "Crop Yield",
-    },
-    {
-      title: "South-South Palm Oil Investment",
-      image: southSouthPalm,
-      region: "Rivers",
-      crop: "Palm Oil",
-      minInvestment: "₦8,000,000",
-      roi: "12-14%",
-      duration: "60 months",
-      slotsAvailable: 4,
-      type: "Sustainable",
-    },
-    {
-      title: "Benue Yam Production Fund",
-      image: benueYam,
-      region: "Benue",
-      crop: "Yam",
-      minInvestment: "₦2,500,000",
-      roi: "10-12%",
-      duration: "12 months",
-      slotsAvailable: 10,
-      type: "Crop Yield",
-    },
-    {
-      title: "Enugu Egusi (Melon) Seed Farm",
-      image: enuguEgusi,
-      region: "Enugu",
-      crop: "Egusi",
-      minInvestment: "₦1,800,000",
-      roi: "11-13%",
-      duration: "9 months",
-      slotsAvailable: 7,
-      type: "Crop Yield",
-    },
-    {
-      title: "Kebbi Sorghum Yield Project",
-      image: kebbiSorghum,
-      region: "Kebbi",
-      crop: "Sorghum",
-      minInvestment: "₦2,200,000",
-      roi: "9-11%",
-      duration: "15 months",
-      slotsAvailable: 9,
-      type: "Crop Yield",
-    },
-    {
-      title: "Borno Millet Farming Initiative",
-      image: bornoMillet,
-      region: "Borno",
-      crop: "Millet",
-      minInvestment: "₦1,900,000",
-      roi: "8-10%",
-      duration: "12 months",
-      slotsAvailable: 11,
-      type: "Crop Yield",
-    },
-    {
-      title: "Kogi Soybeans Investment Fund",
-      image: kogiSoybeans,
-      region: "Kogi",
-      crop: "Soybeans",
-      minInvestment: "₦3,500,000",
-      roi: "10-12%",
-      duration: "18 months",
-      slotsAvailable: 5,
-      type: "Crop Yield",
-    },
-    {
-      title: "Equipment Leasing Programme",
-      image: farmEquipment,
-      region: "Multi-State",
-      crop: "Various",
-      minInvestment: "₦5,000,000",
-      roi: "9-11%",
-      duration: "24 months",
-      slotsAvailable: 8,
-      type: "Equipment",
-    },
-  ];
-
-  const filteredOpportunities = opportunities.filter((opp) => {
-    const matchesRegion = regionFilter === "all" || opp.region === regionFilter;
-    const matchesType = typeFilter === "all" || opp.type === typeFilter;
-    const matchesCrop = cropFilter === "all" || opp.crop === cropFilter;
-    return matchesRegion && matchesType && matchesCrop;
-  });
+  // Auto-rotate investment amount for demo purposes
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setInvestmentAmount(prev => {
+        if (prev >= 10000000) return 2000000;
+        return prev + 500000;
+      });
+    }, 3000);
+    
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="min-h-screen pt-20">
       {/* Header */}
-      <section className="py-16 bg-mint-50">
+      <section className="py-16 bg-gradient-to-r from-teal-700 to-teal-900 text-white">
         <div className="container mx-auto px-4 text-center">
-          <PopSection delay={0.1}>
-            <h1 className="text-4xl md:text-5xl font-bold mb-8 text-teal-900">
-              Investment Opportunities
-            </h1>
-          </PopSection>
-          
-          {/* 3 Investment Tiers */}
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12">
-            <PopSection delay={0.2}>
-              <div className="bg-gradient-to-br from-teal-50 to-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all">
-                <h3 className="text-2xl font-bold text-teal-900 mb-2">Monthly Returns</h3>
-                <p className="text-teal-700 mb-4">Get paid every 30 days</p>
-                <p className="text-4xl font-bold text-teal-600 mb-4">10–12% ROI</p>
-                <ul className="text-left space-y-2 text-teal-800">
-                  <li>✓ Ideal for cash flow needs</li>
-                  <li>✓ Min: ₦2M</li>
-                  <li>✓ Short-term commitment</li>
-                </ul>
-              </div>
-            </PopSection>
-
-            <PopSection delay={0.3}>
-              <div className="bg-gradient-to-br from-emerald-50 to-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all border-2 border-emerald-200">
-                <div className="bg-emerald-600 text-white text-sm font-bold px-3 py-1 rounded-full inline-block mb-2">POPULAR</div>
-                <h3 className="text-2xl font-bold text-emerald-900 mb-2">1-Year Growth</h3>
-                <p className="text-emerald-700 mb-4">Annual payout plan</p>
-                <p className="text-4xl font-bold text-emerald-600 mb-4">18–22% ROI</p>
-                <ul className="text-left space-y-2 text-emerald-800">
-                  <li>✓ Balanced growth strategy</li>
-                  <li>✓ Min: ₦5M</li>
-                  <li>✓ Best value option</li>
-                </ul>
-              </div>
-            </PopSection>
-
-            <PopSection delay={0.4}>
-              <div className="bg-gradient-to-br from-teal-100 to-emerald-50 p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all">
-                <h3 className="text-2xl font-bold text-teal-900 mb-2">2-Year Legacy</h3>
-                <p className="text-teal-700 mb-4">Double your impact</p>
-                <p className="text-4xl font-bold text-teal-600 mb-4">30–35% ROI</p>
-                <ul className="text-left space-y-2 text-teal-800">
-                  <li>✓ Maximum returns</li>
-                  <li>✓ Min: ₦10M</li>
-                  <li>✓ Long-term wealth building</li>
-                </ul>
-              </div>
-            </PopSection>
-          </div>
-
-          <PopSection delay={0.5}>
-            <p className="text-lg text-teal-800 max-w-3xl mx-auto">
-              Backed by <strong>14+ years</strong> as a leading exporter of premium palm oil, cashew nuts, cocoa, and grains (corn, millet, wheat, beans, rice).
-            </p>
-          </PopSection>
+          <motion.h1 
+            className="text-4xl md:text-5xl font-bold mb-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            Invest in Agriculture. Earn Returns. Empower Lives.
+          </motion.h1>
+          <motion.p 
+            className="text-xl max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            Join thousands of investors who are making a difference while earning sustainable returns
+          </motion.p>
         </div>
       </section>
 
-      {/* Filters */}
-      <section className="py-8 bg-mint-100 border-b border-mint-200">
+      {/* Investment Tables */}
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col sm:flex-row gap-4 items-center justify-between">
-            <div className="flex flex-wrap items-center gap-4 w-full sm:w-auto">
-              <Select value={regionFilter} onValueChange={setRegionFilter}>
-                <SelectTrigger className="w-full sm:w-48">
-                  <SelectValue placeholder="Select Region" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">All Regions</SelectItem>
-                  <SelectItem value="Kaduna">Kaduna</SelectItem>
-                  <SelectItem value="Ogun">Ogun</SelectItem>
-                  <SelectItem value="Kano">Kano</SelectItem>
-                  <SelectItem value="Plateau">Plateau</SelectItem>
-                  <SelectItem value="Lagos">Lagos</SelectItem>
-                  <SelectItem value="Rivers">Rivers</SelectItem>
-                  <SelectItem value="Benue">Benue</SelectItem>
-                  <SelectItem value="Enugu">Enugu</SelectItem>
-                  <SelectItem value="Kebbi">Kebbi</SelectItem>
-                  <SelectItem value="Borno">Borno</SelectItem>
-                  <SelectItem value="Kogi">Kogi</SelectItem>
-                  <SelectItem value="Multi-State">Multi-State</SelectItem>
-                </SelectContent>
-              </Select>
-
-              <Select value={typeFilter} onValueChange={setTypeFilter}>
-                <SelectTrigger className="w-full sm:w-48">
-                  <SelectValue placeholder="Investment Type" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">All Types</SelectItem>
-                  <SelectItem value="Crop Yield">Crop Yield</SelectItem>
-                  <SelectItem value="Sustainable">Sustainable</SelectItem>
-                  <SelectItem value="Equipment">Equipment</SelectItem>
-                  <SelectItem value="Livestock">Livestock</SelectItem>
-                </SelectContent>
-              </Select>
-
-              <Select value={cropFilter} onValueChange={setCropFilter}>
-                <SelectTrigger className="w-full sm:w-48">
-                  <SelectValue placeholder="Crop Type" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">All Crops</SelectItem>
-                  <SelectItem value="Rice">Rice</SelectItem>
-                  <SelectItem value="Cassava">Cassava</SelectItem>
-                  <SelectItem value="Wheat">Wheat</SelectItem>
-                  <SelectItem value="Maize">Maize</SelectItem>
-                  <SelectItem value="Beans">Beans</SelectItem>
-                  <SelectItem value="Palm Oil">Palm Oil</SelectItem>
-                  <SelectItem value="Yam">Yam</SelectItem>
-                  <SelectItem value="Egusi">Egusi (Melon)</SelectItem>
-                  <SelectItem value="Sorghum">Sorghum</SelectItem>
-                  <SelectItem value="Millet">Millet</SelectItem>
-                  <SelectItem value="Soybeans">Soybeans</SelectItem>
-                  <SelectItem value="Various">Various</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-
-            <div className="text-sm text-teal-800">
-              Showing {filteredOpportunities.length} of {opportunities.length} opportunities
-            </div>
+          <div className="space-y-16">
+            {/* AgroTrade */}
+            <motion.div 
+              className="bg-white rounded-lg shadow-lg border border-teal-100 overflow-hidden"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6 }}
+              whileHover={{ y: -5, transition: { duration: 0.3 } }}
+            >
+              <div className="bg-gradient-to-r from-teal-800 to-teal-700 text-white p-6">
+                <div className="flex items-center gap-3 mb-2">
+                  <Zap className="h-6 w-6" />
+                  <h2 className="text-3xl font-bold">AgroTrade Investment</h2>
+                </div>
+                <p className="text-teal-100">Short-term trading opportunities with consistent returns</p>
+              </div>
+              <div className="p-6">
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div>
+                    <h3 className="text-xl font-bold text-teal-900 mb-4 flex items-center gap-2">
+                      <Shield className="h-5 w-5 text-teal-600" />
+                      Investment Details
+                    </h3>
+                    <ul className="space-y-3 text-gray-700">
+                      <li className="flex justify-between border-b pb-2">
+                        <span>Minimum Investment:</span>
+                        <span className="font-semibold">₦2,000,000</span>
+                      </li>
+                      <li className="flex justify-between border-b pb-2">
+                        <span>Expected ROI:</span>
+                        <span className="font-semibold">8-12% annually</span>
+                      </li>
+                      <li className="flex justify-between border-b pb-2">
+                        <span>Duration:</span>
+                        <span className="font-semibold">6-12 months</span>
+                      </li>
+                      <li className="flex justify-between border-b pb-2">
+                        <span>Payout Frequency:</span>
+                        <span className="font-semibold">Monthly</span>
+                      </li>
+                      <li className="flex justify-between border-b pb-2">
+                        <span>Risk Level:</span>
+                        <span className="font-semibold">Low-Medium</span>
+                      </li>
+                    </ul>
+                  </div>
+                  
+                  <div>
+                    <h3 className="text-xl font-bold text-teal-900 mb-4 flex items-center gap-2">
+                      <TrendingUp className="h-5 w-5 text-teal-600" />
+                      Projected Returns
+                    </h3>
+                    <div className="bg-teal-50 rounded-lg p-4 mb-4">
+                      <div className="text-center">
+                        <div className="text-3xl font-bold text-teal-700">
+                          ₦{investmentAmount.toLocaleString()} → ₦{(investmentAmount * 1.1).toLocaleString(undefined, { maximumFractionDigits: 0 })}
+                        </div>
+                        <p className="text-gray-600 mt-2">
+                          Return on a ₦{investmentAmount.toLocaleString()} investment
+                        </p>
+                      </div>
+                      <div className="mt-4">
+                        <label className="block text-gray-700 mb-2">Investment Amount:</label>
+                        <input
+                          type="range"
+                          min="2000000"
+                          max="10000000"
+                          step="100000"
+                          value={investmentAmount}
+                          onChange={(e) => setInvestmentAmount(Number(e.target.value))}
+                          className="w-full h-2 bg-teal-200 rounded-lg appearance-none cursor-pointer"
+                        />
+                        <div className="flex justify-between text-sm text-gray-600 mt-1">
+                          <span>₦2M</span>
+                          <span>₦10M</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="mt-8">
+                  <h3 className="text-xl font-bold text-teal-900 mb-4 flex items-center gap-2">
+                    <Shield className="h-5 w-5 text-teal-600" />
+                    Safety & Security
+                  </h3>
+                  <ul className="grid md:grid-cols-2 gap-4">
+                    <li className="flex items-start">
+                      <span className="text-teal-600 font-bold mr-2">✓</span>
+                      <span>Backed by physical agricultural commodities</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-teal-600 font-bold mr-2">✓</span>
+                      <span>Transparent supply chain tracking</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-teal-600 font-bold mr-2">✓</span>
+                      <span>Monthly performance reports</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-teal-600 font-bold mr-2">✓</span>
+                      <span>Insurance coverage on stored commodities</span>
+                    </li>
+                  </ul>
+                </div>
+                
+                <div className="mt-8">
+                  <h3 className="text-xl font-bold text-teal-900 mb-4 flex items-center gap-2">
+                    <Users className="h-5 w-5 text-teal-600" />
+                    Social Impact
+                  </h3>
+                  <ul className="grid md:grid-cols-2 gap-4">
+                    <li className="flex items-start">
+                      <span className="text-teal-600 font-bold mr-2">✓</span>
+                      <span>Fair prices for 500+ local farmers</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-teal-600 font-bold mr-2">✓</span>
+                      <span>Affordable food access for 2,000+ families</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-teal-600 font-bold mr-2">✓</span>
+                      <span>Supports SDG 2: Zero Hunger</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-teal-600 font-bold mr-2">✓</span>
+                      <span>Creates 50+ seasonal employment opportunities</span>
+                    </li>
+                  </ul>
+                </div>
+                
+                <motion.div 
+                  className="mt-8 text-center relative"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                >
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Button 
+                      id="reserve-button"
+                      size="lg" 
+                      className="bg-gradient-to-r from-teal-600 to-teal-800 hover:from-teal-700 hover:to-teal-900 text-white shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 ease-in-out px-8 py-3 rounded-full font-bold text-lg"
+                      onClick={handleReserveSlot}
+                    >
+                      Reserve Slot
+                    </Button>
+                  </motion.div>
+                  
+                  {/* Confetti effect */}
+                  <AnimatePresence>
+                    {showConfetti && (
+                      <div className="absolute inset-0 pointer-events-none">
+                        {[...Array(50)].map((_, i) => (
+                          <motion.div
+                            key={i}
+                            className="absolute w-2 h-2 rounded-full"
+                            style={{
+                              backgroundColor: ['#1E3A5F', '#4A7F4A', '#2A9D8F', '#1A7A70'][Math.floor(Math.random() * 4)],
+                              left: `${Math.random() * 100}%`,
+                              top: `${Math.random() * 100}%`,
+                            }}
+                            initial={{ opacity: 0, y: 0, x: 0 }}
+                            animate={{ 
+                              opacity: [0, 1, 0],
+                              y: [0, -100],
+                              x: [0, (Math.random() - 0.5) * 100],
+                              rotate: [0, 360]
+                            }}
+                            exit={{ opacity: 0 }}
+                            transition={{ 
+                              duration: 2,
+                              delay: Math.random() * 0.5
+                            }}
+                          />
+                        ))}
+                      </div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+              </div>
+            </motion.div>
+            
+            {/* AgroFarm */}
+            <motion.div 
+              className="bg-white rounded-lg shadow-lg border border-teal-100 overflow-hidden"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              whileHover={{ y: -5, transition: { duration: 0.3 } }}
+            >
+              <div className="bg-gradient-to-r from-teal-800 to-teal-700 text-white p-6">
+                <div className="flex items-center gap-3 mb-2">
+                  <Award className="h-6 w-6" />
+                  <h2 className="text-3xl font-bold">AgroFarm Investment</h2>
+                </div>
+                <p className="text-teal-100">Long-term farming partnerships with higher returns</p>
+              </div>
+              <div className="p-6">
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div>
+                    <h3 className="text-xl font-bold text-teal-900 mb-4 flex items-center gap-2">
+                      <Shield className="h-5 w-5 text-teal-600" />
+                      Investment Details
+                    </h3>
+                    <ul className="space-y-3 text-gray-700">
+                      <li className="flex justify-between border-b pb-2">
+                        <span>Minimum Investment:</span>
+                        <span className="font-semibold">₦5,000,000</span>
+                      </li>
+                      <li className="flex justify-between border-b pb-2">
+                        <span>Expected ROI:</span>
+                        <span className="font-semibold">15-25% annually</span>
+                      </li>
+                      <li className="flex justify-between border-b pb-2">
+                        <span>Duration:</span>
+                        <span className="font-semibold">12-24 months</span>
+                      </li>
+                      <li className="flex justify-between border-b pb-2">
+                        <span>Payout Frequency:</span>
+                        <span className="font-semibold">At harvest</span>
+                      </li>
+                      <li className="flex justify-between border-b pb-2">
+                        <span>Risk Level:</span>
+                        <span className="font-semibold">Medium</span>
+                      </li>
+                    </ul>
+                  </div>
+                  
+                  <div>
+                    <h3 className="text-xl font-bold text-teal-900 mb-4 flex items-center gap-2">
+                      <TrendingUp className="h-5 w-5 text-teal-600" />
+                      Projected Returns
+                    </h3>
+                    <div className="bg-teal-50 rounded-lg p-4 mb-4">
+                      <div className="text-center">
+                        <div className="text-3xl font-bold text-teal-700">
+                          ₦2,000,000 → ₦3,200,000
+                        </div>
+                        <p className="text-gray-600 mt-2">
+                          Return on a ₦2,000,000 investment in rice farming
+                        </p>
+                      </div>
+                      <div className="mt-4 text-sm text-gray-600">
+                        <p>Example: A ₦5M investment in cassava farming can yield ₦7.5M after 18 months</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="mt-8">
+                  <h3 className="text-xl font-bold text-teal-900 mb-4 flex items-center gap-2">
+                    <Shield className="h-5 w-5 text-teal-600" />
+                    Safety & Security
+                  </h3>
+                  <ul className="grid md:grid-cols-2 gap-4">
+                    <li className="flex items-start">
+                      <span className="text-teal-600 font-bold mr-2">✓</span>
+                      <span>Professional farm management team</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-teal-600 font-bold mr-2">✓</span>
+                      <span>Regular farm inspection reports</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-teal-600 font-bold mr-2">✓</span>
+                      <span>Crop insurance coverage</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-teal-600 font-bold mr-2">✓</span>
+                      <span>Guaranteed buyback program</span>
+                    </li>
+                  </ul>
+                </div>
+                
+                <div className="mt-8">
+                  <h3 className="text-xl font-bold text-teal-900 mb-4 flex items-center gap-2">
+                    <Users className="h-5 w-5 text-teal-600" />
+                    Social Impact
+                  </h3>
+                  <ul className="grid md:grid-cols-2 gap-4">
+                    <li className="flex items-start">
+                      <span className="text-teal-600 font-bold mr-2">✓</span>
+                      <span>Empowers 200+ farming families</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-teal-600 font-bold mr-2">✓</span>
+                      <span>Provides technical training to local farmers</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-teal-600 font-bold mr-2">✓</span>
+                      <span>Supports SDG 8: Decent Work and Economic Growth</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-teal-600 font-bold mr-2">✓</span>
+                      <span>Improves rural infrastructure</span>
+                    </li>
+                  </ul>
+                </div>
+                
+                <motion.div 
+                  className="mt-8 text-center"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                >
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Button 
+                      size="lg" 
+                      className="bg-teal-600 hover:bg-teal-700 text-white"
+                      onClick={handleReserveSlot}
+                    >
+                      Reserve Slot
+                    </Button>
+                  </motion.div>
+                </motion.div>
+              </div>
+            </motion.div>
+            
+            {/* AgroReserve */}
+            <motion.div 
+              className="bg-white rounded-lg shadow-lg border border-teal-100 overflow-hidden"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              whileHover={{ y: -5, transition: { duration: 0.3 } }}
+            >
+              <div className="bg-gradient-to-r from-teal-800 to-teal-700 text-white p-6">
+                <div className="flex items-center gap-3 mb-2">
+                  <Award className="h-6 w-6" />
+                  <h2 className="text-3xl font-bold">AgroReserve Investment</h2>
+                </div>
+                <p className="text-teal-100">Premium long-term investment with maximum returns</p>
+              </div>
+              <div className="p-6">
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div>
+                    <h3 className="text-xl font-bold text-teal-900 mb-4 flex items-center gap-2">
+                      <Shield className="h-5 w-5 text-teal-600" />
+                      Investment Details
+                    </h3>
+                    <ul className="space-y-3 text-gray-700">
+                      <li className="flex justify-between border-b pb-2">
+                        <span>Minimum Investment:</span>
+                        <span className="font-semibold">₦10,000,000</span>
+                      </li>
+                      <li className="flex justify-between border-b pb-2">
+                        <span>Expected ROI:</span>
+                        <span className="font-semibold">25-35% annually</span>
+                      </li>
+                      <li className="flex justify-between border-b pb-2">
+                        <span>Duration:</span>
+                        <span className="font-semibold">24-36 months</span>
+                      </li>
+                      <li className="flex justify-between border-b pb-2">
+                        <span>Payout Frequency:</span>
+                        <span className="font-semibold">At maturity</span>
+                      </li>
+                      <li className="flex justify-between border-b pb-2">
+                        <span>Risk Level:</span>
+                        <span className="font-semibold">Medium-High</span>
+                      </li>
+                    </ul>
+                  </div>
+                  
+                  <div>
+                    <h3 className="text-xl font-bold text-teal-900 mb-4 flex items-center gap-2">
+                      <TrendingUp className="h-5 w-5 text-teal-600" />
+                      Projected Returns
+                    </h3>
+                    <div className="bg-teal-50 rounded-lg p-4 mb-4">
+                      <div className="text-center">
+                        <div className="text-3xl font-bold text-teal-700">
+                          ₦10,000,000 → ₦13,500,000
+                        </div>
+                        <p className="text-gray-600 mt-2">
+                          Return on a ₦10,000,000 investment over 24 months
+                        </p>
+                      </div>
+                      <div className="mt-4 text-sm text-gray-600">
+                        <p>Example: A ₦20M investment in palm oil plantation can yield ₦30M after 36 months</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="mt-8">
+                  <h3 className="text-xl font-bold text-teal-900 mb-4 flex items-center gap-2">
+                    <Shield className="h-5 w-5 text-teal-600" />
+                    Safety & Security
+                  </h3>
+                  <ul className="grid md:grid-cols-2 gap-4">
+                    <li className="flex items-start">
+                      <span className="text-teal-600 font-bold mr-2">✓</span>
+                      <span>Land ownership documentation</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-teal-600 font-bold mr-2">✓</span>
+                      <span>Comprehensive risk management</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-teal-600 font-bold mr-2">✓</span>
+                      <span>Quarterly performance audits</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-teal-600 font-bold mr-2">✓</span>
+                      <span>Government-backed contracts</span>
+                    </li>
+                  </ul>
+                </div>
+                
+                <div className="mt-8">
+                  <h3 className="text-xl font-bold text-teal-900 mb-4 flex items-center gap-2">
+                    <Users className="h-5 w-5 text-teal-600" />
+                    Social Impact
+                  </h3>
+                  <ul className="grid md:grid-cols-2 gap-4">
+                    <li className="flex items-start">
+                      <span className="text-teal-600 font-bold mr-2">✓</span>
+                      <span>Creates 100+ permanent jobs</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-teal-600 font-bold mr-2">✓</span>
+                      <span>Develops sustainable farming practices</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-teal-600 font-bold mr-2">✓</span>
+                      <span>Supports SDG 12: Responsible Consumption</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-teal-600 font-bold mr-2">✓</span>
+                      <span>Contributes to rural economic development</span>
+                    </li>
+                  </ul>
+                </div>
+                
+                <motion.div 
+                  className="mt-8 text-center"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                >
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Button 
+                      size="lg" 
+                      className="bg-teal-600 hover:bg-teal-700 text-white"
+                      onClick={handleReserveSlot}
+                    >
+                      Reserve Slot
+                    </Button>
+                  </motion.div>
+                </motion.div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Opportunities Grid */}
-      <section className="py-12 bg-background">
-        <div className="container mx-auto px-4">
-          {filteredOpportunities.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredOpportunities.map((opportunity, index) => (
-                <PopSection key={index} delay={0.1 + index * 0.05}>
-                  <OpportunityCard {...opportunity} />
-                </PopSection>
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-16">
-              <p className="text-lg text-muted-foreground mb-4">
-                No opportunities match your filters. Try adjusting your selection.
-              </p>
-              <Button
-                variant="outline"
-                onClick={() => {
-                  setRegionFilter("all");
-                  setTypeFilter("all");
-                  setCropFilter("all");
-                }}
-              >
-                Clear Filters
-              </Button>
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* Info Section */}
-      <section className="py-16 bg-mint-50">
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-r from-teal-700 to-teal-900 text-white">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4 text-teal-900">Can't Find What You're Looking For?</h2>
-          <p className="text-teal-800 mb-6 max-w-2xl mx-auto">
-            New opportunities are added regularly. Contact our team to discuss custom investment options or join our waitlist for upcoming projects.
-          </p>
-          <Button size="lg" className="bg-teal-600 hover:bg-teal-700 text-white px-5 py-2 rounded-lg transition">
-            Contact Our Team
-          </Button>
+          <motion.h2 
+            className="text-3xl md:text-4xl font-bold mb-6"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            Ready to Start Investing?
+          </motion.h2>
+          <motion.p 
+            className="text-xl mb-8 max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            Join our community of investors and start earning sustainable returns from Nigerian agriculture
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <Button 
+              size="lg" 
+              variant="secondary" 
+              className="bg-gradient-to-r from-teal-600 to-teal-800 hover:from-teal-700 hover:to-teal-900 text-white shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 ease-in-out px-8 py-3 rounded-full font-bold text-lg"
+            >
+              Start Investing
+            </Button>
+          </motion.div>
         </div>
       </section>
     </div>

@@ -1,6 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
@@ -8,9 +7,13 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "sonner";
-import { ShoppingCart, Search, User, LogOut } from "lucide-react";
-import { useNavigate } from "react-router-dom";
-import InvestmentOpportunityCard from "@/components/InvestmentOpportunityCard";
+import { ShoppingCart, Search, User, LogOut, Heart, X, GitCompare } from "lucide-react";
+import { useNavigate, useLocation } from "react-router-dom";
+import ProductList from "@/components/ProductList";
+import OpportunityList from "@/components/OpportunityList";
+import CartSummary from "@/components/CartSummary";
+import OpportunityComparison from "@/components/OpportunityComparison";
+import Wishlist from "@/components/Wishlist";
 import kadunaRice from "@/assets/Kaduna Rice Yield Fund.jpeg";
 import ogunCassava from "@/assets/Ogun Cassava Processing Investment.jpeg";
 import kanoWheat from "@/assets/Kano Wheat Farming Project.jpeg";
@@ -59,18 +62,53 @@ interface UserProfile {
   email: string;
 }
 
+// Array of all available images for random assignment
+const availableImages = [
+  kadunaRice,
+  ogunCassava,
+  kanoWheat,
+  lagosBeans,
+  southSouthPalm,
+  benueYam,
+  enuguEgusi,
+  kebbiSorghum,
+  bornoMillet,
+  kogiSoybeans,
+  farmEquipment,
+  sustainableFarm
+];
+
 const Shop = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
-  const [cart, setCart] = useState<CartItem[]>([]);
+  const [cart, setCart] = useState<CartItem[]>(() => {
+    // Load cart from localStorage
+    const savedCart = localStorage.getItem('cart');
+    return savedCart ? JSON.parse(savedCart) : [];
+  });
   const [productSearchTerm, setProductSearchTerm] = useState("");
   const [productCategory, setProductCategory] = useState("all");
   const [user, setUser] = useState<{ id: string; email: string } | null>(null);
   const [profile, setProfile] = useState<UserProfile | null>(null);
   const [productCategories, setProductCategories] = useState<string[]>(["all"]);
   const [activeTab, setActiveTab] = useState("products");
+  const [wishlist, setWishlist] = useState<InvestmentOpportunity[]>(() => {
+    // Load wishlist from localStorage
+    const savedWishlist = localStorage.getItem('wishlist');
+    return savedWishlist ? JSON.parse(savedWishlist) : [];
+  });
+  const [comparisonList, setComparisonList] = useState<InvestmentOpportunity[]>([]);
+  const [showWishlist, setShowWishlist] = useState(false);
+  const [showComparison, setShowComparison] = useState(false);
+  const [productPage, setProductPage] = useState(1);
+  const [opportunityPage, setOpportunityPage] = useState(1);
+  const [productHasMore, setProductHasMore] = useState(true);
+  const [opportunityHasMore, setOpportunityHasMore] = useState(true);
+  const itemsPerPage = 6;
+  const observer = useRef<IntersectionObserver | null>(null);
   const navigate = useNavigate();
+  const location = useLocation();
 
   // Investment opportunities data
   const investmentOpportunities: InvestmentOpportunity[] = [
@@ -250,6 +288,16 @@ const Shop = () => {
   const [opportunityType, setOpportunityType] = useState("all");
   const [opportunityCrop, setOpportunityCrop] = useState("all");
 
+  // Save cart to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
+
+  // Save wishlist to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem('wishlist', JSON.stringify(wishlist));
+  }, [wishlist]);
+
   useEffect(() => {
     fetchProducts();
     checkUserSession();
@@ -262,6 +310,15 @@ const Shop = () => {
   useEffect(() => {
     filterOpportunities();
   }, [opportunitySearchTerm, opportunityRegion, opportunityType, opportunityCrop]);
+
+  // Set active tab based on URL hash
+  useEffect(() => {
+    if (location.hash === "#investments") {
+      setActiveTab("investments");
+    } else {
+      setActiveTab("products");
+    }
+  }, [location]);
 
   const checkUserSession = async () => {
     const { data: { session } } = await supabase.auth.getSession();
@@ -288,6 +345,11 @@ const Shop = () => {
     }
   };
 
+  /**
+   * Fetches products from the Supabase database and assigns random images
+   * to products that don't have images in the database
+   * @returns {Promise<void>}
+   */
   const fetchProducts = async () => {
     setLoading(true);
     const { data, error } = await supabase
@@ -299,15 +361,29 @@ const Shop = () => {
       toast.error("Failed to load products");
       console.error(error);
     } else {
-      setProducts(data || []);
+      // Assign random images to products that don't have images
+      const productsWithImages = (data || []).map(product => {
+        if (!product.image) {
+          // Assign a random image from available images
+          const randomImage = availableImages[Math.floor(Math.random() * availableImages.length)];
+          return { ...product, image: randomImage };
+        }
+        return product;
+      });
+      
+      setProducts(productsWithImages);
       
       // Extract unique categories
-      const uniqueCategories = Array.from(new Set((data || []).map(p => p.category).filter(Boolean))) as string[];
+      const uniqueCategories = Array.from(new Set(productsWithImages.map(p => p.category).filter(Boolean))) as string[];
       setProductCategories(["all", ...uniqueCategories]);
     }
     setLoading(false);
   };
 
+  /**
+   * Filters products based on search term and category
+   * @returns {void}
+   */
   const filterProducts = () => {
     let result = products;
     
@@ -325,8 +401,14 @@ const Shop = () => {
     }
     
     setFilteredProducts(result);
+    // Reset to first page when filters change
+    setProductPage(1);
   };
 
+  /**
+   * Filters investment opportunities based on search term, region, type, and crop
+   * @returns {void}
+   */
   const filterOpportunities = () => {
     let result = investmentOpportunities;
     
@@ -354,8 +436,15 @@ const Shop = () => {
     }
     
     setFilteredOpportunities(result);
+    // Reset to first page when filters change
+    setOpportunityPage(1);
   };
 
+  /**
+   * Adds a product to the cart or increments its quantity if already in cart
+   * @param {Product} product - The product to add to cart
+   * @returns {void}
+   */
   const handleAddToCart = (product: Product) => {
     setCart(prevCart => {
       const existingItem = prevCart.find(item => item.id === product.id);
@@ -373,40 +462,131 @@ const Shop = () => {
     toast.success(`${product.name} added to cart!`);
   };
 
-  const handleAddOpportunityToCart = (opportunity: InvestmentOpportunity) => {
-    // Convert opportunity to product format for cart
-    const cartItem: Product = {
-      id: opportunity.id,
-      name: opportunity.title,
-      description: opportunity.description,
-      price: opportunity.price,
-      image: opportunity.image || "",
-      in_stock: opportunity.slotsAvailable > 0,
-      category: "Investment",
-      created_at: new Date().toISOString(),
-    };
-    
-    setCart(prevCart => {
-      const existingItem = prevCart.find(item => item.id === cartItem.id);
-      if (existingItem) {
-        return prevCart.map(item => 
-          item.id === cartItem.id 
-            ? { ...item, quantity: item.quantity + 1 } 
-            : item
-        );
-      } else {
-        return [...prevCart, { ...cartItem, quantity: 1 }];
-      }
-    });
-    
-    toast.success(`${opportunity.title} added to cart!`);
+  /**
+   * Updates the quantity of a cart item
+   * @param {string} productId - The ID of the product to update
+   * @param {number} quantity - The new quantity
+   * @returns {void}
+   */
+  const handleUpdateQuantity = (productId: string, quantity: number) => {
+    setCart(prevCart => 
+      prevCart.map(item => 
+        item.id === productId 
+          ? { ...item, quantity } 
+          : item
+      )
+    );
   };
 
+  /**
+   * Redirects to the opportunities page with the opportunity ID in the hash
+   * @param {InvestmentOpportunity} opportunity - The opportunity to view
+   * @returns {void}
+   */
+  const handleViewOpportunity = (opportunity: InvestmentOpportunity) => {
+    // Redirect to opportunities page with the opportunity ID
+    navigate(`/opportunities#${opportunity.id}`);
+  };
+
+  /**
+   * Removes an item from the cart
+   * @param {string} productId - The ID of the product to remove
+   * @returns {void}
+   */
   const handleRemoveFromCart = (productId: string) => {
     setCart(prevCart => prevCart.filter(item => item.id !== productId));
     toast.info("Item removed from cart");
   };
 
+  /**
+   * Handles the checkout process
+   * @returns {void}
+   */
+  const handleProceedToCheckout = () => {
+    // Implement checkout functionality
+    toast.success("Proceeding to checkout!");
+    // For now, we'll just clear the cart as a demo
+    setCart([]);
+  };
+
+  /**
+   * Adds an opportunity to the wishlist
+   * @param {InvestmentOpportunity} opportunity - The opportunity to add to wishlist
+   * @returns {void}
+   */
+  const handleAddToWishlist = (opportunity: InvestmentOpportunity) => {
+    setWishlist(prev => {
+      // Check if already in wishlist
+      if (prev.some(item => item.id === opportunity.id)) {
+        toast.info("Already in wishlist");
+        return prev;
+      }
+      toast.success(`${opportunity.title} added to wishlist!`);
+      return [...prev, opportunity];
+    });
+  };
+
+  /**
+   * Removes an opportunity from the wishlist
+   * @param {string} id - The ID of the opportunity to remove
+   * @returns {void}
+   */
+  const handleRemoveFromWishlist = (id: string) => {
+    setWishlist(prev => prev.filter(item => item.id !== id));
+    toast.info("Removed from wishlist");
+  };
+
+  /**
+   * Toggles the wishlist modal visibility
+   * @returns {void}
+   */
+  const handleToggleWishlist = () => {
+    setShowWishlist(!showWishlist);
+  };
+
+  /**
+   * Adds an opportunity to the comparison list
+   * @param {InvestmentOpportunity} opportunity - The opportunity to add to comparison
+   * @returns {void}
+   */
+  const handleAddToComparison = (opportunity: InvestmentOpportunity) => {
+    setComparisonList(prev => {
+      // Check if already in comparison
+      if (prev.some(item => item.id === opportunity.id)) {
+        toast.info("Already in comparison");
+        return prev;
+      }
+      // Limit to 4 items in comparison
+      if (prev.length >= 4) {
+        toast.error("Maximum 4 items allowed in comparison");
+        return prev;
+      }
+      toast.success(`${opportunity.title} added to comparison!`);
+      return [...prev, opportunity];
+    });
+  };
+
+  /**
+   * Removes an opportunity from the comparison list
+   * @param {string} id - The ID of the opportunity to remove
+   * @returns {void}
+   */
+  const handleRemoveFromComparison = (id: string) => {
+    setComparisonList(prev => prev.filter(item => item.id !== id));
+  };
+
+  /**
+   * Toggles the comparison modal visibility
+   * @returns {void}
+   */
+  const handleToggleComparison = () => {
+    setShowComparison(!showComparison);
+  };
+
+  /**
+   * Signs out the current user
+   * @returns {Promise<void>}
+   */
   const handleSignOut = async () => {
     const { error } = await supabase.auth.signOut();
     if (error) {
@@ -418,6 +598,50 @@ const Shop = () => {
       navigate("/auth");
     }
   };
+
+  const lastProductElementRef = useCallback((node: HTMLDivElement) => {
+    if (loading) return;
+    if (observer.current) observer.current.disconnect();
+    observer.current = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting && productHasMore) {
+        setProductPage(prevPage => prevPage + 1);
+      }
+    });
+    if (node) observer.current.observe(node);
+  }, [loading, productHasMore]);
+
+  const lastOpportunityElementRef = useCallback((node: HTMLDivElement) => {
+    if (loading) return;
+    if (observer.current) observer.current.disconnect();
+    observer.current = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting && opportunityHasMore) {
+        setOpportunityPage(prevPage => prevPage + 1);
+      }
+    });
+    if (node) observer.current.observe(node);
+  }, [loading, opportunityHasMore]);
+
+  // Update filtered products when page changes
+  useEffect(() => {
+    const startIndex = (productPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const newProducts = filteredProducts.slice(startIndex, endIndex);
+    
+    if (newProducts.length < itemsPerPage) {
+      setProductHasMore(false);
+    }
+  }, [productPage, filteredProducts]);
+
+  // Update filtered opportunities when page changes
+  useEffect(() => {
+    const startIndex = (opportunityPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const newOpportunities = filteredOpportunities.slice(startIndex, endIndex);
+    
+    if (newOpportunities.length < itemsPerPage) {
+      setOpportunityHasMore(false);
+    }
+  }, [opportunityPage, filteredOpportunities]);
 
   const cartTotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
   const cartCount = cart.reduce((count, item) => count + item.quantity, 0);
@@ -444,11 +668,11 @@ const Shop = () => {
             </p>
           </div>
           
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 flex-wrap">
             {user ? (
               <div className="flex items-center gap-2">
-                <div className="flex items-center gap-2 bg-white rounded-full px-4 py-2 shadow-sm">
-                  <User className="h-4 w-4 text-teal-600" />
+                <div className="flex items-center gap-2 bg-white rounded-full px-4 py-2 shadow-sm" role="region" aria-label="User profile">
+                  <User className="h-4 w-4 text-teal-600" aria-hidden="true" />
                   <span className="text-sm font-medium text-teal-900">
                     {profile?.display_name || user.email}
                   </span>
@@ -458,280 +682,279 @@ const Shop = () => {
                   size="sm" 
                   onClick={handleSignOut}
                   className="flex items-center gap-2"
+                  aria-label="Sign out"
                 >
-                  <LogOut className="h-4 w-4" />
+                  <LogOut className="h-4 w-4" aria-hidden="true" />
                   Sign Out
                 </Button>
               </div>
             ) : (
-              <Button onClick={() => navigate("/auth")}>
+              <Button onClick={() => navigate("/auth")} aria-label="Sign in">
                 Sign In
               </Button>
             )}
-            
+          
+          <div className="relative">
+            <Button 
+              variant="outline" 
+              size="sm" 
+              className="flex items-center gap-2"
+              onClick={() => cartCount > 0 ? document.getElementById('cart-section')?.scrollIntoView({ behavior: 'smooth' }) : toast.info("Your cart is empty")}
+              aria-label={`View cart with ${cartCount} items`}
+            >
+              <ShoppingCart className="h-4 w-4" aria-hidden="true" />
+              Cart ({cartCount})
+            </Button>
+            {cartCount > 0 && (
+              <Badge className="absolute -top-2 -right-2 bg-teal-600" aria-label={`${cartCount} items in cart`}>
+                {cartCount}
+              </Badge>
+            )}
+          </div>
+          
+          <div className="relative">
+            <Button 
+              variant="outline" 
+              size="sm" 
+              className="flex items-center gap-2"
+              onClick={handleToggleWishlist}
+              aria-label={`View wishlist with ${wishlist.length} items`}
+            >
+              <Heart className="h-4 w-4" aria-hidden="true" />
+              Wishlist ({wishlist.length})
+            </Button>
+            {wishlist.length > 0 && (
+              <Badge className="absolute -top-2 -right-2 bg-teal-600" aria-label={`${wishlist.length} items in wishlist`}>
+                {wishlist.length}
+              </Badge>
+            )}
+          </div>
+          
+          {comparisonList.length > 0 && (
             <div className="relative">
               <Button 
                 variant="outline" 
                 size="sm" 
                 className="flex items-center gap-2"
-                onClick={() => toast.info("Cart functionality will be fully implemented in the next phase")}
+                onClick={handleToggleComparison}
+                aria-label={`View comparison with ${comparisonList.length} items`}
               >
-                <ShoppingCart className="h-4 w-4" />
-                Cart ({cartCount})
+                <GitCompare className="h-4 w-4" aria-hidden="true" />
+                Compare ({comparisonList.length})
               </Button>
-              {cartCount > 0 && (
-                <Badge className="absolute -top-2 -right-2 bg-teal-600">
-                  {cartCount}
-                </Badge>
-              )}
+              <Badge className="absolute -top-2 -right-2 bg-teal-600" aria-label={`${comparisonList.length} items in comparison`}>
+                {comparisonList.length}
+              </Badge>
             </div>
-          </div>
+          )}
         </div>
+      </div>
 
-        {/* Tabs for Products and Investment Opportunities */}
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid w-full grid-cols-2 mb-8">
-            <TabsTrigger value="products">Products</TabsTrigger>
-            <TabsTrigger value="investments">Investment Opportunities</TabsTrigger>
-          </TabsList>
+      {/* Tabs for Products and Investment Opportunities */}
+      <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+        <TabsList className="grid w-full grid-cols-2 mb-8">
+          <TabsTrigger value="products" aria-label="Products tab">Products</TabsTrigger>
+          <TabsTrigger value="investments" aria-label="Investment Opportunities tab">Investment Opportunities</TabsTrigger>
+        </TabsList>
 
-          <TabsContent value="products">
-            {/* Product Search and filter controls */}
-            <div className="flex flex-col md:flex-row gap-4 mb-8">
-              <div className="relative flex-1">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                <Input
-                  placeholder="Search products..."
-                  className="pl-10"
-                  value={productSearchTerm}
-                  onChange={(e) => setProductSearchTerm(e.target.value)}
-                />
-              </div>
-              
-              <div className="w-full md:w-48">
-                <Label className="text-sm font-medium mb-2 block">Category</Label>
-                <Select value={productCategory} onValueChange={setProductCategory}>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select category" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {productCategories.map(category => (
-                      <SelectItem key={category} value={category}>
-                        {category === "all" ? "All Categories" : category}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
+        <TabsContent value="products">
+          {/* Product Search and filter controls */}
+          <div className="flex flex-col md:flex-row gap-4 mb-8">
+            <div className="relative flex-1">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" aria-hidden="true" />
+              <Input
+                placeholder="Search products..."
+                className="pl-10"
+                value={productSearchTerm}
+                onChange={(e) => setProductSearchTerm(e.target.value)}
+                aria-label="Search products"
+              />
             </div>
-
-            {/* Products grid */}
-            {filteredProducts.length === 0 ? (
-              <div className="text-center py-20">
-                <p className="text-xl text-muted-foreground">No products found matching your criteria.</p>
-                <Button 
-                  variant="link" 
-                  onClick={() => {
-                    setProductSearchTerm("");
-                    setProductCategory("all");
-                  }}
-                  className="mt-2"
-                >
-                  Clear filters
-                </Button>
-              </div>
-            ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {filteredProducts.map((product) => (
-                  <Card key={product.id} className="overflow-hidden hover:shadow-xl transition-shadow">
-                    <div className="aspect-video w-full overflow-hidden bg-muted">
-                      {product.image ? (
-                        <img
-                          src={product.image}
-                          alt={product.name}
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                        />
-                      ) : (
-                        <div className="w-full h-full flex items-center justify-center bg-teal-100">
-                          <ShoppingCart className="w-16 h-16 text-teal-400" />
-                        </div>
-                      )}
-                    </div>
-                    <CardHeader>
-                      <div className="flex items-start justify-between">
-                        <CardTitle className="text-xl">{product.name}</CardTitle>
-                        {product.category && (
-                          <Badge variant="secondary">{product.category}</Badge>
-                        )}
-                      </div>
-                      <CardDescription>{product.description}</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="flex items-center justify-between">
-                        <span className="text-2xl font-bold text-teal-600">
-                          ₦{product.price.toLocaleString()}
-                        </span>
-                        {product.in_stock ? (
-                          <Badge className="bg-green-500">In Stock</Badge>
-                        ) : (
-                          <Badge variant="destructive">Out of Stock</Badge>
-                        )}
-                      </div>
-                    </CardContent>
-                    <CardFooter>
-                      <Button
-                        className="w-full"
-                        onClick={() => handleAddToCart(product)}
-                        disabled={!product.in_stock}
-                      >
-                        <ShoppingCart className="mr-2 h-4 w-4" />
-                        {product.in_stock ? "Add to Cart" : "Out of Stock"}
-                      </Button>
-                    </CardFooter>
-                  </Card>
-                ))}
-              </div>
-            )}
-          </TabsContent>
-
-          <TabsContent value="investments">
-            {/* Investment Opportunities Search and filter controls */}
-            <div className="flex flex-col sm:flex-row gap-4 mb-8">
-              <div className="relative flex-1">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                <Input
-                  placeholder="Search investment opportunities..."
-                  className="pl-10"
-                  value={opportunitySearchTerm}
-                  onChange={(e) => setOpportunitySearchTerm(e.target.value)}
-                />
-              </div>
-              
-              <Select value={opportunityRegion} onValueChange={setOpportunityRegion}>
-                <SelectTrigger className="w-full sm:w-48">
-                  <SelectValue placeholder="Select Region" />
+            
+            <div className="w-full md:w-48">
+              <Label className="text-sm font-medium mb-2 block">Category</Label>
+              <Select value={productCategory} onValueChange={setProductCategory}>
+                <SelectTrigger aria-label="Select product category">
+                  <SelectValue placeholder="Select category" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="all">All Regions</SelectItem>
-                  <SelectItem value="Kaduna">Kaduna</SelectItem>
-                  <SelectItem value="Ogun">Ogun</SelectItem>
-                  <SelectItem value="Kano">Kano</SelectItem>
-                  <SelectItem value="Plateau">Plateau</SelectItem>
-                  <SelectItem value="Lagos">Lagos</SelectItem>
-                  <SelectItem value="Rivers">Rivers</SelectItem>
-                  <SelectItem value="Benue">Benue</SelectItem>
-                  <SelectItem value="Enugu">Enugu</SelectItem>
-                  <SelectItem value="Kebbi">Kebbi</SelectItem>
-                  <SelectItem value="Borno">Borno</SelectItem>
-                  <SelectItem value="Kogi">Kogi</SelectItem>
-                  <SelectItem value="Multi-State">Multi-State</SelectItem>
+                  {productCategories.map(category => (
+                    <SelectItem key={category} value={category}>
+                      {category === "all" ? "All Categories" : category}
+                    </SelectItem>
+                  ))}
                 </SelectContent>
               </Select>
-
-              <Select value={opportunityType} onValueChange={setOpportunityType}>
-                <SelectTrigger className="w-full sm:w-48">
-                  <SelectValue placeholder="Investment Type" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">All Types</SelectItem>
-                  <SelectItem value="Crop Yield">Crop Yield</SelectItem>
-                  <SelectItem value="Sustainable">Sustainable</SelectItem>
-                  <SelectItem value="Equipment">Equipment</SelectItem>
-                  <SelectItem value="Livestock">Livestock</SelectItem>
-                </SelectContent>
-              </Select>
-
-              <Select value={opportunityCrop} onValueChange={setOpportunityCrop}>
-                <SelectTrigger className="w-full sm:w-48">
-                  <SelectValue placeholder="Crop Type" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">All Crops</SelectItem>
-                  <SelectItem value="Rice">Rice</SelectItem>
-                  <SelectItem value="Cassava">Cassava</SelectItem>
-                  <SelectItem value="Wheat">Wheat</SelectItem>
-                  <SelectItem value="Maize">Maize</SelectItem>
-                  <SelectItem value="Beans">Beans</SelectItem>
-                  <SelectItem value="Palm Oil">Palm Oil</SelectItem>
-                  <SelectItem value="Yam">Yam</SelectItem>
-                  <SelectItem value="Egusi">Egusi (Melon)</SelectItem>
-                  <SelectItem value="Sorghum">Sorghum</SelectItem>
-                  <SelectItem value="Millet">Millet</SelectItem>
-                  <SelectItem value="Soybeans">Soybeans</SelectItem>
-                  <SelectItem value="Various">Various</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-
-            {/* Investment Opportunities grid */}
-            {filteredOpportunities.length === 0 ? (
-              <div className="text-center py-20">
-                <p className="text-xl text-muted-foreground">No investment opportunities found matching your criteria.</p>
-                <Button 
-                  variant="link" 
-                  onClick={() => {
-                    setOpportunitySearchTerm("");
-                    setOpportunityRegion("all");
-                    setOpportunityType("all");
-                    setOpportunityCrop("all");
-                  }}
-                  className="mt-2"
-                >
-                  Clear filters
-                </Button>
-              </div>
-            ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {filteredOpportunities.map((opportunity) => (
-                  <InvestmentOpportunityCard 
-                    key={opportunity.id} 
-                    opportunity={opportunity} 
-                    onAddToCart={handleAddOpportunityToCart}
-                  />
-                ))}
-              </div>
-            )}
-          </TabsContent>
-        </Tabs>
-
-        {/* Cart summary (if items in cart) */}
-        {cart.length > 0 && (
-          <div className="mt-12 p-6 bg-white rounded-lg shadow-md">
-            <h2 className="text-2xl font-bold mb-4">Your Cart</h2>
-            <div className="space-y-4">
-              {cart.map(item => (
-                <div key={item.id} className="flex justify-between items-center border-b pb-4">
-                  <div>
-                    <h3 className="font-medium">{item.name}</h3>
-                    <p className="text-sm text-muted-foreground">Qty: {item.quantity}</p>
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <span className="font-medium">₦{(item.price * item.quantity).toLocaleString()}</span>
-                    <Button 
-                      variant="outline" 
-                      size="sm" 
-                      onClick={() => handleRemoveFromCart(item.id)}
-                    >
-                      Remove
-                    </Button>
-                  </div>
-                </div>
-              ))}
-              <div className="flex justify-between items-center pt-4 border-t">
-                <span className="text-xl font-bold">Total: ₦{cartTotal.toLocaleString()}</span>
-                <Button 
-                  onClick={() => toast.info("Checkout functionality will be implemented in the next phase")}
-                  className="bg-teal-600 hover:bg-teal-700"
-                >
-                  Proceed to Checkout
-                </Button>
-              </div>
             </div>
           </div>
-        )}
-      </div>
+
+          {/* Products grid */}
+          {filteredProducts.length === 0 ? (
+            <div className="text-center py-20">
+              <p className="text-xl text-muted-foreground">No products found matching your criteria.</p>
+              <Button 
+                variant="link" 
+                onClick={() => {
+                  setProductSearchTerm("");
+                  setProductCategory("all");
+                }}
+                className="mt-2"
+              >
+                Clear filters
+              </Button>
+            </div>
+          ) : (
+            <ProductList 
+              products={filteredProducts} 
+              onAddToCart={handleAddToCart} 
+              currentPage={productPage}
+              itemsPerPage={itemsPerPage}
+              onPageChange={setProductPage}
+            />
+          )}
+        </TabsContent>
+
+        <TabsContent value="investments">
+          {/* Investment Opportunities Search and filter controls */}
+          <div className="flex flex-col sm:flex-row gap-4 mb-8">
+            <div className="relative flex-1">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" aria-hidden="true" />
+              <Input
+                placeholder="Search investment opportunities..."
+                className="pl-10"
+                value={opportunitySearchTerm}
+                onChange={(e) => setOpportunitySearchTerm(e.target.value)}
+                aria-label="Search investment opportunities"
+              />
+            </div>
+            
+            <Select value={opportunityRegion} onValueChange={setOpportunityRegion}>
+              <SelectTrigger className="w-full sm:w-48" aria-label="Select region">
+                <SelectValue placeholder="Select Region" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">All Regions</SelectItem>
+                <SelectItem value="Kaduna">Kaduna</SelectItem>
+                <SelectItem value="Ogun">Ogun</SelectItem>
+                <SelectItem value="Kano">Kano</SelectItem>
+                <SelectItem value="Plateau">Plateau</SelectItem>
+                <SelectItem value="Lagos">Lagos</SelectItem>
+                <SelectItem value="Rivers">Rivers</SelectItem>
+                <SelectItem value="Benue">Benue</SelectItem>
+                <SelectItem value="Enugu">Enugu</SelectItem>
+                <SelectItem value="Kebbi">Kebbi</SelectItem>
+                <SelectItem value="Borno">Borno</SelectItem>
+                <SelectItem value="Kogi">Kogi</SelectItem>
+                <SelectItem value="Multi-State">Multi-State</SelectItem>
+              </SelectContent>
+            </Select>
+
+            <Select value={opportunityType} onValueChange={setOpportunityType}>
+              <SelectTrigger className="w-full sm:w-48" aria-label="Select investment type">
+                <SelectValue placeholder="Investment Type" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">All Types</SelectItem>
+                <SelectItem value="Crop Yield">Crop Yield</SelectItem>
+                <SelectItem value="Sustainable">Sustainable</SelectItem>
+                <SelectItem value="Equipment">Equipment</SelectItem>
+                <SelectItem value="Livestock">Livestock</SelectItem>
+              </SelectContent>
+            </Select>
+
+            <Select value={opportunityCrop} onValueChange={setOpportunityCrop}>
+              <SelectTrigger className="w-full sm:w-48" aria-label="Select crop type">
+                <SelectValue placeholder="Crop Type" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">All Crops</SelectItem>
+                <SelectItem value="Rice">Rice</SelectItem>
+                <SelectItem value="Cassava">Cassava</SelectItem>
+                <SelectItem value="Wheat">Wheat</SelectItem>
+                <SelectItem value="Maize">Maize</SelectItem>
+                <SelectItem value="Beans">Beans</SelectItem>
+                <SelectItem value="Palm Oil">Palm Oil</SelectItem>
+                <SelectItem value="Yam">Yam</SelectItem>
+                <SelectItem value="Egusi">Egusi (Melon)</SelectItem>
+                <SelectItem value="Sorghum">Sorghum</SelectItem>
+                <SelectItem value="Millet">Millet</SelectItem>
+                <SelectItem value="Soybeans">Soybeans</SelectItem>
+                <SelectItem value="Various">Various</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+
+          {/* Investment Opportunities grid */}
+          {filteredOpportunities.length === 0 ? (
+            <div className="text-center py-20">
+              <p className="text-xl text-muted-foreground">No investment opportunities found matching your criteria.</p>
+              <Button 
+                variant="link" 
+                onClick={() => {
+                  setOpportunitySearchTerm("");
+                  setOpportunityRegion("all");
+                  setOpportunityType("all");
+                  setOpportunityCrop("all");
+                }}
+                className="mt-2"
+              >
+                Clear filters
+              </Button>
+            </div>
+          ) : (
+            <OpportunityList 
+              opportunities={filteredOpportunities} 
+              onViewOpportunity={handleViewOpportunity}
+              onAddToWishlist={handleAddToWishlist}
+              onAddToComparison={handleAddToComparison}
+              currentPage={opportunityPage}
+              itemsPerPage={itemsPerPage}
+              onPageChange={setOpportunityPage}
+            />
+          )}
+        </TabsContent>
+      </Tabs>
+
+      {/* Cart summary (if items in cart) */}
+      {cart.length > 0 && (
+        <div id="cart-section" className="mt-12 p-6 bg-white rounded-lg shadow-md">
+          <div className="flex justify-between items-center mb-4">
+            <h2 className="text-2xl font-bold">Your Cart</h2>
+            <Button variant="ghost" size="sm" onClick={() => setCart([])} aria-label="Clear cart">
+              <X className="h-4 w-4" />
+            </Button>
+          </div>
+          <CartSummary 
+            cart={cart}
+            onRemoveFromCart={handleRemoveFromCart}
+            onUpdateQuantity={handleUpdateQuantity}
+            onProceedToCheckout={handleProceedToCheckout}
+            cartTotal={cartTotal}
+          />
+        </div>
+      )}
     </div>
-  );
+    
+    {/* Wishlist Modal */}
+    {showWishlist && (
+      <Wishlist 
+        opportunities={wishlist}
+        onRemoveFromWishlist={handleRemoveFromWishlist}
+        onViewOpportunity={handleViewOpportunity}
+        onClose={handleToggleWishlist}
+      />
+    )}
+    
+    {/* Comparison Modal */}
+    {showComparison && (
+      <OpportunityComparison 
+        opportunities={comparisonList}
+        onRemoveFromComparison={handleRemoveFromComparison}
+        onClose={handleToggleComparison}
+      />
+    )}
+  </div>
+);
 };
 
 export default Shop;

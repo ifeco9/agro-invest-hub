@@ -1,7 +1,7 @@
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { TrendingUp, Clock, MapPin } from "lucide-react";
+import { TrendingUp, Clock, MapPin, Heart, GitCompare } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
@@ -23,11 +23,15 @@ interface InvestmentOpportunity {
 interface InvestmentOpportunityCardProps {
   opportunity: InvestmentOpportunity;
   onAddToCart?: (opportunity: InvestmentOpportunity) => void;
+  onAddToWishlist?: (opportunity: InvestmentOpportunity) => void;
+  onAddToComparison?: (opportunity: InvestmentOpportunity) => void;
 }
 
 const InvestmentOpportunityCard = ({
   opportunity,
   onAddToCart,
+  onAddToWishlist,
+  onAddToComparison,
 }: InvestmentOpportunityCardProps) => {
   const [isAdding, setIsAdding] = useState(false);
 
@@ -43,7 +47,12 @@ const InvestmentOpportunityCard = ({
     <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 animate-scale-in group bg-mint-50 border border-mint-200">
       <div className="relative h-48 overflow-hidden group-hover:scale-105 transition-transform duration-300 ease-in-out">
         {opportunity.image ? (
-          <img src={opportunity.image} alt={opportunity.title} className="w-full h-full object-cover" />
+          <img 
+            src={opportunity.image} 
+            alt={opportunity.title} 
+            className="w-full h-full object-cover" 
+            loading="lazy"
+          />
         ) : (
           <div className="w-full h-full bg-teal-600 flex items-center justify-center">
             <span className="text-white text-lg font-semibold">{opportunity.type}</span>
@@ -106,13 +115,31 @@ const InvestmentOpportunityCard = ({
         </div>
       </CardContent>
 
-      <CardFooter>
+      <CardFooter className="flex flex-col gap-2">
+        <div className="flex gap-2 w-full">
+          <Button 
+            variant="outline"
+            size="sm"
+            className="flex-1"
+            onClick={() => onAddToWishlist && onAddToWishlist(opportunity)}
+          >
+            <Heart className="h-4 w-4" />
+          </Button>
+          <Button 
+            variant="outline"
+            size="sm"
+            className="flex-1"
+            onClick={() => onAddToComparison && onAddToComparison(opportunity)}
+          >
+            <GitCompare className="h-4 w-4" />
+          </Button>
+        </div>
         <Button 
           className={`w-full bg-teal-600 hover:bg-teal-700 text-white ${opportunity.slotsAvailable < 3 ? 'animate-pulse' : ''}`}
           onClick={handleAddToCartClick}
           disabled={isAdding || opportunity.slotsAvailable === 0}
         >
-          {isAdding ? "Adding..." : opportunity.slotsAvailable === 0 ? "Sold Out" : "Add to Cart"}
+          {isAdding ? "Redirecting..." : opportunity.slotsAvailable === 0 ? "Sold Out" : "View Details"}
         </Button>
       </CardFooter>
     </Card>

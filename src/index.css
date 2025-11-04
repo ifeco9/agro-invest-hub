@@ -1,9 +1,9 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&display=swap');
 
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
 All colors MUST be HSL.
@@ -21,12 +21,10 @@ All colors MUST be HSL.
     --popover: 0 0% 100%; /* #FFFFFF - white */
     --popover-foreground: 180 33% 14%; /* #1A3C34 - teal-900 */
     
-    /* Updated primary colors */
     --primary: 170 60% 35%; /* #2A9D8F - teal-600 */
     --primary-foreground: 0 0% 100%; /* #FFFFFF - white */
     --primary-hover: 170 65% 28%; /* #1A7A70 - teal-700 */
     
-    /* Updated secondary colors */
     --secondary: 150 20% 97%; /* #F0F7F4 - mint-50 */
     --secondary-foreground: 170 29% 18%; /* #2D4F47 - teal-800 */
     
@@ -94,7 +92,7 @@ All colors MUST be HSL.
   }
   
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground min-h-screen;
   }
 }
 

@@ -1,0 +1,67 @@
+{
+  "programs": [
+    {
+      "id": "agrotrade",
+      "title": "AgroTrade Cycle",
+      "subtitle": "Empowering Farmers, Supplying Cities",
+      "description": "This is our core trading and distribution service, where we purchase key commodities such as rice, beans, maize, egusi, and palm oil directly from local farmers and trusted cooperatives at fair market prices.\n\nWe then distribute these products to wholesalers and retailers in Abuja and other major cities — efficiently, transparently, and affordably.",
+      "benefits": [
+        "Eliminates middlemen and stabilizes market prices",
+        "Ensures timely delivery to urban markets",
+        "Provides farmers with fair income and investors with reliable returns",
+        "Supports community food programs and local market access"
+      ],
+      "targetClients": "Wholesalers, retailers, food distributors, hotels, and institutions across Nigeria."
+    },
+    {
+      "id": "agrolink",
+      "title": "AgroLink Community Program",
+      "subtitle": "Connecting Farmers, Consumers, and Communities",
+      "description": "The AgroLink Program is our social impact service, designed to ensure that food remains affordable and accessible for every Nigerian household — from the wealthy to the low-income class.\n\nWe collaborate with NGOs, local councils, and food access programs to supply community food packs, grains, and household commodities at discounted rates.",
+      "benefits": [
+        "Promotes food affordability across all income levels",
+        "Supports SDG 2 (Zero Hunger) by ensuring food accessibility",
+        "Builds partnerships with humanitarian organizations and government agencies",
+        "Creates a sustainable food ecosystem that benefits both producers and consumers"
+      ],
+      "targetPartners": "Nonprofits, local government programs, community development organizations, and faith-based initiatives."
+    },
+    {
+      "id": "agrofarm",
+      "title": "AgroFarm Partnership",
+      "subtitle": "Invest in Land. Grow with Purpose.",
+      "description": "Our AgroFarm Partnership program allows individuals and organizations to participate in farming without the stress of daily management.\n\nClients can either lease land to cultivate specific crops or fund managed farms handled by our professional agricultural team.\n\nWe handle everything from land preparation and planting to crop care, harvest, and post-harvest processing — ensuring a seamless and profitable experience for our partners.",
+      "options": [
+        "Land Leasing: Clients lease farmland for specific crops",
+        "Managed Farming: Clients fund farms managed by our team",
+        "Crop Selection: Rice, maize, beans, cassava, palm oil, and more",
+        "Full-Service Management: End-to-end farm operations"
+      ],
+      "examples": "A ₦5 million investment in a rice farm can yield ₦7.5 million after 12 months, while a ₦10 million cassava project can return ₦14 million after 18 months."
+    },
+    {
+      "id": "logistics",
+      "title": "Logistics & Distribution",
+      "subtitle": "Moving Agriculture Forward",
+      "description": "Our logistics arm ensures seamless transportation of agricultural produce from rural farms to urban markets.\n\nWith a modern fleet and strategic partnerships, we maintain cold chain integrity for perishable goods and ensure timely delivery across Nigeria.",
+      "features": [
+        "Cold chain management for perishable goods",
+        "Real-time tracking and delivery updates",
+        "Strategic warehousing in key locations",
+        "Nationwide distribution network"
+      ]
+    },
+    {
+      "id": "partnerships",
+      "title": "Strategic Partnerships",
+      "subtitle": "Building Agricultural Alliances",
+      "description": "We forge partnerships with local cooperatives, international buyers, financial institutions, and government agencies to strengthen the agricultural value chain.\n\nThese collaborations enhance our reach, improve market access, and ensure sustainable growth for all stakeholders.",
+      "focusAreas": [
+        "Cooperative Development: Strengthening farmer networks",
+        "Market Access: Connecting to international buyers",
+        "Financial Inclusion: Linking farmers to credit facilities",
+        "Policy Advocacy: Supporting favorable agricultural policies"
+      ]
+    }
+  ]
+}

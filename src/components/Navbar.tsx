@@ -1,50 +1,47 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, User } from "lucide-react";
+import { Menu, X, ShoppingCart } from "lucide-react";
 import Logo from "@/components/Logo";
-import { supabase } from "@/integrations/supabase/client";
+import { motion } from "framer-motion";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [user, setUser] = useState<any>(null);
+  const [cartCount, setCartCount] = useState(0);
   const location = useLocation();
 
   const navLinks = [
     { name: "Home", path: "/" },
-    { name: "Shop", path: "/shop" },
-    { name: "About Us", path: "/about" },
-    { name: "How It Works", path: "/how-it-works" },
-    { name: "Insights", path: "/insights" },
     { name: "Opportunities", path: "/opportunities" },
+    { name: "Services", path: "/services" },
+    { name: "Shop", path: "/shop" },
+    { name: "About", path: "/about" },
     { name: "Contact", path: "/contact" },
   ];
 
-  useEffect(() => {
-    // Check user session
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setUser(session?.user || null);
-    });
-
-    // Listen for auth changes
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUser(session?.user || null);
-    });
-
-    return () => subscription.unsubscribe();
-  }, []);
-
-  const handleSignOut = async () => {
-    const { error } = await supabase.auth.signOut();
-    if (error) {
-      console.error("Error signing out:", error);
+  // Load cart count from localStorage
+  const updateCartCount = () => {
+    const savedCart = localStorage.getItem('cart');
+    if (savedCart) {
+      try {
+        const cart = JSON.parse(savedCart);
+        const count = cart.reduce((total: number, item: any) => total + (item.quantity || 0), 0);
+        setCartCount(count);
+      } catch (e) {
+        setCartCount(0);
+      }
+    } else {
+      setCartCount(0);
     }
   };
+
+  // Initialize cart count
+  updateCartCount();
 
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-border shadow-sm">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-teal-100 shadow-sm">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -71,50 +68,59 @@ const Navbar = () => {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`text-sm font-medium transition-colors hover:text-primary ${
-                  isActive(link.path) ? "text-primary" : "text-foreground"
+                className={`text-sm font-medium transition-colors hover:text-teal-700 relative ${
+                  isActive(link.path) ? "text-teal-900" : "text-foreground"
                 }`}
               >
+                {isActive(link.path) && (
+                  <motion.span 
+                    className="absolute -bottom-1 left-0 w-full h-0.5 bg-teal-700 rounded-full"
+                    layoutId="navbar-indicator"
+                  />
+                )}
                 {link.name}
               </Link>
             ))}
             
+            {/* Cart icon */}
+            <Link to="/shop" className="relative p-2 text-teal-900 hover:text-teal-700">
+              <ShoppingCart className="h-5 w-5" />
+              {cartCount > 0 && (
+                <span className="absolute -top-1 -right-1 bg-teal-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                  {cartCount}
+                </span>
+              )}
+            </Link>
+            
             {/* Auth buttons for desktop */}
             <div className="flex items-center gap-2">
-              {user ? (
-                <div className="flex items-center gap-2">
-                  <span className="text-sm text-muted-foreground hidden lg:inline">
-                    Hi, {user.email?.split('@')[0]}
-                  </span>
-                  <Button variant="outline" size="sm" onClick={handleSignOut}>
-                    Sign Out
-                  </Button>
-                </div>
-              ) : (
-                <Button size="sm" asChild>
-                  <Link to="/auth">Sign In</Link>
-                </Button>
-              )}
+              <Button size="sm" className="bg-teal-700 hover:bg-teal-800 text-white" asChild>
+                <Link to="/auth">Sign In</Link>
+              </Button>
             </div>
           </div>
 
           {/* Mobile Menu Button */}
           <div className="flex items-center gap-2">
+            {/* Cart icon for mobile */}
+            <Link to="/shop" className="relative p-2 text-teal-900 hover:text-teal-700 md:hidden">
+              <ShoppingCart className="h-5 w-5" />
+              {cartCount > 0 && (
+                <span className="absolute -top-1 -right-1 bg-teal-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                  {cartCount}
+                </span>
+              )}
+            </Link>
+            
             {/* Auth buttons for mobile */}
             <div className="md:hidden">
-              {user ? (
-                <Button variant="outline" size="sm" onClick={handleSignOut}>
-                  Sign Out
-                </Button>
-              ) : (
-                <Button variant="outline" size="sm" asChild>
-                  <Link to="/auth">Sign In</Link>
-                </Button>
-              )}
+              <Button variant="outline" size="sm" className="border-teal-100 text-teal-900 hover:bg-teal-50" asChild>
+                <Link to="/auth">Sign In</Link>
+              </Button>
             </div>
             
             <button
-              className="md:hidden p-2"
+              className="md:hidden p-2 text-teal-900"
               onClick={() => setIsOpen(!isOpen)}
               aria-label="Toggle menu"
             >
@@ -125,27 +131,36 @@ const Navbar = () => {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden py-4 border-t border-border animate-fade-in">
+          <motion.div 
+            className="md:hidden py-4 border-t border-teal-100"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+          >
             <div className="flex flex-col gap-4">
               {navLinks.map((link) => (
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`text-sm font-medium transition-colors hover:text-primary ${
-                    isActive(link.path) ? "text-primary" : "text-foreground"
+                  className={`text-sm font-medium transition-colors hover:text-teal-700 relative py-2 ${
+                    isActive(link.path) ? "text-teal-900" : "text-foreground"
                   }`}
                   onClick={() => setIsOpen(false)}
                 >
+                  {isActive(link.path) && (
+                    <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-teal-700 rounded-full"></span>
+                  )}
                   {link.name}
                 </Link>
               ))}
-              <Button size="sm" className="w-full" asChild>
+              <Button size="sm" className="w-full bg-teal-700 hover:bg-teal-800 text-white" asChild>
                 <Link to="/contact" onClick={() => setIsOpen(false)}>
                   Reserve Now
                 </Link>
               </Button>
             </div>
-          </div>
+          </motion.div>
         )}
       </div>
     </nav>

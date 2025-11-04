@@ -11,78 +11,81 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Updated background colors */
-    --background: 0 0% 100%; /* #FFFFFF - white */
-    --foreground: 180 33% 14%; /* #1A3C34 - teal-900 */
+    /* Enhanced mint/teal color scheme */
+    --background: 160 30% 96%; /* Soft mint background */
+    --foreground: 170 40% 15%; /* Deep teal text */
     
-    --card: 150 20% 97%; /* #F0F7F4 - mint-50 */
-    --card-foreground: 170 29% 18%; /* #2D4F47 - teal-800 */
+    --card: 155 35% 98%; /* Light mint cards */
+    --card-foreground: 170 35% 20%; /* Teal card text */
     
-    --popover: 0 0% 100%; /* #FFFFFF - white */
-    --popover-foreground: 180 33% 14%; /* #1A3C34 - teal-900 */
+    --popover: 155 35% 98%; /* Light mint */
+    --popover-foreground: 170 40% 15%; /* Deep teal */
     
-    --primary: 170 60% 35%; /* #2A9D8F - teal-600 */
-    --primary-foreground: 0 0% 100%; /* #FFFFFF - white */
-    --primary-hover: 170 65% 28%; /* #1A7A70 - teal-700 */
+    --primary: 170 55% 40%; /* Vibrant teal primary */
+    --primary-foreground: 0 0% 100%; /* White text */
+    --primary-hover: 170 60% 35%; /* Deeper teal hover */
     
-    --secondary: 150 20% 97%; /* #F0F7F4 - mint-50 */
-    --secondary-foreground: 170 29% 18%; /* #2D4F47 - teal-800 */
+    --secondary: 150 40% 92%; /* Mint secondary */
+    --secondary-foreground: 170 35% 20%; /* Teal text */
     
-    --muted: 155 15% 90%; /* #E6F0ED - mint-100 */
-    --muted-foreground: 0 0% 45%;
+    --muted: 155 25% 88%; /* Muted mint */
+    --muted-foreground: 170 20% 40%; /* Muted teal text */
     
-    --accent: 170 60% 35%; /* #2A9D8F - teal-600 */
-    --accent-foreground: 0 0% 100%; /* #FFFFFF - white */
+    --accent: 165 50% 45%; /* Bright teal accent */
+    --accent-foreground: 0 0% 100%; /* White text */
     
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
     
-    --border: 155 20% 85%; /* #B8D9D1 - mint-200 */
-    --input: 155 20% 85%; /* #B8D9D1 - mint-200 */
-    --ring: 170 60% 35%; /* #2A9D8F - teal-600 */
+    --border: 155 30% 85%; /* Mint border */
+    --input: 155 30% 90%; /* Light mint input */
+    --ring: 170 55% 40%; /* Teal focus ring */
     
     --radius: 0.5rem;
     
-    --gradient-primary: linear-gradient(135deg, hsl(170 60% 35%), hsl(150 20% 90%));
-    --gradient-hero: linear-gradient(135deg, hsl(170 60% 35% / 0.95), hsl(150 20% 85% / 0.95));
+    --gradient-primary: linear-gradient(135deg, hsl(170 55% 40%), hsl(150 45% 70%));
+    --gradient-hero: linear-gradient(135deg, hsl(170 60% 35% / 0.92), hsl(155 50% 85% / 0.88));
+    --gradient-mint: linear-gradient(180deg, hsl(160 35% 95%), hsl(170 30% 90%));
+    --gradient-teal-glow: radial-gradient(circle at 50% 50%, hsl(170 55% 40% / 0.15), transparent 70%);
     
-    --shadow-sm: 0 1px 2px 0 hsl(0 0% 0% / 0.05);
-    --shadow-md: 0 4px 6px -1px hsl(0 0% 0% / 0.1);
-    --shadow-lg: 0 10px 15px -3px hsl(0 0% 0% / 0.1);
-    --shadow-xl: 0 20px 25px -5px hsl(0 0% 0% / 0.1);
+    --shadow-sm: 0 1px 2px 0 hsl(170 30% 30% / 0.08);
+    --shadow-md: 0 4px 6px -1px hsl(170 30% 30% / 0.12);
+    --shadow-lg: 0 10px 15px -3px hsl(170 30% 30% / 0.15);
+    --shadow-xl: 0 20px 25px -5px hsl(170 30% 30% / 0.18);
+    --shadow-teal: 0 10px 30px -10px hsl(170 55% 40% / 0.3);
     
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   .dark {
-    --background: 180 33% 8%; /* Dark version of #1A3C34 */
-    --foreground: 0 0% 98%;
+    --background: 170 35% 10%; /* Dark teal background */
+    --foreground: 155 30% 95%; /* Light mint text */
     
-    --card: 150 20% 15%; /* Dark version of #F0F7F4 */
-    --card-foreground: 0 0% 98%;
+    --card: 170 30% 15%; /* Dark teal cards */
+    --card-foreground: 155 30% 95%; /* Light mint text */
     
-    --popover: 150 20% 15%; /* Dark version of #F0F7F4 */
-    --popover-foreground: 0 0% 98%;
+    --popover: 170 30% 15%; /* Dark teal */
+    --popover-foreground: 155 30% 95%; /* Light mint */
     
-    --primary: 170 60% 40%; /* Lighter version of #2A9D8F */
-    --primary-foreground: 0 0% 0%;
-    --primary-hover: 170 65% 32%; /* #1A7A70 - teal-700 */
+    --primary: 170 50% 50%; /* Bright teal primary */
+    --primary-foreground: 170 40% 10%; /* Dark teal text */
+    --primary-hover: 170 55% 45%; /* Brighter teal hover */
     
-    --secondary: 150 20% 15%; /* Dark version of #F0F7F4 */
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 170 25% 20%; /* Dark teal secondary */
+    --secondary-foreground: 155 30% 95%; /* Light mint text */
     
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 65%;
+    --muted: 170 20% 25%; /* Muted dark teal */
+    --muted-foreground: 155 20% 70%; /* Muted mint text */
     
-    --accent: 170 60% 40%; /* Lighter version of #2A9D8F */
-    --accent-foreground: 0 0% 0%;
+    --accent: 165 45% 55%; /* Bright teal accent */
+    --accent-foreground: 170 40% 10%; /* Dark teal text */
     
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
     
-    --border: 0 0% 20%;
-    --input: 0 0% 20%;
-    --ring: 170 60% 40%;
+    --border: 170 25% 25%; /* Dark teal border */
+    --input: 170 25% 25%; /* Dark teal input */
+    --ring: 170 50% 50%; /* Bright teal ring */
   }
 }
 
@@ -92,7 +95,76 @@ All colors MUST be HSL.
   }
   
   body {
-    @apply bg-background text-foreground min-h-screen;
+    @apply bg-background text-foreground min-h-screen relative overflow-x-hidden;
+    background-image: var(--gradient-mint);
+  }
+  
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: var(--gradient-teal-glow);
+    pointer-events: none;
+    z-index: 0;
+    animation: pulse-glow 8s ease-in-out infinite;
+  }
+  
+  body > * {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+/* Sparkling Dot Effects */
+.sparkle-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.sparkle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: hsl(170 70% 70%);
+  border-radius: 50%;
+  animation: sparkle-twinkle linear infinite;
+  pointer-events: none;
+  box-shadow: 
+    0 0 6px hsl(170 70% 70% / 0.8),
+    0 0 12px hsl(170 70% 70% / 0.4),
+    0 0 18px hsl(155 60% 80% / 0.2);
+}
+
+@keyframes sparkle-twinkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+  }
+  10% {
+    opacity: 1;
+    transform: scale(1) rotate(90deg);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.2) rotate(180deg);
+  }
+  90% {
+    opacity: 1;
+    transform: scale(1) rotate(270deg);
   }
 }
 
@@ -101,11 +173,13 @@ All colors MUST be HSL.
   position: absolute;
   width: 4px;
   height: 4px;
-  background: rgba(255, 255, 255, 0.6);
+  background: hsl(170 60% 60% / 0.7);
   border-radius: 50%;
   animation: float linear infinite;
   pointer-events: none;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  box-shadow: 
+    0 0 8px hsl(170 60% 60% / 0.6),
+    0 0 16px hsl(155 50% 70% / 0.3);
 }
 
 @keyframes float {

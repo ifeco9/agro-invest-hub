@@ -4,6 +4,7 @@ import { TrendingUp, Shield, Leaf } from "lucide-react";
 import heroImage from "@/assets/hero-farm.jpg";
 import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
+import SparkleEffect from "./SparkleEffect";
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -42,8 +43,15 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center pb-32 overflow-hidden">
+      {/* Sparkling Effect */}
+      <SparkleEffect />
+      
       {/* Animated Gradient Background */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-br from-teal-900 via-teal-700 to-emerald-600" />
+      <div className="absolute inset-0 z-0 animate-gradient-shift" 
+           style={{ 
+             background: 'linear-gradient(135deg, hsl(170 60% 35%), hsl(155 50% 50%), hsl(165 55% 45%))',
+             backgroundSize: '200% 200%'
+           }} />
       
       {/* Background Image with Overlay and Parallax */}
       <div className="absolute inset-0 z-0 mb-0 pb-0 overflow-hidden">
@@ -51,14 +59,14 @@ const Hero = () => {
           className="w-full h-full bg-cover bg-center bg-no-repeat transition-transform duration-300"
           style={{ 
             backgroundImage: `url(${heroImage})`,
-            transform: `translateY(${scrollY * 0.3}px) scale(1.1)`, // Reduced parallax effect
+            transform: `translateY(${scrollY * 0.3}px) scale(1.1)`,
             backgroundPosition: "center",
             backgroundSize: "cover",
             width: "100%",
             minWidth: "100%"
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-teal-900/90 via-teal-800/85 to-emerald-700/80 backdrop-blur-[2px]" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-accent/85 to-primary/80 backdrop-blur-[2px]" />
         
         {/* Floating Particles */}
         <div ref={particlesRef} className="absolute inset-0 pointer-events-none" />
@@ -96,26 +104,26 @@ const Hero = () => {
             Yields up to 12% with transparent, low-risk opportunities
           </p>
           <div className={`flex flex-col sm:flex-row gap-4 mb-12 transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <Button size="lg" className="bg-white text-teal-900 hover:bg-emerald-100 shadow-2xl hover:shadow-white/50 transition-all hover:scale-105 font-semibold text-lg px-8 py-6" asChild>
+            <Button size="lg" className="bg-white text-primary hover:bg-secondary shadow-2xl hover:shadow-white/50 transition-all hover:scale-105 font-semibold text-lg px-8 py-6" asChild>
               <Link to="/opportunities">Explore Opportunities</Link>
             </Button>
-            <Button size="lg" variant="outline" className="bg-white/10 backdrop-blur-md border-2 border-white text-white hover:bg-white hover:text-teal-900 shadow-xl transition-all hover:scale-105 font-semibold text-lg px-8 py-6" asChild>
+            <Button size="lg" variant="outline" className="bg-white/10 backdrop-blur-md border-2 border-white text-white hover:bg-white hover:text-primary shadow-xl transition-all hover:scale-105 font-semibold text-lg px-8 py-6" asChild>
               <Link to="/how-it-works">How It Works</Link>
             </Button>
           </div>
 
           {/* Feature Pills */}
           <div className={`flex flex-wrap gap-4 transition-all duration-1000 delay-800 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <div className="flex items-center gap-2 bg-white/15 backdrop-blur-md px-5 py-3 rounded-full border border-white/30 hover:bg-white/25 transition-all hover:scale-105 shadow-lg">
-              <TrendingUp className="h-5 w-5 text-emerald-200" />
+            <div className="flex items-center gap-2 bg-white/15 backdrop-blur-md px-5 py-3 rounded-full border border-white/30 hover:bg-white/25 transition-all hover:scale-105 shadow-lg shadow-primary/20">
+              <TrendingUp className="h-5 w-5 text-white" />
               <span className="text-sm font-semibold text-white">Proven Returns</span>
             </div>
-            <div className="flex items-center gap-2 bg-white/15 backdrop-blur-md px-5 py-3 rounded-full border border-white/30 hover:bg-white/25 transition-all hover:scale-105 shadow-lg">
-              <Shield className="h-5 w-5 text-emerald-200" />
+            <div className="flex items-center gap-2 bg-white/15 backdrop-blur-md px-5 py-3 rounded-full border border-white/30 hover:bg-white/25 transition-all hover:scale-105 shadow-lg shadow-primary/20">
+              <Shield className="h-5 w-5 text-white" />
               <span className="text-sm font-semibold text-white">SEC Regulated</span>
             </div>
-            <div className="flex items-center gap-2 bg-white/15 backdrop-blur-md px-5 py-3 rounded-full border border-white/30 hover:bg-white/25 transition-all hover:scale-105 shadow-lg">
-              <Leaf className="h-5 w-5 text-emerald-200" />
+            <div className="flex items-center gap-2 bg-white/15 backdrop-blur-md px-5 py-3 rounded-full border border-white/30 hover:bg-white/25 transition-all hover:scale-105 shadow-lg shadow-primary/20">
+              <Leaf className="h-5 w-5 text-white" />
               <span className="text-sm font-semibold text-white">Sustainable Impact</span>
             </div>
           </div>

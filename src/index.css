@@ -11,48 +11,49 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Enhanced mint/teal color scheme */
-    --background: 160 30% 96%; /* Soft mint background */
-    --foreground: 170 40% 15%; /* Deep teal text */
+    /* Teal color scheme matching footer */
+    --background: 174 48% 96%; /* teal-50 equivalent */
+    --foreground: 183 29% 15%; /* teal-900 equivalent */
     
-    --card: 155 35% 98%; /* Light mint cards */
-    --card-foreground: 170 35% 20%; /* Teal card text */
+    --card: 174 48% 98%; /* Lighter teal for cards */
+    --card-foreground: 183 29% 15%; /* teal-900 */
     
-    --popover: 155 35% 98%; /* Light mint */
-    --popover-foreground: 170 40% 15%; /* Deep teal */
+    --popover: 174 48% 98%;
+    --popover-foreground: 183 29% 15%;
     
-    --primary: 170 55% 40%; /* Vibrant teal primary */
+    --primary: 183 74% 32%; /* teal-700 */
     --primary-foreground: 0 0% 100%; /* White text */
-    --primary-hover: 170 60% 35%; /* Deeper teal hover */
+    --primary-hover: 183 80% 28%; /* teal-800 */
     
-    --secondary: 150 40% 92%; /* Mint secondary */
-    --secondary-foreground: 170 35% 20%; /* Teal text */
+    --secondary: 174 48% 96%; /* teal-50 */
+    --secondary-foreground: 183 29% 15%; /* teal-900 */
     
-    --muted: 155 25% 88%; /* Muted mint */
-    --muted-foreground: 170 20% 40%; /* Muted teal text */
+    --muted: 180 36% 90%; /* teal-100 */
+    --muted-foreground: 183 21% 38%; /* teal-600 */
     
-    --accent: 165 50% 45%; /* Bright teal accent */
-    --accent-foreground: 0 0% 100%; /* White text */
+    --accent: 183 74% 32%; /* teal-700 accent */
+    --accent-foreground: 0 0% 100%;
     
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
     
-    --border: 155 30% 85%; /* Mint border */
-    --input: 155 30% 90%; /* Light mint input */
-    --ring: 170 55% 40%; /* Teal focus ring */
+    --border: 180 36% 90%; /* teal-100 */
+    --input: 180 36% 90%; /* teal-100 */
+    --ring: 183 74% 32%; /* teal-700 ring */
     
     --radius: 0.5rem;
     
-    --gradient-primary: linear-gradient(135deg, hsl(170 55% 40%), hsl(150 45% 70%));
-    --gradient-hero: linear-gradient(135deg, hsl(170 60% 35% / 0.92), hsl(155 50% 85% / 0.88));
-    --gradient-mint: linear-gradient(180deg, hsl(160 35% 95%), hsl(170 30% 90%));
-    --gradient-teal-glow: radial-gradient(circle at 50% 50%, hsl(170 55% 40% / 0.15), transparent 70%);
+    /* Teal-themed gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(183 74% 32%), hsl(174 60% 50%));
+    --gradient-hero: linear-gradient(135deg, hsl(183 80% 28% / 0.92), hsl(174 48% 85% / 0.88));
+    --gradient-mint: linear-gradient(180deg, hsl(174 48% 96%), hsl(180 40% 92%));
+    --gradient-teal-glow: radial-gradient(circle at 50% 50%, hsl(183 74% 32% / 0.15), transparent 70%);
     
-    --shadow-sm: 0 1px 2px 0 hsl(170 30% 30% / 0.08);
-    --shadow-md: 0 4px 6px -1px hsl(170 30% 30% / 0.12);
-    --shadow-lg: 0 10px 15px -3px hsl(170 30% 30% / 0.15);
-    --shadow-xl: 0 20px 25px -5px hsl(170 30% 30% / 0.18);
-    --shadow-teal: 0 10px 30px -10px hsl(170 55% 40% / 0.3);
+    --shadow-sm: 0 1px 2px 0 hsl(183 30% 30% / 0.08);
+    --shadow-md: 0 4px 6px -1px hsl(183 30% 30% / 0.12);
+    --shadow-lg: 0 10px 15px -3px hsl(183 30% 30% / 0.15);
+    --shadow-xl: 0 20px 25px -5px hsl(183 30% 30% / 0.18);
+    --shadow-teal: 0 10px 30px -10px hsl(183 74% 32% / 0.3);
     
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
@@ -137,16 +138,16 @@ All colors MUST be HSL.
 
 .sparkle {
   position: absolute;
-  width: 3px;
-  height: 3px;
-  background: hsl(170 70% 70%);
+  width: 4px;
+  height: 4px;
+  background: hsl(174 60% 80%);
   border-radius: 50%;
   animation: sparkle-twinkle linear infinite;
   pointer-events: none;
   box-shadow: 
-    0 0 6px hsl(170 70% 70% / 0.8),
-    0 0 12px hsl(170 70% 70% / 0.4),
-    0 0 18px hsl(155 60% 80% / 0.2);
+    0 0 8px hsl(183 74% 60% / 0.9),
+    0 0 16px hsl(183 74% 60% / 0.5),
+    0 0 24px hsl(174 60% 80% / 0.3);
 }
 
 @keyframes sparkle-twinkle {

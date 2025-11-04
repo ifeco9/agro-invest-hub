@@ -7,7 +7,7 @@ const SparkleEffect = () => {
     if (!sparkleContainerRef.current) return;
 
     const container = sparkleContainerRef.current;
-    const sparkleCount = 50;
+    const sparkleCount = 80; // Increased sparkle count
 
     // Create sparkling dots
     for (let i = 0; i < sparkleCount; i++) {

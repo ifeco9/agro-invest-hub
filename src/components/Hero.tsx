@@ -104,25 +104,25 @@ const Hero = () => {
             Yields up to 12% with transparent, low-risk opportunities
           </p>
           <div className={`flex flex-col sm:flex-row gap-4 mb-12 transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <Button size="lg" className="bg-white text-primary hover:bg-secondary shadow-2xl hover:shadow-white/50 transition-all hover:scale-105 font-semibold text-lg px-8 py-6" asChild>
+            <Button size="lg" className="bg-teal-700 text-white hover:bg-teal-800 shadow-2xl hover:shadow-teal-500/50 transition-all hover:scale-105 font-semibold text-lg px-8 py-6" asChild>
               <Link to="/opportunities">Explore Opportunities</Link>
             </Button>
-            <Button size="lg" variant="outline" className="bg-white/10 backdrop-blur-md border-2 border-white text-white hover:bg-white hover:text-primary shadow-xl transition-all hover:scale-105 font-semibold text-lg px-8 py-6" asChild>
+            <Button size="lg" variant="outline" className="bg-teal-50/10 backdrop-blur-md border-2 border-teal-200 text-white hover:bg-teal-50 hover:text-teal-900 shadow-xl transition-all hover:scale-105 font-semibold text-lg px-8 py-6" asChild>
               <Link to="/how-it-works">How It Works</Link>
             </Button>
           </div>
 
           {/* Feature Pills */}
           <div className={`flex flex-wrap gap-4 transition-all duration-1000 delay-800 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <div className="flex items-center gap-2 bg-white/15 backdrop-blur-md px-5 py-3 rounded-full border border-white/30 hover:bg-white/25 transition-all hover:scale-105 shadow-lg shadow-primary/20">
+            <div className="flex items-center gap-2 bg-teal-50/15 backdrop-blur-md px-5 py-3 rounded-full border border-teal-200/30 hover:bg-teal-50/25 transition-all hover:scale-105 shadow-lg shadow-teal-700/20">
               <TrendingUp className="h-5 w-5 text-white" />
               <span className="text-sm font-semibold text-white">Proven Returns</span>
             </div>
-            <div className="flex items-center gap-2 bg-white/15 backdrop-blur-md px-5 py-3 rounded-full border border-white/30 hover:bg-white/25 transition-all hover:scale-105 shadow-lg shadow-primary/20">
+            <div className="flex items-center gap-2 bg-teal-50/15 backdrop-blur-md px-5 py-3 rounded-full border border-teal-200/30 hover:bg-teal-50/25 transition-all hover:scale-105 shadow-lg shadow-teal-700/20">
               <Shield className="h-5 w-5 text-white" />
               <span className="text-sm font-semibold text-white">SEC Regulated</span>
             </div>
-            <div className="flex items-center gap-2 bg-white/15 backdrop-blur-md px-5 py-3 rounded-full border border-white/30 hover:bg-white/25 transition-all hover:scale-105 shadow-lg shadow-primary/20">
+            <div className="flex items-center gap-2 bg-teal-50/15 backdrop-blur-md px-5 py-3 rounded-full border border-teal-200/30 hover:bg-teal-50/25 transition-all hover:scale-105 shadow-lg shadow-teal-700/20">
               <Leaf className="h-5 w-5 text-white" />
               <span className="text-sm font-semibold text-white">Sustainable Impact</span>
             </div>

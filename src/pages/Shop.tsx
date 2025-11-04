@@ -38,11 +38,11 @@ interface Product {
   created_at: string;
 }
 
-interface CartItem extends Product {
+export interface CartItem extends Product {
   quantity: number;
 }
 
-interface InvestmentOpportunity {
+export interface InvestmentOpportunity {
   id: string;
   title: string;
   image?: string;

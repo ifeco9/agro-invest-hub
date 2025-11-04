@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button";
-import { CardItem } from "@/pages/Shop";
+import { CartItem } from "@/pages/Shop";
 
 interface CartSummaryProps {
-  cart: CardItem[];
+  cart: CartItem[];
   onRemoveFromCart: (productId: string) => void;
   onUpdateQuantity: (productId: string, quantity: number) => void;
   onProceedToCheckout: () => void;

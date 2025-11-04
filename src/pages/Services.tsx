@@ -1,300 +1,319 @@
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Leaf, Link, Truck, Handshake, Sprout } from "lucide-react";
 import { motion } from "framer-motion";
+import { TrendingUp, ShoppingCart, Leaf, Users, Award, Zap, Truck, Shield } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const Services = () => {
-  const services = [
-    {
-      icon: Sprout,
-      title: "AgroTrade Cycle",
-      subtitle: "Empowering Farmers, Supplying Cities",
-      description: "This is our core trading and distribution service, where we purchase key commodities such as rice, beans, maize, egusi, and palm oil directly from local farmers and trusted cooperatives at fair market prices.\n\nWe then distribute these products to wholesalers and retailers in Abuja and other major cities — efficiently, transparently, and affordably.",
-      benefits: [
-        "Eliminates middlemen and stabilizes market prices",
-        "Ensures timely delivery to urban markets",
-        "Provides farmers with fair income and investors with reliable returns",
-        "Supports community food programs and local market access"
-      ],
-      clients: "Wholesalers, retailers, food distributors, hotels, and institutions across Nigeria."
-    },
-    {
-      icon: Link,
-      title: "AgroLink Community Program",
-      subtitle: "Connecting Farmers, Consumers, and Communities",
-      description: "The AgroLink Program is our social impact service, designed to ensure that food remains affordable and accessible for every Nigerian household — from the wealthy to the low-income class.\n\nWe collaborate with NGOs, local councils, and food access programs to supply community food packs, grains, and household commodities at discounted rates.",
-      benefits: [
-        "Promotes food affordability across all income levels",
-        "Supports SDG 2 (Zero Hunger) by ensuring food accessibility",
-        "Builds partnerships with humanitarian organizations and government agencies",
-        "Creates a sustainable food ecosystem that benefits both producers and consumers"
-      ],
-      partners: "Nonprofits, local government programs, community development organizations, and faith-based initiatives."
-    },
-    {
-      icon: Leaf,
-      title: "AgroFarm Partnership",
-      subtitle: "Invest in Land. Grow with Purpose.",
-      description: "Our AgroFarm Partnership program allows individuals and organizations to participate in farming without the stress of daily management.\n\nClients can either lease land to cultivate specific crops or fund managed farms handled by our professional agricultural team.\n\nWe handle everything from land preparation and planting to crop care, harvest, and post-harvest processing — ensuring a seamless and profitable experience for our partners.",
-      options: [
-        "Land Leasing: Clients lease farmland for specific crops",
-        "Managed Farming: Clients fund farms managed by our team",
-        "Crop Selection: Rice, maize, beans, cassava, palm oil, and more",
-        "Full-Service Management: End-to-end farm operations"
-      ],
-      examples: "A ₦5 million investment in a rice farm can yield ₦7.5 million after 12 months, while a ₦10 million cassava project can return ₦14 million after 18 months."
-    },
-    {
-      icon: Truck,
-      title: "Logistics & Distribution",
-      subtitle: "Moving Agriculture Forward",
-      description: "Our logistics arm ensures seamless transportation of agricultural produce from rural farms to urban markets.\n\nWith a modern fleet and strategic partnerships, we maintain cold chain integrity for perishable goods and ensure timely delivery across Nigeria.",
-      features: [
-        "Cold chain management for perishable goods",
-        "Real-time tracking and delivery updates",
-        "Strategic warehousing in key locations",
-        "Nationwide distribution network"
-      ]
-    },
-    {
-      icon: Handshake,
-      title: "Strategic Partnerships",
-      subtitle: "Building Agricultural Alliances",
-      description: "We forge partnerships with local cooperatives, international buyers, financial institutions, and government agencies to strengthen the agricultural value chain.\n\nThese collaborations enhance our reach, improve market access, and ensure sustainable growth for all stakeholders.",
-      focus: [
-        "Cooperative Development: Strengthening farmer networks",
-        "Market Access: Connecting to international buyers",
-        "Financial Inclusion: Linking farmers to credit facilities",
-        "Policy Advocacy: Supporting favorable agricultural policies"
-      ]
-    }
-  ];
-
   return (
-    <div className="min-h-screen pt-20">
-      {/* Header */}
-      <section className="py-16 bg-gradient-to-r from-teal-700 to-teal-900 text-white">
+    <div className="min-h-screen pt-16 sm:pt-20">
+      {/* Hero Section */}
+      <section className="py-12 sm:py-16 bg-teal-900 text-white">
         <div className="container mx-auto px-4 text-center">
           <motion.h1 
-            className="text-4xl md:text-5xl font-bold mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            Empowering Agriculture, Enabling Prosperity
+            Comprehensive Agricultural Solutions
           </motion.h1>
           <motion.p 
-            className="text-xl max-w-3xl mx-auto"
+            className="text-base sm:text-xl max-w-md sm:max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            At Drecan Commodities Ltd., our services connect farmers, investors, and markets into one powerful system — ensuring fair trade, reliable food supply, and profitable investment opportunities.
-          </motion.p>
-          <motion.p 
-            className="text-lg mt-4 max-w-3xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            We offer a fully integrated model that covers procurement, processing, distribution, and agricultural partnership — all designed to make agribusiness sustainable and beneficial for everyone.
+            From farm to market, we provide end-to-end services that connect producers, investors, and consumers
           </motion.p>
         </div>
       </section>
 
-      {/* Services Grid */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => (
+      {/* Main Services */}
+      <section className="py-12 sm:py-16 bg-background">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <motion.div 
+            className="text-center mb-8 sm:mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4">Our Core Services</h2>
+            <p className="text-base sm:text-lg text-muted-foreground max-w-md sm:max-w-2xl mx-auto">
+              Comprehensive solutions designed to maximize value for farmers, investors, and consumers
+            </p>
+          </motion.div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {[
+              {
+                icon: <TrendingUp className="h-8 w-8" />,
+                title: "AgroTrade Investment",
+                description: "Short-term trading opportunities with consistent returns. We purchase agricultural commodities directly from farmers and distribute them to urban markets, providing investors with transparent and profitable opportunities.",
+                features: [
+                  "8-12% annual returns",
+                  "6-12 month duration",
+                  "Monthly payouts",
+                  "Low-medium risk"
+                ]
+              },
+              {
+                icon: <Leaf className="h-8 w-8" />,
+                title: "AgroFarm Partnership",
+                description: "Long-term farming partnerships with higher returns. Investors can lease farmlands or fund managed farms, allowing them to participate in agriculture without direct involvement.",
+                features: [
+                  "15-25% annual returns",
+                  "12-24 month duration",
+                  "At harvest payouts",
+                  "Medium risk"
+                ]
+              },
+              {
+                icon: <Users className="h-8 w-8" />,
+                title: "AgroLink Program",
+                description: "Community supply initiative connecting farmers with consumers. We deliver affordable food packages to local markets, schools, hospitals, and community programs, ensuring food access for all income levels.",
+                features: [
+                  "Community impact focus",
+                  "Affordable pricing",
+                  "Direct farmer support",
+                  "Sustainable model"
+                ]
+              },
+              {
+                icon: <Shield className="h-8 w-8" />,
+                title: "AgroReserve Premium",
+                description: "Premium long-term investment with maximum returns. Our flagship program offers investors the opportunity to participate in large-scale agricultural projects with significant potential for returns.",
+                features: [
+                  "25-35% annual returns",
+                  "24-36 month duration",
+                  "At maturity payouts",
+                  "Medium-high risk"
+                ]
+              },
+              {
+                icon: <Truck className="h-8 w-8" />,
+                title: "Supply Chain Management",
+                description: "End-to-end logistics and distribution services. We handle transportation, storage, and distribution of agricultural commodities from rural farms to urban markets, ensuring efficiency and quality.",
+                features: [
+                  "Nationwide distribution",
+                  "Cold chain storage",
+                  "Real-time tracking",
+                  "Quality assurance"
+                ]
+              },
+              {
+                icon: <Award className="h-8 w-8" />,
+                title: "Farmer Support Services",
+                description: "Comprehensive support for farming communities. We provide technical training, access to quality inputs, and market linkage services to help farmers increase productivity and income.",
+                features: [
+                  "Technical training",
+                  "Input supply",
+                  "Market access",
+                  "Financial services"
+                ]
+              }
+            ].map((service, index) => (
               <motion.div
                 key={index}
+                className="bg-card p-5 sm:p-6 rounded-lg shadow-md border border-border flex flex-col h-full"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.5, delay: 0.1 * index }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{ y: -5, transition: { duration: 0.3 } }}
               >
-                <Card className="h-full hover:shadow-lg transition-all duration-300 border border-teal-100">
-                  <CardHeader>
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="p-3 bg-teal-100 rounded-full">
-                        <service.icon className="h-6 w-6 text-teal-700" />
-                      </div>
-                      <div>
-                        <h3 className="text-xl font-bold text-teal-900">{service.title}</h3>
-                        <p className="text-teal-700 font-medium">{service.subtitle}</p>
-                      </div>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-gray-700 whitespace-pre-line mb-4">{service.description}</p>
-                    
-                    {service.benefits && (
-                      <div className="mb-4">
-                        <h4 className="font-semibold text-teal-900 mb-2">Key Benefits:</h4>
-                        <ul className="space-y-1">
-                          {service.benefits.map((benefit, i) => (
-                            <li key={i} className="flex items-start">
-                              <span className="text-teal-600 font-bold mr-2">•</span>
-                              <span className="text-gray-700">{benefit}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-                    
-                    {service.options && (
-                      <div className="mb-4">
-                        <h4 className="font-semibold text-teal-900 mb-2">Program Options:</h4>
-                        <ul className="space-y-1">
-                          {service.options.map((option, i) => (
-                            <li key={i} className="flex items-start">
-                              <span className="text-teal-600 font-bold mr-2">•</span>
-                              <span className="text-gray-700">{option}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-                    
-                    {service.features && (
-                      <div className="mb-4">
-                        <h4 className="font-semibold text-teal-900 mb-2">Key Features:</h4>
-                        <ul className="space-y-1">
-                          {service.features.map((feature, i) => (
-                            <li key={i} className="flex items-start">
-                              <span className="text-teal-600 font-bold mr-2">•</span>
-                              <span className="text-gray-700">{feature}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-                    
-                    {service.focus && (
-                      <div className="mb-4">
-                        <h4 className="font-semibold text-teal-900 mb-2">Focus Areas:</h4>
-                        <ul className="space-y-1">
-                          {service.focus.map((focus, i) => (
-                            <li key={i} className="flex items-start">
-                              <span className="text-teal-600 font-bold mr-2">•</span>
-                              <span className="text-gray-700">{focus}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-                    
-                    {service.clients && (
-                      <div className="mb-2">
-                        <h4 className="font-semibold text-teal-900">Target Clients:</h4>
-                        <p className="text-gray-700">{service.clients}</p>
-                      </div>
-                    )}
-                    
-                    {service.partners && (
-                      <div className="mb-2">
-                        <h4 className="font-semibold text-teal-900">Target Partners:</h4>
-                        <p className="text-gray-700">{service.partners}</p>
-                      </div>
-                    )}
-                    
-                    {service.examples && (
-                      <div className="mb-2">
-                        <h4 className="font-semibold text-teal-900">Examples:</h4>
-                        <p className="text-gray-700">{service.examples}</p>
-                      </div>
-                    )}
-                  </CardContent>
-                </Card>
+                <div className="text-primary mb-3">
+                  {service.icon}
+                </div>
+                <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2">{service.title}</h3>
+                <p className="text-muted-foreground text-sm sm:text-base mb-4 flex-grow">{service.description}</p>
+                <ul className="space-y-2">
+                  {service.features.map((feature, featureIndex) => (
+                    <li key={featureIndex} className="flex items-start text-sm sm:text-base">
+                      <span className="text-primary font-bold mr-2">✓</span>
+                      <span className="text-muted-foreground">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 3-Step Flow */}
-      <section className="py-20 bg-teal-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-teal-900 mb-4">Our Process</h2>
-            <p className="text-lg text-gray-700 max-w-2xl mx-auto">
-              A simple three-step approach to connecting agriculture with investment
+      {/* Investment Process */}
+      <section className="py-12 sm:py-16 bg-secondary">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-8 sm:mb-12"
+          >
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4">How Our Investment Process Works</h2>
+            <p className="text-base sm:text-lg text-muted-foreground max-w-md sm:max-w-2xl mx-auto">
+              Simple, transparent, and profitable steps to start your agricultural investment journey
             </p>
-          </div>
+          </motion.div>
           
-          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+          <div className="space-y-6 sm:space-y-8">
             {[
               {
-                step: "1",
-                title: "Source & Procure",
-                description: "We directly source quality agricultural produce from farmers and cooperatives at fair prices.",
+                step: "01",
+                title: "Initial Consultation",
+                description: "Contact our investment team to discuss your goals and explore suitable opportunities. We'll provide detailed information about our programs and help you choose the best fit for your investment objectives."
               },
               {
-                step: "2",
-                title: "Process & Distribute",
-                description: "Our team handles processing, packaging, and efficient distribution to urban markets.",
+                step: "02",
+                title: "Due Diligence",
+                description: "Review our comprehensive documentation, including financial projections, risk assessments, and farm management plans. Visit our facilities and meet our team to gain confidence in our operations."
               },
               {
-                step: "3",
-                title: "Invest & Grow",
-                description: "Investors participate in our programs and earn returns while supporting sustainable agriculture.",
+                step: "03",
+                title: "Investment Agreement",
+                description: "Sign our transparent investment agreement that clearly outlines terms, returns, timelines, and your rights as an investor. All agreements are legally binding and SEC-compliant."
               },
-            ].map((item, index) => (
-              <motion.div 
+              {
+                step: "04",
+                title: "Active Participation",
+                description: "Receive regular updates on your investment performance, including monthly reports, farm inspection photos, and market analysis. Stay informed throughout the investment period."
+              },
+              {
+                step: "05",
+                title: "Returns Distribution",
+                description: "Receive your returns according to the agreed schedule. For short-term investments, this is monthly; for long-term investments, returns are distributed at harvest or maturity."
+              },
+              {
+                step: "06",
+                title: "Reinvestment Opportunity",
+                description: "Reinvest your returns in new opportunities or withdraw your profits. Our team will work with you to plan your next investment steps based on your evolving goals."
+              }
+            ].map((process, index) => (
+              <motion.div
                 key={index}
-                className="text-center bg-white p-6 rounded-lg shadow-md border border-teal-100"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.1 * index }}
-                whileHover={{ y: -5, transition: { duration: 0.3 } }}
+                className="flex items-start gap-4 sm:gap-6 p-4 sm:p-6 bg-card rounded-lg shadow-md border border-border"
+                initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <div className="w-16 h-16 bg-teal-700 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
-                  {item.step}
+                <div className="flex-shrink-0 bg-primary text-primary-foreground w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center font-bold text-lg">
+                  {process.step}
                 </div>
-                <h3 className="text-xl font-semibold mb-2 text-teal-900">{item.title}</h3>
-                <p className="text-gray-700">{item.description}</p>
+                <div>
+                  <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2">{process.title}</h3>
+                  <p className="text-muted-foreground">{process.description}</p>
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-teal-700 to-teal-900 text-white">
+      {/* Why Choose Us */}
+      <section className="py-12 sm:py-16 bg-background">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-8 sm:mb-12"
+          >
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4">Why Choose Drecan Commodities</h2>
+            <p className="text-base sm:text-lg text-muted-foreground max-w-md sm:max-w-2xl mx-auto">
+              What sets us apart in the agricultural investment landscape
+            </p>
+          </motion.div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+            {[
+              {
+                icon: <Zap className="h-5 w-5" />,
+                title: "Proven Track Record",
+                description: "Over a decade of successful agricultural investments with consistent returns and satisfied investors."
+              },
+              {
+                icon: <Shield className="h-5 w-5" />,
+                title: "Transparent Operations",
+                description: "Real-time access to farm operations, financial reports, and performance metrics through our investor portal."
+              },
+              {
+                icon: <Leaf className="h-5 w-5" />,
+                title: "Sustainable Practices",
+                description: "Commitment to environmentally responsible farming methods that protect natural resources for future generations."
+              },
+              {
+                icon: <Users className="h-5 w-5" />,
+                title: "Community Impact",
+                description: "Every investment directly supports farming families and improves food access for local communities."
+              },
+              {
+                icon: <Award className="h-5 w-5" />,
+                title: "Regulatory Compliance",
+                description: "Fully registered with relevant authorities and compliant with all SEC regulations for agricultural investments."
+              },
+              {
+                icon: <TrendingUp className="h-5 w-5" />,
+                title: "Competitive Returns",
+                description: "Industry-leading returns backed by real agricultural commodities and professional farm management."
+              }
+            ].map((benefit, index) => (
+              <motion.div
+                key={index}
+                className="flex items-start gap-3 p-3 sm:p-4 bg-card rounded-lg border border-border"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
+              >
+                <div className="flex-shrink-0 text-primary mt-0.5">
+                  {benefit.icon}
+                </div>
+                <div>
+                  <h3 className="font-bold text-foreground mb-1">{benefit.title}</h3>
+                  <p className="text-muted-foreground text-sm">{benefit.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Call to Action */}
+      <section className="py-12 sm:py-16 bg-teal-900 text-white">
         <div className="container mx-auto px-4 text-center">
           <motion.h2 
-            className="text-3xl md:text-4xl font-bold mb-6"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.5 }}
           >
-            Ready to Partner with Us?
+            Ready to Start Investing?
           </motion.h2>
           <motion.p 
-            className="text-xl mb-8 max-w-2xl mx-auto"
+            className="text-base sm:text-xl mb-6 sm:mb-8 max-w-md sm:max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            Join Drecan Commodities in building a sustainable agricultural future for Nigeria
+            Join our community of investors and start earning sustainable returns from Nigerian agriculture
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <Button 
-              size="lg" 
-              variant="secondary" 
-              className="bg-gradient-to-r from-teal-600 to-teal-800 hover:from-teal-700 hover:to-teal-900 text-white shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 ease-in-out px-8 py-3 rounded-full font-bold text-lg"
+              className="bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 px-6 sm:px-8 rounded-full text-base sm:text-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl"
+              asChild
             >
-              Contact Us Today
+              <Link to="/opportunities">Explore Investment Opportunities</Link>
             </Button>
           </motion.div>
         </div>

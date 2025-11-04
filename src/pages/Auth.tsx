@@ -1,240 +1,260 @@
-import { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { supabase } from "@/integrations/supabase/client";
-import { toast } from "sonner";
+import { motion } from "framer-motion";
+import { useToast } from "@/hooks/use-toast";
+import { z } from "zod";
+import { Link } from "react-router-dom";
 
 const Auth = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [displayName, setDisplayName] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [resetEmail, setResetEmail] = useState("");
-  const [showResetForm, setShowResetForm] = useState(false);
-  const navigate = useNavigate();
-  const location = useLocation();
+  const { toast } = useToast();
+  const [isLogin, setIsLogin] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+  
+  // Zod schema for form validation
+  const authFormSchema = z.object({
+    email: z.string().email("Please enter a valid email address"),
+    password: z.string().min(8, "Password must be at least 8 characters"),
+    ...(isLogin ? {} : {
+      name: z.string().min(2, "Name must be at least 2 characters"),
+      confirmPassword: z.string()
+    })
+  }).refine(
+    (data) => isLogin || data.password === data.confirmPassword,
+    {
+      message: "Passwords don't match",
+      path: ["confirmPassword"]
+    }
+  );
 
-  useEffect(() => {
-    // Check if user is already logged in
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      if (session) {
-        // Redirect based on the intended destination
-        const from = location.state?.from?.pathname || "/shop";
-        navigate(from);
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsLoading(true);
+    
+    // Get form data
+    const formData = new FormData(e.target as HTMLFormElement);
+    const data = {
+      email: formData.get("email") as string,
+      password: formData.get("password") as string,
+      ...(isLogin ? {} : {
+        name: formData.get("name") as string,
+        confirmPassword: formData.get("confirmPassword") as string
+      })
+    };
+    
+    // Validate form data
+    try {
+      authFormSchema.parse(data);
+      
+      // Simulate API call
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+      
+      toast({
+        title: isLogin ? "Login Successful!" : "Account Created!",
+        description: isLogin 
+          ? "Welcome back! You have been successfully logged in." 
+          : "Your account has been created successfully. Welcome to Drecan Commodities!",
+      });
+      
+      // Reset form
+      (e.target as HTMLFormElement).reset();
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        toast({
+          title: "Validation Error",
+          description: error.errors[0].message,
+          variant: "destructive"
+        });
       }
-    });
-  }, [navigate, location]);
-
-  const handleSignUp = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-
-    const { error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        emailRedirectTo: `${window.location.origin}/auth`,
-        data: {
-          display_name: displayName,
-        },
-      },
-    });
-
-    setLoading(false);
-
-    if (error) {
-      toast.error(error.message);
-    } else {
-      toast.success("Account created successfully! Please check your email to confirm your account.");
-      setEmail("");
-      setPassword("");
-      setDisplayName("");
     }
-  };
-
-  const handleSignIn = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
-
-    setLoading(false);
-
-    if (error) {
-      toast.error(error.message);
-    } else {
-      toast.success("Signed in successfully!");
-      // Redirect to the page they were trying to access or default to shop
-      const from = location.state?.from?.pathname || "/shop";
-      navigate(from);
-    }
-  };
-
-  const handlePasswordReset = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-
-    const { error } = await supabase.auth.resetPasswordForEmail(resetEmail, {
-      redirectTo: `${window.location.origin}/auth/update-password`,
-    });
-
-    setLoading(false);
-
-    if (error) {
-      toast.error(error.message);
-    } else {
-      toast.success("Password reset email sent! Please check your inbox.");
-      setResetEmail("");
-      setShowResetForm(false);
-    }
-  };
-
-  const handleSignOut = async () => {
-    const { error } = await supabase.auth.signOut();
-    if (error) {
-      toast.error(error.message);
-    } else {
-      toast.success("Signed out successfully!");
-      navigate("/auth");
-    }
+    
+    setIsLoading(false);
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-teal-50 via-mint-50 to-white px-4 pt-20">
-      <Card className="w-full max-w-md">
-        <CardHeader>
-          <CardTitle className="text-2xl text-center">Welcome to Drecan</CardTitle>
-          <CardDescription className="text-center">
-            Sign in to access our premium commodities
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          {!showResetForm ? (
-            <Tabs defaultValue="signin" className="w-full">
-              <TabsList className="grid w-full grid-cols-2">
-                <TabsTrigger value="signin">Sign In</TabsTrigger>
-                <TabsTrigger value="signup">Sign Up</TabsTrigger>
-              </TabsList>
-
-              <TabsContent value="signin">
-                <form onSubmit={handleSignIn} className="space-y-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="signin-email">Email</Label>
-                    <Input
-                      id="signin-email"
-                      type="email"
-                      placeholder="your@email.com"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      required
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="signin-password">Password</Label>
-                    <Input
-                      id="signin-password"
-                      type="password"
-                      placeholder="••••••••"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      required
-                    />
-                  </div>
-                  <Button 
-                    variant="link" 
-                    type="button" 
-                    className="p-0 h-auto font-normal text-sm"
-                    onClick={() => setShowResetForm(true)}
-                  >
-                    Forgot password?
-                  </Button>
-                  <Button type="submit" className="w-full" disabled={loading}>
-                    {loading ? "Signing in..." : "Sign In"}
-                  </Button>
-                </form>
-              </TabsContent>
-
-              <TabsContent value="signup">
-                <form onSubmit={handleSignUp} className="space-y-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="signup-name">Display Name</Label>
-                    <Input
-                      id="signup-name"
-                      type="text"
-                      placeholder="John Doe"
-                      value={displayName}
-                      onChange={(e) => setDisplayName(e.target.value)}
-                      required
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="signup-email">Email</Label>
-                    <Input
-                      id="signup-email"
-                      type="email"
-                      placeholder="your@email.com"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      required
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="signup-password">Password</Label>
-                    <Input
-                      id="signup-password"
-                      type="password"
-                      placeholder="••••••••"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      required
-                      minLength={6}
-                    />
-                    <p className="text-xs text-muted-foreground">Password must be at least 6 characters</p>
-                  </div>
-                  <Button type="submit" className="w-full" disabled={loading}>
-                    {loading ? "Creating account..." : "Sign Up"}
-                  </Button>
-                </form>
-              </TabsContent>
-            </Tabs>
-          ) : (
-            <div>
-              <h3 className="text-lg font-medium mb-4">Reset Password</h3>
-              <form onSubmit={handlePasswordReset} className="space-y-4">
+    <div className="min-h-screen flex items-center justify-center p-4 bg-teal-50">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="w-full max-w-md"
+      >
+        <Card className="bg-white border border-teal-200 shadow-lg">
+          <CardHeader className="text-center">
+            <div className="mx-auto bg-teal-100 rounded-full p-3 w-16 h-16 flex items-center justify-center mb-4">
+              <div className="bg-teal-600 rounded-full w-10 h-10"></div>
+            </div>
+            <CardTitle className="text-2xl font-bold text-teal-900">
+              {isLogin ? "Welcome Back" : "Create Account"}
+            </CardTitle>
+            <CardDescription className="text-teal-700">
+              {isLogin 
+                ? "Sign in to access your investment dashboard" 
+                : "Join us to start investing in Nigerian agriculture"}
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              {!isLogin && (
                 <div className="space-y-2">
-                  <Label htmlFor="reset-email">Email</Label>
-                  <Input
-                    id="reset-email"
-                    type="email"
-                    placeholder="your@email.com"
-                    value={resetEmail}
-                    onChange={(e) => setResetEmail(e.target.value)}
-                    required
+                  <Label htmlFor="name" className="text-teal-800">Full Name</Label>
+                  <Input 
+                    id="name" 
+                    name="name" 
+                    type="text" 
+                    required 
+                    placeholder="John Smith" 
+                    className="border-teal-300 focus:border-teal-500 focus:ring-teal-500" 
                   />
                 </div>
-                <Button type="submit" className="w-full" disabled={loading}>
-                  {loading ? "Sending..." : "Send Reset Link"}
-                </Button>
+              )}
+              
+              <div className="space-y-2">
+                <Label htmlFor="email" className="text-teal-800">Email Address</Label>
+                <Input 
+                  id="email" 
+                  name="email" 
+                  type="email" 
+                  required 
+                  placeholder="john.smith@example.com" 
+                  className="border-teal-300 focus:border-teal-500 focus:ring-teal-500" 
+                />
+              </div>
+              
+              <div className="space-y-2">
+                <Label htmlFor="password" className="text-teal-800">Password</Label>
+                <Input 
+                  id="password" 
+                  name="password" 
+                  type="password" 
+                  required 
+                  placeholder="••••••••" 
+                  className="border-teal-300 focus:border-teal-500 focus:ring-teal-500" 
+                />
+              </div>
+              
+              {!isLogin && (
+                <div className="space-y-2">
+                  <Label htmlFor="confirmPassword" className="text-teal-800">Confirm Password</Label>
+                  <Input 
+                    id="confirmPassword" 
+                    name="confirmPassword" 
+                    type="password" 
+                    required 
+                    placeholder="••••••••" 
+                    className="border-teal-300 focus:border-teal-500 focus:ring-teal-500" 
+                  />
+                </div>
+              )}
+              
+              {isLogin && (
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center">
+                    <input
+                      id="remember-me"
+                      name="remember-me"
+                      type="checkbox"
+                      className="h-4 w-4 text-teal-600 border-teal-300 rounded focus:ring-teal-500"
+                    />
+                    <label htmlFor="remember-me" className="ml-2 block text-sm text-teal-800">
+                      Remember me
+                    </label>
+                  </div>
+                  <div className="text-sm">
+                    <a href="#" className="font-medium text-teal-600 hover:text-teal-500">
+                      Forgot password?
+                    </a>
+                  </div>
+                </div>
+              )}
+              
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
                 <Button 
-                  variant="link" 
-                  type="button" 
-                  className="p-0 h-auto font-normal text-sm w-full"
-                  onClick={() => setShowResetForm(false)}
+                  type="submit" 
+                  className="w-full bg-teal-600 hover:bg-teal-700 text-white py-3 font-semibold"
+                  disabled={isLoading}
                 >
-                  Back to Sign In
+                  {isLoading ? (
+                    "Processing..."
+                  ) : isLogin ? (
+                    "Sign In"
+                  ) : (
+                    "Create Account"
+                  )}
                 </Button>
-              </form>
+              </motion.div>
+            </form>
+            
+            <div className="mt-6">
+              <div className="relative">
+                <div className="absolute inset-0 flex items-center">
+                  <div className="w-full border-t border-teal-300"></div>
+                </div>
+                <div className="relative flex justify-center text-sm">
+                  <span className="px-2 bg-white text-teal-700">
+                    Or continue with
+                  </span>
+                </div>
+              </div>
+              
+              <div className="mt-6 grid grid-cols-2 gap-3">
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <Button 
+                    variant="outline" 
+                    className="w-full border-teal-300 text-teal-700 hover:bg-teal-50"
+                  >
+                    Google
+                  </Button>
+                </motion.div>
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <Button 
+                    variant="outline" 
+                    className="w-full border-teal-300 text-teal-700 hover:bg-teal-50"
+                  >
+                    Facebook
+                  </Button>
+                </motion.div>
+              </div>
             </div>
-          )}
-        </CardContent>
-      </Card>
+            
+            <div className="mt-6 text-center">
+              <p className="text-sm text-teal-800">
+                {isLogin ? "Don't have an account? " : "Already have an account? "}
+                <button
+                  onClick={() => setIsLogin(!isLogin)}
+                  className="font-medium text-teal-600 hover:text-teal-500 focus:outline-none"
+                >
+                  {isLogin ? "Sign up" : "Sign in"}
+                </button>
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+        
+        <div className="mt-6 text-center">
+          <p className="text-xs text-teal-700">
+            By signing up, you agree to our{" "}
+            <Link to="/terms" className="underline text-teal-600 hover:text-teal-500">
+              Terms of Service
+            </Link>{" "}
+            and{" "}
+            <Link to="/privacy" className="underline text-teal-600 hover:text-teal-500">
+              Privacy Policy
+            </Link>
+          </p>
+        </div>
+      </motion.div>
     </div>
   );
 };

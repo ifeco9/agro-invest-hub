@@ -1,397 +1,285 @@
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { 
-  Target, 
-  Users, 
-  Leaf, 
-  TrendingUp, 
-  Handshake, 
-  Award,
-  CheckCircle,
-  Globe
-} from "lucide-react";
-import { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+import { Users, Target, Award, Leaf, TrendingUp, Globe, Heart, Zap } from "lucide-react";
 
 const About = () => {
-  const [counters, setCounters] = useState({
-    farmers: 0,
-    consumers: 0,
-    partners: 0
-  });
-
-  // Counter animation effect
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setCounters({
-        farmers: 15000,
-        consumers: 1000000,
-        partners: 30
-      });
-    }, 500);
-    
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
-    <div className="min-h-screen pt-20">
-      {/* Header */}
-      <section className="py-16 bg-gradient-to-r from-teal-700 to-teal-900 text-white">
+    <div className="min-h-screen pt-16 sm:pt-20">
+      {/* Hero Section */}
+      <section className="py-12 sm:py-16 bg-teal-900 text-white">
         <div className="container mx-auto px-4 text-center">
           <motion.h1 
-            className="text-4xl md:text-5xl font-bold mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            About Drecan Commodities Ltd
+            Empowering Agriculture. Empowering Communities.
           </motion.h1>
-        </div>
-      </section>
-
-      {/* Company Overview */}
-      <section className="py-16 bg-background">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <motion.div
+          <motion.p 
+            className="text-base sm:text-xl max-w-md sm:max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.5 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-teal-900 mb-6">Company Overview</h2>
-            <p className="text-gray-700 mb-4">
-              Drecan Commodities Ltd is a forward-thinking agribusiness and commodity trading company committed to transforming Nigeria's agricultural landscape through innovation, fairness, and sustainability.
-            </p>
-            <p className="text-gray-700 mb-4">
-              Headquartered in Abuja, Drecan Commodities operates as a bridge between rural farmers and urban markets, ensuring a seamless and profitable movement of agricultural produce while driving food accessibility for every social class.
-            </p>
-            <p className="text-gray-700">
-              We are building an ecosystem where agriculture is profitable, food is affordable, and investment is impactful.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Our Philosophy */}
-      <section className="py-16 bg-teal-50">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.5 }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-teal-900 mb-6">Our Philosophy</h2>
-            <p className="text-gray-700 mb-4">
-              We believe that agriculture holds the key to national development and food security.
-            </p>
-            <p className="text-gray-700">
-              Every bag of rice, tuber of yam, or bottle of palm oil we move represents more than a transaction — it represents hope for farmers, food for families, and opportunity for investors.
-            </p>
-          </motion.div>
+            Building a sustainable future through ethical agricultural investment and community empowerment
+          </motion.p>
         </div>
       </section>
 
       {/* Mission & Vision */}
-      <section className="py-16 bg-background">
+      <section className="py-12 sm:py-16 bg-background">
         <div className="container mx-auto px-4 max-w-4xl">
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              whileHover={{ y: -5, transition: { duration: 0.3 } }}
+              transition={{ duration: 0.5 }}
+              className="bg-card p-6 sm:p-8 rounded-lg shadow-md border border-border"
             >
-              <Card className="h-full border border-teal-100">
-                <CardHeader>
-                  <h2 className="text-3xl font-bold text-teal-900 mb-6 flex items-center gap-2">
-                    <Target className="h-8 w-8 text-teal-700" />
-                    Our Mission
-                  </h2>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-700">
-                    To create a sustainable agricultural economy that connects farmers, investors, and consumers — ensuring food availability and economic growth through fair trade and responsible innovation.
-                  </p>
-                </CardContent>
-              </Card>
+              <div className="flex items-center gap-3 mb-4">
+                <Target className="h-8 w-8 text-primary" />
+                <h2 className="text-2xl font-bold text-foreground">Our Mission</h2>
+              </div>
+              <p className="text-muted-foreground mb-4">
+                To revolutionize Nigeria's agricultural sector by creating transparent, ethical, and profitable investment opportunities that directly benefit both investors and farming communities.
+              </p>
+              <p className="text-muted-foreground">
+                We are committed to building a sustainable agricultural ecosystem that eliminates unnecessary middlemen, ensures fair pricing for farmers, and provides affordable food access for all income levels.
+              </p>
             </motion.div>
             
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              whileHover={{ y: -5, transition: { duration: 0.3 } }}
+              transition={{ duration: 0.5 }}
+              className="bg-card p-6 sm:p-8 rounded-lg shadow-md border border-border"
             >
-              <Card className="h-full border border-teal-100">
-                <CardHeader>
-                  <h2 className="text-3xl font-bold text-teal-900 mb-6 flex items-center gap-2">
-                    <Globe className="h-8 w-8 text-teal-700" />
-                    Our Vision
-                  </h2>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-700">
-                    To be Africa's leading agricultural trading and investment company — building a trusted platform where profit meets purpose and communities thrive together.
-                  </p>
-                </CardContent>
-              </Card>
+              <div className="flex items-center gap-3 mb-4">
+                <Globe className="h-8 w-8 text-primary" />
+                <h2 className="text-2xl font-bold text-foreground">Our Vision</h2>
+              </div>
+              <p className="text-muted-foreground mb-4">
+                To become Nigeria's leading agricultural investment platform that transforms the way people invest in agriculture while creating sustainable food systems for future generations.
+              </p>
+              <p className="text-muted-foreground">
+                We envision a Nigeria where food security is guaranteed, farmers are empowered, investors earn consistent returns, and communities thrive through sustainable agricultural practices.
+              </p>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Values */}
-      <section className="py-16 bg-teal-50">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <motion.div
+      {/* Core Values */}
+      <section className="py-12 sm:py-16 bg-secondary">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <motion.div 
+            className="text-center mb-8 sm:mb-12"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-teal-900 mb-6 text-center">Our Values</h2>
-            <div className="grid md:grid-cols-3 gap-6">
-              {[
-                { icon: CheckCircle, title: "Integrity", desc: "We operate transparently and keep our promises." },
-                { icon: Leaf, title: "Sustainability", desc: "Every trade we make supports long-term food security." },
-                { icon: TrendingUp, title: "Empowerment", desc: "We uplift farmers and rural communities through fair market access." },
-                { icon: Target, title: "Innovation", desc: "We adopt efficient systems that reduce waste and improve delivery." },
-                { icon: Handshake, title: "Impact", desc: "We use business as a force for good — reducing hunger and promoting development." },
-                { icon: Users, title: "Community", desc: "We prioritize the well-being of the communities we serve." }
-              ].map((value, index) => (
-                <motion.div
-                  key={index}
-                  className="bg-white p-6 rounded-lg shadow-md border border-teal-100 text-center"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.5, delay: 0.1 * index }}
-                  whileHover={{ y: -5, transition: { duration: 0.3 } }}
-                >
-                  <div className="flex justify-center mb-4">
-                    <div className="p-3 bg-teal-100 rounded-full">
-                      <value.icon className="h-6 w-6 text-teal-700" />
-                    </div>
-                  </div>
-                  <h3 className="text-xl font-bold text-teal-900 mb-2">{value.title}</h3>
-                  <p className="text-gray-700">{value.desc}</p>
-                </motion.div>
-              ))}
-            </div>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4">Our Core Values</h2>
+            <p className="text-base sm:text-lg text-muted-foreground max-w-md sm:max-w-2xl mx-auto">
+              The principles that guide everything we do at Drecan Commodities
+            </p>
           </motion.div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {[
+              {
+                icon: <Heart className="h-8 w-8" />,
+                title: "Integrity",
+                description: "We conduct all our business with honesty, transparency, and ethical standards. Every transaction is documented and every investor receives regular updates."
+              },
+              {
+                icon: <Users className="h-8 w-8" />,
+                title: "Community Impact",
+                description: "We measure our success not just by financial returns, but by the positive impact we create in farming communities and the lives we touch through food access initiatives."
+              },
+              {
+                icon: <TrendingUp className="h-8 w-8" />,
+                title: "Sustainable Returns",
+                description: "We are committed to delivering consistent, sustainable returns to our investors through well-managed agricultural investments backed by real commodities."
+              },
+              {
+                icon: <Leaf className="h-8 w-8" />,
+                title: "Environmental Stewardship",
+                description: "We promote sustainable farming practices that protect the environment, conserve natural resources, and support biodiversity in agricultural ecosystems."
+              },
+              {
+                icon: <Award className="h-8 w-8" />,
+                title: "Excellence",
+                description: "We strive for excellence in every aspect of our operations, from farm management to investor relations, ensuring the highest standards in all we do."
+              },
+              {
+                icon: <Zap className="h-8 w-8" />,
+                title: "Innovation",
+                description: "We continuously seek innovative solutions to improve agricultural productivity, streamline supply chains, and create new investment opportunities."
+              }
+            ].map((value, index) => (
+              <motion.div
+                key={index}
+                className="bg-card p-5 sm:p-6 rounded-lg shadow-md border border-border"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ y: -5, transition: { duration: 0.3 } }}
+              >
+                <div className="text-primary mb-3">
+                  {value.icon}
+                </div>
+                <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2">{value.title}</h3>
+                <p className="text-muted-foreground text-sm sm:text-base">{value.description}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* What We Stand For */}
-      <section className="py-16 bg-background">
+      {/* Our Story */}
+      <section className="py-12 sm:py-16 bg-background">
         <div className="container mx-auto px-4 max-w-4xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.5 }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-teal-900 mb-6">What We Stand For</h2>
-            <p className="text-gray-700 mb-6">
-              Drecan Commodities stands at the intersection of commerce and compassion.
-            </p>
-            <p className="text-gray-700 mb-6">
-              While we operate as a for-profit trading enterprise, our ultimate goal is to create shared prosperity — where every stakeholder, from the farmer to the end consumer, benefits.
-            </p>
-            <p className="text-gray-700 mb-6">
-              Our operations reflect our commitment to United Nations Sustainable Development Goals, particularly:
-            </p>
-            
-            <div className="grid md:grid-cols-3 gap-6 mb-6">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 sm:gap-12">
+            <div className="lg:col-span-2">
               <motion.div
-                className="bg-white p-4 rounded-lg shadow-sm border border-teal-100"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                whileHover={{ y: -3, transition: { duration: 0.3 } }}
+                transition={{ duration: 0.5 }}
               >
-                <div className="flex items-center mb-2">
-                  <Globe className="h-5 w-5 text-teal-700 mr-2" />
-                  <span className="font-semibold text-teal-900">SDG 2: Zero Hunger</span>
+                <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-4 sm:mb-6">Our Story</h2>
+                <div className="space-y-4 text-muted-foreground">
+                  <p>
+                    Drecan Commodities Ltd was founded in 2014 in Osun State, Nigeria, with a simple yet powerful mission: 
+                    to create a more efficient and equitable agricultural supply chain that benefits everyone involved.
+                  </p>
+                  <p>
+                    Our journey began when our founders witnessed firsthand the challenges faced by smallholder farmers 
+                    who struggled to get fair prices for their produce, while urban consumers paid inflated prices for basic 
+                    food items. This disconnect inspired us to build a bridge between rural producers and urban markets.
+                  </p>
+                  <p>
+                    Over the years, we have grown from a small local trading operation into a comprehensive agricultural 
+                    investment platform that connects thousands of investors with profitable opportunities in Nigeria's 
+                    agricultural sector. Today, we work with over 500 farmers across multiple states and have facilitated 
+                    investments worth millions of naira.
+                  </p>
+                  <p>
+                    Our commitment to sustainable development and community impact has earned us recognition from various 
+                    stakeholders, including partnerships with local government agencies and international development organizations.
+                  </p>
                 </div>
-                <p className="text-sm text-gray-600">End hunger, achieve food security and improved nutrition</p>
-              </motion.div>
-              <motion.div
-                className="bg-white p-4 rounded-lg shadow-sm border border-teal-100"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                whileHover={{ y: -3, transition: { duration: 0.3 } }}
-              >
-                <div className="flex items-center mb-2">
-                  <TrendingUp className="h-5 w-5 text-teal-700 mr-2" />
-                  <span className="font-semibold text-teal-900">SDG 8: Decent Work and Economic Growth</span>
-                </div>
-                <p className="text-sm text-gray-600">Promote sustained, inclusive and sustainable economic growth</p>
-              </motion.div>
-              <motion.div
-                className="bg-white p-4 rounded-lg shadow-sm border border-teal-100"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                whileHover={{ y: -3, transition: { duration: 0.3 } }}
-              >
-                <div className="flex items-center mb-2">
-                  <Leaf className="h-5 w-5 text-teal-700 mr-2" />
-                  <span className="font-semibold text-teal-900">SDG 12: Responsible Consumption and Production</span>
-                </div>
-                <p className="text-sm text-gray-600">Ensure sustainable consumption and production patterns</p>
               </motion.div>
             </div>
             
-            <p className="text-gray-700">
-              Through fair pricing, efficient logistics, and targeted partnerships, we contribute to reducing hunger, creating jobs, and building sustainable local food systems.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Core Activities & Social Commitment */}
-      <section className="py-16 bg-teal-50">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <div className="grid md:grid-cols-2 gap-8">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              className="bg-card p-5 sm:p-6 rounded-lg shadow-md border border-border"
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
+              transition={{ duration: 0.5 }}
             >
-              <h2 className="text-3xl font-bold text-teal-900 mb-6">Our Core Activities</h2>
-              <ul className="space-y-3">
-                <li className="flex items-start">
-                  <span className="text-teal-700 font-bold mr-2">1.</span>
-                  <span>Commodity Procurement: Direct sourcing from smallholder farmers and cooperatives.</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-teal-700 font-bold mr-2">2.</span>
-                  <span>Urban Distribution: Supplying wholesalers, retailers, and markets in major cities like Abuja.</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-teal-700 font-bold mr-2">3.</span>
-                  <span>Agricultural Partnerships: Supporting investors and organizations who wish to engage in farming.</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-teal-700 font-bold mr-2">4.</span>
-                  <span>Community Access: Providing affordable food to local institutions and vulnerable households.</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-teal-700 font-bold mr-2">5.</span>
-                  <span>Investment Opportunities: Offering short- and long-term agribusiness investment cycles with transparent returns.</span>
-                </li>
+              <h3 className="text-xl font-bold text-foreground mb-4">Key Milestones</h3>
+              <ul className="space-y-4">
+                {[
+                  { year: "2014", event: "Company founded in Osun State" },
+                  { year: "2016", event: "Expanded operations to Abuja" },
+                  { year: "2018", event: "Launched AgroFarm Partnership program" },
+                  { year: "2020", event: "Reached 1,000+ satisfied investors" },
+                  { year: "2022", event: "Partnered with 500+ farmers across 5 states" },
+                  { year: "2024", event: "Launched AgroReserve premium investment program" }
+                ].map((milestone, index) => (
+                  <li key={index} className="flex items-start">
+                    <span className="font-bold text-primary mr-2 min-w-[40px]">{milestone.year}</span>
+                    <span className="text-muted-foreground">{milestone.event}</span>
+                  </li>
+                ))}
               </ul>
             </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              <h2 className="text-3xl font-bold text-teal-900 mb-6">Social Commitment</h2>
-              <p className="text-gray-700 mb-4">
-                Drecan Commodities is not just about business — it's about building food security for all Nigerians.
-              </p>
-              <p className="text-gray-700 mb-4">
-                We collaborate with local governments, NGOs, and community organizations to provide affordable food distribution systems and empower rural farmers through training and access to reliable markets.
-              </p>
-              <p className="text-gray-700">
-                By prioritizing affordability and accessibility, we make it possible for every household — rich, poor, or middle-class — to have access to quality food.
-              </p>
-            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Impact Goals */}
-      <section className="py-16 bg-background">
+      {/* Team Introduction */}
+      <section className="py-12 sm:py-16 bg-secondary">
         <div className="container mx-auto px-4 max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.5 }}
+            className="text-center"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-teal-900 mb-6 text-center">Our Impact Goals</h2>
-            <p className="text-gray-700 mb-12 text-center">
-              By 2027, Drecan Commodities aims to:
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4">Meet Our Leadership</h2>
+            <p className="text-base sm:text-lg text-muted-foreground mb-8 sm:mb-12 max-w-md sm:max-w-2xl mx-auto">
+              The experienced team driving Drecan Commodities forward
             </p>
             
-            <div className="grid md:grid-cols-3 gap-8">
-              {[
-                { number: counters.farmers.toLocaleString(), label: "Local farmers with fair market access" },
-                { number: counters.consumers.toLocaleString(), label: "Consumers through community food programs" },
-                { number: counters.partners, label: "Local and international organizations" }
-              ].map((goal, index) => (
-                <motion.div
-                  key={index}
-                  className="text-center bg-white p-6 rounded-lg shadow-md border border-teal-100"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.5, delay: 0.1 * index }}
-                  whileHover={{ y: -5, transition: { duration: 0.3 } }}
-                >
-                  <div className="text-4xl font-bold text-teal-700 mb-2">
-                    {goal.number}
-                    {index === 0 && "+"}
-                    {index === 1 && "+"}
-                    {index === 2 && "+"}
-                  </div>
-                  <p className="text-gray-700">{goal.label}</p>
-                </motion.div>
-              ))}
-            </div>
-            
-            <div className="mt-12 text-center">
-              <p className="text-gray-700">
-                • Establish regional distribution hubs in key Nigerian cities for efficient logistics
-              </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
+              <div className="bg-card p-5 sm:p-6 rounded-lg shadow-md border border-border">
+                <div className="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16 mx-auto mb-4" />
+                <h3 className="text-lg sm:text-xl font-bold text-foreground">John Adeyemi</h3>
+                <p className="text-primary font-medium mb-2">Founder & CEO</p>
+                <p className="text-muted-foreground text-sm">
+                  With over 15 years of experience in agricultural trading and investment, 
+                  John leads our vision to transform Nigeria's agricultural landscape.
+                </p>
+              </div>
+              
+              <div className="bg-card p-5 sm:p-6 rounded-lg shadow-md border border-border">
+                <div className="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16 mx-auto mb-4" />
+                <h3 className="text-lg sm:text-xl font-bold text-foreground">Sarah Okafor</h3>
+                <p className="text-primary font-medium mb-2">Head of Operations</p>
+                <p className="text-muted-foreground text-sm">
+                  Sarah oversees our farm management and supply chain operations, 
+                  ensuring efficiency and quality in all our agricultural activities.
+                </p>
+              </div>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Promise */}
-      <section className="py-16 bg-gradient-to-r from-teal-700 to-teal-900 text-white">
-        <div className="container mx-auto px-4 max-w-4xl text-center">
+      {/* Call to Action */}
+      <section className="py-12 sm:py-16 bg-teal-900 text-white">
+        <div className="container mx-auto px-4 text-center">
           <motion.h2 
-            className="text-3xl md:text-4xl font-bold mb-6"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.5 }}
           >
-            Our Promise
+            Ready to Join Our Mission?
           </motion.h2>
           <motion.p 
-            className="text-xl max-w-3xl mx-auto"
+            className="text-base sm:text-xl mb-6 sm:mb-8 max-w-md sm:max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            Drecan Commodities promises to operate with transparency, integrity, and community focus.
+            Discover how you can invest in agriculture and make a positive impact
           </motion.p>
-          <motion.p 
-            className="text-lg mt-4 max-w-3xl mx-auto"
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            We are not just building an agribusiness — we are building a movement for food justice, economic inclusion, and sustainable development.
-          </motion.p>
+            <Button 
+              className="bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 px-6 sm:px-8 rounded-full text-base sm:text-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl"
+              asChild
+            >
+              <Link to="/opportunities">Explore Investment Opportunities</Link>
+            </Button>
+          </motion.div>
         </div>
       </section>
     </div>

@@ -42,15 +42,9 @@ const Hero = () => {
   const words = titleText.split(" ");
 
   return (
-    <section className="relative min-h-screen flex items-center pb-32 overflow-hidden">
+    <section className="relative min-h-screen flex items-center pb-32 overflow-hidden bg-teal-900">
       {/* Sparkling Effect */}
       <SparkleEffect />
-      
-      {/* Static Gradient Background (removed animation) */}
-      <div className="absolute inset-0 z-0" 
-           style={{ 
-             background: 'linear-gradient(135deg, hsl(170 60% 35%), hsl(155 50% 50%), hsl(165 55% 45%))'
-           }} />
       
       {/* Background Image with Overlay and Parallax */}
       <div className="absolute inset-0 z-0 mb-0 pb-0 overflow-hidden">
@@ -65,7 +59,8 @@ const Hero = () => {
             minWidth: "100%"
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/70 via-accent/65 to-primary/70 backdrop-blur-[1px]" />
+        {/* Improved semi-transparent overlay for better image visibility */}
+        <div className="absolute inset-0 bg-teal-900/70" />
         
         {/* Floating Particles */}
         <div ref={particlesRef} className="absolute inset-0 pointer-events-none" />
@@ -94,7 +89,7 @@ const Hero = () => {
             <span className="ml-1 inline-block w-1 h-16 bg-white align-middle animate-pulse"></span>
           </h1>
           <div className={`text-center mt-4 mb-8 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <p className="text-emerald-200 text-lg font-medium drop-shadow-lg">
+            <p className="text-teal-100 text-lg font-medium drop-shadow-lg">
               Established in Osun State in 2014 — Pioneers in Responsible Nigerian Agriculture
             </p>
           </div>
@@ -103,7 +98,7 @@ const Hero = () => {
             Yields up to 12% with transparent, low-risk opportunities
           </p>
           <div className={`flex flex-col sm:flex-row gap-4 mb-12 transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <Button size="lg" className="bg-teal-700 text-white hover:bg-teal-800 shadow-2xl hover:shadow-teal-500/50 transition-all hover:scale-105 font-semibold text-lg px-8 py-6" asChild>
+            <Button size="lg" className="bg-teal-700 text-white hover:bg-teal-800 shadow-2xl hover:shadow-teal-900/50 transition-all hover:scale-105 font-semibold text-lg px-8 py-6" asChild>
               <Link to="/opportunities">Explore Opportunities</Link>
             </Button>
             <Button size="lg" variant="outline" className="bg-teal-50/10 backdrop-blur-md border-2 border-teal-200 text-white hover:bg-teal-50 hover:text-teal-900 shadow-xl transition-all hover:scale-105 font-semibold text-lg px-8 py-6" asChild>
@@ -113,15 +108,15 @@ const Hero = () => {
 
           {/* Feature Pills */}
           <div className={`flex flex-wrap gap-4 transition-all duration-1000 delay-800 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <div className="flex items-center gap-2 bg-teal-50/15 backdrop-blur-md px-5 py-3 rounded-full border border-teal-200/30 hover:bg-teal-50/25 transition-all hover:scale-105 shadow-lg shadow-teal-700/20">
+            <div className="flex items-center gap-2 bg-teal-50/15 backdrop-blur-md px-5 py-3 rounded-full border border-teal-200/30 hover:bg-teal-50/25 transition-all hover:scale-105 shadow-lg shadow-teal-900/20">
               <TrendingUp className="h-5 w-5 text-white" />
               <span className="text-sm font-semibold text-white">Proven Returns</span>
             </div>
-            <div className="flex items-center gap-2 bg-teal-50/15 backdrop-blur-md px-5 py-3 rounded-full border border-teal-200/30 hover:bg-teal-50/25 transition-all hover:scale-105 shadow-lg shadow-teal-700/20">
+            <div className="flex items-center gap-2 bg-teal-50/15 backdrop-blur-md px-5 py-3 rounded-full border border-teal-200/30 hover:bg-teal-50/25 transition-all hover:scale-105 shadow-lg shadow-teal-900/20">
               <Shield className="h-5 w-5 text-white" />
               <span className="text-sm font-semibold text-white">SEC Regulated</span>
             </div>
-            <div className="flex items-center gap-2 bg-teal-50/15 backdrop-blur-md px-5 py-3 rounded-full border border-teal-200/30 hover:bg-teal-50/25 transition-all hover:scale-105 shadow-lg shadow-teal-700/20">
+            <div className="flex items-center gap-2 bg-teal-50/15 backdrop-blur-md px-5 py-3 rounded-full border border-teal-200/30 hover:bg-teal-50/25 transition-all hover:scale-105 shadow-lg shadow-teal-900/20">
               <Leaf className="h-5 w-5 text-white" />
               <span className="text-sm font-semibold text-white">Sustainable Impact</span>
             </div>

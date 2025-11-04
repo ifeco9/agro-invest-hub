@@ -8,6 +8,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Mail, Phone, MapPin, Clock, Download, Send } from "lucide-react";
 import { z } from "zod";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -64,12 +65,12 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen pt-16 sm:pt-20">
       {/* Header */}
-      <section className="py-16 bg-gradient-to-r from-teal-700 to-teal-900 text-white">
+      <section className="py-12 sm:py-16 bg-teal-900 text-white">
         <div className="container mx-auto px-4 text-center">
           <motion.h1 
-            className="text-4xl md:text-5xl font-bold mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -80,52 +81,55 @@ const Contact = () => {
       </section>
 
       {/* Contact Info */}
-      <section className="py-16 bg-background">
+      <section className="py-12 sm:py-16 bg-background">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.5 }}
             >
-              <Card className="bg-white border border-teal-100 h-full">
+              <Card className="bg-card border border-border h-full">
                 <CardHeader>
-                  <h2 className="text-2xl font-bold text-teal-900">Our Office</h2>
+                  <h2 className="text-2xl font-bold text-foreground">Our Office</h2>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div className="flex items-start gap-3">
-                    <MapPin className="h-5 w-5 text-teal-700 mt-0.5" />
+                    <MapPin className="h-5 w-5 text-primary mt-0.5" />
                     <div>
-                      <p className="font-medium text-teal-900">Address</p>
-                      <p className="text-gray-700">
-                        Suite [ ], Abuja<br />
-                        Nigeria
+                      <p className="font-medium text-foreground">Address</p>
+                      <p className="text-muted-foreground">
+                        Suite [Insert Office Number],<br />
+                        [Insert Building Name],<br />
+                        Abuja, Nigeria
                       </p>
                     </div>
                   </div>
-                  
+                
                   <div className="flex items-start gap-3">
-                    <Mail className="h-5 w-5 text-teal-700 mt-0.5" />
+                    <Mail className="h-5 w-5 text-primary mt-0.5" />
                     <div>
-                      <p className="font-medium text-teal-900">Email</p>
-                      <p className="text-gray-700">info@drecancommodities.com</p>
+                      <p className="font-medium text-foreground">Email</p>
+                      <p className="text-muted-foreground">info@drecancommodities.com</p>
+                      <p className="text-muted-foreground">invest@drecancommodities.com</p>
+                      <p className="text-muted-foreground">partnership@drecancommodities.com</p>
                     </div>
                   </div>
                   
                   <div className="flex items-start gap-3">
-                    <Phone className="h-5 w-5 text-teal-700 mt-0.5" />
+                    <Phone className="h-5 w-5 text-primary mt-0.5" />
                     <div>
-                      <p className="font-medium text-teal-900">Phone</p>
-                      <p className="text-gray-700">+234 803 456 7890</p>
+                      <p className="font-medium text-foreground">Phone</p>
+                      <p className="text-muted-foreground">+234 803 456 7890</p>
                     </div>
                   </div>
                   
                   <div className="flex items-start gap-3">
-                    <Clock className="h-5 w-5 text-teal-700 mt-0.5" />
+                    <Clock className="h-5 w-5 text-primary mt-0.5" />
                     <div>
-                      <p className="font-medium text-teal-900">Business Hours</p>
-                      <p className="text-gray-700">
+                      <p className="font-medium text-foreground">Business Hours</p>
+                      <p className="text-muted-foreground">
                         Monday - Friday<br />
                         8:00 AM - 5:00 PM WAT
                       </p>
@@ -133,10 +137,10 @@ const Contact = () => {
                   </div>
                   
                   <div className="pt-4">
-                    <h3 className="text-lg font-semibold text-teal-900 mb-3">Follow Us</h3>
+                    <h3 className="text-lg font-semibold text-foreground mb-3">Follow Us</h3>
                     <div className="flex space-x-4">
                       {["Facebook", "Twitter", "LinkedIn", "Instagram"].map((social, index) => (
-                        <Button key={index} variant="outline" size="sm" className="border-teal-100 text-teal-900 hover:bg-teal-50">
+                        <Button key={index} variant="outline" size="sm" className="border-border text-foreground hover:bg-secondary">
                           {social}
                         </Button>
                       ))}
@@ -153,10 +157,10 @@ const Contact = () => {
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.5 }}
             >
-              <Card className="bg-white border border-teal-100">
+              <Card className="bg-card border border-border">
                 <CardHeader>
-                  <h2 className="text-2xl font-bold text-teal-900">Send Us a Message</h2>
-                  <p className="text-gray-700">
+                  <h2 className="text-2xl font-bold text-foreground">Send Us a Message</h2>
+                  <p className="text-muted-foreground">
                     Have questions or want to learn more about our investment opportunities? 
                     Fill out the form below and our team will get back to you.
                   </p>
@@ -164,62 +168,62 @@ const Contact = () => {
                 <CardContent>
                   <form onSubmit={handleSubmit} className="space-y-4">
                     <div className="space-y-2">
-                      <Label htmlFor="name" className="text-teal-900">Full Name *</Label>
+                      <Label htmlFor="name" className="text-foreground">Full Name *</Label>
                       <Input 
                         id="name" 
                         name="name" 
                         required 
                         placeholder="John Smith" 
-                        className="border-teal-100 focus:border-teal-700 focus:ring-teal-700" 
+                        className="border-border focus:border-primary focus:ring-primary" 
                       />
                     </div>
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="space-y-2">
-                        <Label htmlFor="email" className="text-teal-900">Email Address *</Label>
+                        <Label htmlFor="email" className="text-foreground">Email Address *</Label>
                         <Input 
                           id="email" 
                           name="email" 
                           type="email" 
                           required 
                           placeholder="john.smith@example.com" 
-                          className="border-teal-100 focus:border-teal-700 focus:ring-teal-700" 
+                          className="border-border focus:border-primary focus:ring-primary" 
                         />
                       </div>
                       
                       <div className="space-y-2">
-                        <Label htmlFor="phone" className="text-teal-900">Phone Number *</Label>
+                        <Label htmlFor="phone" className="text-foreground">Phone Number *</Label>
                         <Input 
                           id="phone" 
                           name="phone" 
                           type="tel" 
                           required 
                           placeholder="+234 803 456 7890" 
-                          className="border-teal-100 focus:border-teal-700 focus:ring-teal-700" 
+                          className="border-border focus:border-primary focus:ring-primary" 
                         />
                       </div>
                     </div>
                     
                     <div className="space-y-2">
-                      <Label htmlFor="subject" className="text-teal-900">Subject *</Label>
+                      <Label htmlFor="subject" className="text-foreground">Subject *</Label>
                       <Input 
                         id="subject" 
                         name="subject" 
                         required 
                         placeholder="Investment Inquiry" 
-                        className="border-teal-100 focus:border-teal-700 focus:ring-teal-700" 
+                        className="border-border focus:border-primary focus:ring-primary" 
                       />
                     </div>
                     
                     <div className="space-y-2">
-                      <Label htmlFor="message" className="text-teal-900">Message *</Label>
+                      <Label htmlFor="message" className="text-foreground">Message *</Label>
                       <Textarea
                         id="message"
                         name="message"
                         required
                         placeholder="Tell us about your interest in Drecan Commodities..."
                         rows={4}
-                        className="border-teal-100 focus:border-teal-700 focus:ring-teal-700"
+                        className="border-border focus:border-primary focus:ring-primary"
                       />
                     </div>
                     
@@ -230,7 +234,7 @@ const Contact = () => {
                       <Button 
                         type="submit" 
                         size="lg" 
-                        className="w-full bg-teal-700 hover:bg-teal-800 text-white flex items-center justify-center gap-2"
+                        className="w-full bg-primary hover:bg-primary-hover text-primary-foreground flex items-center justify-center gap-2"
                         disabled={isSubmitting}
                       >
                         {isSubmitting ? (
@@ -252,11 +256,11 @@ const Contact = () => {
       </section>
 
       {/* Investor Relations */}
-      <section className="py-16 bg-teal-50">
+      <section className="py-12 sm:py-16 bg-teal-50">
         <div className="container mx-auto px-4 max-w-4xl">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8 sm:mb-12">
             <motion.h2 
-              className="text-3xl md:text-4xl font-bold text-teal-900 mb-4"
+              className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
@@ -265,7 +269,7 @@ const Contact = () => {
               Investor Relations
             </motion.h2>
             <motion.p 
-              className="text-lg text-gray-700"
+              className="text-base sm:text-lg text-muted-foreground"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
@@ -275,17 +279,17 @@ const Contact = () => {
             </motion.p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 mb-8 sm:mb-12">
             <motion.div
-              className="bg-white p-6 rounded-lg shadow-md border border-teal-100"
+              className="bg-card p-4 sm:p-6 rounded-lg shadow-md border border-border"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.5, delay: 0.1 }}
               whileHover={{ y: -5, transition: { duration: 0.3 } }}
             >
-              <h3 className="text-xl font-bold text-teal-900 mb-3">Our Promise</h3>
-              <p className="text-gray-700">
+              <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2 sm:mb-3">Our Promise</h3>
+              <p className="text-muted-foreground">
                 We are committed to providing transparent, ethical, and profitable investment opportunities 
                 in Nigeria's agricultural sector. Our team ensures that every investor receives personalized 
                 attention and regular updates on their investments.
@@ -293,50 +297,50 @@ const Contact = () => {
             </motion.div>
             
             <motion.div
-              className="bg-white p-6 rounded-lg shadow-md border border-teal-100"
+              className="bg-card p-4 sm:p-6 rounded-lg shadow-md border border-border"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.5, delay: 0.2 }}
               whileHover={{ y: -5, transition: { duration: 0.3 } }}
             >
-              <h3 className="text-xl font-bold text-teal-900 mb-3">Investment Categories</h3>
-              <ul className="space-y-2 text-gray-700">
+              <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2 sm:mb-3">Investment Categories</h3>
+              <ul className="space-y-2 text-muted-foreground">
                 <li className="flex items-start">
-                  <span className="text-teal-700 font-bold mr-2">•</span>
+                  <span className="text-primary font-bold mr-2">•</span>
                   <span>AgroTrade: Short-term trading opportunities</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-teal-700 font-bold mr-2">•</span>
+                  <span className="text-primary font-bold mr-2">•</span>
                   <span>AgroFarm: Collaborative farming initiatives</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-teal-700 font-bold mr-2">•</span>
+                  <span className="text-primary font-bold mr-2">•</span>
                   <span>AgroLink: Community supply programs</span>
                 </li>
               </ul>
             </motion.div>
             
             <motion.div
-              className="bg-white p-6 rounded-lg shadow-md border border-teal-100"
+              className="bg-card p-4 sm:p-6 rounded-lg shadow-md border border-border"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.5, delay: 0.3 }}
               whileHover={{ y: -5, transition: { duration: 0.3 } }}
             >
-              <h3 className="text-xl font-bold text-teal-900 mb-3">Next Steps</h3>
-              <ol className="space-y-2 text-gray-700">
+              <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2 sm:mb-3">Next Steps</h3>
+              <ol className="space-y-2 text-muted-foreground">
                 <li className="flex items-start">
-                  <span className="text-teal-700 font-bold mr-2">1.</span>
+                  <span className="text-primary font-bold mr-2">1.</span>
                   <span>Submit your inquiry through our contact form</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-teal-700 font-bold mr-2">2.</span>
+                  <span className="text-primary font-bold mr-2">2.</span>
                   <span>Schedule a consultation with our investment team</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-teal-700 font-bold mr-2">3.</span>
+                  <span className="text-primary font-bold mr-2">3.</span>
                   <span>Review and sign investment agreements</span>
                 </li>
               </ol>
@@ -356,7 +360,7 @@ const Contact = () => {
             >
               <Button 
                 size="lg" 
-                className="bg-gradient-to-r from-teal-600 to-teal-800 hover:from-teal-700 hover:to-teal-900 text-white shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 ease-in-out px-8 py-3 rounded-full font-bold text-lg flex items-center justify-center gap-2 mx-auto"
+                className="bg-teal-600 hover:bg-teal-700 text-white shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 ease-in-out px-6 sm:px-8 py-3 rounded-full font-bold text-base sm:text-lg flex items-center justify-center gap-2 mx-auto"
               >
                 <Download className="h-5 w-5" />
                 Download Brochure

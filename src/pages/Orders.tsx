@@ -1,158 +1,274 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { toast } from "sonner";
-import { Package, Truck, CheckCircle, Clock } from "lucide-react";
-
-interface Order {
-  id: string;
-  productName: string;
-  quantity: number;
-  totalAmount: number;
-  status: 'pending' | 'processing' | 'shipped' | 'delivered' | 'cancelled';
-  trackingNumber?: string;
-  shippingAddress?: string;
-  createdAt: string;
-}
+import { motion } from "framer-motion";
+import { TrendingUp, Calendar, DollarSign, Package, CheckCircle, Clock, XCircle } from "lucide-react";
 
 const Orders = () => {
-  const [orders, setOrders] = useState<Order[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetchOrders();
-  }, []);
-
-  const fetchOrders = async () => {
-    try {
-      const token = localStorage.getItem('authToken');
-      if (!token) {
-        toast.error("Please sign in to view orders");
-        return;
-      }
-
-      const response = await fetch('http://localhost:5000/api/orders/my-orders', {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to fetch orders');
-      }
-
-      const data = await response.json();
-      setOrders(data);
-    } catch (error) {
-      console.error('Error fetching orders:', error);
-      toast.error("Failed to load orders");
-    } finally {
-      setLoading(false);
+  const [activeTab, setActiveTab] = useState("all");
+  
+  // Mock data for orders
+  const orders = [
+    {
+      id: "ORD-001",
+      date: "2023-06-15",
+      amount: 2500000,
+      status: "completed",
+      type: "AgroTrade Investment",
+      returns: 150000,
+      duration: "6 months"
+    },
+    {
+      id: "ORD-002",
+      date: "2023-07-22",
+      amount: 5000000,
+      status: "processing",
+      type: "AgroFarm Partnership",
+      returns: 750000,
+      duration: "12 months"
+    },
+    {
+      id: "ORD-003",
+      date: "2023-08-10",
+      amount: 10000000,
+      status: "pending",
+      type: "AgroReserve Premium",
+      returns: 2500000,
+      duration: "24 months"
+    },
+    {
+      id: "ORD-004",
+      date: "2023-05-30",
+      amount: 3000000,
+      status: "completed",
+      type: "AgroTrade Investment",
+      returns: 180000,
+      duration: "6 months"
     }
-  };
+  ];
+
+  const filteredOrders = activeTab === "all" 
+    ? orders 
+    : orders.filter(order => order.status === activeTab);
 
   const getStatusIcon = (status: string) => {
     switch (status) {
-      case 'pending':
-        return <Clock className="h-5 w-5" />;
-      case 'processing':
-        return <Package className="h-5 w-5" />;
-      case 'shipped':
-        return <Truck className="h-5 w-5" />;
-      case 'delivered':
-        return <CheckCircle className="h-5 w-5" />;
+      case "completed":
+        return <CheckCircle className="h-5 w-5 text-green-500" />;
+      case "processing":
+        return <Clock className="h-5 w-5 text-yellow-500" />;
+      case "pending":
+        return <Clock className="h-5 w-5 text-blue-500" />;
       default:
-        return <Package className="h-5 w-5" />;
+        return <XCircle className="h-5 w-5 text-red-500" />;
+    }
+  };
+
+  const getStatusText = (status: string) => {
+    switch (status) {
+      case "completed":
+        return "Completed";
+      case "processing":
+        return "Processing";
+      case "pending":
+        return "Pending";
+      default:
+        return "Cancelled";
     }
   };
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'pending':
-        return 'bg-yellow-100 text-yellow-800';
-      case 'processing':
-        return 'bg-blue-100 text-blue-800';
-      case 'shipped':
-        return 'bg-purple-100 text-purple-800';
-      case 'delivered':
-        return 'bg-teal-100 text-teal-800';
-      case 'cancelled':
-        return 'bg-red-100 text-red-800';
+      case "completed":
+        return "bg-green-100 text-green-800";
+      case "processing":
+        return "bg-yellow-100 text-yellow-800";
+      case "pending":
+        return "bg-blue-100 text-blue-800";
       default:
-        return 'bg-gray-100 text-gray-800';
+        return "bg-red-100 text-red-800";
     }
   };
 
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center pt-32">
-        <p className="text-lg text-teal-700">Loading your orders...</p>
-      </div>
-    );
-  }
-
   return (
-    <div className="min-h-screen py-32 px-4 bg-gradient-to-b from-white to-teal-50">
-      <div className="container mx-auto max-w-5xl">
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold text-teal-900 mb-2">Your Orders</h1>
-          <p className="text-lg text-teal-700">Track your purchases and investments</p>
-        </div>
+    <div className="min-h-screen pt-16 sm:pt-20 bg-teal-50">
+      <div className="container mx-auto px-4 py-8">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-8 sm:mb-12"
+        >
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-teal-900 mb-3 sm:mb-4">
+            Investment Dashboard
+          </h1>
+          <p className="text-base sm:text-lg text-teal-700 max-w-md sm:max-w-2xl mx-auto">
+            Track your agricultural investments and monitor returns
+          </p>
+        </motion.div>
 
-        {orders.length === 0 ? (
-          <Card>
-            <CardContent className="text-center py-12">
-              <Package className="h-16 w-16 text-gray-300 mx-auto mb-4" />
-              <p className="text-lg text-gray-600">No orders yet</p>
-              <p className="text-sm text-gray-500 mt-2">Your orders will appear here once you make a purchase</p>
+        {/* Summary Cards */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8 sm:mb-12"
+        >
+          <Card className="bg-white border-teal-200 shadow-md">
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium text-teal-700">
+                Total Investments
+              </CardTitle>
+              <DollarSign className="h-4 w-4 text-teal-500" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold text-teal-900">₦20,500,000</div>
+              <p className="text-xs text-teal-600">+12.5% from last month</p>
             </CardContent>
           </Card>
-        ) : (
-          <div className="space-y-4">
-            {orders.map((order) => (
-              <Card key={order.id} className="hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <CardTitle className="text-xl text-teal-900">{order.productName}</CardTitle>
-                      <CardDescription>
-                        Order #{order.id.slice(0, 8)} • {new Date(order.createdAt).toLocaleDateString()}
-                      </CardDescription>
+          
+          <Card className="bg-white border-teal-200 shadow-md">
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium text-teal-700">
+                Active Investments
+              </CardTitle>
+              <TrendingUp className="h-4 w-4 text-teal-500" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold text-teal-900">8</div>
+              <p className="text-xs text-teal-600">4 new this month</p>
+            </CardContent>
+          </Card>
+          
+          <Card className="bg-white border-teal-200 shadow-md">
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium text-teal-700">
+                Returns Earned
+              </CardTitle>
+              <Calendar className="h-4 w-4 text-teal-500" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold text-teal-900">₦2,160,000</div>
+              <p className="text-xs text-teal-600">This financial year</p>
+            </CardContent>
+          </Card>
+          
+          <Card className="bg-white border-teal-200 shadow-md">
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium text-teal-700">
+                Upcoming Maturities
+              </CardTitle>
+              <Package className="h-4 w-4 text-teal-500" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold text-teal-900">3</div>
+              <p className="text-xs text-teal-600">Within next 30 days</p>
+            </CardContent>
+          </Card>
+        </motion.div>
+
+        {/* Orders Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <Card className="bg-white border-teal-200 shadow-lg">
+            <CardHeader>
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <div>
+                  <CardTitle className="text-xl font-bold text-teal-900">Investment Orders</CardTitle>
+                  <CardDescription className="text-teal-700">
+                    Manage and track all your agricultural investments
+                  </CardDescription>
+                </div>
+                <Button className="bg-teal-600 hover:bg-teal-700 text-white">
+                  New Investment
+                </Button>
+              </div>
+              
+              {/* Tabs */}
+              <div className="flex space-x-4 mt-4 border-b border-teal-200">
+                {[
+                  { id: "all", label: "All Orders" },
+                  { id: "completed", label: "Completed" },
+                  { id: "processing", label: "Processing" },
+                  { id: "pending", label: "Pending" }
+                ].map((tab) => (
+                  <button
+                    key={tab.id}
+                    className={`pb-2 px-1 text-sm font-medium ${
+                      activeTab === tab.id
+                        ? "text-teal-600 border-b-2 border-teal-600"
+                        : "text-teal-500 hover:text-teal-700"
+                    }`}
+                    onClick={() => setActiveTab(tab.id)}
+                  >
+                    {tab.label}
+                  </button>
+                ))}
+              </div>
+            </CardHeader>
+            
+            <CardContent>
+              <div className="space-y-4">
+                {filteredOrders.map((order, index) => (
+                  <motion.div
+                    key={order.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3, delay: index * 0.1 }}
+                    className="border border-teal-200 rounded-lg p-4 hover:shadow-md transition-shadow"
+                  >
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                      <div>
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className="font-medium text-teal-900">{order.id}</span>
+                          <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${getStatusColor(order.status)}`}>
+                            {getStatusIcon(order.status)}
+                            <span className="ml-1">{getStatusText(order.status)}</span>
+                          </span>
+                        </div>
+                        <p className="text-sm text-teal-700">{order.type}</p>
+                        <p className="text-xs text-teal-500 mt-1">{order.date} • {order.duration}</p>
+                      </div>
+                      
+                      <div className="text-right">
+                        <p className="font-medium text-teal-900">₦{order.amount.toLocaleString()}</p>
+                        <p className="text-sm text-teal-700">Returns: ₦{order.returns.toLocaleString()}</p>
+                        <Button 
+                          variant="outline" 
+                          size="sm" 
+                          className="mt-2 border-teal-300 text-teal-700 hover:bg-teal-50"
+                        >
+                          View Details
+                        </Button>
+                      </div>
                     </div>
-                    <Badge className={`${getStatusColor(order.status)} flex items-center gap-2`}>
-                      {getStatusIcon(order.status)}
-                      {order.status.charAt(0).toUpperCase() + order.status.slice(1)}
-                    </Badge>
+                  </motion.div>
+                ))}
+              </div>
+              
+              {filteredOrders.length === 0 && (
+                <div className="text-center py-8">
+                  <Package className="mx-auto h-12 w-12 text-teal-400" />
+                  <h3 className="mt-2 text-sm font-medium text-teal-900">No orders found</h3>
+                  <p className="mt-1 text-sm text-teal-500">
+                    {activeTab === "all" 
+                      ? "Get started by creating a new investment." 
+                      : `No ${activeTab} orders at this time.`}
+                  </p>
+                  <div className="mt-6">
+                    <Button className="bg-teal-600 hover:bg-teal-700 text-white">
+                      Create New Investment
+                    </Button>
                   </div>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid md:grid-cols-3 gap-4">
-                    <div>
-                      <p className="text-sm text-gray-600">Quantity</p>
-                      <p className="font-semibold text-teal-900">{order.quantity}</p>
-                    </div>
-                    <div>
-                      <p className="text-sm text-gray-600">Total Amount</p>
-                      <p className="font-semibold text-teal-900">₦{order.totalAmount.toLocaleString()}</p>
-                    </div>
-                    <div>
-                      <p className="text-sm text-gray-600">Tracking Number</p>
-                      <p className="font-semibold text-teal-900">
-                        {order.trackingNumber || 'Not assigned yet'}
-                      </p>
-                    </div>
-                  </div>
-                  {order.shippingAddress && (
-                    <div className="mt-4 pt-4 border-t">
-                      <p className="text-sm text-gray-600 mb-1">Shipping Address</p>
-                      <p className="text-sm text-teal-900">{order.shippingAddress}</p>
-                    </div>
-                  )}
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        )}
+                </div>
+              )}
+            </CardContent>
+          </Card>
+        </motion.div>
       </div>
     </div>
   );

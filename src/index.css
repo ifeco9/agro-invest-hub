@@ -12,81 +12,75 @@ All colors MUST be HSL.
 @layer base {
   :root {
     /* Teal color scheme matching footer */
-    --background: 174 48% 96%; /* teal-50 equivalent */
-    --foreground: 183 29% 15%; /* teal-900 equivalent */
+    --background: 180 20% 98%; /* Light neutral background */
+    --foreground: 180 5% 15%; /* Dark text */
     
-    --card: 174 48% 98%; /* Lighter teal for cards */
-    --card-foreground: 183 29% 15%; /* teal-900 */
+    --card: 180 25% 96%; /* Lighter teal for cards */
+    --card-foreground: 180 5% 15%; /* Dark text */
     
-    --popover: 174 48% 98%;
-    --popover-foreground: 183 29% 15%;
+    --popover: 180 25% 96%;
+    --popover-foreground: 180 5% 15%;
     
-    --primary: 183 74% 32%; /* teal-700 */
+    --primary: 175 40% 40%; /* Deep teal primary */
     --primary-foreground: 0 0% 100%; /* White text */
-    --primary-hover: 183 80% 28%; /* teal-800 */
+    --primary-hover: 175 45% 35%; /* Darker teal hover */
     
-    --secondary: 174 48% 96%; /* teal-50 */
-    --secondary-foreground: 183 29% 15%; /* teal-900 */
+    --secondary: 180 20% 90%; /* Light teal secondary */
+    --secondary-foreground: 180 5% 15%; /* Dark text */
     
-    --muted: 180 36% 90%; /* teal-100 */
-    --muted-foreground: 183 21% 38%; /* teal-600 */
+    --muted: 180 15% 80%; /* Muted teal */
+    --muted-foreground: 180 5% 40%; /* Muted text */
     
-    --accent: 183 74% 32%; /* teal-700 accent */
+    --accent: 175 50% 50%; /* Bright teal accent */
     --accent-foreground: 0 0% 100%;
     
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
     
-    --border: 180 36% 90%; /* teal-100 */
-    --input: 180 36% 90%; /* teal-100 */
-    --ring: 183 74% 32%; /* teal-700 ring */
+    --border: 180 15% 85%; /* Light teal border */
+    --input: 180 15% 85%; /* Light teal input */
+    --ring: 175 40% 40%; /* Deep teal ring */
     
     --radius: 0.5rem;
     
-    /* Teal-themed gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(183 74% 32%), hsl(174 60% 50%));
-    --gradient-hero: linear-gradient(135deg, hsl(183 80% 28% / 0.92), hsl(174 48% 85% / 0.88));
-    --gradient-mint: linear-gradient(180deg, hsl(174 48% 96%), hsl(180 40% 92%));
-    --gradient-teal-glow: radial-gradient(circle at 50% 50%, hsl(183 74% 32% / 0.15), transparent 70%);
-    
-    --shadow-sm: 0 1px 2px 0 hsl(183 30% 30% / 0.08);
-    --shadow-md: 0 4px 6px -1px hsl(183 30% 30% / 0.12);
-    --shadow-lg: 0 10px 15px -3px hsl(183 30% 30% / 0.15);
-    --shadow-xl: 0 20px 25px -5px hsl(183 30% 30% / 0.18);
-    --shadow-teal: 0 10px 30px -10px hsl(183 74% 32% / 0.3);
+    --shadow-sm: 0 1px 2px 0 hsl(180 10% 20% / 0.08);
+    --shadow-md: 0 4px 6px -1px hsl(180 10% 20% / 0.12);
+    --shadow-lg: 0 10px 15px -3px hsl(180 10% 20% / 0.15);
+    --shadow-xl: 0 20px 25px -5px hsl(180 10% 20% / 0.18);
+    --shadow-teal: 0 10px 30px -10px hsl(175 40% 40% / 0.3);
     
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   .dark {
-    --background: 170 35% 10%; /* Dark teal background */
-    --foreground: 155 30% 95%; /* Light mint text */
+    --background: 180 20% 10%; /* Dark teal background */
+    --foreground: 180 10% 90%; /* Light text */
     
-    --card: 170 30% 15%; /* Dark teal cards */
-    --card-foreground: 155 30% 95%; /* Light mint text */
+    --card: 180 20% 15%; /* Dark teal cards */
+    --card-foreground: 180 10% 90%; /* Light text */
     
-    --popover: 170 30% 15%; /* Dark teal */
-    --popover-foreground: 155 30% 95%; /* Light mint */
+    --popover: 180 20% 15%; /* Dark teal */
+    --popover-foreground: 180 10% 90%; /* Light text */
     
-    --primary: 170 50% 50%; /* Bright teal primary */
-    --primary-foreground: 170 40% 10%; /* Dark teal text */
-    --primary-hover: 170 55% 45%; /* Brighter teal hover */
+    --primary: 175 50% 60%; /* Bright teal primary */
+    --primary-foreground: 180 20% 10%; /* Dark text */
+    --primary-hover: 175 55% 55%; /* Brighter teal hover */
     
-    --secondary: 170 25% 20%; /* Dark teal secondary */
-    --secondary-foreground: 155 30% 95%; /* Light mint text */
+    --secondary: 180 20% 20%; /* Dark teal secondary */
+    --secondary-foreground: 180 10% 90%; /* Light text */
     
-    --muted: 170 20% 25%; /* Muted dark teal */
-    --muted-foreground: 155 20% 70%; /* Muted mint text */
+    --muted: 180 15% 25%; /* Muted dark teal */
+    --muted-foreground: 180 10% 70%; /* Muted light text */
     
-    --accent: 165 45% 55%; /* Bright teal accent */
-    --accent-foreground: 170 40% 10%; /* Dark teal text */
+    --accent: 175 50% 65%; /* Bright teal accent */
+    --accent-foreground: 180 20% 10%; /* Dark text */
     
     --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive-foreground: 0 0% 100%;
     
-    --border: 170 25% 25%; /* Dark teal border */
-    --input: 170 25% 25%; /* Dark teal input */
-    --ring: 170 50% 50%; /* Bright teal ring */
+    --border: 180 20% 25%; /* Dark teal border */
+    --input: 180 20% 25%; /* Dark teal input */
+    --ring: 175 50% 60%; /* Bright teal ring */
   }
 }
 
@@ -97,7 +91,6 @@ All colors MUST be HSL.
   
   body {
     @apply bg-background text-foreground min-h-screen relative overflow-x-hidden;
-    background-image: var(--gradient-mint);
   }
   
   body::before {
@@ -107,10 +100,8 @@ All colors MUST be HSL.
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: var(--gradient-teal-glow);
     pointer-events: none;
     z-index: 0;
-    /* Removed animation: pulse-glow 8s ease-in-out infinite; */
   }
   
   body > * {
@@ -135,14 +126,13 @@ All colors MUST be HSL.
   position: absolute;
   width: 6px;
   height: 6px;
-  background: hsl(174 80% 85%);
+  background: hsl(175 50% 80%);
   border-radius: 50%;
-  /* Removed animation: sparkle-twinkle linear infinite; */
   pointer-events: none;
   box-shadow: 
-    0 0 12px hsl(183 74% 70% / 1),
-    0 0 24px hsl(183 74% 70% / 0.8),
-    0 0 36px hsl(174 80% 85% / 0.6);
+    0 0 12px hsl(175 50% 60% / 1),
+    0 0 24px hsl(175 50% 60% / 0.8),
+    0 0 36px hsl(175 50% 80% / 0.6);
 }
 
 /* Particle Animation */
@@ -150,13 +140,10 @@ All colors MUST be HSL.
   position: absolute;
   width: 4px;
   height: 4px;
-  background: hsl(170 60% 60% / 0.7);
+  background: hsl(175 40% 60% / 0.7);
   border-radius: 50%;
-  /* Removed animation: float linear infinite; */
   pointer-events: none;
   box-shadow: 
-    0 0 8px hsl(170 60% 60% / 0.6),
-    0 0 16px hsl(155 50% 70% / 0.3);
+    0 0 8px hsl(175 40% 60% / 0.6),
+    0 0 16px hsl(175 30% 70% / 0.3);
 }
-
-/* Removed @keyframes gradient-shift and .animate-gradient-shift */

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, ShoppingCart } from "lucide-react";
@@ -20,23 +20,28 @@ const Navbar = () => {
   ];
 
   // Load cart count from localStorage
-  const updateCartCount = () => {
-    const savedCart = localStorage.getItem('cart');
-    if (savedCart) {
-      try {
-        const cart = JSON.parse(savedCart);
-        const count = cart.reduce((total: number, item: any) => total + (item.quantity || 0), 0);
-        setCartCount(count);
-      } catch (e) {
+  useEffect(() => {
+    const updateCartCount = () => {
+      const savedCart = localStorage.getItem('cart');
+      if (savedCart) {
+        try {
+          const cart = JSON.parse(savedCart);
+          const count = cart.reduce((total: number, item: any) => total + (item.quantity || 0), 0);
+          setCartCount(count);
+        } catch (e) {
+          setCartCount(0);
+        }
+      } else {
         setCartCount(0);
       }
-    } else {
-      setCartCount(0);
-    }
-  };
+    };
 
-  // Initialize cart count
-  updateCartCount();
+    updateCartCount();
+    
+    // Listen for storage changes (when cart is updated in another tab/component)
+    window.addEventListener('storage', updateCartCount);
+    return () => window.removeEventListener('storage', updateCartCount);
+  }, []);
 
   const isActive = (path: string) => location.pathname === path;
 

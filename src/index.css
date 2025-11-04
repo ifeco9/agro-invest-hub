@@ -110,18 +110,13 @@ All colors MUST be HSL.
     background-image: var(--gradient-teal-glow);
     pointer-events: none;
     z-index: 0;
-    animation: pulse-glow 8s ease-in-out infinite;
+    /* Removed animation: pulse-glow 8s ease-in-out infinite; */
   }
   
   body > * {
     position: relative;
     z-index: 1;
   }
-}
-
-@keyframes pulse-glow {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 0.8; }
 }
 
 /* Sparkling Dot Effects */
@@ -142,31 +137,12 @@ All colors MUST be HSL.
   height: 6px;
   background: hsl(174 80% 85%);
   border-radius: 50%;
-  animation: sparkle-twinkle linear infinite;
+  /* Removed animation: sparkle-twinkle linear infinite; */
   pointer-events: none;
   box-shadow: 
     0 0 12px hsl(183 74% 70% / 1),
     0 0 24px hsl(183 74% 70% / 0.8),
     0 0 36px hsl(174 80% 85% / 0.6);
-}
-
-@keyframes sparkle-twinkle {
-  0%, 100% {
-    opacity: 0;
-    transform: scale(0) rotate(0deg);
-  }
-  10% {
-    opacity: 1;
-    transform: scale(1) rotate(90deg);
-  }
-  50% {
-    opacity: 0.8;
-    transform: scale(1.2) rotate(180deg);
-  }
-  90% {
-    opacity: 1;
-    transform: scale(1) rotate(270deg);
-  }
 }
 
 /* Particle Animation */
@@ -176,40 +152,11 @@ All colors MUST be HSL.
   height: 4px;
   background: hsl(170 60% 60% / 0.7);
   border-radius: 50%;
-  animation: float linear infinite;
+  /* Removed animation: float linear infinite; */
   pointer-events: none;
   box-shadow: 
     0 0 8px hsl(170 60% 60% / 0.6),
     0 0 16px hsl(155 50% 70% / 0.3);
 }
 
-@keyframes float {
-  0% {
-    transform: translateY(100vh) rotate(0deg);
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  90% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-100px) rotate(360deg);
-    opacity: 0;
-  }
-}
-
-@keyframes gradient-shift {
-  0%, 100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-}
-
-.animate-gradient-shift {
-  background-size: 200% 200%;
-  animation: gradient-shift 15s ease infinite;
-}
+/* Removed @keyframes gradient-shift and .animate-gradient-shift */

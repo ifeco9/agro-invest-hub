@@ -46,11 +46,10 @@ const Hero = () => {
       {/* Sparkling Effect */}
       <SparkleEffect />
       
-      {/* Animated Gradient Background */}
-      <div className="absolute inset-0 z-0 animate-gradient-shift" 
+      {/* Static Gradient Background (removed animation) */}
+      <div className="absolute inset-0 z-0" 
            style={{ 
-             background: 'linear-gradient(135deg, hsl(170 60% 35%), hsl(155 50% 50%), hsl(165 55% 45%))',
-             backgroundSize: '200% 200%'
+             background: 'linear-gradient(135deg, hsl(170 60% 35%), hsl(155 50% 50%), hsl(165 55% 45%))'
            }} />
       
       {/* Background Image with Overlay and Parallax */}

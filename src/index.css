@@ -138,16 +138,16 @@ All colors MUST be HSL.
 
 .sparkle {
   position: absolute;
-  width: 4px;
-  height: 4px;
-  background: hsl(174 60% 80%);
+  width: 6px;
+  height: 6px;
+  background: hsl(174 80% 85%);
   border-radius: 50%;
   animation: sparkle-twinkle linear infinite;
   pointer-events: none;
   box-shadow: 
-    0 0 8px hsl(183 74% 60% / 0.9),
-    0 0 16px hsl(183 74% 60% / 0.5),
-    0 0 24px hsl(174 60% 80% / 0.3);
+    0 0 12px hsl(183 74% 70% / 1),
+    0 0 24px hsl(183 74% 70% / 0.8),
+    0 0 36px hsl(174 80% 85% / 0.6);
 }
 
 @keyframes sparkle-twinkle {

@@ -7,7 +7,7 @@ const SparkleEffect = () => {
     if (!sparkleContainerRef.current) return;
 
     const container = sparkleContainerRef.current;
-    const sparkleCount = 80; // Increased sparkle count
+    const sparkleCount = 120; // More sparkles
 
     // Create sparkling dots
     for (let i = 0; i < sparkleCount; i++) {
@@ -15,8 +15,8 @@ const SparkleEffect = () => {
       sparkle.className = 'sparkle';
       sparkle.style.left = `${Math.random() * 100}%`;
       sparkle.style.top = `${Math.random() * 100}%`;
-      sparkle.style.animationDelay = `${Math.random() * 4}s`;
-      sparkle.style.animationDuration = `${2 + Math.random() * 3}s`;
+      sparkle.style.animationDelay = `${Math.random() * 5}s`;
+      sparkle.style.animationDuration = `${2 + Math.random() * 4}s`;
       container.appendChild(sparkle);
     }
 

@@ -66,7 +66,7 @@ const Hero = () => {
             minWidth: "100%"
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-accent/85 to-primary/80 backdrop-blur-[2px]" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/70 via-accent/65 to-primary/70 backdrop-blur-[1px]" />
         
         {/* Floating Particles */}
         <div ref={particlesRef} className="absolute inset-0 pointer-events-none" />

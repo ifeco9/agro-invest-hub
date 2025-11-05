@@ -724,15 +724,22 @@ const Shop = () => {
   }
 
   return (
-    <div className="min-h-screen py-32 px-4 bg-gradient-to-b from-white to-teal-50">
-      <div className="container mx-auto max-w-7xl">
+    <div className="min-h-screen py-32 px-4 bg-gradient-to-br from-teal-50 via-white to-emerald-50 relative overflow-hidden">
+      {/* Decorative background elements */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+        <div className="absolute top-10 left-10 w-64 h-64 bg-teal-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+        <div className="absolute top-10 right-10 w-64 h-64 bg-emerald-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+        <div className="absolute bottom-10 left-1/2 w-64 h-64 bg-cyan-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
+      </div>
+      
+      <div className="container mx-auto max-w-7xl relative z-10">
         {/* Header with user info and cart */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
-          <div>
-            <h1 className="text-4xl md:text-5xl font-bold text-teal-900 mb-2">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4 animate-fade-in-up">
+          <div className="bg-gradient-to-r from-teal-800 to-emerald-800 p-6 rounded-2xl shadow-xl transform transition-all duration-500 hover:scale-105">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-2 drop-shadow-lg">
               Drecan Premium Commodities
             </h1>
-            <p className="text-lg text-teal-700">
+            <p className="text-lg text-teal-100 drop-shadow">
               100% Nigerian, Farm-Fresh, Sustainably Sourced
             </p>
           </div>
@@ -821,9 +828,21 @@ const Shop = () => {
 
       {/* Tabs for Products and Investment Opportunities */}
       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-        <TabsList className="grid w-full grid-cols-2 mb-8">
-          <TabsTrigger value="products" aria-label="Products tab">Products</TabsTrigger>
-          <TabsTrigger value="investments" aria-label="Investment tab">Investment</TabsTrigger>
+        <TabsList className="grid w-full grid-cols-2 mb-8 bg-teal-100 p-1 rounded-xl">
+          <TabsTrigger 
+            value="products" 
+            aria-label="Products tab"
+            className="data-[state=active]:bg-teal-600 data-[state=active]:text-white transition-all duration-300"
+          >
+            Products
+          </TabsTrigger>
+          <TabsTrigger 
+            value="investments" 
+            aria-label="Investment tab"
+            className="data-[state=active]:bg-teal-600 data-[state=active]:text-white transition-all duration-300"
+          >
+            Investment
+          </TabsTrigger>
         </TabsList>
 
         <TabsContent value="products">

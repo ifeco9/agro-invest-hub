@@ -170,7 +170,7 @@ const Home = () => {
       </section>
 
       {/* Who We Are */}
-      <section className="py-12 sm:py-16 bg-background">
+      <section className="py-12 sm:py-16 bg-teal-900 text-white">
         <div className="container mx-auto px-4 max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -179,14 +179,14 @@ const Home = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-8 sm:mb-12"
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4 sm:mb-6">Who We Are</h2>
-            <p className="text-base sm:text-lg text-muted-foreground mb-6 sm:mb-8">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">Who We Are</h2>
+            <p className="text-base sm:text-lg mb-6 sm:mb-8">
               Drecan Commodities Ltd is an agricultural trading and investment company based in Abuja, Nigeria.
             </p>
-            <p className="text-muted-foreground mb-4">
+            <p className="mb-4">
               We specialize in sourcing farm produce directly from farmers in rural communities, moving them efficiently into urban markets, and distributing them to wholesalers, retailers, and community food programs at fair and affordable prices.
             </p>
-            <p className="text-muted-foreground">
+            <p>
               By simplifying the agricultural supply chain, we eliminate unnecessary middlemen, ensuring that both farmers earn more and consumers pay less — while investors enjoy steady and transparent returns.
             </p>
           </motion.div>

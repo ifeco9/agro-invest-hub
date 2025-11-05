@@ -4,6 +4,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { TrendingUp } from "lucide-react";
 import heroImage from "@/assets/hero-farm.jpg";
+import kadunaRice from "@/assets/Kaduna Rice Yield Fund.jpeg";
+import ogunCassava from "@/assets/Ogun Cassava Processing Investment.jpeg";
+import kanoWheat from "@/assets/Kano Wheat Farming Project.jpeg";
+import lagosBeans from "@/assets/Lagos Beans Cultivation Hub.jpeg";
 
 const Home = () => {
   const [investmentAmount, setInvestmentAmount] = useState(300000);
@@ -58,7 +62,7 @@ const Home = () => {
               className="bg-teal-700 hover:bg-teal-800 text-white shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 ease-in-out px-6 sm:px-8 py-3 rounded-full font-bold text-base sm:text-lg"
               asChild
             >
-              <Link to="/opportunities">Invest Now</Link>
+              <Link to="/shop">Shop Now</Link>
             </Button>
             <Button 
               size="lg" 
@@ -95,6 +99,70 @@ const Home = () => {
             />
           ))}
         </div>
+      </section>
+
+      {/* Featured Products */}
+      <section className="py-12 sm:py-16 bg-background relative">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-8 sm:mb-12"
+          >
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4 sm:mb-6">Featured Products</h2>
+            <p className="text-base sm:text-lg text-muted-foreground max-w-md sm:max-w-2xl mx-auto">
+              Discover our premium selection of farm-fresh commodities, sustainably sourced from Nigerian farmers.
+            </p>
+          </motion.div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+            {[
+              { id: 1, name: "Kaduna Rice", image: kadunaRice, price: 20000, description: "Premium Nigerian rice from Kaduna" },
+              { id: 2, name: "Ogun Cassava", image: ogunCassava, price: 15000, description: "Fresh cassava from Ogun state" },
+              { id: 3, name: "Kano Wheat", image: kanoWheat, price: 18000, description: "High-quality wheat from Kano" },
+              { id: 4, name: "Lagos Beans", image: lagosBeans, price: 12000, description: "Nutritious beans from Lagos" }
+            ].map((product) => (
+              <motion.div
+                key={product.id}
+                className="bg-card rounded-lg shadow-md border border-border overflow-hidden"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6, delay: product.id * 0.1 }}
+                whileHover={{ y: -5, transition: { duration: 0.3 } }}
+              >
+                <div className="h-48 overflow-hidden">
+                  <img 
+                    src={product.image} 
+                    alt={product.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="p-4 sm:p-6">
+                  <h3 className="text-lg font-bold text-foreground mb-2">{product.name}</h3>
+                  <p className="text-muted-foreground text-sm mb-4">
+                    {product.description}
+                  </p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-lg font-bold text-primary">₦{product.price.toLocaleString()}</span>
+                    <Button size="sm" variant="outline" className="text-sm">
+                      View Details
+                    </Button>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+          
+          <div className="text-center mt-8 sm:mt-12">
+            <Button size="lg" className="bg-primary hover:bg-primary-hover text-primary-foreground" asChild>
+              <Link to="/shop">View All Products</Link>
+            </Button>
+          </div>
+        </div>
+
       </section>
 
       {/* Who We Are */}
@@ -152,7 +220,7 @@ const Home = () => {
       </section>
 
       {/* Our Purpose */}
-      <section className="py-12 sm:py-16 bg-secondary">
+      <section className="py-12 sm:py-16 bg-teal-900 text-white">
         <div className="container mx-auto px-4 max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -161,14 +229,14 @@ const Home = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-8 sm:mb-12"
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4 sm:mb-6">Our Purpose</h2>
-            <p className="text-muted-foreground mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">Our Purpose</h2>
+            <p className="mb-4">
               We believe that food should never be a privilege; it should be accessible to every Nigerian household, regardless of income level.
             </p>
-            <p className="text-muted-foreground">
+            <p>
               That's why Drecan Commodities is building a sustainable agricultural ecosystem — one that connects production, distribution, and investment in a way that benefits all.
             </p>
-            <p className="text-muted-foreground mt-4">
+            <p className="mt-4">
               Our work directly supports the United Nations Sustainable Development Goal 2 (Zero Hunger), which aims to end hunger, achieve food security, and promote sustainable agriculture.
             </p>
           </motion.div>
@@ -392,21 +460,27 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Sticky FAB */}
+      {/* Bouncing Shop Now Button */}
       <motion.div 
-        className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-50"
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 0.5, delay: 1 }}
-        whileHover={{ scale: 1.15 }}
+        className="fixed bottom-6 right-6 z-50"
+        animate={{ 
+          y: [0, -10, 0],
+        }}
+        transition={{ 
+          duration: 2,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.95 }}
       >
         <Button 
           size="lg" 
-          className="bg-teal-600 hover:bg-teal-700 text-white rounded-full w-14 h-14 sm:w-16 sm:h-16 p-0 shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-white text-sm sm:text-base"
+          className="bg-gradient-to-r from-teal-600 to-teal-700 hover:from-teal-700 hover:to-teal-800 text-white shadow-2xl hover:shadow-2xl rounded-full w-16 h-16 p-0 flex items-center justify-center border-4 border-white transition-all duration-300 transform"
           asChild
         >
-          <Link to="/contact">
-            <span className="font-bold"> Invest Now</span>
+          <Link to="/shop">
+            <span className="text-xs font-extrabold tracking-wide">Shop Now</span>
           </Link>
         </Button>
       </motion.div>

@@ -754,7 +754,7 @@ const Shop = () => {
       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
         <TabsList className="grid w-full grid-cols-2 mb-8">
           <TabsTrigger value="products" aria-label="Products tab">Products</TabsTrigger>
-          <TabsTrigger value="investments" aria-label="Investment Opportunities tab">Investment Opportunities</TabsTrigger>
+          <TabsTrigger value="investments" aria-label="Investment tab">Investment</TabsTrigger>
         </TabsList>
 
         <TabsContent value="products">

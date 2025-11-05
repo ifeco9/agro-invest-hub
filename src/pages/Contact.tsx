@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { Mail, Phone, MapPin, Clock, Download, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, Download, Send, Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
 import { z } from "zod";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -139,11 +139,18 @@ const Contact = () => {
                   <div className="pt-4">
                     <h3 className="text-lg font-semibold text-foreground mb-3">Follow Us</h3>
                     <div className="flex space-x-4">
-                      {["Facebook", "Twitter", "LinkedIn", "Instagram"].map((social, index) => (
-                        <Button key={index} variant="outline" size="sm" className="border-border text-foreground hover:bg-secondary">
-                          {social}
-                        </Button>
-                      ))}
+                      <a href="#" className="text-foreground hover:text-primary transition-colors">
+                        <Facebook className="h-5 w-5" />
+                      </a>
+                      <a href="#" className="text-foreground hover:text-primary transition-colors">
+                        <Twitter className="h-5 w-5" />
+                      </a>
+                      <a href="#" className="text-foreground hover:text-primary transition-colors">
+                        <Linkedin className="h-5 w-5" />
+                      </a>
+                      <a href="#" className="text-foreground hover:text-primary transition-colors">
+                        <Instagram className="h-5 w-5" />
+                      </a>
                     </div>
                   </div>
                 </CardContent>

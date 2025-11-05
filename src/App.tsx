@@ -17,6 +17,7 @@ import Auth from "./pages/Auth";
 import Shop from "./pages/Shop";
 import Orders from "./pages/Orders";
 import Services from "./pages/Services";
+import Checkout from "./pages/Checkout";
 
 const queryClient = new QueryClient();
 
@@ -51,6 +52,7 @@ const App = () => (
               <Route path="/insights" element={<Insights />} />
               <Route path="/auth" element={<Auth />} />
               <Route path="/shop" element={<Shop />} />
+              <Route path="/checkout" element={<Checkout />} />
               <Route path="/orders" element={<Orders />} />
               <Route path="*" element={<NotFound />} />
             </Routes>

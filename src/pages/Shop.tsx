@@ -26,6 +26,16 @@ import bornoMillet from "@/assets/Borno Millet Farming Initiative.jpeg";
 import kogiSoybeans from "@/assets/Kogi Soybeans Investment Fund.jpeg";
 import farmEquipment from "@/assets/farm-equipment.jpg";
 import sustainableFarm from "@/assets/sustainable-farm.jpg";
+import cashewNuts from "@/assets/cashew nuts.jpg";
+import cassavaFlour from "@/assets/cassava flour.jpg";
+import driedHibiscus from "@/assets/dried hibiscus.jpg";
+import egusi from "@/assets/egusi.jpg";
+import garlicPowder from "@/assets/garlic powder.jpg";
+import honey from "@/assets/honey.jpg";
+import ofadaRice from "@/assets/ofada rice.jpg";
+import palmOil from "@/assets/palm oil.jpg";
+import sorghumGrains from "@/assets/sorghum  grains.jpg";
+import tumericRoot from "@/assets/tumeric root.jpg";
 
 interface Product {
   id: string;
@@ -75,7 +85,17 @@ const availableImages = [
   bornoMillet,
   kogiSoybeans,
   farmEquipment,
-  sustainableFarm
+  sustainableFarm,
+  cashewNuts,
+  cassavaFlour,
+  driedHibiscus,
+  egusi,
+  garlicPowder,
+  honey,
+  ofadaRice,
+  palmOil,
+  sorghumGrains,
+  tumericRoot
 ];
 
 const Shop = () => {
@@ -361,12 +381,65 @@ const Shop = () => {
       toast.error("Failed to load products");
       console.error(error);
     } else {
-      // Assign random images to products that don't have images
+      // Assign images based on product names for better matching
       const productsWithImages = (data || []).map(product => {
         if (!product.image) {
-          // Assign a random image from available images
-          const randomImage = availableImages[Math.floor(Math.random() * availableImages.length)];
-          return { ...product, image: randomImage };
+          // Try to match image based on product name
+          const productName = product.name.toLowerCase();
+          let matchedImage;
+          
+          // Match specific products to appropriate images
+          if (productName.includes('rice')) {
+            matchedImage = [kadunaRice, lagosBeans, ofadaRice].find(img => img !== undefined) || 
+                          availableImages[Math.floor(Math.random() * availableImages.length)];
+          } else if (productName.includes('cassava')) {
+            matchedImage = [ogunCassava, cassavaFlour].find(img => img !== undefined) || 
+                          availableImages[Math.floor(Math.random() * availableImages.length)];
+          } else if (productName.includes('wheat')) {
+            matchedImage = [kanoWheat].find(img => img !== undefined) || 
+                          availableImages[Math.floor(Math.random() * availableImages.length)];
+          } else if (productName.includes('beans')) {
+            matchedImage = [lagosBeans].find(img => img !== undefined) || 
+                          availableImages[Math.floor(Math.random() * availableImages.length)];
+          } else if (productName.includes('palm')) {
+            matchedImage = [southSouthPalm, palmOil].find(img => img !== undefined) || 
+                          availableImages[Math.floor(Math.random() * availableImages.length)];
+          } else if (productName.includes('yam')) {
+            matchedImage = [benueYam].find(img => img !== undefined) || 
+                          availableImages[Math.floor(Math.random() * availableImages.length)];
+          } else if (productName.includes('egusi')) {
+            matchedImage = [enuguEgusi, egusi].find(img => img !== undefined) || 
+                          availableImages[Math.floor(Math.random() * availableImages.length)];
+          } else if (productName.includes('sorghum')) {
+            matchedImage = [kebbiSorghum, sorghumGrains].find(img => img !== undefined) || 
+                          availableImages[Math.floor(Math.random() * availableImages.length)];
+          } else if (productName.includes('millet')) {
+            matchedImage = [bornoMillet].find(img => img !== undefined) || 
+                          availableImages[Math.floor(Math.random() * availableImages.length)];
+          } else if (productName.includes('soy')) {
+            matchedImage = [kogiSoybeans].find(img => img !== undefined) || 
+                          availableImages[Math.floor(Math.random() * availableImages.length)];
+          } else if (productName.includes('cashew')) {
+            matchedImage = [cashewNuts].find(img => img !== undefined) || 
+                          availableImages[Math.floor(Math.random() * availableImages.length)];
+          } else if (productName.includes('honey')) {
+            matchedImage = [honey].find(img => img !== undefined) || 
+                          availableImages[Math.floor(Math.random() * availableImages.length)];
+          } else if (productName.includes('garlic')) {
+            matchedImage = [garlicPowder].find(img => img !== undefined) || 
+                          availableImages[Math.floor(Math.random() * availableImages.length)];
+          } else if (productName.includes('tumeric') || productName.includes('turmeric')) {
+            matchedImage = [tumericRoot].find(img => img !== undefined) || 
+                          availableImages[Math.floor(Math.random() * availableImages.length)];
+          } else if (productName.includes('hibiscus')) {
+            matchedImage = [driedHibiscus].find(img => img !== undefined) || 
+                          availableImages[Math.floor(Math.random() * availableImages.length)];
+          } else {
+            // Default to random image if no specific match
+            matchedImage = availableImages[Math.floor(Math.random() * availableImages.length)];
+          }
+          
+          return { ...product, image: matchedImage };
         }
         return product;
       });
@@ -503,10 +576,14 @@ const Shop = () => {
    * @returns {void}
    */
   const handleProceedToCheckout = () => {
-    // Implement checkout functionality
-    toast.success("Proceeding to checkout!");
-    // For now, we'll just clear the cart as a demo
-    setCart([]);
+    // Check if cart is not empty
+    if (cart.length === 0) {
+      toast.info("Your cart is empty");
+      return;
+    }
+    
+    // Navigate to checkout page
+    navigate("/checkout");
   };
 
   /**

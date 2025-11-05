@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { motion, AnimatePresence } from "framer-motion";
 import { TrendingUp, Clock, Users, Zap, Award, Shield } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -37,24 +36,14 @@ const Opportunities = () => {
   return (
     <div className="min-h-screen pt-16 sm:pt-20">
       {/* Header */}
-      <section className="py-12 sm:py-16 bg-teal-800 text-white">
+      <section className="py-12 sm:py-16 bg-teal-800 text-white animate-fade-in">
         <div className="container mx-auto px-4 text-center">
-          <motion.h1 
-            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 animate-slide-up">
             Invest in Agriculture. Earn Returns. Empower Lives.
-          </motion.h1>
-          <motion.p 
-            className="text-base sm:text-xl max-w-md sm:max-w-3xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
+          </h1>
+          <p className="text-base sm:text-xl max-w-md sm:max-w-3xl mx-auto animate-slide-up animation-delay-200">
             Join thousands of investors who are making a difference while earning sustainable returns
-          </motion.p>
+          </p>
         </div>
       </section>
 
@@ -63,14 +52,7 @@ const Opportunities = () => {
         <div className="container mx-auto px-4">
           <div className="space-y-12 sm:space-y-16">
             {/* AgroTrade */}
-            <motion.div 
-              className="bg-card rounded-lg shadow-lg border border-border overflow-hidden"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6 }}
-              whileHover={{ y: -5, transition: { duration: 0.3 } }}
-            >
+            <div className="bg-card rounded-lg shadow-lg border border-border overflow-hidden hover-lift transition-all duration-300">
               <div className="bg-teal-800 text-white p-4 sm:p-6">
                 <div className="flex items-center gap-2 sm:gap-3 mb-2">
                   <Zap className="h-5 w-5 sm:h-6 sm:w-6" />
@@ -193,17 +175,8 @@ const Opportunities = () => {
                   </ul>
                 </div>
                 
-                <motion.div 
-                  className="mt-6 sm:mt-8 text-center relative"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.3 }}
-                >
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
+                <div className="mt-6 sm:mt-8 text-center relative">
+                  <div className="inline-block hover-scale transition-transform duration-300">
                     <Button 
                       id="reserve-button"
                       size="lg" 
@@ -212,51 +185,32 @@ const Opportunities = () => {
                     >
                       Reserve Slot
                     </Button>
-                  </motion.div>
+                  </div>
                   
                   {/* Confetti effect */}
-                  <AnimatePresence>
-                    {showConfetti && (
-                      <div className="absolute inset-0 pointer-events-none">
-                        {[...Array(50)].map((_, i) => (
-                          <motion.div
-                            key={i}
-                            className="absolute w-2 h-2 rounded-full"
-                            style={{
-                              backgroundColor: ['#0D9488', '#14B8A6', '#0F766E', '#115E59'][Math.floor(Math.random() * 4)],
-                              left: `${Math.random() * 100}%`,
-                              top: `${Math.random() * 100}%`,
-                            }}
-                            initial={{ opacity: 0, y: 0, x: 0 }}
-                            animate={{ 
-                              opacity: [0, 1, 0],
-                              y: [0, -100],
-                              x: [0, (Math.random() - 0.5) * 100],
-                              rotate: [0, 360]
-                            }}
-                            exit={{ opacity: 0 }}
-                            transition={{ 
-                              duration: 2,
-                              delay: Math.random() * 0.5
-                            }}
-                          />
-                        ))}
-                      </div>
-                    )}
-                  </AnimatePresence>
-                </motion.div>
+                  {showConfetti && (
+                    <div className="absolute inset-0 pointer-events-none">
+                      {[...Array(50)].map((_, i) => (
+                        <div
+                          key={i}
+                          className="absolute w-2 h-2 rounded-full animate-confetti"
+                          style={{
+                            backgroundColor: ['#0D9488', '#14B8A6', '#0F766E', '#115E59'][Math.floor(Math.random() * 4)],
+                            left: `${Math.random() * 100}%`,
+                            top: `${Math.random() * 100}%`,
+                            animationDelay: `${Math.random() * 0.5}s`,
+                            animationDuration: '2s'
+                          }}
+                        />
+                      ))}
+                    </div>
+                  )}
+                </div>
               </div>
-            </motion.div>
+            </div>
             
             {/* AgroFarm */}
-            <motion.div 
-              className="bg-card rounded-lg shadow-lg border border-border overflow-hidden"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              whileHover={{ y: -5, transition: { duration: 0.3 } }}
-            >
+            <div className="bg-card rounded-lg shadow-lg border border-border overflow-hidden hover-lift transition-all duration-300 animation-delay-200">
               <div className="bg-teal-800 text-white p-4 sm:p-6">
                 <div className="flex items-center gap-2 sm:gap-3 mb-2">
                   <Award className="h-5 w-5 sm:h-6 sm:w-6" />
@@ -366,17 +320,8 @@ const Opportunities = () => {
                   </ul>
                 </div>
                 
-                <motion.div 
-                  className="mt-6 sm:mt-8 text-center"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.3 }}
-                >
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
+                <div className="mt-6 sm:mt-8 text-center">
+                  <div className="inline-block hover-scale transition-transform duration-300">
                     <Button 
                       size="lg" 
                       className="bg-primary hover:bg-primary-hover text-primary-foreground text-base sm:text-lg px-6 sm:px-8 py-3"
@@ -384,20 +329,13 @@ const Opportunities = () => {
                     >
                       Reserve Slot
                     </Button>
-                  </motion.div>
-                </motion.div>
+                  </div>
+                </div>
               </div>
-            </motion.div>
+            </div>
             
             {/* AgroReserve */}
-            <motion.div 
-              className="bg-card rounded-lg shadow-lg border border-border overflow-hidden"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              whileHover={{ y: -5, transition: { duration: 0.3 } }}
-            >
+            <div className="bg-card rounded-lg shadow-lg border border-border overflow-hidden hover-lift transition-all duration-300 animation-delay-400">
               <div className="bg-teal-800 text-white p-4 sm:p-6">
                 <div className="flex items-center gap-2 sm:gap-3 mb-2">
                   <Award className="h-5 w-5 sm:h-6 sm:w-6" />
@@ -507,17 +445,8 @@ const Opportunities = () => {
                   </ul>
                 </div>
                 
-                <motion.div 
-                  className="mt-6 sm:mt-8 text-center"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.3 }}
-                >
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
+                <div className="mt-6 sm:mt-8 text-center">
+                  <div className="inline-block hover-scale transition-transform duration-300">
                     <Button 
                       size="lg" 
                       className="bg-primary hover:bg-primary-hover text-primary-foreground text-base sm:text-lg px-6 sm:px-8 py-3"
@@ -525,10 +454,10 @@ const Opportunities = () => {
                     >
                       Reserve Slot
                     </Button>
-                  </motion.div>
-                </motion.div>
+                  </div>
+                </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -536,30 +465,13 @@ const Opportunities = () => {
       {/* CTA Section */}
       <section className="py-12 sm:py-20 bg-teal-900 text-white">
         <div className="container mx-auto px-4 text-center">
-          <motion.h2 
-            className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 animate-slide-up">
             Ready to Start Investing?
-          </motion.h2>
-          <motion.p 
-            className="text-base sm:text-xl mb-6 sm:mb-8 max-w-md sm:max-w-2xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
+          </h2>
+          <p className="text-base sm:text-xl mb-6 sm:mb-8 max-w-md sm:max-w-2xl mx-auto animate-slide-up animation-delay-200">
             Join our community of investors and start earning sustainable returns from Nigerian agriculture
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
+          </p>
+          <div className="animate-slide-up animation-delay-400">
             <Button 
               size="lg" 
               className="bg-teal-600 hover:bg-teal-700 text-white shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 ease-in-out px-6 sm:px-8 py-3 rounded-full font-bold text-base sm:text-lg"
@@ -567,7 +479,7 @@ const Opportunities = () => {
             >
               <Link to="/contact">Start Investing</Link>
             </Button>
-          </motion.div>
+          </div>
         </div>
       </section>
     </div>

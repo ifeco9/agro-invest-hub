@@ -7,7 +7,7 @@ import { useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
-import Opportunities from "./pages/Opportunities";
+import Opportunities from "./pages/OpportunitiesSimpleAnimations";
 import HowItWorks from "./pages/HowItWorks";
 import About from "./pages/About";
 import Contact from "./pages/Contact";

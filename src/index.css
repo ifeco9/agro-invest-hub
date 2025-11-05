@@ -147,3 +147,70 @@ All colors MUST be HSL.
     0 0 8px hsl(175 40% 60% / 0.6),
     0 0 16px hsl(175 30% 70% / 0.3);
 }
+
+/* Simple Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(20px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+@keyframes confettiFall {
+  0% { 
+    opacity: 0; 
+    transform: translateY(0) rotate(0deg); 
+  }
+  10% { 
+    opacity: 1; 
+  }
+  100% { 
+    opacity: 0; 
+    transform: translateY(100px) rotate(360deg); 
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.8s ease-out;
+}
+
+.animate-confetti {
+  animation: confettiFall 2s ease-out forwards;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+.animation-delay-200 {
+  animation-delay: 0.2s;
+}
+
+.animation-delay-400 {
+  animation-delay: 0.4s;
+}
+
+/* Ensure animations only play once */
+.animate-fade-in,
+.animate-slide-up,
+.animation-delay-200,
+.animation-delay-400 {
+  animation-fill-mode: both;
+}

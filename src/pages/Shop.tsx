@@ -401,6 +401,15 @@ const Shop = () => {
           } else if (productName.includes('drecan ofada rice')) {
             // Use ofada rice image for Drecan Ofada Rice products
             matchedImage = ofadaRice || availableImages[Math.floor(Math.random() * availableImages.length)];
+          } else if (productName.includes('palm oil')) {
+            // Use palm oil image for palm oil products
+            matchedImage = palmOil || southSouthPalm || availableImages[Math.floor(Math.random() * availableImages.length)];
+          } else if (productName.includes('egusi')) {
+            // Use egusi image for egusi products
+            matchedImage = egusi || enuguEgusi || availableImages[Math.floor(Math.random() * availableImages.length)];
+          } else if (productName.includes('sorghum')) {
+            // Use sorghum grains image for sorghum products
+            matchedImage = sorghumGrains || kebbiSorghum || availableImages[Math.floor(Math.random() * availableImages.length)];
           } else if (productName.includes('rice')) {
             matchedImage = [kadunaRice, lagosBeans, ofadaRice].find(img => img !== undefined) || 
                           availableImages[Math.floor(Math.random() * availableImages.length)];
@@ -413,17 +422,8 @@ const Shop = () => {
           } else if (productName.includes('beans')) {
             matchedImage = [lagosBeans].find(img => img !== undefined) || 
                           availableImages[Math.floor(Math.random() * availableImages.length)];
-          } else if (productName.includes('palm')) {
-            matchedImage = [southSouthPalm, palmOil].find(img => img !== undefined) || 
-                          availableImages[Math.floor(Math.random() * availableImages.length)];
           } else if (productName.includes('yam')) {
             matchedImage = [benueYam].find(img => img !== undefined) || 
-                          availableImages[Math.floor(Math.random() * availableImages.length)];
-          } else if (productName.includes('egusi')) {
-            matchedImage = [enuguEgusi, egusi].find(img => img !== undefined) || 
-                          availableImages[Math.floor(Math.random() * availableImages.length)];
-          } else if (productName.includes('sorghum')) {
-            matchedImage = [kebbiSorghum, sorghumGrains].find(img => img !== undefined) || 
                           availableImages[Math.floor(Math.random() * availableImages.length)];
           } else if (productName.includes('millet')) {
             matchedImage = [bornoMillet].find(img => img !== undefined) || 

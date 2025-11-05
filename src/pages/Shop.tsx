@@ -388,8 +388,20 @@ const Shop = () => {
           const productName = product.name.toLowerCase();
           let matchedImage;
           
-          // Match specific products to appropriate images
-          if (productName.includes('rice')) {
+          // Match specific products to appropriate images with exact name matching
+          if (productName.includes('drecan egusi')) {
+            // Use egusi image for Drecan Egusi products
+            matchedImage = egusi || availableImages[Math.floor(Math.random() * availableImages.length)];
+          } else if (productName.includes('drecan cassava')) {
+            // Use cassava flour image for Drecan Cassava products
+            matchedImage = cassavaFlour || availableImages[Math.floor(Math.random() * availableImages.length)];
+          } else if (productName.includes('drecan sorghum')) {
+            // Use sorghum grains image for Drecan Sorghum products
+            matchedImage = sorghumGrains || availableImages[Math.floor(Math.random() * availableImages.length)];
+          } else if (productName.includes('drecan ofada rice')) {
+            // Use ofada rice image for Drecan Ofada Rice products
+            matchedImage = ofadaRice || availableImages[Math.floor(Math.random() * availableImages.length)];
+          } else if (productName.includes('rice')) {
             matchedImage = [kadunaRice, lagosBeans, ofadaRice].find(img => img !== undefined) || 
                           availableImages[Math.floor(Math.random() * availableImages.length)];
           } else if (productName.includes('cassava')) {

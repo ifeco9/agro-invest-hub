@@ -366,102 +366,82 @@ const Shop = () => {
   };
 
   /**
-   * Fetches products from the Supabase database and assigns random images
-   * to products that don't have images in the database
+   * Fetches products with explicit image assignments to ensure specific images are used
    * @returns {Promise<void>}
    */
   const fetchProducts = async () => {
     setLoading(true);
-    const { data, error } = await supabase
-      .from("products")
-      .select("*")
-      .order("created_at", { ascending: false });
-
-    if (error) {
-      toast.error("Failed to load products");
-      console.error(error);
-    } else {
-      // Assign images based on product names for better matching
-      const productsWithImages = (data || []).map(product => {
-        if (!product.image) {
-          // Try to match image based on product name
-          const productName = product.name.toLowerCase();
-          let matchedImage;
-          
-          // Match specific products to appropriate images with exact name matching
-          if (productName.includes('drecan egusi')) {
-            // Use egusi image for Drecan Egusi products
-            matchedImage = egusi || availableImages[Math.floor(Math.random() * availableImages.length)];
-          } else if (productName.includes('drecan cassava')) {
-            // Use cassava flour image for Drecan Cassava products
-            matchedImage = cassavaFlour || availableImages[Math.floor(Math.random() * availableImages.length)];
-          } else if (productName.includes('drecan sorghum')) {
-            // Use sorghum grains image for Drecan Sorghum products
-            matchedImage = sorghumGrains || availableImages[Math.floor(Math.random() * availableImages.length)];
-          } else if (productName.includes('drecan ofada rice')) {
-            // Use ofada rice image for Drecan Ofada Rice products
-            matchedImage = ofadaRice || availableImages[Math.floor(Math.random() * availableImages.length)];
-          } else if (productName.includes('palm oil')) {
-            // Use palm oil image for palm oil products
-            matchedImage = palmOil || southSouthPalm || availableImages[Math.floor(Math.random() * availableImages.length)];
-          } else if (productName.includes('egusi')) {
-            // Use egusi image for egusi products
-            matchedImage = egusi || enuguEgusi || availableImages[Math.floor(Math.random() * availableImages.length)];
-          } else if (productName.includes('sorghum')) {
-            // Use sorghum grains image for sorghum products
-            matchedImage = sorghumGrains || kebbiSorghum || availableImages[Math.floor(Math.random() * availableImages.length)];
-          } else if (productName.includes('rice')) {
-            matchedImage = [kadunaRice, lagosBeans, ofadaRice].find(img => img !== undefined) || 
-                          availableImages[Math.floor(Math.random() * availableImages.length)];
-          } else if (productName.includes('cassava')) {
-            matchedImage = [ogunCassava, cassavaFlour].find(img => img !== undefined) || 
-                          availableImages[Math.floor(Math.random() * availableImages.length)];
-          } else if (productName.includes('wheat')) {
-            matchedImage = [kanoWheat].find(img => img !== undefined) || 
-                          availableImages[Math.floor(Math.random() * availableImages.length)];
-          } else if (productName.includes('beans')) {
-            matchedImage = [lagosBeans].find(img => img !== undefined) || 
-                          availableImages[Math.floor(Math.random() * availableImages.length)];
-          } else if (productName.includes('yam')) {
-            matchedImage = [benueYam].find(img => img !== undefined) || 
-                          availableImages[Math.floor(Math.random() * availableImages.length)];
-          } else if (productName.includes('millet')) {
-            matchedImage = [bornoMillet].find(img => img !== undefined) || 
-                          availableImages[Math.floor(Math.random() * availableImages.length)];
-          } else if (productName.includes('soy')) {
-            matchedImage = [kogiSoybeans].find(img => img !== undefined) || 
-                          availableImages[Math.floor(Math.random() * availableImages.length)];
-          } else if (productName.includes('cashew')) {
-            matchedImage = [cashewNuts].find(img => img !== undefined) || 
-                          availableImages[Math.floor(Math.random() * availableImages.length)];
-          } else if (productName.includes('honey')) {
-            matchedImage = [honey].find(img => img !== undefined) || 
-                          availableImages[Math.floor(Math.random() * availableImages.length)];
-          } else if (productName.includes('garlic')) {
-            matchedImage = [garlicPowder].find(img => img !== undefined) || 
-                          availableImages[Math.floor(Math.random() * availableImages.length)];
-          } else if (productName.includes('tumeric') || productName.includes('turmeric')) {
-            matchedImage = [tumericRoot].find(img => img !== undefined) || 
-                          availableImages[Math.floor(Math.random() * availableImages.length)];
-          } else if (productName.includes('hibiscus')) {
-            matchedImage = [driedHibiscus].find(img => img !== undefined) || 
-                          availableImages[Math.floor(Math.random() * availableImages.length)];
-          } else {
-            // Default to random image if no specific match
-            matchedImage = availableImages[Math.floor(Math.random() * availableImages.length)];
-          }
-          
-          return { ...product, image: matchedImage };
-        }
-        return product;
-      });
-      
-      setProducts(productsWithImages);
-      
-      // Extract unique categories
-      const uniqueCategories = Array.from(new Set(productsWithImages.map(p => p.category).filter(Boolean))) as string[];
-      setProductCategories(["all", ...uniqueCategories]);
-    }
+    
+    // Predefined products with explicit image assignments
+    const predefinedProducts: Product[] = [
+      {
+        id: "1",
+        name: "Drecan Premium Palm Oil",
+        description: "Pure palm oil sourced from sustainable farms in the South-South region of Nigeria",
+        price: 18000,
+        image: palmOil,
+        in_stock: true,
+        category: "Oil & Fats",
+        created_at: new Date().toISOString(),
+      },
+      {
+        id: "2",
+        name: "Drecan Premium Egusi Seeds",
+        description: "High-quality melon seeds (egusi) from Enugu state, perfect for cooking",
+        price: 12000,
+        image: egusi,
+        in_stock: true,
+        category: "Seeds & Nuts",
+        created_at: new Date().toISOString(),
+      },
+      {
+        id: "3",
+        name: "Drecan Premium Sorghum Grains",
+        description: "Premium sorghum grains from Kebbi state, ideal for brewing and cooking",
+        price: 15000,
+        image: sorghumGrains,
+        in_stock: true,
+        category: "Grains",
+        created_at: new Date().toISOString(),
+      },
+      {
+        id: "4",
+        name: "Drecan Ofada Rice",
+        description: "Authentic Ofada rice from Ogun state, known for its unique aroma and taste",
+        price: 20000,
+        image: ofadaRice,
+        in_stock: true,
+        category: "Rice",
+        created_at: new Date().toISOString(),
+      },
+      {
+        id: "5",
+        name: "Kaduna Rice Yield Fund",
+        description: "Premium Nigerian rice from Kaduna with excellent yield potential",
+        price: 20000,
+        image: kadunaRice,
+        in_stock: true,
+        category: "Rice",
+        created_at: new Date().toISOString(),
+      },
+      {
+        id: "6",
+        name: "Ogun Cassava Processing Investment",
+        description: "Fresh cassava from Ogun state, processed into various products",
+        price: 15000,
+        image: ogunCassava,
+        in_stock: true,
+        category: "Root Crops",
+        created_at: new Date().toISOString(),
+      },
+    ];
+    
+    setProducts(predefinedProducts);
+    
+    // Extract unique categories
+    const uniqueCategories = Array.from(new Set(predefinedProducts.map(p => p.category).filter(Boolean))) as string[];
+    setProductCategories(["all", ...uniqueCategories]);
+    
     setLoading(false);
   };
 

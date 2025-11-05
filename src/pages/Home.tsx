@@ -8,6 +8,10 @@ import kadunaRice from "@/assets/Kaduna Rice Yield Fund.jpeg";
 import ogunCassava from "@/assets/Ogun Cassava Processing Investment.jpeg";
 import kanoWheat from "@/assets/Kano Wheat Farming Project.jpeg";
 import lagosBeans from "@/assets/Lagos Beans Cultivation Hub.jpeg";
+import palmOil from "@/assets/palm oil.jpg";
+import egusi from "@/assets/egusi.jpg";
+import sorghumGrains from "@/assets/sorghum  grains.jpg";
+import ofadaRice from "@/assets/ofada rice.jpg";
 
 const Home = () => {
   const [investmentAmount, setInvestmentAmount] = useState(300000);
@@ -121,8 +125,8 @@ const Home = () => {
             {[
               { id: 1, name: "Kaduna Rice", image: kadunaRice, price: 20000, description: "Premium Nigerian rice from Kaduna" },
               { id: 2, name: "Ogun Cassava", image: ogunCassava, price: 15000, description: "Fresh cassava from Ogun state" },
-              { id: 3, name: "Kano Wheat", image: kanoWheat, price: 18000, description: "High-quality wheat from Kano" },
-              { id: 4, name: "Lagos Beans", image: lagosBeans, price: 12000, description: "Nutritious beans from Lagos" }
+              { id: 3, name: "Palm Oil", image: palmOil, price: 18000, description: "Pure palm oil from South-South region" },
+              { id: 4, name: "Enugu Egusi", image: egusi, price: 12000, description: "Premium egusi seeds from Enugu" }
             ].map((product) => (
               <motion.div
                 key={product.id}
@@ -147,8 +151,8 @@ const Home = () => {
                   </p>
                   <div className="flex items-center justify-between">
                     <span className="text-lg font-bold text-primary">₦{product.price.toLocaleString()}</span>
-                    <Button size="sm" variant="outline" className="text-sm">
-                      View Details
+                    <Button size="sm" variant="outline" className="text-sm" asChild>
+                      <Link to="/shop">View Details</Link>
                     </Button>
                   </div>
                 </div>
@@ -480,7 +484,7 @@ const Home = () => {
           asChild
         >
           <Link to="/shop">
-            <span className="text-xs font-extrabold tracking-wide">Shop Now</span>
+            <span className="text-[8px] font-extrabold tracking-wide">Shop Now</span>
           </Link>
         </Button>
       </motion.div>

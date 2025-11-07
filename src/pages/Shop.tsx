@@ -7,7 +7,25 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "sonner";
-import { ShoppingCart, Search, User, LogOut, Heart, X, GitCompare } from "lucide-react";
+import { ShoppingCart, Search, User, LogOut, Heart, X, GitCompare, Zap, Shield, Award, Star } from "lucide-react";
+import { Link } from "react-router-dom";
+
+// Add custom CSS for hiding scrollbar
+const scrollbarHideStyles = `
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+`;
 import { useNavigate, useLocation } from "react-router-dom";
 import ProductList from "@/components/ProductList";
 import OpportunityList from "@/components/OpportunityList";
@@ -99,6 +117,16 @@ const availableImages = [
 ];
 
 const Shop = () => {
+  // Inject custom styles
+  useEffect(() => {
+    const style = document.createElement('style');
+    style.textContent = scrollbarHideStyles;
+    document.head.appendChild(style);
+    
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
   const [products, setProducts] = useState<Product[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
@@ -130,175 +158,111 @@ const Shop = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Investment opportunities data
+  // Investment opportunities data - Updated to remove images
   const investmentOpportunities: InvestmentOpportunity[] = [
     {
-      id: "1",
-      title: "Kaduna Rice Yield Fund",
-      image: kadunaRice,
-      region: "Kaduna",
-      crop: "Rice",
+      id: "agrotrade-1m",
+      title: "AgroTrade 1-Month Plan",
+      region: "Multi-State",
+      crop: "Various Commodities",
+      minInvestment: "₦300,000",
+      roi: "5%",
+      duration: "1 Month",
+      slotsAvailable: 20,
+      type: "AgroTrade",
+      description: "Short-term trading opportunity with monthly returns",
+      price: 300000,
+    },
+    {
+      id: "agrotrade-3m",
+      title: "AgroTrade 3-Month Plan",
+      region: "Multi-State",
+      crop: "Various Commodities",
+      minInvestment: "₦500,000",
+      roi: "15%",
+      duration: "3 Months",
+      slotsAvailable: 15,
+      type: "AgroTrade",
+      description: "Moderate-term trade rotation with quarterly returns",
+      price: 500000,
+    },
+    {
+      id: "agrotrade-6m",
+      title: "AgroTrade 6-Month Plan",
+      region: "Multi-State",
+      crop: "Various Commodities",
+      minInvestment: "₦1,000,000",
+      roi: "30%",
+      duration: "6 Months",
+      slotsAvailable: 10,
+      type: "AgroTrade",
+      description: "Long-term trade cycle with higher returns",
+      price: 1000000,
+    },
+    {
+      id: "agrotrade-12m",
+      title: "AgroTrade 12-Month Plan",
+      region: "Multi-State",
+      crop: "Various Commodities",
       minInvestment: "₦2,000,000",
-      roi: "10-12%",
-      duration: "12 months",
-      slotsAvailable: 8,
-      type: "Crop Yield",
-      description: "Invest in rice farming in Kaduna state",
+      roi: "65%",
+      duration: "12 Months",
+      slotsAvailable: 5,
+      type: "AgroTrade",
+      description: "High-capital investors' plan with maximum returns",
       price: 2000000,
     },
     {
-      id: "2",
-      title: "Ogun Cassava Processing Investment",
-      image: ogunCassava,
-      region: "Ogun",
-      crop: "Cassava",
-      minInvestment: "₦4,000,000",
-      roi: "8-10%",
-      duration: "24 months",
-      slotsAvailable: 15,
-      type: "Sustainable",
-      description: "Process cassava into various products",
-      price: 4000000,
+      id: "agroreserve",
+      title: "AgroReserve Investment",
+      region: "Multi-State",
+      crop: "Commodity Storage",
+      minInvestment: "₦2,000,000",
+      roi: "60%",
+      duration: "12 Months",
+      slotsAvailable: 8,
+      type: "AgroReserve",
+      description: "Long-term commodity preservation and resale during favorable market conditions",
+      price: 2000000,
     },
     {
-      id: "3",
-      title: "Kano Wheat Farming Project",
-      image: kanoWheat,
-      region: "Kano",
-      crop: "Wheat",
-      minInvestment: "₦3,000,000",
-      roi: "9-11%",
-      duration: "18 months",
-      slotsAvailable: 3,
-      type: "Crop Yield",
-      description: "Wheat farming project in Kano state",
-      price: 3000000,
-    },
-    {
-      id: "4",
-      title: "Plateau Dairy & Maize Farm",
-      image: sustainableFarm,
-      region: "Plateau",
-      crop: "Maize",
-      minInvestment: "₦6,000,000",
-      roi: "11-13%",
-      duration: "36 months",
-      slotsAvailable: 12,
-      type: "Livestock",
-      description: "Integrated dairy and maize farming",
-      price: 6000000,
-    },
-    {
-      id: "5",
-      title: "Lagos Beans Cultivation Hub",
-      image: lagosBeans,
-      region: "Lagos",
-      crop: "Beans",
-      minInvestment: "₦3,200,000",
-      roi: "9-11%",
-      duration: "18 months",
-      slotsAvailable: 6,
-      type: "Crop Yield",
-      description: "Beans cultivation in Lagos",
-      price: 3200000,
-    },
-    {
-      id: "6",
-      title: "South-South Palm Oil Investment",
-      image: southSouthPalm,
-      region: "Rivers",
-      crop: "Palm Oil",
-      minInvestment: "₦8,000,000",
-      roi: "12-14%",
-      duration: "60 months",
-      slotsAvailable: 4,
-      type: "Sustainable",
-      description: "Palm oil investment in South-South region",
-      price: 8000000,
-    },
-    {
-      id: "7",
-      title: "Benue Yam Production Fund",
-      image: benueYam,
+      id: "agrofarm-lease",
+      title: "AgroFarm Land Lease",
       region: "Benue",
       crop: "Yam",
-      minInvestment: "₦2,500,000",
-      roi: "10-12%",
-      duration: "12 months",
-      slotsAvailable: 10,
-      type: "Crop Yield",
-      description: "Yam production in Benue state",
-      price: 2500000,
+      minInvestment: "₦1,000,000",
+      roi: "25-30%",
+      duration: "9-12 Months",
+      slotsAvailable: 12,
+      type: "AgroFarm",
+      description: "Land-only investment in yam cultivation",
+      price: 1000000,
     },
     {
-      id: "8",
-      title: "Enugu Egusi (Melon) Seed Farm",
-      image: enuguEgusi,
+      id: "agrofarm-managed",
+      title: "AgroFarm Managed Farm",
       region: "Enugu",
       crop: "Egusi",
-      minInvestment: "₦1,800,000",
-      roi: "11-13%",
-      duration: "9 months",
-      slotsAvailable: 7,
-      type: "Crop Yield",
-      description: "Egusi seed farming in Enugu",
-      price: 1800000,
+      minInvestment: "₦1,500,000",
+      roi: "40-50%",
+      duration: "9-12 Months",
+      slotsAvailable: 6,
+      type: "AgroFarm",
+      description: "Full-service farming with monitoring and updates",
+      price: 1500000,
     },
     {
-      id: "9",
-      title: "Kebbi Sorghum Yield Project",
-      image: kebbiSorghum,
-      region: "Kebbi",
-      crop: "Sorghum",
-      minInvestment: "₦2,200,000",
-      roi: "9-11%",
-      duration: "15 months",
-      slotsAvailable: 9,
-      type: "Crop Yield",
-      description: "Sorghum farming in Kebbi state",
-      price: 2200000,
-    },
-    {
-      id: "10",
-      title: "Borno Millet Farming Initiative",
-      image: bornoMillet,
-      region: "Borno",
-      crop: "Millet",
-      minInvestment: "₦1,900,000",
-      roi: "8-10%",
-      duration: "12 months",
-      slotsAvailable: 11,
-      type: "Crop Yield",
-      description: "Millet farming in Borno state",
-      price: 1900000,
-    },
-    {
-      id: "11",
-      title: "Kogi Soybeans Investment Fund",
-      image: kogiSoybeans,
-      region: "Kogi",
-      crop: "Soybeans",
-      minInvestment: "₦3,500,000",
-      roi: "10-12%",
-      duration: "18 months",
-      slotsAvailable: 5,
-      type: "Crop Yield",
-      description: "Soybeans investment in Kogi state",
-      price: 3500000,
-    },
-    {
-      id: "12",
-      title: "Equipment Leasing Programme",
-      image: farmEquipment,
-      region: "Multi-State",
-      crop: "Various",
-      minInvestment: "₦5,000,000",
-      roi: "9-11%",
-      duration: "24 months",
-      slotsAvailable: 8,
-      type: "Equipment",
-      description: "Farm equipment leasing program",
-      price: 5000000,
+      id: "agrofarm-maize",
+      title: "AgroFarm Maize Project",
+      region: "Plateau",
+      crop: "Maize",
+      minInvestment: "₦2,000,000",
+      roi: "45%",
+      duration: "12 Months",
+      slotsAvailable: 4,
+      type: "AgroFarm",
+      description: "Integrated dairy and maize farming project",
+      price: 2000000,
     },
   ];
 
@@ -876,7 +840,99 @@ const Shop = () => {
             </div>
           </div>
 
-          {/* Products grid */}
+          {/* Featured Products Section with Jumia-style mobile view */}
+          <div className="featured-products">
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-2xl font-bold text-foreground">Featured Products</h2>
+              <Button variant="link" className="text-primary" asChild>
+                <a href="/shop">See More</a>
+              </Button>
+            </div>
+            
+            {/* Mobile Horizontal Scroll */}
+            <div className="md:hidden overflow-x-auto whitespace-nowrap scrollbar-hide -mx-4 px-4 snap-x snap-mandatory">
+              <div className="flex gap-3 pb-4">
+                {products.slice(0, 7).map((product) => (
+                  <div 
+                    key={product.id} 
+                    className="flex-shrink-0 w-[280px] snap-start bg-white rounded-lg shadow-sm border border-border overflow-hidden"
+                  >
+                    <div className="h-36 overflow-hidden">
+                      <img 
+                        src={product.image} 
+                        alt={product.name}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div className="p-3">
+                      <h3 className="font-medium text-foreground mb-1 line-clamp-2">{product.name}</h3>
+                      <div className="flex items-center mb-2">
+                        <div className="flex text-yellow-400">
+                          <Star className="h-4 w-4 fill-current" />
+                          <Star className="h-4 w-4 fill-current" />
+                          <Star className="h-4 w-4 fill-current" />
+                          <Star className="h-4 w-4 fill-current" />
+                          <Star className="h-4 w-4 fill-current" />
+                        </div>
+                        <span className="text-xs text-muted-foreground ml-1">(5)</span>
+                      </div>
+                      <p className="text-lg font-bold text-foreground mb-3">₦{product.price.toLocaleString()}</p>
+                      <Button 
+                        className="w-full bg-teal-600 hover:bg-teal-700 text-white"
+                        size="sm"
+                        onClick={() => handleAddToCart(product)}
+                      >
+                        Add to Cart
+                      </Button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            
+            {/* Desktop Grid */}
+            <div className="hidden md:grid grid-cols-3 gap-4">
+              {products.slice(0, 6).map((product) => (
+                <div 
+                  key={product.id} 
+                  className="bg-white rounded-lg shadow-sm border border-border overflow-hidden"
+                >
+                  <div className="h-48 overflow-hidden">
+                    <img 
+                      src={product.image} 
+                      alt={product.name}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="p-4">
+                    <h3 className="font-medium text-foreground mb-1 line-clamp-2">{product.name}</h3>
+                    <div className="flex items-center mb-2">
+                      <div className="flex text-yellow-400">
+                        <Star className="h-4 w-4 fill-current" />
+                        <Star className="h-4 w-4 fill-current" />
+                        <Star className="h-4 w-4 fill-current" />
+                        <Star className="h-4 w-4 fill-current" />
+                        <Star className="h-4 w-4 fill-current" />
+                      </div>
+                      <span className="text-xs text-muted-foreground ml-1">(5)</span>
+                    </div>
+                    <p className="text-lg font-bold text-foreground mb-3">₦{product.price.toLocaleString()}</p>
+                    <Button 
+                      className="w-full bg-teal-600 hover:bg-teal-700 text-white"
+                      size="sm"
+                      onClick={() => handleAddToCart(product)}
+                    >
+                      Add to Cart
+                    </Button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* All Products Grid - Jumia Style with Your Color Scheme */}
           {filteredProducts.length === 0 ? (
             <div className="text-center py-20">
               <p className="text-xl text-muted-foreground">No products found matching your criteria.</p>
@@ -892,13 +948,89 @@ const Shop = () => {
               </Button>
             </div>
           ) : (
-            <ProductList 
-              products={filteredProducts} 
-              onAddToCart={handleAddToCart} 
-              currentPage={productPage}
-              itemsPerPage={itemsPerPage}
-              onPageChange={setProductPage}
-            />
+            <>
+              {/* Mobile Horizontal Scroll - All Products */}
+              <div className="md:hidden overflow-x-auto whitespace-nowrap scrollbar-hide -mx-4 px-4 snap-x snap-mandatory mt-8">
+                <div className="flex gap-3 pb-4">
+                  {filteredProducts.map((product) => (
+                    <div 
+                      key={product.id} 
+                      className="flex-shrink-0 w-[280px] snap-start bg-white rounded-lg shadow-sm border border-border overflow-hidden"
+                    >
+                      <div className="h-36 overflow-hidden">
+                        <img 
+                          src={product.image} 
+                          alt={product.name}
+                          className="w-full h-full object-cover"
+                          loading="lazy"
+                        />
+                      </div>
+                      <div className="p-3">
+                        <h3 className="font-medium text-foreground mb-1 line-clamp-2">{product.name}</h3>
+                        <div className="flex items-center mb-2">
+                          <div className="flex text-yellow-400">
+                            <Star className="h-4 w-4 fill-current" />
+                            <Star className="h-4 w-4 fill-current" />
+                            <Star className="h-4 w-4 fill-current" />
+                            <Star className="h-4 w-4 fill-current" />
+                            <Star className="h-4 w-4 fill-current" />
+                          </div>
+                          <span className="text-xs text-muted-foreground ml-1">(5)</span>
+                        </div>
+                        <p className="text-lg font-bold text-foreground mb-3">₦{product.price.toLocaleString()}</p>
+                        <Button 
+                          className="w-full bg-teal-600 hover:bg-teal-700 text-white"
+                          size="sm"
+                          onClick={() => handleAddToCart(product)}
+                        >
+                          Add to Cart
+                        </Button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              
+              {/* Desktop Grid - All Products */}
+              <div className="hidden md:grid md:grid-cols-3 gap-4 mt-8">
+                {filteredProducts.map((product) => (
+                  <div 
+                    key={product.id} 
+                    className="bg-white rounded-lg shadow-sm border border-border overflow-hidden"
+                  >
+                    <div className="h-48 overflow-hidden">
+                      <img 
+                        src={product.image} 
+                        alt={product.name}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div className="p-4">
+                      <h3 className="font-medium text-foreground mb-1 line-clamp-2">{product.name}</h3>
+                      <div className="flex items-center mb-2">
+                        <div className="flex text-yellow-400">
+                          <Star className="h-4 w-4 fill-current" />
+                          <Star className="h-4 w-4 fill-current" />
+                          <Star className="h-4 w-4 fill-current" />
+                          <Star className="h-4 w-4 fill-current" />
+                          <Star className="h-4 w-4 fill-current" />
+                        </div>
+                        <span className="text-xs text-muted-foreground ml-1">(5)</span>
+                      </div>
+                      <p className="text-lg font-bold text-foreground mb-3">₦{product.price.toLocaleString()}</p>
+                      <Button 
+                        className="w-full bg-teal-600 hover:bg-teal-700 text-white"
+                        size="sm"
+                        onClick={() => handleAddToCart(product)}
+                      >
+                        Add to Cart
+                      </Button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </>
           )}
         </TabsContent>
 
@@ -943,10 +1075,9 @@ const Shop = () => {
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="all">All Types</SelectItem>
-                <SelectItem value="Crop Yield">Crop Yield</SelectItem>
-                <SelectItem value="Sustainable">Sustainable</SelectItem>
-                <SelectItem value="Equipment">Equipment</SelectItem>
-                <SelectItem value="Livestock">Livestock</SelectItem>
+                <SelectItem value="AgroTrade">AgroTrade</SelectItem>
+                <SelectItem value="AgroReserve">AgroReserve</SelectItem>
+                <SelectItem value="AgroFarm">AgroFarm</SelectItem>
               </SelectContent>
             </Select>
 
@@ -968,11 +1099,12 @@ const Shop = () => {
                 <SelectItem value="Millet">Millet</SelectItem>
                 <SelectItem value="Soybeans">Soybeans</SelectItem>
                 <SelectItem value="Various">Various</SelectItem>
+                <SelectItem value="Commodity Storage">Commodity Storage</SelectItem>
               </SelectContent>
             </Select>
           </div>
 
-          {/* Investment Opportunities grid */}
+          {/* Investment Opportunities grid - Improved mobile responsiveness with artistic cards */}
           {filteredOpportunities.length === 0 ? (
             <div className="text-center py-20">
               <p className="text-xl text-muted-foreground">No investment opportunities found matching your criteria.</p>
@@ -990,22 +1122,87 @@ const Shop = () => {
               </Button>
             </div>
           ) : (
-            <OpportunityList 
-              opportunities={filteredOpportunities} 
-              onViewOpportunity={handleViewOpportunity}
-              onAddToWishlist={handleAddToWishlist}
-              onAddToComparison={handleAddToComparison}
-              currentPage={opportunityPage}
-              itemsPerPage={itemsPerPage}
-              onPageChange={setOpportunityPage}
-            />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredOpportunities.map((opportunity) => (
+                <div 
+                  key={opportunity.id} 
+                  className="bg-white rounded-lg shadow-md border border-border overflow-hidden"
+                >
+                  {/* Artistic card design without images */}
+                  <div className={`h-48 flex items-center justify-center ${
+                    opportunity.type === "AgroTrade" ? "bg-gradient-to-r from-teal-500 to-teal-600" :
+                    opportunity.type === "AgroReserve" ? "bg-gradient-to-r from-emerald-500 to-emerald-600" :
+                    "bg-gradient-to-r from-cyan-500 to-cyan-600"
+                  }`}>
+                    <div className="text-white text-center p-4">
+                      <div className="mx-auto mb-3">
+                        {opportunity.type === "AgroTrade" ? (
+                          <div className="bg-white/20 p-3 rounded-full inline-block">
+                            <Zap className="h-12 w-12" />
+                          </div>
+                        ) : opportunity.type === "AgroReserve" ? (
+                          <div className="bg-white/20 p-3 rounded-full inline-block">
+                            <Shield className="h-12 w-12" />
+                          </div>
+                        ) : (
+                          <div className="bg-white/20 p-3 rounded-full inline-block">
+                            <Award className="h-12 w-12" />
+                          </div>
+                        )}
+                      </div>
+                      <h3 className="font-bold text-xl">{opportunity.type}</h3>
+                      <p className="text-sm opacity-90 mt-1">{opportunity.title}</p>
+                    </div>
+                  </div>
+                  <div className="p-4">
+                    <div className="flex justify-between items-start mb-2">
+                      <h3 className="text-lg font-bold text-foreground">{opportunity.title}</h3>
+                      <Badge variant="secondary">{opportunity.type}</Badge>
+                    </div>
+                    <p className="text-muted-foreground text-sm mb-4">
+                      {opportunity.description}
+                    </p>
+                    <div className="space-y-2 mb-4">
+                      <div className="flex justify-between text-sm">
+                        <span className="text-muted-foreground">Min. Investment:</span>
+                        <span className="font-medium">{opportunity.minInvestment}</span>
+                      </div>
+                      <div className="flex justify-between text-sm">
+                        <span className="text-muted-foreground">ROI:</span>
+                        <span className="font-medium text-primary">{opportunity.roi}</span>
+                      </div>
+                      <div className="flex justify-between text-sm">
+                        <span className="text-muted-foreground">Duration:</span>
+                        <span className="font-medium">{opportunity.duration}</span>
+                      </div>
+                      <div className="flex justify-between text-sm">
+                        <span className="text-muted-foreground">Slots:</span>
+                        <span className="font-medium">{opportunity.slotsAvailable} available</span>
+                      </div>
+                    </div>
+                    <div className="flex gap-2">
+                      <Button size="sm" className="flex-1" onClick={() => handleViewOpportunity(opportunity)}>
+                        View Details
+                      </Button>
+                      <Button 
+                        size="sm" 
+                        variant="outline" 
+                        onClick={() => handleAddToWishlist(opportunity)}
+                      >
+                        <Heart className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           )}
         </TabsContent>
       </Tabs>
 
-      {/* Cart summary (if items in cart) */}
+      {/* Cart summary (if items in cart) - Improved mobile responsiveness */}
       {cart.length > 0 && (
-        <div id="cart-section" className="mt-12 p-6 bg-white rounded-lg shadow-md">
+        <div id="cart-section" className="mt-12 p-4 sm:p-6 bg-white rounded-lg shadow-md">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-2xl font-bold">Your Cart</h2>
             <Button variant="ghost" size="sm" onClick={() => setCart([])} aria-label="Clear cart">
@@ -1043,6 +1240,7 @@ const Shop = () => {
     )}
   </div>
 );
+
 };
 
 export default Shop;

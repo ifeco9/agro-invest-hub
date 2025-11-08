@@ -249,6 +249,84 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Who We Are */}
+      <section className="py-12 sm:py-16 bg-teal-900 text-white">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-8 sm:mb-12"
+          >
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">Who We Are</h2>
+            <p className="text-base sm:text-lg mb-6 sm:mb-8">
+              Drecan Commodities Ltd is an agricultural trading and investment company based in Abuja, Nigeria.
+            </p>
+            <p className="mb-4">
+              We specialize in sourcing farm produce directly from farmers in rural communities, moving them efficiently into urban markets, and distributing them to wholesalers, retailers, and community food programs at fair and affordable prices.
+            </p>
+            <p>
+              By simplifying the agricultural supply chain, we eliminate unnecessary middlemen, ensuring that both farmers earn more and consumers pay less — while investors enjoy steady and transparent returns.
+            </p>
+          </motion.div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 mt-8 sm:mt-12">
+            {[
+              {
+                title: "AgroFarm Partnership",
+                description: "The Premium Growth Plan is designed for investors who want sustainable, high yield returns backed by the strength of real agricultural trade. It combines Drecan's short-term turnover system with long-term commodity value growth ensuring consistent profit while contributing to national food security and market balance."
+              },
+              {
+                title: "AgroLink Program",
+                description: "Our Community Commitment:\n\nBeyond business, we invest in people.\nThrough our Community Support Initiatives, Drecan Commodities supports smallholder farmers, provides educational outreach, and empowers local women, men, and youth, ensuring that every investment contributes to sustainable progress."
+              },
+              {
+                title: "AgroTrade Cycle",
+                description: "we cultivate and produce key agricultural commodities — including palm oil, rice, beans, cocoa, maize, cashew nuts, and egusi — directly from our own plantations.\nFrom farm to storage, and onward to wholesalers, retailers, and final consumers in urban cities, we ensure every product is distributed efficiently, transparently, and affordably."
+              }
+            ].map((program, index) => (
+              <motion.div
+                key={index}
+                className="bg-card p-4 sm:p-6 rounded-lg shadow-md border border-border"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ y: -5, transition: { duration: 0.3 } }}
+              >
+                <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2 sm:mb-3">{program.title}</h3>
+                <p className="text-muted-foreground text-sm sm:text-base whitespace-pre-line">{program.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Our Purpose */}
+      <section className="py-12 sm:py-16 bg-teal-900 text-white">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-8 sm:mb-12"
+          >
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">Our Purpose</h2>
+            <p className="mb-4">
+              We believe that food should never be a privilege; it should be accessible to every Nigerian household, regardless of income level.
+            </p>
+            <p>
+              That's why Drecan Commodities is building a sustainable agricultural ecosystem — one that connects production, distribution, and investment in a way that benefits all.
+            </p>
+            <p className="mt-4">
+              Our work directly supports the United Nations Sustainable Development Goal 2 (Zero Hunger), which aims to end hunger, achieve food security, and promote sustainable agriculture.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Join the Movement */}
       <section className="py-12 sm:py-16 bg-teal-900 text-white">
         <div className="container mx-auto px-4 text-center">
@@ -302,77 +380,6 @@ const Home = () => {
               <Link to="/contact">Partner With Us</Link>
             </Button>
           </motion.div>
-        </div>
-      </section>
-
-      {/* What We Do */}
-      <section className="py-12 sm:py-16 bg-background">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-8 sm:mb-12"
-          >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4 sm:mb-6">What We Do</h2>
-          </motion.div>
-          
-          <div className="space-y-6 sm:space-y-8">
-            <motion.div 
-              className="bg-card p-4 sm:p-6 rounded-lg shadow-sm border border-border"
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6 }}
-              whileHover={{ x: 5, transition: { duration: 0.3 } }}
-            >
-              <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2 sm:mb-3">1. AgroTrade Cycle</h3>
-              <p className="text-muted-foreground">
-                We purchase key commodities such as rice, beans, palm oil, maize, egusi, and other agricultural products directly from rural farmers and trusted cooperatives at fair market prices.
-              </p>
-              <p className="text-muted-foreground mt-2">
-                We then distribute these products to wholesalers and retailers in Abuja and other major cities — efficiently, transparently, and affordably.
-              </p>
-              <p className="text-muted-foreground mt-2">
-                This model helps stabilize market prices while delivering consistent profit for investors.
-              </p>
-            </motion.div>
-            
-            <motion.div 
-              className="bg-card p-4 sm:p-6 rounded-lg shadow-sm border border-border"
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6 }}
-              whileHover={{ x: -5, transition: { duration: 0.3 } }}
-            >
-              <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2 sm:mb-3">2. AgroLink Program</h3>
-              <p className="text-muted-foreground">
-                A community supply initiative that connects farmers with consumers.
-              </p>
-              <p className="text-muted-foreground mt-2">
-                AgroLink focuses on delivering affordable food packages to local markets, schools, hospitals, and community programs — ensuring that both the rich and the poor have equal access to quality food.
-              </p>
-            </motion.div>
-            
-            <motion.div 
-              className="bg-card p-4 sm:p-6 rounded-lg shadow-sm border border-border"
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6 }}
-              whileHover={{ x: 5, transition: { duration: 0.3 } }}
-            >
-              <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2 sm:mb-3">3. AgroFarm Partnership</h3>
-              <p className="text-muted-foreground">
-                A collaborative farming initiative where investors can lease farmlands or fund managed farms.
-              </p>
-              <p className="text-muted-foreground mt-2">
-                We cultivate and manage the farms on their behalf until harvest, allowing individuals and organizations to participate in farming without direct involvement.
-              </p>
-            </motion.div>
-          </div>
         </div>
       </section>
 
@@ -454,11 +461,26 @@ const Home = () => {
           
           <div className="space-y-3 sm:space-y-4">
             {[
-              "Ethical Trading – We ensure farmers receive fair payment for their produce.",
-              "Affordable Food Access – Our mission is to make food accessible for all income levels.",
-              "Sustainable Returns – Investors enjoy consistent profit backed by transparent operations.",
-              "Community Impact – Every transaction supports food access initiatives across Nigeria.",
-              "UN SDG Partnership – We align with global sustainability goals for food and agriculture."
+              {
+                title: "We Create Wealth with Purpose",
+                description: "At DRECAN, your investment goes beyond profit, it drives food security, supports farmers, and fuels sustainable growth across communities."
+              },
+              {
+                title: "Quality You Can Trust",
+                description: "Our commodities are carefully sourced, properly stored, and ethically traded, ensuring only the best quality reaches our partners and buyers."
+              },
+              {
+                title: "Integrity in Every Transaction",
+                description: "Transparency, accountability, and trust are at the core of how we operate, with clear reports, honest pricing, and dependable partnerships."
+              },
+              {
+                title: "Consistent Value, Year-Round",
+                description: "Through modern storage systems and smart market timing, we maintain steady supply, stable prices, and reliable returns for all stakeholders."
+              },
+              {
+                title: "Empowering Communities, Building Sustainable Livelihoods",
+                description: "Every bag sold, every investment made,  uplifts farmers, strengthens local economies, and builds sustainable futures."
+              }
             ].map((item, index) => (
               <motion.div
                 key={index}
@@ -469,16 +491,19 @@ const Home = () => {
                 transition={{ duration: 0.5, delay: 0.1 * index }}
                 whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
               >
-                <span className="text-primary font-bold text-lg sm:text-xl mr-2 sm:mr-3">✓</span>
-                <span className="text-muted-foreground text-sm sm:text-base">{item}</span>
+                <span className="text-primary font-bold text-lg sm:text-xl mr-2 sm:mr-3">{index + 1}.</span>
+                <div>
+                  <h3 className="font-bold text-foreground text-base sm:text-lg mb-1">{item.title}</h3>
+                  <p className="text-muted-foreground text-sm sm:text-base">{item.description}</p>
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Who We Are */}
-      <section className="py-12 sm:py-16 bg-teal-900 text-white">
+      {/* What We Do */}
+      <section className="py-12 sm:py-16 bg-background">
         <div className="container mx-auto px-4 max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -487,71 +512,64 @@ const Home = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-8 sm:mb-12"
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">Who We Are</h2>
-            <p className="text-base sm:text-lg mb-6 sm:mb-8">
-              Drecan Commodities Ltd is an agricultural trading and investment company based in Abuja, Nigeria.
-            </p>
-            <p className="mb-4">
-              We specialize in sourcing farm produce directly from farmers in rural communities, moving them efficiently into urban markets, and distributing them to wholesalers, retailers, and community food programs at fair and affordable prices.
-            </p>
-            <p>
-              By simplifying the agricultural supply chain, we eliminate unnecessary middlemen, ensuring that both farmers earn more and consumers pay less — while investors enjoy steady and transparent returns.
-            </p>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4 sm:mb-6">The Wealth Initiative Focus Areas</h2>
           </motion.div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 mt-8 sm:mt-12">
-            {[
-              {
-                title: "AgroTrade Cycle",
-                description: "We purchase key commodities such as rice, beans, palm oil, maize, and egusi directly from rural farmers and transport them to major urban centers like Abuja, where they are sold to wholesalers and retailers at affordable prices."
-              },
-              {
-                title: "AgroLink Program",
-                description: "A community supply initiative that connects farmers with consumers. AgroLink focuses on delivering affordable food packages to local markets, schools, hospitals, and community programs."
-              },
-              {
-                title: "AgroFarm Partnership",
-                description: "A collaborative farming initiative where investors can lease farmlands or fund managed farms. We cultivate and manage the farms on their behalf until harvest."
-              }
-            ].map((program, index) => (
-              <motion.div
-                key={index}
-                className="bg-card p-4 sm:p-6 rounded-lg shadow-md border border-border"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ y: -5, transition: { duration: 0.3 } }}
-              >
-                <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2 sm:mb-3">{program.title}</h3>
-                <p className="text-muted-foreground text-sm sm:text-base">{program.description}</p>
-              </motion.div>
-            ))}
+          <div className="space-y-6 sm:space-y-8">
+            <motion.div 
+              className="bg-card p-4 sm:p-6 rounded-lg shadow-sm border border-border"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6 }}
+              whileHover={{ x: 5, transition: { duration: 0.3 } }}
+            >
+              <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2 sm:mb-3">1. AgroTrade Cycle</h3>
+              <p className="text-muted-foreground">
+                we cultivate and produce key agricultural commodities — including palm oil, rice, beans, cocoa, maize, cashew nuts, and egusi — directly from our own plantations.
+              </p>
+              <p className="text-muted-foreground mt-2">
+                From farm to storage, and onward to wholesalers, retailers, and final consumers in urban cities, we ensure every product is distributed efficiently, transparently, and affordably.
+              </p>
+            </motion.div>
+            
+            <motion.div 
+              className="bg-card p-4 sm:p-6 rounded-lg shadow-sm border border-border"
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6 }}
+              whileHover={{ x: -5, transition: { duration: 0.3 } }}
+            >
+              <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2 sm:mb-3">2. AgroLink Program</h3>
+              <p className="text-muted-foreground">
+                Our Community Commitment:
+              </p>
+              <p className="text-muted-foreground mt-2">
+                Beyond business, we invest in people.
+              </p>
+              <p className="text-muted-foreground mt-2">
+                Through our Community Support Initiatives, Drecan Commodities supports smallholder farmers, provides educational outreach, and empowers local women, men, and youth, ensuring that every investment contributes to sustainable progress.
+              </p>
+            </motion.div>
+            
+            <motion.div 
+              className="bg-card p-4 sm:p-6 rounded-lg shadow-sm border border-border"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6 }}
+              whileHover={{ x: 5, transition: { duration: 0.3 } }}
+            >
+              <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2 sm:mb-3">3. AgroFarm Partnership</h3>
+              <p className="text-muted-foreground">
+                The Premium Growth Plan is designed for investors who want sustainable, high yield returns backed by the strength of real agricultural trade.
+              </p>
+              <p className="text-muted-foreground mt-2">
+                It combines Drecan's short-term turnover system with long-term commodity value growth ensuring consistent profit while contributing to national food security and market balance.
+              </p>
+            </motion.div>
           </div>
-        </div>
-      </section>
-
-      {/* Our Purpose */}
-      <section className="py-12 sm:py-16 bg-teal-900 text-white">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-8 sm:mb-12"
-          >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">Our Purpose</h2>
-            <p className="mb-4">
-              We believe that food should never be a privilege; it should be accessible to every Nigerian household, regardless of income level.
-            </p>
-            <p>
-              That's why Drecan Commodities is building a sustainable agricultural ecosystem — one that connects production, distribution, and investment in a way that benefits all.
-            </p>
-            <p className="mt-4">
-              Our work directly supports the United Nations Sustainable Development Goal 2 (Zero Hunger), which aims to end hunger, achieve food security, and promote sustainable agriculture.
-            </p>
-          </motion.div>
         </div>
       </section>
 

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { TrendingUp, Zap, Award, Shield } from "lucide-react";
+import { TrendingUp, Zap, Award, Shield, Leaf, Globe } from "lucide-react";
 import heroImage from "@/assets/hero-farm.jpg";
 import kadunaRice from "@/assets/Kaduna Rice Yield Fund.jpeg";
 import ogunCassava from "@/assets/Ogun Cassava Processing Investment.jpeg";
@@ -271,10 +271,10 @@ const Home = () => {
             </p>
           </motion.div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 mt-8 sm:mt-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 mt-8 sm:mt-12">
             {[
               {
-                title: "AgroFarm Partnership",
+                title: "Premium Growth Plan",
                 description: "The Premium Growth Plan is designed for investors who want sustainable, high yield returns backed by the strength of real agricultural trade. It combines Drecan's short-term turnover system with long-term commodity value growth ensuring consistent profit while contributing to national food security and market balance."
               },
               {
@@ -284,19 +284,44 @@ const Home = () => {
               {
                 title: "AgroTrade Cycle",
                 description: "we cultivate and produce key agricultural commodities — including palm oil, rice, beans, cocoa, maize, cashew nuts, and egusi — directly from our own plantations.\nFrom farm to storage, and onward to wholesalers, retailers, and final consumers in urban cities, we ensure every product is distributed efficiently, transparently, and affordably."
+              },
+              {
+                title: "Sustainability & Social Impact",
+                description: "At Drecan Commodities & Oil Palm Company, sustainability isn't an afterthought — it's the heart of our business. We protect the environment, uplift communities, and create shared prosperity through responsible agriculture and meaningful impact.",
+                fullDescription: "At Drecan Commodities & Oil Palm Company, sustainability isn't an afterthought — it's the heart of our business. We protect the environment, uplift communities, and create shared prosperity through responsible agriculture and meaningful impact.\n\nOur Community Commitment:\nBeyond business, we invest in people. Through our Community Support Initiatives, Drecan Commodities supports smallholder farmers, provides educational outreach, and empowers local women, men, and youth — ensuring that every investment contributes to sustainable progress."
               }
             ].map((program, index) => (
               <motion.div
                 key={index}
-                className="bg-card p-4 sm:p-6 rounded-lg shadow-md border border-border"
+                className="bg-card p-4 sm:p-5 rounded-lg shadow-md border border-border cursor-pointer flex flex-col h-full"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ y: -5, transition: { duration: 0.3 } }}
+                whileHover={{ 
+                  y: -5, 
+                  scale: 1.02,
+                  boxShadow: "0 15px 20px -5px rgba(0, 0, 0, 0.1), 0 5px 10px -5px rgba(0, 0, 0, 0.04)",
+                  transition: { duration: 0.3 }
+                }}
               >
-                <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2 sm:mb-3">{program.title}</h3>
-                <p className="text-muted-foreground text-sm sm:text-base whitespace-pre-line">{program.description}</p>
+                <h3 className="text-lg font-bold text-foreground mb-2">{program.title}</h3>
+                <p className="text-muted-foreground text-sm whitespace-pre-line flex-grow">
+                  {program.description}
+                </p>
+                {program.fullDescription && (
+                  <Button 
+                    size="sm" 
+                    variant="link" 
+                    className="p-0 h-auto font-medium text-teal-600 hover:text-teal-700 mt-2"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      window.location.href = '/about#commitment';
+                    }}
+                  >
+                    Learn More
+                  </Button>
+                )}
               </motion.div>
             ))}
           </div>
@@ -459,45 +484,87 @@ const Home = () => {
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4 sm:mb-6">Why Choose Drecan Commodities</h2>
           </motion.div>
           
-          <div className="space-y-3 sm:space-y-4">
-            {[
-              {
-                title: "We Create Wealth with Purpose",
-                description: "At DRECAN, your investment goes beyond profit, it drives food security, supports farmers, and fuels sustainable growth across communities."
-              },
-              {
-                title: "Quality You Can Trust",
-                description: "Our commodities are carefully sourced, properly stored, and ethically traded, ensuring only the best quality reaches our partners and buyers."
-              },
-              {
-                title: "Integrity in Every Transaction",
-                description: "Transparency, accountability, and trust are at the core of how we operate, with clear reports, honest pricing, and dependable partnerships."
-              },
-              {
-                title: "Consistent Value, Year-Round",
-                description: "Through modern storage systems and smart market timing, we maintain steady supply, stable prices, and reliable returns for all stakeholders."
-              },
-              {
-                title: "Empowering Communities, Building Sustainable Livelihoods",
-                description: "Every bag sold, every investment made,  uplifts farmers, strengthens local economies, and builds sustainable futures."
-              }
-            ].map((item, index) => (
+          <div className="space-y-6 sm:space-y-8">
+            <motion.div 
+              className="bg-card p-5 sm:p-7 rounded-xl shadow-lg border border-border relative overflow-hidden"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6 }}
+              whileHover={{ 
+                x: 5, 
+                boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
+                transition: { duration: 0.3 }
+              }}
+            >
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-teal-500 to-emerald-500"></div>
+              <p className="text-muted-foreground text-base sm:text-lg italic mb-4">
+                "At Drecan, we believe investment should go beyond profit, it should build legacies. Your investment with us drives food security, empowers farmers, and fuels sustainable growth across communities."
+              </p>
+              <p className="text-muted-foreground text-base sm:text-lg">
+                We are not just another agricultural company; we are an epitome of agricultural excellence, combining deep rooted expertise with responsible resource management and long-term value creation.
+              </p>
+            </motion.div>
+            
+            <div className="space-y-5 sm:space-y-6">
               <motion.div
-                key={index}
-                className="flex items-start p-3 sm:p-4 bg-card rounded-lg shadow-sm border border-border"
-                initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.5, delay: 0.1 * index }}
-                whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
+                transition={{ duration: 0.5 }}
+                className="text-center"
               >
-                <span className="text-primary font-bold text-lg sm:text-xl mr-2 sm:mr-3">{index + 1}.</span>
-                <div>
-                  <h3 className="font-bold text-foreground text-base sm:text-lg mb-1">{item.title}</h3>
-                  <p className="text-muted-foreground text-sm sm:text-base">{item.description}</p>
-                </div>
+                <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-3">Our Pillars of Excellence</h3>
               </motion.div>
-            ))}
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+                <motion.div
+                  className="bg-card p-5 sm:p-6 rounded-lg shadow-md border border-border"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                  whileHover={{ 
+                    y: -5, 
+                    boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+                    transition: { duration: 0.3 }
+                  }}
+                >
+                  <div className="flex items-start gap-3 mb-3">
+                    <div className="bg-teal-100 p-2 rounded-lg">
+                      <Leaf className="h-6 w-6 text-teal-600" />
+                    </div>
+                    <h4 className="text-lg font-bold text-foreground">1. A Rooted and Experienced Agricultural Background</h4>
+                  </div>
+                  <p className="text-muted-foreground">
+                    Built on years of field experience, Drecan integrates modern agribusiness strategies with local agricultural knowledge. We cultivate, process, and distribute premium commodities such as palm oil, rice, maize, beans, cocoa, cashew nuts, and egusi, ensuring consistent quality and reliability.
+                  </p>
+                </motion.div>
+                
+                <motion.div
+                  className="bg-card p-5 sm:p-6 rounded-lg shadow-md border border-border"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  whileHover={{ 
+                    y: -5, 
+                    boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+                    transition: { duration: 0.3 }
+                  }}
+                >
+                  <div className="flex items-start gap-3 mb-3">
+                    <div className="bg-emerald-100 p-2 rounded-lg">
+                      <Award className="h-6 w-6 text-emerald-600" />
+                    </div>
+                    <h4 className="text-lg font-bold text-foreground">2. Quality You Can Trust</h4>
+                  </div>
+                  <p className="text-muted-foreground">
+                    Every product that leaves our storage meets the highest standards. We maintain strict quality control from cultivation to packaging ensuring ethically sourced, properly stored, and transparently traded commodities.
+                  </p>
+                </motion.div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

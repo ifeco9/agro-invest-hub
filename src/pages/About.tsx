@@ -28,48 +28,34 @@ const About = () => {
         </div>
       </section>
 
-      {/* Mission & Vision */}
+      {/* ABOUT US */}
       <section className="py-12 sm:py-16 bg-background">
         <div className="container mx-auto px-4 max-w-4xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.5 }}
-              className="bg-card p-6 sm:p-8 rounded-lg shadow-md border border-border"
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <Target className="h-8 w-8 text-primary" />
-                <h2 className="text-2xl font-bold text-foreground">Our Mission</h2>
-              </div>
-              <p className="text-muted-foreground mb-4">
-                To revolutionize Nigeria's agricultural sector by creating transparent, ethical, and profitable investment opportunities that directly benefit both investors and farming communities.
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-4 sm:mb-6">ABOUT US</h2>
+            <div className="space-y-4 text-muted-foreground">
+              <p>
+                Established in Osun State in 2014, Drecan Commodities & Oil Palm Company is a disruptive force in Nigerian agritech and agribusiness. We are not just another agricultural company; we are pioneers building a new standard for responsible tropical agriculture in Nigeria.
               </p>
-              <p className="text-muted-foreground">
+              <p>
+                Our mission is to revolutionize Nigeria's agricultural sector by creating transparent, ethical, and profitable investment opportunities that directly benefit both investors and farming communities.
+              </p>
+              <p>
                 We are committed to building a sustainable agricultural ecosystem that eliminates unnecessary middlemen, ensures fair pricing for farmers, and provides affordable food access for all income levels.
               </p>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.5 }}
-              className="bg-card p-6 sm:p-8 rounded-lg shadow-md border border-border"
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <Globe className="h-8 w-8 text-primary" />
-                <h2 className="text-2xl font-bold text-foreground">Our Vision</h2>
-              </div>
-              <p className="text-muted-foreground mb-4">
-                To become Nigeria's leading agricultural investment platform that transforms the way people invest in agriculture while creating sustainable food systems for future generations.
+              <p>
+                Our vision is to become Nigeria's leading agricultural investment platform that transforms the way people invest in agriculture while creating sustainable food systems for future generations.
               </p>
-              <p className="text-muted-foreground">
+              <p>
                 We envision a Nigeria where food security is guaranteed, farmers are empowered, investors earn consistent returns, and communities thrive through sustainable agricultural practices.
               </p>
-            </motion.div>
-          </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -201,6 +187,70 @@ const About = () => {
                   </li>
                 ))}
               </ul>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* COMMITMENT */}
+      <section id="commitment" className="py-12 sm:py-16 bg-teal-900 text-white">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5 }}
+            >
+              <h3 className="text-xl sm:text-2xl font-bold mb-4">Sustainable Palm Oil & Food Commodities in Nigeria</h3>
+              <div className="space-y-4">
+                <p>
+                  For over 14 years, Drecan has been a cornerstone of sustainable agribusiness in Nigeria. We are a leading producer, supplier and exporter of premium palm oil products and essential food commodities, including cashew nuts, cocoa, and dried grains (corn, millet, wheat, beans, and rice).
+                </p>
+                <p>
+                  Our integrated model from our own plantations to our secure storage facilities built on a foundation of high performance, ethical, and sustainable agriculture. We are committed to creating shared value that empowers our employees, partners, and local communities while protecting the environment.
+                </p>
+                <p>
+                  Our Commitment to Sustainable & Responsible Agriculture in Africa
+                </p>
+                <p>
+                  Our approach is formalized in a comprehensive Responsible Management Policy, developed with input from local stakeholders. This policy guides our entire operation and extends to our subcontractors and suppliers, ensuring a consistent, high-standard value chain that is highly rated by our customers.
+                </p>
+              </div>
+            </motion.div>
+            
+            <motion.div
+              className="bg-white/10 backdrop-blur-sm rounded-xl p-6 sm:p-8"
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5 }}
+              whileHover={{ 
+                scale: 1.02,
+                boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
+                transition: { duration: 0.3 }
+              }}
+            >
+              <h3 className="text-xl sm:text-2xl font-bold mb-6 text-center">KEY FIGURES</h3>
+              <div className="space-y-5">
+                {[
+                  { figure: "1,850 hectare planted area of oil palm trees", detail: "7,645 Tonnes of palm oil yield annually" },
+                  { figure: "750 hectare planted area of cocoa trees", detail: "980 Tonnes of dried cocoa beans annually" },
+                  { figure: "1,400 hectare planted area of Cashew trees", detail: "1,740 Tonnes of RNC (raw cashes nuts) yielding 400 Tonnes of edible cashew nuts annually" },
+                  { figure: "25,000 Tonnes of bagged grain warehouse", detail: "" },
+                  { figure: "467 direct and indirect employees", detail: "" }
+                ].map((item, index) => (
+                  <div key={index} className="flex items-start gap-3">
+                    <div className="mt-1 flex-shrink-0">
+                      <div className="w-2 h-2 bg-white rounded-full"></div>
+                    </div>
+                    <div>
+                      <p className="font-medium">{item.figure}</p>
+                      {item.detail && <p className="text-sm opacity-90 mt-1">{item.detail}</p>}
+                    </div>
+                  </div>
+                ))}
+              </div>
             </motion.div>
           </div>
         </div>

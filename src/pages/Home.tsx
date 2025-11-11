@@ -641,29 +641,6 @@ const Home = () => {
       </section>
 
       {/* Bouncing Shop Now Button */}
-      <motion.div 
-        className="fixed bottom-6 right-6 z-50"
-        animate={{ 
-          y: [0, -10, 0],
-        }}
-        transition={{ 
-          duration: 2,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
-      >
-        <Button 
-          size="lg" 
-          className="bg-gradient-to-r from-teal-600 to-teal-700 hover:from-teal-700 hover:to-teal-800 text-white shadow-2xl hover:shadow-2xl rounded-full w-16 h-16 p-0 flex items-center justify-center border-4 border-white transition-all duration-300 transform"
-          asChild
-        >
-          <Link to="/shop">
-            <span className="text-[8px] font-extrabold tracking-wide">Shop Now</span>
-          </Link>
-        </Button>
-      </motion.div>
     </div>
   );
 };

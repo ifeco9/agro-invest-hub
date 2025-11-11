@@ -317,14 +317,14 @@ const About = () => {
                     to create a more efficient and equitable agricultural supply chain that benefits everyone involved.
                   </p>
                   <p>
-                    Our journey began when our founders witnessed firsthand the challenges faced by smallholder farmers 
+                    Our journey began when our founder witnessed firsthand the challenges faced by smallholder farmers 
                     who struggled to get fair prices for their produce, while urban consumers paid inflated prices for basic 
                     food items. This disconnect inspired the founding team to build a bridge between rural producers and urban markets.
                   </p>
                   <p>
                     Over the years, we have grown from a small local trading operation into a comprehensive agricultural 
                     investment platform that connects thousands of investors with profitable opportunities in Nigeria's 
-                    agricultural sector. Today, we work with a significant number of farmers across multiple states and have facilitated 
+                    agricultural sector. Today, we work with 150 farmers across multiple states and have facilitated 
                     investments worth millions of naira.
                   </p>
                   <p>
@@ -349,7 +349,7 @@ const About = () => {
                   { year: "2016", event: "Expanded operations to Abuja" },
                   { year: "2018", event: "Launched AgroFarm Partnership program" },
                   { year: "2020", event: "Reached 1,000+ satisfied investors" },
-                  { year: "2022", event: "Partnered with 500+ farmers across 5 states" },
+                  { year: "2022", event: "Partnered with 150 farmers across 5 states" },
                   { year: "2024", event: "Launched AgroReserve premium investment program" }
                 ].map((milestone, index) => (
                   <li key={index} className="flex items-start">
@@ -718,9 +718,9 @@ const About = () => {
             transition={{ duration: 0.5 }}
             className="text-center"
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4">Meet Our Leadership</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4">Meet Our CEO</h2>
             <p className="text-base sm:text-lg text-muted-foreground mb-8 sm:mb-12 max-w-md sm:max-w-2xl mx-auto">
-              The experienced team driving Drecan Commodities forward
+              The experienced leader driving Drecan Commodities forward
             </p>
             
             <div className="grid grid-cols-1 gap-6 sm:gap-8 justify-items-center">

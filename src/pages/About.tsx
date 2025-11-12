@@ -136,16 +136,8 @@ const About = () => {
       </section>
 
       {/* What Makes Drecan Different - Horizontal Carousel */}
-      <section className="relative py-12 sm:py-16">
-        <div className="absolute inset-0 bg-cover bg-center z-0">
-          <div 
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url(${heroImage})` }}
-          ></div>
-          <div className="absolute inset-0 bg-black/60"></div>
-        </div>
-        
-        <div className="container mx-auto px-4 max-w-6xl relative z-10">
+      <section className="py-12 sm:py-16 bg-background">
+        <div className="container mx-auto px-4 max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -153,98 +145,101 @@ const About = () => {
             transition={{ duration: 0.5 }}
             className="text-center mb-8 sm:mb-12"
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">What Makes Drecan Different</h2>
-            <p className="text-base sm:text-lg text-white/90 max-w-md sm:max-w-2xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4">What Makes Drecan Different</h2>
+            <p className="text-base sm:text-lg text-muted-foreground max-w-md sm:max-w-2xl mx-auto">
               Our unique approach to sustainable agriculture sets us apart in the industry
             </p>
           </motion.div>
 
-          <div className="relative overflow-hidden rounded-2xl bg-white/10 backdrop-blur-sm p-8 sm:p-12 border border-white/20">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <motion.div 
-                className="bg-white/90 backdrop-blur-sm rounded-xl p-6 shadow-lg"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.5 }}
-                whileHover={{ y: -5, transition: { duration: 0.3 } }}
-              >
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="bg-teal-100 p-2 rounded-lg">
-                    <Leaf className="h-6 w-6 text-teal-600" />
+          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-teal-500 to-emerald-600 p-8 sm:p-12">
+            <div className="absolute inset-0 bg-black/10"></div>
+            <div className="relative z-10">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <motion.div 
+                  className="bg-white/90 backdrop-blur-sm rounded-xl p-6 shadow-lg"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.5 }}
+                  whileHover={{ y: -5, transition: { duration: 0.3 } }}
+                >
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="bg-teal-100 p-2 rounded-lg">
+                      <Leaf className="h-6 w-6 text-teal-600" />
+                    </div>
+                    <h3 className="text-lg sm:text-xl font-bold text-foreground">What Makes Drecan Different</h3>
                   </div>
-                  <h3 className="text-lg sm:text-xl font-bold text-foreground">What Makes Drecan Different</h3>
-                </div>
-                <p className="text-muted-foreground mb-4">
-                  Drecan Commodities & Oil Palm Company is not just another Company, but rather it is an epitome of agricultural excellence not only with our products but also in management of resources.
-                </p>
-                <ul className="space-y-2 text-muted-foreground">
-                  <li className="flex items-start gap-2">
-                    <span className="text-teal-600 mt-1">•</span>
-                    <span>A rooted and experienced agricultural background</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-teal-600 mt-1">•</span>
-                    <span>Commitment to Environmental Stewardship</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-teal-600 mt-1">•</span>
-                    <span>Motivated and Productive workforce</span>
-                  </li>
-                </ul>
-              </motion.div>
+                  <p className="text-muted-foreground mb-4">
+                    Drecan Commodities & Oil Palm Company is not just another Company, but rather it is an epitome of agricultural excellence not only with our products but also in management of resources.
+                  </p>
+                  <ul className="space-y-2 text-muted-foreground">
+                    <li className="flex items-start gap-2">
+                      <span className="text-teal-600 mt-1">•</span>
+                      <span>A rooted and experienced agricultural background</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-teal-600 mt-1">•</span>
+                      <span>Commitment to Environmental Stewardship</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-teal-600 mt-1">•</span>
+                      <span>Motivated and Productive workforce</span>
+                    </li>
+                  </ul>
+                </motion.div>
 
-              <motion.div 
-                className="bg-white/90 backdrop-blur-sm rounded-xl p-6 shadow-lg"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                whileHover={{ y: -5, transition: { duration: 0.3 } }}
-              >
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="bg-emerald-100 p-2 rounded-lg">
-                    <Globe className="h-6 w-6 text-emerald-600" />
+                <motion.div 
+                  className="bg-white/90 backdrop-blur-sm rounded-xl p-6 shadow-lg"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                  whileHover={{ y: -5, transition: { duration: 0.3 } }}
+                >
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="bg-emerald-100 p-2 rounded-lg">
+                      <Globe className="h-6 w-6 text-emerald-600" />
+                    </div>
+                    <h3 className="text-lg sm:text-xl font-bold text-foreground">Environment Stewardship</h3>
                   </div>
-                  <h3 className="text-lg sm:text-xl font-bold text-foreground">Environment Stewardship</h3>
-                </div>
-                <p className="text-muted-foreground mb-4">
-                  At Drecan, environmental sustainability is not an add-on, it is the essential foundation of our agribusiness. We recognize that our success is intrinsically linked to the health of the ecosystems we operate within.
-                </p>
-                <p className="text-muted-foreground">
-                  That's why we are committed to preserving Nigeria's biodiversity and natural resources for future generations through proactive conservation and sustainable land use practices.
-                </p>
-              </motion.div>
+                  <p className="text-muted-foreground mb-4">
+                    At Drecan, environmental sustainability is not an add-on, it is the essential foundation of our agribusiness. We recognize that our success is intrinsically linked to the health of the ecosystems we operate within.
+                  </p>
+                  <p className="text-muted-foreground">
+                    That's why we are committed to preserving Nigeria's biodiversity and natural resources for future generations through proactive conservation and sustainable land use practices.
+                  </p>
+                </motion.div>
 
-              <motion.div 
-                className="bg-white/90 backdrop-blur-sm rounded-xl p-6 shadow-lg"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                whileHover={{ y: -5, transition: { duration: 0.3 } }}
-              >
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="bg-cyan-100 p-2 rounded-lg">
-                    <Shield className="h-6 w-6 text-cyan-600" />
+                <motion.div 
+                  className="bg-white/90 backdrop-blur-sm rounded-xl p-6 shadow-lg"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  whileHover={{ y: -5, transition: { duration: 0.3 } }}
+                >
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="bg-cyan-100 p-2 rounded-lg">
+                      <Shield className="h-6 w-6 text-cyan-600" />
+                    </div>
+                    <h3 className="text-lg sm:text-xl font-bold text-foreground">Our Environmental Commitments</h3>
                   </div>
-                  <h3 className="text-lg sm:text-xl font-bold text-foreground">Our Environmental Commitments</h3>
-                </div>
-                <ul className="space-y-3 text-muted-foreground">
-                  <li className="flex items-start gap-2">
-                    <span className="text-cyan-600 mt-1">•</span>
-                    <span><span className="font-medium">Certified Environmental Management:</span> Robust EMS to monitor and improve performance</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-cyan-600 mt-1">•</span>
-                    <span><span className="font-medium">Pollution Prevention:</span> Chemical reduction and waste hierarchy focus</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-cyan-600 mt-1">•</span>
-                    <span><span className="font-medium">Soil Health:</span> Regenerative practices to protect soil vitality</span>
-                  </li>
-                </ul>
-              </motion.div>
+                  <ul className="space-y-3 text-muted-foreground">
+                    <li className="flex items-start gap-2">
+                      <span className="text-cyan-600 mt-1">•</span>
+                      <span><span className="font-medium">Certified Environmental Management:</span> Robust EMS to monitor and improve performance</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-cyan-600 mt-1">•</span>
+                      <span><span className="font-medium">Pollution Prevention:</span> Chemical reduction and waste hierarchy focus</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-cyan-600 mt-1">•</span>
+                      <span><span className="font-medium">Soil Health:</span> Regenerative practices to protect soil vitality</span>
+                    </li>
+                  </ul>
+                </motion.div>
+              </div>
             </div>
           </div>
         </div>
@@ -586,8 +581,16 @@ const About = () => {
       </section>
 
       {/* AI-Powered Disruption */}
-      <section className="py-12 sm:py-16 bg-gradient-to-br from-teal-50 to-emerald-50">
-        <div className="container mx-auto px-4 max-w-6xl">
+      <section className="relative py-12 sm:py-16">
+        <div className="absolute inset-0 bg-cover bg-center z-0">
+          <div 
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: `url(${heroImage})` }}
+          ></div>
+          <div className="absolute inset-0 bg-black/60"></div>
+        </div>
+        
+        <div className="container mx-auto px-4 max-w-6xl relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -595,22 +598,17 @@ const About = () => {
             transition={{ duration: 0.5 }}
             className="text-center mb-8 sm:mb-12"
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4">AI-Powered Disruption</h2>
-            <p className="text-base sm:text-lg text-muted-foreground max-w-md sm:max-w-2xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">AI-Powered Disruption</h2>
+            <p className="text-base sm:text-lg text-white/90 max-w-md sm:max-w-2xl mx-auto">
               Leveraging cutting-edge technology to maximize yield and profitability
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.5 }}
-            >
+          <div className="relative overflow-hidden rounded-2xl bg-white/10 backdrop-blur-sm p-8 sm:p-12 border border-white/20">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
               <div className="space-y-8">
                 <motion.div 
-                  className="bg-card rounded-xl p-6 sm:p-8 shadow-lg border border-border"
+                  className="bg-white/90 backdrop-blur-sm rounded-xl p-6 sm:p-8 shadow-lg"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.3 }}
@@ -629,7 +627,7 @@ const About = () => {
                 </motion.div>
 
                 <motion.div 
-                  className="bg-card rounded-xl p-6 sm:p-8 shadow-lg border border-border"
+                  className="bg-white/90 backdrop-blur-sm rounded-xl p-6 sm:p-8 shadow-lg"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.3 }}
@@ -648,7 +646,7 @@ const About = () => {
                 </motion.div>
 
                 <motion.div 
-                  className="bg-card rounded-xl p-6 sm:p-8 shadow-lg border border-border"
+                  className="bg-white/90 backdrop-blur-sm rounded-xl p-6 sm:p-8 shadow-lg"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.3 }}
@@ -666,50 +664,50 @@ const About = () => {
                   </p>
                 </motion.div>
               </div>
-            </motion.div>
 
-            <motion.div
-              className="bg-gradient-to-br from-teal-600 to-emerald-700 rounded-2xl p-8 sm:p-10 text-white flex flex-col justify-center"
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.5 }}
-              whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
-            >
-              <h3 className="text-xl sm:text-2xl font-bold mb-6">The Investor & Partner Advantage:</h3>
-              <ul className="space-y-4">
-                <li className="flex items-start gap-3">
-                  <div className="mt-1 flex-shrink-0">
-                    <div className="w-2 h-2 bg-white rounded-full"></div>
-                  </div>
-                  <div>
-                    <span className="font-bold">Higher Returns:</span> 
-                    <span className="opacity-90"> Increased yield and lower costs mean significantly higher profit margins and stronger dividends.</span>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <div className="mt-1 flex-shrink-0">
-                    <div className="w-2 h-2 bg-white rounded-full"></div>
-                  </div>
-                  <div>
-                    <span className="font-bold">Scalable Model:</span> 
-                    <span className="opacity-90"> Our AI-driven system is a scalable asset, making expansion more profitable and less risky than traditional competitors.</span>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <div className="mt-1 flex-shrink-0">
-                    <div className="w-2 h-2 bg-white rounded-full"></div>
-                  </div>
-                  <div>
-                    <span className="font-bold">Competitive Moats:</span> 
-                    <span className="opacity-90"> This technology creates a high barrier to entry, positioning Drecan as the future-proof, high-tech leader in Nigerian palm oil.</span>
-                  </div>
-                </li>
-              </ul>
-              <p className="mt-8 text-lg font-bold">
-                By embedding AI into our core operations, Drecan doesn't just compete, we redefine the industry.
-              </p>
-            </motion.div>
+              <motion.div
+                className="bg-white/90 backdrop-blur-sm rounded-xl p-8 sm:p-10 text-foreground flex flex-col justify-center"
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.5 }}
+                whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
+              >
+                <h3 className="text-xl sm:text-2xl font-bold mb-4">The Investor & Partner Advantage:</h3>
+                <ul className="space-y-4">
+                  <li className="flex items-start gap-3">
+                    <div className="mt-1 flex-shrink-0">
+                      <div className="w-2 h-2 bg-teal-600 rounded-full"></div>
+                    </div>
+                    <div>
+                      <span className="font-bold">Higher Returns:</span> 
+                      <span className="opacity-90"> Increased yield and lower costs mean significantly higher profit margins and stronger dividends.</span>
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <div className="mt-1 flex-shrink-0">
+                      <div className="w-2 h-2 bg-emerald-600 rounded-full"></div>
+                    </div>
+                    <div>
+                      <span className="font-bold">Scalable Model:</span> 
+                      <span className="opacity-90"> Our AI-driven system is a scalable asset, making expansion more profitable and less risky than traditional competitors.</span>
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <div className="mt-1 flex-shrink-0">
+                      <div className="w-2 h-2 bg-cyan-600 rounded-full"></div>
+                    </div>
+                    <div>
+                      <span className="font-bold">Competitive Moats:</span> 
+                      <span className="opacity-90"> This technology creates a high barrier to entry, positioning Drecan as the future-proof, high-tech leader in Nigerian palm oil.</span>
+                    </div>
+                  </li>
+                </ul>
+                <p className="mt-8 text-lg font-bold text-foreground">
+                  By embedding AI into our core operations, Drecan doesn't just compete, we redefine the industry.
+                </p>
+              </motion.div>
+            </div>
           </div>
         </div>
       </section>

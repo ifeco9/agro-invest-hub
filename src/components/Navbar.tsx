@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, ShoppingCart } from "lucide-react";
+import { Menu, X, ShoppingCart, User } from "lucide-react";
 import Logo from "@/components/Logo";
 import { motion } from "framer-motion";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [cartCount, setCartCount] = useState(0);
+  const [user, setUser] = useState<{name: string, email: string} | null>(null);
   const location = useLocation();
 
   const navLinks = [
@@ -43,7 +44,37 @@ const Navbar = () => {
     return () => window.removeEventListener('storage', updateCartCount);
   }, []);
 
+  // Check for user authentication status
+  useEffect(() => {
+    const checkUserStatus = () => {
+      const userData = localStorage.getItem('user');
+      if (userData) {
+        try {
+          const user = JSON.parse(userData);
+          setUser(user);
+        } catch (e) {
+          setUser(null);
+        }
+      } else {
+        setUser(null);
+      }
+    };
+
+    checkUserStatus();
+    
+    // Listen for storage changes (when user logs in/out)
+    window.addEventListener('storage', checkUserStatus);
+    return () => window.removeEventListener('storage', checkUserStatus);
+  }, []);
+
   const isActive = (path: string) => location.pathname === path;
+
+  const handleLogout = () => {
+    localStorage.removeItem('user');
+    setUser(null);
+    // Redirect to home page or login page
+    window.location.href = '/';
+  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-teal-100 shadow-sm">
@@ -99,9 +130,16 @@ const Navbar = () => {
             
             {/* Auth buttons for desktop */}
             <div className="flex items-center gap-2">
-              <Button size="sm" className="bg-teal-700 hover:bg-teal-800 text-white" asChild>
-                <Link to="/auth">Sign In</Link>
-              </Button>
+              {user ? (
+                <div className="flex items-center gap-1 text-sm text-teal-900">
+                  <User className="h-4 w-4" />
+                  <span>Hi, {user.name.split(' ')[0]}</span>
+                </div>
+              ) : (
+                <Button variant="outline" size="sm" className="border-teal-100 text-teal-900 hover:bg-teal-50" asChild>
+                  <Link to="/auth">Sign In</Link>
+                </Button>
+              )}
             </div>
           </div>
 
@@ -119,9 +157,18 @@ const Navbar = () => {
             
             {/* Auth buttons for mobile */}
             <div className="md:hidden">
-              <Button variant="outline" size="sm" className="border-teal-100 text-teal-900 hover:bg-teal-50" asChild>
-                <Link to="/auth">Sign In</Link>
-              </Button>
+              {user ? (
+                <div className="flex items-center gap-2">
+                  <span className="font-bold text-sm text-teal-900">{user.name}</span>
+                  <Button variant="outline" size="sm" className="border-teal-100 text-teal-900 hover:bg-teal-50" onClick={handleLogout}>
+                    Log Out
+                  </Button>
+                </div>
+              ) : (
+                <Button variant="outline" size="sm" className="border-teal-100 text-teal-900 hover:bg-teal-50" asChild>
+                  <Link to="/auth">Sign In</Link>
+                </Button>
+              )}
             </div>
             
             <button
@@ -159,11 +206,24 @@ const Navbar = () => {
                   {link.name}
                 </Link>
               ))}
-              <Button size="sm" className="w-full bg-teal-700 hover:bg-teal-800 text-white" asChild>
-                <Link to="/contact" onClick={() => setIsOpen(false)}>
-                  Reserve Now
-                </Link>
-              </Button>
+              {user ? (
+                <Button 
+                  size="sm" 
+                  className="w-full bg-teal-700 hover:bg-teal-800 text-white"
+                  onClick={() => {
+                    handleLogout();
+                    setIsOpen(false);
+                  }}
+                >
+                  Logout
+                </Button>
+              ) : (
+                <Button size="sm" className="w-full bg-teal-700 hover:bg-teal-800 text-white" asChild>
+                  <Link to="/contact" onClick={() => setIsOpen(false)}>
+                    Reserve Now
+                  </Link>
+                </Button>
+              )}
             </div>
           </motion.div>
         )}

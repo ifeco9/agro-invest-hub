@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Users, Target, Award, Leaf, TrendingUp, Globe, Heart, Zap, Shield, CheckCircle } from "lucide-react";
+import { Leaf, Globe, Shield, Zap, Award, Heart, Users, TrendingUp, CheckCircle } from "lucide-react";
+import heroImage from "@/assets/hero-farm.jpg";
 
 const About = () => {
   return (
@@ -66,7 +67,7 @@ const About = () => {
       </section>
 
       {/* Core Values */}
-      <section className="py-12 sm:py-16 bg-secondary">
+      <section className="py-12 sm:py-16 bg-teal-900">
         <div className="container mx-auto px-4 max-w-6xl">
           <motion.div 
             className="text-center mb-8 sm:mb-12"
@@ -75,8 +76,8 @@ const About = () => {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4">Our Core Values</h2>
-            <p className="text-base sm:text-lg text-muted-foreground max-w-md sm:max-w-2xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 sm:mb-4">Our Core Values</h2>
+            <p className="text-base sm:text-lg text-white/90 max-w-md sm:max-w-2xl mx-auto">
               The principles that guide everything we do at Drecan Commodities
             </p>
           </motion.div>
@@ -116,18 +117,18 @@ const About = () => {
             ].map((value, index) => (
               <motion.div
                 key={index}
-                className="bg-card p-5 sm:p-6 rounded-lg shadow-md border border-border"
+                className="bg-white/10 backdrop-blur-sm rounded-lg shadow-md border border-white/20"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{ y: -5, transition: { duration: 0.3 } }}
               >
-                <div className="text-primary mb-3">
+                <div className="text-white mb-3 p-4">
                   {value.icon}
                 </div>
-                <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2">{value.title}</h3>
-                <p className="text-muted-foreground text-sm sm:text-base">{value.description}</p>
+                <h3 className="text-lg sm:text-xl font-bold text-white mb-2 px-4">{value.title}</h3>
+                <p className="text-white/90 text-sm sm:text-base px-4 pb-4">{value.description}</p>
               </motion.div>
             ))}
           </div>
@@ -135,8 +136,16 @@ const About = () => {
       </section>
 
       {/* What Makes Drecan Different - Horizontal Carousel */}
-      <section className="py-12 sm:py-16 bg-background">
-        <div className="container mx-auto px-4 max-w-6xl">
+      <section className="relative py-12 sm:py-16">
+        <div className="absolute inset-0 bg-cover bg-center z-0">
+          <div 
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: `url(${heroImage})` }}
+          ></div>
+          <div className="absolute inset-0 bg-black/60"></div>
+        </div>
+        
+        <div className="container mx-auto px-4 max-w-6xl relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -144,108 +153,105 @@ const About = () => {
             transition={{ duration: 0.5 }}
             className="text-center mb-8 sm:mb-12"
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4">What Makes Drecan Different</h2>
-            <p className="text-base sm:text-lg text-muted-foreground max-w-md sm:max-w-2xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">What Makes Drecan Different</h2>
+            <p className="text-base sm:text-lg text-white/90 max-w-md sm:max-w-2xl mx-auto">
               Our unique approach to sustainable agriculture sets us apart in the industry
             </p>
           </motion.div>
 
-          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-teal-500 to-emerald-600 p-8 sm:p-12">
-            <div className="absolute inset-0 bg-black/10"></div>
-            <div className="relative z-10">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <motion.div 
-                  className="bg-white/90 backdrop-blur-sm rounded-xl p-6 shadow-lg"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.5 }}
-                  whileHover={{ y: -5, transition: { duration: 0.3 } }}
-                >
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="bg-teal-100 p-2 rounded-lg">
-                      <Leaf className="h-6 w-6 text-teal-600" />
-                    </div>
-                    <h3 className="text-lg sm:text-xl font-bold text-foreground">What Makes Drecan Different</h3>
+          <div className="relative overflow-hidden rounded-2xl bg-white/10 backdrop-blur-sm p-8 sm:p-12 border border-white/20">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <motion.div 
+                className="bg-white/90 backdrop-blur-sm rounded-xl p-6 shadow-lg"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.5 }}
+                whileHover={{ y: -5, transition: { duration: 0.3 } }}
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="bg-teal-100 p-2 rounded-lg">
+                    <Leaf className="h-6 w-6 text-teal-600" />
                   </div>
-                  <p className="text-muted-foreground mb-4">
-                    Drecan Commodities & Oil Palm Company is not just another Company, but rather it is an epitome of agricultural excellence not only with our products but also in management of resources.
-                  </p>
-                  <ul className="space-y-2 text-muted-foreground">
-                    <li className="flex items-start gap-2">
-                      <span className="text-teal-600 mt-1">•</span>
-                      <span>A rooted and experienced agricultural background</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-teal-600 mt-1">•</span>
-                      <span>Commitment to Environmental Stewardship</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-teal-600 mt-1">•</span>
-                      <span>Motivated and Productive workforce</span>
-                    </li>
-                  </ul>
-                </motion.div>
+                  <h3 className="text-lg sm:text-xl font-bold text-foreground">What Makes Drecan Different</h3>
+                </div>
+                <p className="text-muted-foreground mb-4">
+                  Drecan Commodities & Oil Palm Company is not just another Company, but rather it is an epitome of agricultural excellence not only with our products but also in management of resources.
+                </p>
+                <ul className="space-y-2 text-muted-foreground">
+                  <li className="flex items-start gap-2">
+                    <span className="text-teal-600 mt-1">•</span>
+                    <span>A rooted and experienced agricultural background</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-teal-600 mt-1">•</span>
+                    <span>Commitment to Environmental Stewardship</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-teal-600 mt-1">•</span>
+                    <span>Motivated and Productive workforce</span>
+                  </li>
+                </ul>
+              </motion.div>
 
-                <motion.div 
-                  className="bg-white/90 backdrop-blur-sm rounded-xl p-6 shadow-lg"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
-                  whileHover={{ y: -5, transition: { duration: 0.3 } }}
-                >
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="bg-emerald-100 p-2 rounded-lg">
-                      <Globe className="h-6 w-6 text-emerald-600" />
-                    </div>
-                    <h3 className="text-lg sm:text-xl font-bold text-foreground">Environment Stewardship</h3>
+              <motion.div 
+                className="bg-white/90 backdrop-blur-sm rounded-xl p-6 shadow-lg"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                whileHover={{ y: -5, transition: { duration: 0.3 } }}
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="bg-emerald-100 p-2 rounded-lg">
+                    <Globe className="h-6 w-6 text-emerald-600" />
                   </div>
-                  <p className="text-muted-foreground mb-4">
-                    At Drecan, environmental sustainability is not an add-on, it is the essential foundation of our agribusiness. We recognize that our success is intrinsically linked to the health of the ecosystems we operate within.
-                  </p>
-                  <p className="text-muted-foreground">
-                    That's why we are committed to preserving Nigeria's biodiversity and natural resources for future generations through proactive conservation and sustainable land use practices.
-                  </p>
-                </motion.div>
+                  <h3 className="text-lg sm:text-xl font-bold text-foreground">Environment Stewardship</h3>
+                </div>
+                <p className="text-muted-foreground mb-4">
+                  At Drecan, environmental sustainability is not an add-on, it is the essential foundation of our agribusiness. We recognize that our success is intrinsically linked to the health of the ecosystems we operate within.
+                </p>
+                <p className="text-muted-foreground">
+                  That's why we are committed to preserving Nigeria's biodiversity and natural resources for future generations through proactive conservation and sustainable land use practices.
+                </p>
+              </motion.div>
 
-                <motion.div 
-                  className="bg-white/90 backdrop-blur-sm rounded-xl p-6 shadow-lg"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                  whileHover={{ y: -5, transition: { duration: 0.3 } }}
-                >
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="bg-cyan-100 p-2 rounded-lg">
-                      <Shield className="h-6 w-6 text-cyan-600" />
-                    </div>
-                    <h3 className="text-lg sm:text-xl font-bold text-foreground">Our Environmental Commitments</h3>
+              <motion.div 
+                className="bg-white/90 backdrop-blur-sm rounded-xl p-6 shadow-lg"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                whileHover={{ y: -5, transition: { duration: 0.3 } }}
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="bg-cyan-100 p-2 rounded-lg">
+                    <Shield className="h-6 w-6 text-cyan-600" />
                   </div>
-                  <ul className="space-y-3 text-muted-foreground">
-                    <li className="flex items-start gap-2">
-                      <span className="text-cyan-600 mt-1">•</span>
-                      <span><span className="font-medium">Certified Environmental Management:</span> Robust EMS to monitor and improve performance</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-cyan-600 mt-1">•</span>
-                      <span><span className="font-medium">Pollution Prevention:</span> Chemical reduction and waste hierarchy focus</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-cyan-600 mt-1">•</span>
-                      <span><span className="font-medium">Soil Health:</span> Regenerative practices to protect soil vitality</span>
-                    </li>
-                  </ul>
-                </motion.div>
-              </div>
+                  <h3 className="text-lg sm:text-xl font-bold text-foreground">Our Environmental Commitments</h3>
+                </div>
+                <ul className="space-y-3 text-muted-foreground">
+                  <li className="flex items-start gap-2">
+                    <span className="text-cyan-600 mt-1">•</span>
+                    <span><span className="font-medium">Certified Environmental Management:</span> Robust EMS to monitor and improve performance</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-cyan-600 mt-1">•</span>
+                    <span><span className="font-medium">Pollution Prevention:</span> Chemical reduction and waste hierarchy focus</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-cyan-600 mt-1">•</span>
+                    <span><span className="font-medium">Soil Health:</span> Regenerative practices to protect soil vitality</span>
+                  </li>
+                </ul>
+              </motion.div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Our Purpose */}
-      <section className="py-12 sm:py-16 bg-background">
+      <section className="py-12 sm:py-16 bg-teal-900 text-white">
         <div className="container mx-auto px-4 max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -253,25 +259,25 @@ const About = () => {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6 text-center">Our Purpose: Building a Sustainable Agricultural Future for Nigeria</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6 text-center">Our Purpose: Building a Sustainable Agricultural Future for Nigeria</h2>
             
-            <div className="space-y-6 text-muted-foreground">
+            <div className="space-y-6 text-white/90">
               <div>
-                <h3 className="text-xl font-bold text-foreground mb-3">Vision Statement:</h3>
+                <h3 className="text-xl font-bold text-white mb-3">Vision Statement:</h3>
                 <p>
                   To be the leading sustainable agribusiness in Nigeria, revolutionizing the industry through innovative farming technology and ethical cultivation practices that deliver unparalleled growth for all our stakeholders.
                 </p>
               </div>
               
               <div>
-                <h3 className="text-xl font-bold text-foreground mb-3">Mission Statement:</h3>
+                <h3 className="text-xl font-bold text-white mb-3">Mission Statement:</h3>
                 <p>
                   To leverage our resources and precision agriculture expertise to achieve optimal returns and lasting positive impact. We are dedicated to empowering local communities, enhancing rural development, and serving as guardians of the environment through every operation.
                 </p>
               </div>
               
               <div>
-                <h3 className="text-xl font-bold text-foreground mb-3">Our Core Values: The Drecan Difference</h3>
+                <h3 className="text-xl font-bold text-white mb-3">Our Core Values: The Drecan Difference</h3>
                 <p>
                   Our culture is built on a foundation of non-negotiable principles:
                 </p>
@@ -284,7 +290,7 @@ const About = () => {
               </div>
               
               <div>
-                <h3 className="text-xl font-bold text-foreground mb-3">Strategic Pillars: Our Focus for Impact</h3>
+                <h3 className="text-xl font-bold text-white mb-3">Strategic Pillars: Our Focus for Impact</h3>
                 <p>
                   Our communication and actions are centered on three key areas:
                 </p>

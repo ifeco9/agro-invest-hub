@@ -1,5 +1,4 @@
 import { useState, useEffect, useCallback, useRef } from "react";
-import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
@@ -8,25 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "sonner";
 import { ShoppingCart, Search, User, LogOut, Heart, X, GitCompare, Zap, Shield, Award, Star } from "lucide-react";
-import { Link } from "react-router-dom";
-
-// Add custom CSS for hiding scrollbar
-const scrollbarHideStyles = `
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-  .line-clamp-2 {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-`;
-import { useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import ProductList from "@/components/ProductList";
 import OpportunityList from "@/components/OpportunityList";
 import CartSummary from "@/components/CartSummary";
@@ -120,7 +101,15 @@ const Shop = () => {
   // Inject custom styles
   useEffect(() => {
     const style = document.createElement('style');
-    style.textContent = scrollbarHideStyles;
+    style.textContent = `
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    `;
     document.head.appendChild(style);
     
     return () => {
@@ -137,7 +126,7 @@ const Shop = () => {
   });
   const [productSearchTerm, setProductSearchTerm] = useState("");
   const [productCategory, setProductCategory] = useState("all");
-  const [user, setUser] = useState<{ id: string; email: string } | null>(null);
+  const [user, setUser] = useState<{name: string, email: string} | null>(null);
   const [profile, setProfile] = useState<UserProfile | null>(null);
   const [productCategories, setProductCategories] = useState<string[]>(["all"]);
   const [activeTab, setActiveTab] = useState("products");
@@ -285,6 +274,14 @@ const Shop = () => {
   useEffect(() => {
     fetchProducts();
     checkUserSession();
+    
+    // Listen for storage changes (when user logs in/out in another tab)
+    const handleStorageChange = () => {
+      checkUserSession();
+    };
+    
+    window.addEventListener('storage', handleStorageChange);
+    return () => window.removeEventListener('storage', handleStorageChange);
   }, []);
 
   useEffect(() => {
@@ -304,28 +301,24 @@ const Shop = () => {
     }
   }, [location]);
 
-  const checkUserSession = async () => {
-    const { data: { session } } = await supabase.auth.getSession();
-    if (session?.user) {
-      setUser({
-        id: session.user.id,
-        email: session.user.email || ""
-      });
-      fetchUserProfile(session.user.id);
-    }
-  };
-
-  const fetchUserProfile = async (userId: string) => {
-    const { data, error } = await supabase
-      .from("profiles")
-      .select("display_name, email")
-      .eq("user_id", userId)
-      .single();
-
-    if (error) {
-      console.error("Error fetching profile:", error);
+  const checkUserSession = () => {
+    const userData = localStorage.getItem('user');
+    if (userData) {
+      try {
+        const user = JSON.parse(userData);
+        setUser(user);
+        // Set profile data from user data
+        setProfile({
+          display_name: user.name,
+          email: user.email
+        });
+      } catch (e) {
+        setUser(null);
+        setProfile(null);
+      }
     } else {
-      setProfile(data);
+      setUser(null);
+      setProfile(null);
     }
   };
 
@@ -621,15 +614,14 @@ const Shop = () => {
    * @returns {Promise<void>}
    */
   const handleSignOut = async () => {
-    const { error } = await supabase.auth.signOut();
-    if (error) {
-      toast.error(error.message);
-    } else {
-      toast.success("Signed out successfully!");
-      setUser(null);
-      setProfile(null);
-      navigate("/auth");
-    }
+    // Remove user data from localStorage
+    localStorage.removeItem('user');
+    // Clear user state
+    setUser(null);
+    setProfile(null);
+    toast.success("Signed out successfully!");
+    // Redirect to auth page
+    navigate("/auth");
   };
 
   const lastProductElementRef = useCallback((node: HTMLDivElement) => {

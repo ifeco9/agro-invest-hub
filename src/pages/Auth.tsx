@@ -6,10 +6,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { motion } from "framer-motion";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Auth = () => {
   const { toast } = useToast();
+  const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   
@@ -57,6 +58,29 @@ const Auth = () => {
           ? "Welcome back! You have been successfully logged in." 
           : "Your account has been created successfully. Welcome to Drecan Commodities!",
       });
+      
+      // Redirect based on action
+      if (isLogin) {
+        // Store user data in localStorage
+        const userData = {
+          name: data.email.split('@')[0], // Simple name extraction from email
+          email: data.email
+        };
+        localStorage.setItem('user', JSON.stringify(userData));
+        
+        // After successful login, redirect to shop page
+        navigate("/shop");
+      } else {
+        // For signup, store the user's full name
+        const userData = {
+          name: data.name || data.email.split('@')[0],
+          email: data.email
+        };
+        localStorage.setItem('user', JSON.stringify(userData));
+        
+        // After successful signup, redirect to login page
+        setIsLogin(true);
+      }
       
       // Reset form
       (e.target as HTMLFormElement).reset();

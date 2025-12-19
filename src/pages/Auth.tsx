@@ -68,6 +68,12 @@ const Auth = () => {
         };
         localStorage.setItem('user', JSON.stringify(userData));
         
+        // Dispatch storage event to notify Navbar of login
+        window.dispatchEvent(new StorageEvent('storage', {
+          key: 'user',
+          newValue: JSON.stringify(userData)
+        }));
+        
         // After successful login, redirect to shop page
         navigate("/shop");
       } else {
@@ -77,6 +83,12 @@ const Auth = () => {
           email: data.email
         };
         localStorage.setItem('user', JSON.stringify(userData));
+        
+        // Dispatch storage event to notify Navbar of login
+        window.dispatchEvent(new StorageEvent('storage', {
+          key: 'user',
+          newValue: JSON.stringify(userData)
+        }));
         
         // After successful signup, redirect to login page
         setIsLogin(true);

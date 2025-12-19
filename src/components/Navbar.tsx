@@ -14,7 +14,7 @@ const Navbar = () => {
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "Shop", path: "/shop" },
-    { name: "Invest", path: "/opportunities" },
+    { name: "Partner with Us", path: "/opportunities" },
     { name: "Services", path: "/services" },
     { name: "About", path: "/about" },
     { name: "Contact", path: "/contact" },
@@ -72,6 +72,13 @@ const Navbar = () => {
   const handleLogout = () => {
     localStorage.removeItem('user');
     setUser(null);
+    
+    // Dispatch storage event to notify Navbar of logout
+    window.dispatchEvent(new StorageEvent('storage', {
+      key: 'user',
+      newValue: null
+    }));
+    
     // Redirect to home page or login page
     window.location.href = '/';
   };
@@ -219,9 +226,7 @@ const Navbar = () => {
                 </Button>
               ) : (
                 <Button size="sm" className="w-full bg-teal-700 hover:bg-teal-800 text-white" asChild>
-                  <Link to="/contact" onClick={() => setIsOpen(false)}>
-                    Reserve Now
-                  </Link>
+                  <Link to="/auth">Sign In</Link>
                 </Button>
               )}
             </div>

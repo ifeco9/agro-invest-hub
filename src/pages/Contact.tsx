@@ -1,18 +1,30 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { Mail, Phone, MapPin, Clock, Download, Send, Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, Download, Send, Facebook, Twitter, Linkedin, Instagram, TrendingUp, Warehouse, ShoppingCart } from "lucide-react";
 import { z } from "zod";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Contact = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [selectedTopic, setSelectedTopic] = useState("general");
+  const location = useLocation();
+  
+  useEffect(() => {
+    // Parse query parameters
+    const queryParams = new URLSearchParams(location.search);
+    const topic = queryParams.get('topic');
+    if (topic) {
+      setSelectedTopic(topic);
+    }
+  }, [location]);
   
   // Zod schema for form validation
   const contactFormSchema = z.object({
@@ -168,8 +180,8 @@ const Contact = () => {
                 <CardHeader>
                   <h2 className="text-2xl font-bold text-foreground">Send Us a Message</h2>
                   <p className="text-muted-foreground">
-                    Have questions or want to learn more about our investment opportunities? 
-                    Fill out the form below and our team will get back to you.
+                    Reach out to our specialized teams for any of our business segments. 
+                    Select your topic of interest and our relevant team will get back to you promptly.
                   </p>
                 </CardHeader>
                 <CardContent>
@@ -183,6 +195,36 @@ const Contact = () => {
                         placeholder="John Smith" 
                         className="border-border focus:border-primary focus:ring-primary" 
                       />
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <Label htmlFor="topic" className="text-foreground">Topic of Interest *</Label>
+                      <Select name="topic" value={selectedTopic} onValueChange={setSelectedTopic}>
+                        <SelectTrigger className="border-border focus:border-primary focus:ring-primary">
+                          <SelectValue placeholder="Select a topic" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="general">General Inquiry</SelectItem>
+                          <SelectItem value="investment">
+                            <div className="flex items-center gap-2">
+                              <TrendingUp className="h-4 w-4" />
+                              <span>Agricultural Investment & Partnerships</span>
+                            </div>
+                          </SelectItem>
+                          <SelectItem value="storage">
+                            <div className="flex items-center gap-2">
+                              <Warehouse className="h-4 w-4" />
+                              <span>Storage & Scarcity-Based Sales</span>
+                            </div>
+                          </SelectItem>
+                          <SelectItem value="procurement">
+                            <div className="flex items-center gap-2">
+                              <ShoppingCart className="h-4 w-4" />
+                              <span>Purchase & Resale of Agricultural Products</span>
+                            </div>
+                          </SelectItem>
+                        </SelectContent>
+                      </Select>
                     </div>
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

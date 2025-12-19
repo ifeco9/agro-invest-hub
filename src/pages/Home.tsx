@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { TrendingUp, Zap, Award, Shield, Leaf, Globe } from "lucide-react";
+import { TrendingUp, Zap, Award, Shield, Leaf, Globe, Warehouse, ShoppingCart } from "lucide-react";
 import heroImage from "@/assets/hero-farm.jpg";
 import kadunaRice from "@/assets/Kaduna Rice Yield Fund.jpeg";
 import ogunCassava from "@/assets/Ogun Cassava Processing Investment.jpeg";
@@ -102,6 +102,80 @@ const Home = () => {
               }}
             />
           ))}
+        </div>
+      </section>
+      
+      {/* Business Segments */}
+      <section className="py-12 sm:py-16 bg-background">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <motion.div 
+            className="text-center mb-8 sm:mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4">Our Core Business Segments</h2>
+            <p className="text-base sm:text-lg text-muted-foreground max-w-md sm:max-w-2xl mx-auto">
+              Comprehensive solutions designed to maximize value across the agricultural value chain
+            </p>
+          </motion.div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+            <motion.div
+              className="bg-card p-5 sm:p-6 rounded-lg shadow-md border border-border flex flex-col h-full text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              whileHover={{ y: -5, transition: { duration: 0.3 } }}
+            >
+              <div className="text-primary mb-3 flex justify-center">
+                <TrendingUp className="h-8 w-8" />
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2">Agricultural Investment & Partnerships</h3>
+              <p className="text-muted-foreground text-sm sm:text-base mb-4 flex-grow">Connect investors with profitable agricultural opportunities across Nigeria</p>
+              <Button variant="outline" asChild>
+                <Link to="/services#investment">Learn More</Link>
+              </Button>
+            </motion.div>
+            
+            <motion.div
+              className="bg-card p-5 sm:p-6 rounded-lg shadow-md border border-border flex flex-col h-full text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              whileHover={{ y: -5, transition: { duration: 0.3 } }}
+            >
+              <div className="text-primary mb-3 flex justify-center">
+                <Warehouse className="h-8 w-8" />
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2">Storage & Scarcity-Based Sales</h3>
+              <p className="text-muted-foreground text-sm sm:text-base mb-4 flex-grow">Strategic warehousing and seasonal commodity trading</p>
+              <Button variant="outline" asChild>
+                <Link to="/services#storage">Learn More</Link>
+              </Button>
+            </motion.div>
+            
+            <motion.div
+              className="bg-card p-5 sm:p-6 rounded-lg shadow-md border border-border flex flex-col h-full text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              whileHover={{ y: -5, transition: { duration: 0.3 } }}
+            >
+              <div className="text-primary mb-3 flex justify-center">
+                <ShoppingCart className="h-8 w-8" />
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2">Purchase & Resale of Agricultural Products</h3>
+              <p className="text-muted-foreground text-sm sm:text-base mb-4 flex-grow">Streamlined supply chain from farm to market</p>
+              <Button variant="outline" asChild>
+                <Link to="/services#procurement">Learn More</Link>
+              </Button>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -399,7 +473,7 @@ const Home = () => {
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
             <Button size="lg" className="bg-teal-600 hover:bg-teal-700 text-white text-base sm:text-lg" asChild>
-              <Link to="/opportunities">Invest Now</Link>
+              <Link to="/opportunities">Partner with Us</Link>
             </Button>
             <Button size="lg" className="bg-white/20 backdrop-blur-sm border border-white/30 text-white hover:bg-white/30 text-base sm:text-lg" asChild>
               <Link to="/contact">Partner With Us</Link>
@@ -640,7 +714,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Bouncing Invest Now Button */}
+      {/* Bouncing Partner with Us Button */}
       <motion.div 
         className="fixed bottom-6 right-6 z-50"
         animate={{ 
@@ -660,7 +734,7 @@ const Home = () => {
           asChild
         >
           <Link to="/opportunities">
-            <span className="text-[8px] font-extrabold tracking-wide">Invest Now</span>
+            <span className="text-[8px] font-extrabold tracking-wide">Partner<br/>With Us</span>
           </Link>
         </Button>
       </motion.div>

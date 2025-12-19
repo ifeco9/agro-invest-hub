@@ -20,7 +20,7 @@ const Footer = () => {
               Transparent agricultural investment opportunities with sustainable returns.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="text-teal-800 hover:text-teal-600 transition-colors">
+              <a href="#" className="text-gray-300 hover:text-white transition-colors">
                 <Facebook className="h-5 w-5" />
               </a>
               <a href="#" className="text-teal-800 hover:text-teal-600 transition-colors">

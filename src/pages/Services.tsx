@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
-import { TrendingUp, ShoppingCart, Leaf, Users, Award, Zap, Truck, Shield } from "lucide-react";
+import { TrendingUp, ShoppingCart, Leaf, Users, Award, Zap, Truck, Shield, Mail, Phone, Calendar, Warehouse } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import BusinessModel from "@/components/BusinessModel";
 
 const Services = () => {
   return (
@@ -27,6 +28,9 @@ const Services = () => {
           </motion.p>
         </div>
       </section>
+
+      {/* Business Model */}
+      <BusinessModel />
 
       {/* Main Services */}
       <section className="py-12 sm:py-16 bg-background">
@@ -278,6 +282,116 @@ const Services = () => {
                 </div>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Direct Contact Channels */}
+      <section className="py-12 sm:py-16 bg-background">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-8 sm:mb-12"
+          >
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4">Direct Engagement Channels</h2>
+            <p className="text-base sm:text-lg text-muted-foreground max-w-md sm:max-w-2xl mx-auto">
+              Connect directly with our specialized teams for each business segment
+            </p>
+          </motion.div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+            <motion.div
+              className="bg-card p-5 sm:p-6 rounded-lg shadow-md border border-border flex flex-col h-full"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              <div className="text-primary mb-3">
+                <TrendingUp className="h-8 w-8" />
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold text-foreground mb-3">Investment & Partnerships</h3>
+              <div className="space-y-3 mb-4 flex-grow">
+                <div className="flex items-start gap-2">
+                  <Mail className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                  <span className="text-sm text-muted-foreground">invest@drecancommodities.com</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <Phone className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                  <span className="text-sm text-muted-foreground">+234 803 456 7891</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <Calendar className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                  <span className="text-sm text-muted-foreground">Mon-Fri, 9:00 AM - 6:00 PM WAT</span>
+                </div>
+              </div>
+              <Button variant="outline" className="w-full" asChild>
+                <Link to="/contact?topic=investment">Schedule Consultation</Link>
+              </Button>
+            </motion.div>
+            
+            <motion.div
+              className="bg-card p-5 sm:p-6 rounded-lg shadow-md border border-border flex flex-col h-full"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <div className="text-primary mb-3">
+                <Warehouse className="h-8 w-8" />
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold text-foreground mb-3">Storage & Trading</h3>
+              <div className="space-y-3 mb-4 flex-grow">
+                <div className="flex items-start gap-2">
+                  <Mail className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                  <span className="text-sm text-muted-foreground">storage@drecancommodities.com</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <Phone className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                  <span className="text-sm text-muted-foreground">+234 803 456 7892</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <Calendar className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                  <span className="text-sm text-muted-foreground">Mon-Fri, 9:00 AM - 6:00 PM WAT</span>
+                </div>
+              </div>
+              <Button variant="outline" className="w-full" asChild>
+                <Link to="/contact?topic=storage">Request Quote</Link>
+              </Button>
+            </motion.div>
+            
+            <motion.div
+              className="bg-card p-5 sm:p-6 rounded-lg shadow-md border border-border flex flex-col h-full"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
+              <div className="text-primary mb-3">
+                <ShoppingCart className="h-8 w-8" />
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold text-foreground mb-3">Procurement & Distribution</h3>
+              <div className="space-y-3 mb-4 flex-grow">
+                <div className="flex items-start gap-2">
+                  <Mail className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                  <span className="text-sm text-muted-foreground">procurement@drecancommodities.com</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <Phone className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                  <span className="text-sm text-muted-foreground">+234 803 456 7893</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <Calendar className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                  <span className="text-sm text-muted-foreground">Mon-Fri, 9:00 AM - 6:00 PM WAT</span>
+                </div>
+              </div>
+              <Button variant="outline" className="w-full" asChild>
+                <Link to="/contact?topic=procurement">Submit Inquiry</Link>
+              </Button>
+            </motion.div>
           </div>
         </div>
       </section>

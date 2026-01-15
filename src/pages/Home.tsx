@@ -424,7 +424,7 @@ const Home = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mt-8 sm:mt-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mt-8 sm:mt-12">
             {[
               {
                 title: "Premium Growth Plan",
@@ -579,10 +579,10 @@ const Home = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {[
-              { id: 1, name: "Kaduna Rice", image: kadunaRice, price: 20000, description: "Premium Nigerian rice from Kaduna" },
-              { id: 2, name: "Ogun Cassava", image: ogunCassava, price: 15000, description: "Fresh cassava from Ogun state" },
-              { id: 3, name: "Palm Oil", image: palmOil, price: 18000, description: "Pure palm oil from South-South region" },
-              { id: 4, name: "Enugu Egusi", image: egusi, price: 12000, description: "Premium egusi seeds from Enugu" }
+              { id: 1, name: "Kaduna Rice", image: kadunaRice, price: 0, description: "Premium Nigerian rice from Kaduna" },
+              { id: 2, name: "Ogun Cassava", image: ogunCassava, price: 0, description: "Fresh cassava from Ogun state" },
+              { id: 3, name: "Palm Oil", image: palmOil, price: 0, description: "Pure palm oil from South-South region" },
+              { id: 4, name: "Enugu Egusi", image: egusi, price: 0, description: "Premium egusi seeds from Enugu" }
             ].map((product) => (
               <motion.div
                 key={product.id}

@@ -20,16 +20,10 @@ const Footer = () => {
               Transparent agricultural investment opportunities with sustainable returns.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                <Facebook className="h-5 w-5" />
-              </a>
-              <a href="#" className="text-teal-800 hover:text-teal-600 transition-colors">
+              <a href="https://www.linkedin.com/company/drecan-agriculture/" className="text-teal-800 hover:text-teal-600 transition-colors" target="_blank" rel="noopener noreferrer">
                 <Linkedin className="h-5 w-5" />
               </a>
-              <a href="#" className="text-teal-800 hover:text-teal-600 transition-colors">
-                <Twitter className="h-5 w-5" />
-              </a>
-              <a href="#" className="text-teal-800 hover:text-teal-600 transition-colors">
+              <a href="https://www.instagram.com/drecan_commodities?igsh=cXVsZmVydGdmbTI5" className="text-teal-800 hover:text-teal-600 transition-colors" target="_blank" rel="noopener noreferrer">
                 <Instagram className="h-5 w-5" />
               </a>
             </div>
@@ -99,14 +93,14 @@ const Footer = () => {
               <Input type="email" placeholder="Your email" className="flex-1 border-teal-100 focus:border-teal-700 focus:ring-teal-700 placeholder:text-teal-400" />
               <Button size="sm" className="bg-teal-700 hover:bg-teal-800 text-white">Subscribe</Button>
             </div>
-              <div className="mt-4 space-y-2 text-sm text-teal-800">
+            <div className="mt-4 space-y-2 text-sm text-teal-800">
               <div className="flex items-center gap-2">
                 <Mail className="h-4 w-4 text-teal-700" />
-                <span>info@drecancommodities.com</span>
+                <span>drecanagriculture@gmail.com</span>
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="h-4 w-4 text-teal-700" />
-                <span>+234 803 456 7890</span>
+                <span>+234 702 684 1214</span>
               </div>
             </div>
           </div>

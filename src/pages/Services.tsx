@@ -10,7 +10,7 @@ const Services = () => {
       {/* Hero Section */}
       <section className="py-12 sm:py-16 bg-teal-900 text-white">
         <div className="container mx-auto px-4 text-center">
-          <motion.h1 
+          <motion.h1
             className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -18,7 +18,7 @@ const Services = () => {
           >
             Comprehensive Agricultural Solutions
           </motion.h1>
-          <motion.p 
+          <motion.p
             className="text-base sm:text-xl max-w-md sm:max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -35,7 +35,7 @@ const Services = () => {
       {/* Main Services */}
       <section className="py-12 sm:py-16 bg-background">
         <div className="container mx-auto px-4 max-w-6xl">
-          <motion.div 
+          <motion.div
             className="text-center mb-8 sm:mb-12"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -47,7 +47,7 @@ const Services = () => {
               Comprehensive solutions designed to maximize value for farmers, investors, and consumers
             </p>
           </motion.div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {[
               {
@@ -160,7 +160,7 @@ const Services = () => {
               Simple, transparent, and profitable steps to start your agricultural investment journey
             </p>
           </motion.div>
-          
+
           <div className="space-y-6 sm:space-y-8">
             {[
               {
@@ -230,7 +230,7 @@ const Services = () => {
               What sets us apart in the agricultural investment landscape
             </p>
           </motion.div>
-          
+
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
             {[
               {
@@ -301,7 +301,7 @@ const Services = () => {
               Connect directly with our specialized teams for each business segment
             </p>
           </motion.div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             <motion.div
               className="bg-card p-5 sm:p-6 rounded-lg shadow-md border border-border flex flex-col h-full"
@@ -317,11 +317,11 @@ const Services = () => {
               <div className="space-y-3 mb-4 flex-grow">
                 <div className="flex items-start gap-2">
                   <Mail className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                  <span className="text-sm text-muted-foreground">invest@drecancommodities.com</span>
+                  <span className="text-sm text-muted-foreground">drecanagriculture@gmail.com</span>
                 </div>
                 <div className="flex items-start gap-2">
                   <Phone className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                  <span className="text-sm text-muted-foreground">+234 803 456 7891</span>
+                  <span className="text-sm text-muted-foreground">+234 702 684 1214</span>
                 </div>
                 <div className="flex items-start gap-2">
                   <Calendar className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
@@ -332,7 +332,7 @@ const Services = () => {
                 <Link to="/contact?topic=investment">Schedule Consultation</Link>
               </Button>
             </motion.div>
-            
+
             <motion.div
               className="bg-card p-5 sm:p-6 rounded-lg shadow-md border border-border flex flex-col h-full"
               initial={{ opacity: 0, y: 20 }}
@@ -347,11 +347,11 @@ const Services = () => {
               <div className="space-y-3 mb-4 flex-grow">
                 <div className="flex items-start gap-2">
                   <Mail className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                  <span className="text-sm text-muted-foreground">storage@drecancommodities.com</span>
+                  <span className="text-sm text-muted-foreground">drecanagriculture@gmail.com</span>
                 </div>
                 <div className="flex items-start gap-2">
                   <Phone className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                  <span className="text-sm text-muted-foreground">+234 803 456 7892</span>
+                  <span className="text-sm text-muted-foreground">+234 702 684 1214</span>
                 </div>
                 <div className="flex items-start gap-2">
                   <Calendar className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
@@ -362,7 +362,7 @@ const Services = () => {
                 <Link to="/contact?topic=storage">Request Quote</Link>
               </Button>
             </motion.div>
-            
+
             <motion.div
               className="bg-card p-5 sm:p-6 rounded-lg shadow-md border border-border flex flex-col h-full"
               initial={{ opacity: 0, y: 20 }}
@@ -377,11 +377,11 @@ const Services = () => {
               <div className="space-y-3 mb-4 flex-grow">
                 <div className="flex items-start gap-2">
                   <Mail className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                  <span className="text-sm text-muted-foreground">procurement@drecancommodities.com</span>
+                  <span className="text-sm text-muted-foreground">drecanagriculture@gmail.com</span>
                 </div>
                 <div className="flex items-start gap-2">
                   <Phone className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                  <span className="text-sm text-muted-foreground">+234 803 456 7893</span>
+                  <span className="text-sm text-muted-foreground">+234 702 684 1214</span>
                 </div>
                 <div className="flex items-start gap-2">
                   <Calendar className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
@@ -399,7 +399,7 @@ const Services = () => {
       {/* Call to Action */}
       <section className="py-12 sm:py-16 bg-teal-900 text-white">
         <div className="container mx-auto px-4 text-center">
-          <motion.h2 
+          <motion.h2
             className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -408,7 +408,7 @@ const Services = () => {
           >
             Ready to Start Investing?
           </motion.h2>
-          <motion.p 
+          <motion.p
             className="text-base sm:text-xl mb-6 sm:mb-8 max-w-md sm:max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -423,7 +423,7 @@ const Services = () => {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <Button 
+            <Button
               className="bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 px-6 sm:px-8 rounded-full text-base sm:text-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl"
               asChild
             >

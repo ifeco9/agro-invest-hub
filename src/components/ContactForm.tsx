@@ -16,7 +16,7 @@ interface ContactFormProps {
 const ContactForm = ({ title = "Send Us a Message", subtitle }: ContactFormProps) => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  
+
   // Zod schema for form validation
   const contactFormSchema = z.object({
     name: z.string().min(2, "Name must be at least 2 characters"),
@@ -29,7 +29,7 @@ const ContactForm = ({ title = "Send Us a Message", subtitle }: ContactFormProps
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Get form data
     const formData = new FormData(e.target as HTMLFormElement);
     const data = {
@@ -39,19 +39,19 @@ const ContactForm = ({ title = "Send Us a Message", subtitle }: ContactFormProps
       subject: formData.get("subject") as string,
       message: formData.get("message") as string
     };
-    
+
     // Validate form data
     try {
       contactFormSchema.parse(data);
-      
+
       // Simulate form submission
       await new Promise((resolve) => setTimeout(resolve, 1500));
-      
+
       toast({
         title: "Message Sent!",
         description: "Thank you for contacting us. Our team will get back to you shortly.",
       });
-      
+
       // Reset form
       (e.target as HTMLFormElement).reset();
     } catch (error) {
@@ -63,7 +63,7 @@ const ContactForm = ({ title = "Send Us a Message", subtitle }: ContactFormProps
         });
       }
     }
-    
+
     setIsSubmitting(false);
   };
 
@@ -75,56 +75,56 @@ const ContactForm = ({ title = "Send Us a Message", subtitle }: ContactFormProps
           {subtitle && <p className="text-gray-700 mt-2">{subtitle}</p>}
         </div>
       )}
-      
+
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="space-y-2">
           <Label htmlFor="name" className="text-teal-900">Full Name *</Label>
-          <Input 
-            id="name" 
-            name="name" 
-            required 
-            placeholder="John Smith" 
-            className="border-teal-100 focus:border-teal-700 focus:ring-teal-700" 
+          <Input
+            id="name"
+            name="name"
+            required
+            placeholder="John Smith"
+            className="border-teal-100 focus:border-teal-700 focus:ring-teal-700"
           />
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-2">
             <Label htmlFor="email" className="text-teal-900">Email Address *</Label>
-            <Input 
-              id="email" 
-              name="email" 
-              type="email" 
-              required 
-              placeholder="john.smith@example.com" 
-              className="border-teal-100 focus:border-teal-700 focus:ring-teal-700" 
+            <Input
+              id="email"
+              name="email"
+              type="email"
+              required
+              placeholder="john.smith@example.com"
+              className="border-teal-100 focus:border-teal-700 focus:ring-teal-700"
             />
           </div>
-          
+
           <div className="space-y-2">
             <Label htmlFor="phone" className="text-teal-900">Phone Number *</Label>
-            <Input 
-              id="phone" 
-              name="phone" 
-              type="tel" 
-              required 
-              placeholder="+234 803 456 7890" 
-              className="border-teal-100 focus:border-teal-700 focus:ring-teal-700" 
+            <Input
+              id="phone"
+              name="phone"
+              type="tel"
+              required
+              placeholder="+234 702 684 1214"
+              className="border-teal-100 focus:border-teal-700 focus:ring-teal-700"
             />
           </div>
         </div>
-        
+
         <div className="space-y-2">
           <Label htmlFor="subject" className="text-teal-900">Subject *</Label>
-          <Input 
-            id="subject" 
-            name="subject" 
-            required 
-            placeholder="Investment Inquiry" 
-            className="border-teal-100 focus:border-teal-700 focus:ring-teal-700" 
+          <Input
+            id="subject"
+            name="subject"
+            required
+            placeholder="Investment Inquiry"
+            className="border-teal-100 focus:border-teal-700 focus:ring-teal-700"
           />
         </div>
-        
+
         <div className="space-y-2">
           <Label htmlFor="message" className="text-teal-900">Message *</Label>
           <Textarea
@@ -136,14 +136,14 @@ const ContactForm = ({ title = "Send Us a Message", subtitle }: ContactFormProps
             className="border-teal-100 focus:border-teal-700 focus:ring-teal-700"
           />
         </div>
-        
+
         <motion.div
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
         >
-          <Button 
-            type="submit" 
-            size="lg" 
+          <Button
+            type="submit"
+            size="lg"
             className="w-full bg-teal-700 hover:bg-teal-800 text-white flex items-center justify-center gap-2"
             disabled={isSubmitting}
           >

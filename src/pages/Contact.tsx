@@ -16,7 +16,7 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [selectedTopic, setSelectedTopic] = useState("general");
   const location = useLocation();
-  
+
   useEffect(() => {
     // Parse query parameters
     const queryParams = new URLSearchParams(location.search);
@@ -25,7 +25,7 @@ const Contact = () => {
       setSelectedTopic(topic);
     }
   }, [location]);
-  
+
   // Zod schema for form validation
   const contactFormSchema = z.object({
     name: z.string().min(2, "Name must be at least 2 characters"),
@@ -38,7 +38,7 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Get form data
     const formData = new FormData(e.target as HTMLFormElement);
     const data = {
@@ -48,19 +48,19 @@ const Contact = () => {
       subject: formData.get("subject") as string,
       message: formData.get("message") as string
     };
-    
+
     // Validate form data
     try {
       contactFormSchema.parse(data);
-      
+
       // Simulate form submission
       await new Promise((resolve) => setTimeout(resolve, 1500));
-      
+
       toast({
         title: "Message Sent!",
         description: "Thank you for contacting us. Our team will get back to you shortly.",
       });
-      
+
       // Reset form
       (e.target as HTMLFormElement).reset();
     } catch (error) {
@@ -72,7 +72,7 @@ const Contact = () => {
         });
       }
     }
-    
+
     setIsSubmitting(false);
   };
 
@@ -81,7 +81,7 @@ const Contact = () => {
       {/* Header */}
       <section className="py-12 sm:py-16 bg-teal-900 text-white">
         <div className="container mx-auto px-4 text-center">
-          <motion.h1 
+          <motion.h1
             className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -118,25 +118,23 @@ const Contact = () => {
                       </p>
                     </div>
                   </div>
-                
+
                   <div className="flex items-start gap-3">
                     <Mail className="h-5 w-5 text-primary mt-0.5" />
                     <div>
                       <p className="font-medium text-foreground">Email</p>
-                      <p className="text-muted-foreground">info@drecancommodities.com</p>
-                      <p className="text-muted-foreground">invest@drecancommodities.com</p>
-                      <p className="text-muted-foreground">partnership@drecancommodities.com</p>
+                      <p className="text-muted-foreground">drecanagriculture@gmail.com</p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-start gap-3">
                     <Phone className="h-5 w-5 text-primary mt-0.5" />
                     <div>
                       <p className="font-medium text-foreground">Phone</p>
-                      <p className="text-muted-foreground">+234 803 456 7890</p>
+                      <p className="text-muted-foreground">+234 702 684 1214</p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-start gap-3">
                     <Clock className="h-5 w-5 text-primary mt-0.5" />
                     <div>
@@ -147,20 +145,14 @@ const Contact = () => {
                       </p>
                     </div>
                   </div>
-                  
+
                   <div className="pt-4">
                     <h3 className="text-lg font-semibold text-foreground mb-3">Follow Us</h3>
                     <div className="flex space-x-4">
-                      <a href="#" className="text-foreground hover:text-primary transition-colors">
-                        <Facebook className="h-5 w-5" />
-                      </a>
-                      <a href="#" className="text-foreground hover:text-primary transition-colors">
-                        <Twitter className="h-5 w-5" />
-                      </a>
-                      <a href="#" className="text-foreground hover:text-primary transition-colors">
+                      <a href="https://www.linkedin.com/company/drecan-agriculture/" className="text-foreground hover:text-primary transition-colors" target="_blank" rel="noopener noreferrer">
                         <Linkedin className="h-5 w-5" />
                       </a>
-                      <a href="#" className="text-foreground hover:text-primary transition-colors">
+                      <a href="https://www.instagram.com/drecan_commodities?igsh=cXVsZmVydGdmbTI5" className="text-foreground hover:text-primary transition-colors" target="_blank" rel="noopener noreferrer">
                         <Instagram className="h-5 w-5" />
                       </a>
                     </div>
@@ -168,7 +160,7 @@ const Contact = () => {
                 </CardContent>
               </Card>
             </motion.div>
-            
+
             {/* Contact Form */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
@@ -180,7 +172,7 @@ const Contact = () => {
                 <CardHeader>
                   <h2 className="text-2xl font-bold text-foreground">Send Us a Message</h2>
                   <p className="text-muted-foreground">
-                    Reach out to our specialized teams for any of our business segments. 
+                    Reach out to our specialized teams for any of our business segments.
                     Select your topic of interest and our relevant team will get back to you promptly.
                   </p>
                 </CardHeader>
@@ -188,15 +180,15 @@ const Contact = () => {
                   <form onSubmit={handleSubmit} className="space-y-4">
                     <div className="space-y-2">
                       <Label htmlFor="name" className="text-foreground">Full Name *</Label>
-                      <Input 
-                        id="name" 
-                        name="name" 
-                        required 
-                        placeholder="John Smith" 
-                        className="border-border focus:border-primary focus:ring-primary" 
+                      <Input
+                        id="name"
+                        name="name"
+                        required
+                        placeholder="John Smith"
+                        className="border-border focus:border-primary focus:ring-primary"
                       />
                     </div>
-                    
+
                     <div className="space-y-2">
                       <Label htmlFor="topic" className="text-foreground">Topic of Interest *</Label>
                       <Select name="topic" value={selectedTopic} onValueChange={setSelectedTopic}>
@@ -226,44 +218,44 @@ const Contact = () => {
                         </SelectContent>
                       </Select>
                     </div>
-                    
+
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="space-y-2">
                         <Label htmlFor="email" className="text-foreground">Email Address *</Label>
-                        <Input 
-                          id="email" 
-                          name="email" 
-                          type="email" 
-                          required 
-                          placeholder="john.smith@example.com" 
-                          className="border-border focus:border-primary focus:ring-primary" 
+                        <Input
+                          id="email"
+                          name="email"
+                          type="email"
+                          required
+                          placeholder="john.smith@example.com"
+                          className="border-border focus:border-primary focus:ring-primary"
                         />
                       </div>
-                      
+
                       <div className="space-y-2">
                         <Label htmlFor="phone" className="text-foreground">Phone Number *</Label>
-                        <Input 
-                          id="phone" 
-                          name="phone" 
-                          type="tel" 
-                          required 
-                          placeholder="+234 803 456 7890" 
-                          className="border-border focus:border-primary focus:ring-primary" 
+                        <Input
+                          id="phone"
+                          name="phone"
+                          type="tel"
+                          required
+                          placeholder="+234 702 684 1214"
+                          className="border-border focus:border-primary focus:ring-primary"
                         />
                       </div>
                     </div>
-                    
+
                     <div className="space-y-2">
                       <Label htmlFor="subject" className="text-foreground">Subject *</Label>
-                      <Input 
-                        id="subject" 
-                        name="subject" 
-                        required 
-                        placeholder="Investment Inquiry" 
-                        className="border-border focus:border-primary focus:ring-primary" 
+                      <Input
+                        id="subject"
+                        name="subject"
+                        required
+                        placeholder="Investment Inquiry"
+                        className="border-border focus:border-primary focus:ring-primary"
                       />
                     </div>
-                    
+
                     <div className="space-y-2">
                       <Label htmlFor="message" className="text-foreground">Message *</Label>
                       <Textarea
@@ -275,14 +267,14 @@ const Contact = () => {
                         className="border-border focus:border-primary focus:ring-primary"
                       />
                     </div>
-                    
+
                     <motion.div
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                     >
-                      <Button 
-                        type="submit" 
-                        size="lg" 
+                      <Button
+                        type="submit"
+                        size="lg"
                         className="w-full bg-primary hover:bg-primary-hover text-primary-foreground flex items-center justify-center gap-2"
                         disabled={isSubmitting}
                       >
@@ -302,13 +294,13 @@ const Contact = () => {
             </motion.div>
           </div>
         </div>
-      </section>
+      </section >
 
       {/* Investor Relations */}
-      <section className="py-12 sm:py-16 bg-teal-50">
+      < section className="py-12 sm:py-16 bg-teal-50" >
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="text-center mb-8 sm:mb-12">
-            <motion.h2 
+            <motion.h2
               className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -317,7 +309,7 @@ const Contact = () => {
             >
               Investor Relations
             </motion.h2>
-            <motion.p 
+            <motion.p
               className="text-base sm:text-lg text-muted-foreground"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -327,7 +319,7 @@ const Contact = () => {
               Ready to take the next step in your agricultural investment journey?
             </motion.p>
           </div>
-          
+
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 mb-8 sm:mb-12">
             <motion.div
               className="bg-card p-4 sm:p-6 rounded-lg shadow-md border border-border"
@@ -339,12 +331,12 @@ const Contact = () => {
             >
               <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2 sm:mb-3">Our Promise</h3>
               <p className="text-muted-foreground">
-                We are committed to providing transparent, ethical, and profitable investment opportunities 
-                in Nigeria's agricultural sector. Our team ensures that every investor receives personalized 
+                We are committed to providing transparent, ethical, and profitable investment opportunities
+                in Nigeria's agricultural sector. Our team ensures that every investor receives personalized
                 attention and regular updates on their investments.
               </p>
             </motion.div>
-            
+
             <motion.div
               className="bg-card p-4 sm:p-6 rounded-lg shadow-md border border-border"
               initial={{ opacity: 0, y: 20 }}
@@ -369,7 +361,7 @@ const Contact = () => {
                 </li>
               </ul>
             </motion.div>
-            
+
             <motion.div
               className="bg-card p-4 sm:p-6 rounded-lg shadow-md border border-border"
               initial={{ opacity: 0, y: 20 }}
@@ -395,8 +387,8 @@ const Contact = () => {
               </ol>
             </motion.div>
           </div>
-          
-          <motion.div 
+
+          <motion.div
             className="text-center"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -407,8 +399,8 @@ const Contact = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Button 
-                size="lg" 
+              <Button
+                size="lg"
                 className="bg-teal-600 hover:bg-teal-700 text-white shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 ease-in-out px-6 sm:px-8 py-3 rounded-full font-bold text-base sm:text-lg flex items-center justify-center gap-2 mx-auto"
               >
                 <Download className="h-5 w-5" />
@@ -417,8 +409,8 @@ const Contact = () => {
             </motion.div>
           </motion.div>
         </div>
-      </section>
-    </div>
+      </section >
+    </div >
   );
 };
 

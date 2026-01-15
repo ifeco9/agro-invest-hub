@@ -240,10 +240,7 @@ const Home = () => {
                   <span className="text-muted-foreground">Interest Rate:</span>
                   <span className="font-medium text-primary">20% - 25%</span>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Payment Starts:</span>
-                  <span className="font-medium">2nd Month</span>
-                </div>
+
               </div>
               <Button size="sm" className="w-full mt-4" variant="outline" asChild>
                 <Link to="/opportunities#three-month">Learn More</Link>
@@ -281,10 +278,7 @@ const Home = () => {
                   <span className="text-muted-foreground">Interest Rate:</span>
                   <span className="font-medium text-primary">35% - 45%</span>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Payment Starts:</span>
-                  <span className="font-medium">3rd Month</span>
-                </div>
+
               </div>
               <Button size="sm" className="w-full mt-4" variant="outline" asChild>
                 <Link to="/opportunities#six-month">Learn More</Link>
@@ -316,16 +310,13 @@ const Home = () => {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Investment Range:</span>
-                  <span className="font-medium">₦500K - ₦10M</span>
+                  <span className="font-medium">₦1M - ₦10M</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Interest Rate:</span>
                   <span className="font-medium text-primary">75% - 100%</span>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Payment Starts:</span>
-                  <span className="font-medium">4th Month</span>
-                </div>
+
               </div>
               <Button size="sm" className="w-full mt-4" variant="outline" asChild>
                 <Link to="/opportunities#one-year">Learn More</Link>
@@ -357,16 +348,13 @@ const Home = () => {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Minimum Investment:</span>
-                  <span className="font-medium">₦3M</span>
+                  <span className="font-medium">₦1M</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Interest Rate:</span>
                   <span className="font-medium text-primary">100% - 150%</span>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Payment Starts:</span>
-                  <span className="font-medium">4th Month</span>
-                </div>
+
               </div>
               <Button size="sm" className="w-full mt-4" variant="outline" asChild>
                 <Link to="/opportunities#two-year">Learn More</Link>
@@ -404,10 +392,7 @@ const Home = () => {
                   <span className="text-muted-foreground">Interest Rate:</span>
                   <span className="font-medium text-primary">180% - 250%</span>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Payment Starts:</span>
-                  <span className="font-medium">4th Month</span>
-                </div>
+
               </div>
               <Button size="sm" className="w-full mt-4" variant="outline" asChild>
                 <Link to="/opportunities#three-year">Learn More</Link>
@@ -439,7 +424,7 @@ const Home = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 mt-8 sm:mt-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 lg:gap-10 mt-8 sm:mt-12">
             {[
               {
                 title: "Premium Growth Plan",

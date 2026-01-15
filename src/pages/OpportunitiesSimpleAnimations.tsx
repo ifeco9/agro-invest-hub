@@ -138,10 +138,7 @@ const Opportunities = () => {
                         <span className="text-sm sm:text-base">Duration:</span>
                         <span className="font-semibold text-sm sm:text-base">3 months</span>
                       </li>
-                      <li className="flex justify-between border-b pb-2">
-                        <span className="text-sm sm:text-base">Payment Starts:</span>
-                        <span className="font-semibold text-sm sm:text-base">2nd month</span>
-                      </li>
+
                     </ul>
                   </div>
 
@@ -203,10 +200,7 @@ const Opportunities = () => {
                         <span className="text-sm sm:text-base">Duration:</span>
                         <span className="font-semibold text-sm sm:text-base">6 months</span>
                       </li>
-                      <li className="flex justify-between border-b pb-2">
-                        <span className="text-sm sm:text-base">Payment Starts:</span>
-                        <span className="font-semibold text-sm sm:text-base">3rd month</span>
-                      </li>
+
                     </ul>
                   </div>
 
@@ -257,7 +251,7 @@ const Opportunities = () => {
                     <ul className="space-y-2 sm:space-y-3 text-muted-foreground">
                       <li className="flex justify-between border-b pb-2">
                         <span className="text-sm sm:text-base">Minimum Amount:</span>
-                        <span className="font-semibold text-sm sm:text-base">₦500,000</span>
+                        <span className="font-semibold text-sm sm:text-base">₦1,000,000</span>
                       </li>
                       <li className="flex justify-between border-b pb-2">
                         <span className="text-sm sm:text-base">Maximum Amount:</span>
@@ -271,10 +265,7 @@ const Opportunities = () => {
                         <span className="text-sm sm:text-base">Duration:</span>
                         <span className="font-semibold text-sm sm:text-base">12 months</span>
                       </li>
-                      <li className="flex justify-between border-b pb-2">
-                        <span className="text-sm sm:text-base">Payment Starts:</span>
-                        <span className="font-semibold text-sm sm:text-base">4th month</span>
-                      </li>
+
                     </ul>
                   </div>
 
@@ -325,7 +316,7 @@ const Opportunities = () => {
                     <ul className="space-y-2 sm:space-y-3 text-muted-foreground">
                       <li className="flex justify-between border-b pb-2">
                         <span className="text-sm sm:text-base">Minimum Amount:</span>
-                        <span className="font-semibold text-sm sm:text-base">₦3,000,000</span>
+                        <span className="font-semibold text-sm sm:text-base">₦1,000,000</span>
                       </li>
                       <li className="flex justify-between border-b pb-2">
                         <span className="text-sm sm:text-base">Interest Rate:</span>
@@ -335,10 +326,7 @@ const Opportunities = () => {
                         <span className="text-sm sm:text-base">Duration:</span>
                         <span className="font-semibold text-sm sm:text-base">24 months</span>
                       </li>
-                      <li className="flex justify-between border-b pb-2">
-                        <span className="text-sm sm:text-base">Payment Starts:</span>
-                        <span className="font-semibold text-sm sm:text-base">4th month</span>
-                      </li>
+
                     </ul>
                   </div>
 
@@ -399,10 +387,7 @@ const Opportunities = () => {
                         <span className="text-sm sm:text-base">Duration:</span>
                         <span className="font-semibold text-sm sm:text-base">36 months</span>
                       </li>
-                      <li className="flex justify-between border-b pb-2">
-                        <span className="text-sm sm:text-base">Payment Starts:</span>
-                        <span className="font-semibold text-sm sm:text-base">4th month</span>
-                      </li>
+
                     </ul>
                   </div>
 

@@ -23,7 +23,7 @@ const Checkout = () => {
 
   // Get cart from localStorage
   const cart: CartItem[] = JSON.parse(localStorage.getItem('cart') || '[]');
-  
+
   // Calculate cart totals
   const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
   const shipping = subtotal > 0 ? 1500 : 0; // Free shipping for orders over ₦0 (adjust as needed)
@@ -46,10 +46,10 @@ const Checkout = () => {
 
     // In a real app, you would send the order to your backend here
     console.log("Order submitted:", { customerInfo, cart, total });
-    
+
     // Set order as submitted to show confirmation
     setOrderSubmitted(true);
-    
+
     // Show success message
     toast.success("Order submitted successfully!");
   };
@@ -65,17 +65,17 @@ I would like to place the following order:
     emailBody += `Email: ${customerInfo.email}\n`;
     emailBody += `Phone: ${customerInfo.phone}\n`;
     emailBody += `Address: ${customerInfo.address}, ${customerInfo.city}, ${customerInfo.state}\n\n`;
-    
+
     emailBody += `Order Details:\n`;
     cart.forEach(item => {
       emailBody += `- ${item.name} (Qty: ${item.quantity}) - ₦${(item.price * item.quantity).toLocaleString()}\n`;
     });
-    
+
     emailBody += `\nSubtotal: ₦${subtotal.toLocaleString()}\n`;
     emailBody += `Shipping: ₦${shipping.toLocaleString()}\n`;
     emailBody += `Total: ₦${total.toLocaleString()}\n\n`;
     emailBody += `Please let me know the next steps for payment and delivery.\n\nBest regards,\n${customerInfo.name}`;
-    
+
     return encodeURIComponent(emailBody);
   };
 
@@ -85,15 +85,15 @@ I would like to place the following order:
     message += `Name: ${customerInfo.name}\n`;
     message += `Email: ${customerInfo.email}\n`;
     message += `Phone: ${customerInfo.phone}\n\n`;
-    
+
     message += `*Order Details:*\n`;
     cart.forEach(item => {
       message += `• ${item.name} (Qty: ${item.quantity}) - ₦${(item.price * item.quantity).toLocaleString()}\n`;
     });
-    
+
     message += `\n*Total: ₦${total.toLocaleString()}*\n\n`;
     message += `Please let me know the next steps for payment and delivery.`;
-    
+
     return encodeURIComponent(message);
   };
 
@@ -105,12 +105,12 @@ I would like to place the following order:
   const sendEmail = () => {
     const subject = encodeURIComponent(`New Order from ${customerInfo.name}`);
     const body = generateEmailTemplate();
-    window.location.href = `mailto:info@drecancommodities.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:drecanagriculture@gmail.com?subject=${subject}&body=${body}`;
   };
 
   const sendWhatsApp = () => {
     const message = generateWhatsAppMessage();
-    window.open(`https://wa.me/2348034567890?text=${message}`, '_blank');
+    window.open(`https://wa.me/2347026841214?text=${message}`, '_blank');
   };
 
   if (orderSubmitted) {
@@ -148,17 +148,17 @@ I would like to place the following order:
 
               <div className="space-y-4">
                 <h3 className="font-bold text-teal-900 text-center">Send Order Details</h3>
-                
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <Button 
+                  <Button
                     onClick={sendEmail}
                     className="bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center gap-2 h-12"
                   >
                     <Mail className="h-5 w-5" />
                     Send via Email
                   </Button>
-                  
-                  <Button 
+
+                  <Button
                     onClick={sendWhatsApp}
                     className="bg-green-600 hover:bg-green-700 text-white flex items-center justify-center gap-2 h-12"
                   >
@@ -166,16 +166,16 @@ I would like to place the following order:
                     Send via WhatsApp
                   </Button>
                 </div>
-                
+
                 <div className="border-t border-teal-200 pt-4">
                   <h4 className="font-medium text-teal-900 mb-2">Or copy the details manually:</h4>
                   <div className="flex gap-2">
-                    <Input 
+                    <Input
                       value={`Order from ${customerInfo.name} - Total: ₦${total.toLocaleString()}`}
                       readOnly
                       className="flex-1"
                     />
-                    <Button 
+                    <Button
                       onClick={() => copyToClipboard(`Order from ${customerInfo.name} - Total: ₦${total.toLocaleString()}`)}
                       variant="outline"
                       className="flex items-center gap-1"
@@ -186,16 +186,16 @@ I would like to place the following order:
                   </div>
                 </div>
               </div>
-              
+
               <div className="text-center pt-4">
-                <Button 
+                <Button
                   onClick={() => navigate("/shop")}
                   variant="outline"
                   className="mr-4"
                 >
                   Continue Shopping
                 </Button>
-                <Button 
+                <Button
                   onClick={() => navigate("/")}
                   className="bg-teal-600 hover:bg-teal-700"
                 >
@@ -213,7 +213,7 @@ I would like to place the following order:
     <div className="min-h-screen pt-16 sm:pt-20 bg-teal-50">
       <div className="container mx-auto px-4 py-8">
         <h1 className="text-2xl sm:text-3xl font-bold text-teal-900 mb-6 text-center">Checkout</h1>
-        
+
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Customer Information */}
           <div className="lg:col-span-2 space-y-6">
@@ -237,7 +237,7 @@ I would like to place the following order:
                       />
                     </div>
                   </div>
-                  
+
                   <div className="space-y-2">
                     <Label htmlFor="email" className="text-teal-800">Email Address *</Label>
                     <div className="relative">
@@ -253,7 +253,7 @@ I would like to place the following order:
                       />
                     </div>
                   </div>
-                  
+
                   <div className="space-y-2">
                     <Label htmlFor="phone" className="text-teal-800">Phone Number *</Label>
                     <div className="relative">
@@ -263,12 +263,12 @@ I would like to place the following order:
                         name="phone"
                         value={customerInfo.phone}
                         onChange={handleInputChange}
-                        placeholder="+234 803 456 7890"
+                        placeholder="+234 702 684 1214"
                         className="pl-10 border-teal-200 focus:border-teal-500"
                       />
                     </div>
                   </div>
-                  
+
                   <div className="space-y-2">
                     <Label htmlFor="city" className="text-teal-800">City</Label>
                     <div className="relative">
@@ -284,7 +284,7 @@ I would like to place the following order:
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="space-y-2">
                   <Label htmlFor="address" className="text-teal-800">Delivery Address</Label>
                   <Input
@@ -296,7 +296,7 @@ I would like to place the following order:
                     className="border-teal-200 focus:border-teal-500"
                   />
                 </div>
-                
+
                 <div className="space-y-2">
                   <Label htmlFor="state" className="text-teal-800">State</Label>
                   <Input
@@ -310,7 +310,7 @@ I would like to place the following order:
                 </div>
               </CardContent>
             </Card>
-            
+
             {/* Order Summary */}
             <Card className="bg-white border-teal-200 shadow-md">
               <CardHeader>
@@ -333,7 +333,7 @@ I would like to place the following order:
                         </div>
                       </div>
                     ))}
-                    
+
                     <div className="space-y-2 pt-4">
                       <div className="flex justify-between">
                         <span className="text-teal-800">Subtotal</span>
@@ -353,7 +353,7 @@ I would like to place the following order:
               </CardContent>
             </Card>
           </div>
-          
+
           {/* Order Confirmation */}
           <div>
             <Card className="bg-white border-teal-200 shadow-md sticky top-24">
@@ -375,7 +375,7 @@ I would like to place the following order:
                     <span className="text-teal-900 font-bold">₦{total.toLocaleString()}</span>
                   </div>
                 </div>
-                
+
                 <Button
                   onClick={handleSubmitOrder}
                   disabled={cart.length === 0 || !customerInfo.name || !customerInfo.email || !customerInfo.phone}
@@ -383,7 +383,7 @@ I would like to place the following order:
                 >
                   Submit Order
                 </Button>
-                
+
                 <Button
                   onClick={() => navigate("/shop")}
                   variant="outline"
@@ -391,7 +391,7 @@ I would like to place the following order:
                 >
                   Back to Shopping
                 </Button>
-                
+
                 <div className="text-xs text-teal-700 text-center">
                   <p>After submitting, you'll be able to send your order details via email or WhatsApp for manual processing.</p>
                 </div>

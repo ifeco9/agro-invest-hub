@@ -428,25 +428,25 @@ const Home = () => {
             {[
               {
                 title: "Premium Growth Plan",
-                description: "The Premium Growth Plan is designed for investors who want sustainable, high yield returns backed by the strength of real agricultural trade. It combines Drecan's short-term turnover system with long-term commodity value growth ensuring consistent profit while contributing to national food security and market balance."
+                description: "Designed for investors seeking sustainable, high-yield returns backed by real agricultural trade. Combines short-term turnover with long-term commodity value growth."
               },
               {
                 title: "AgroLink Program",
-                description: "Our Community Commitment:\n\nBeyond business, we invest in people.\nThrough our Community Support Initiatives, Drecan Commodities supports smallholder farmers, provides educational outreach, and empowers local women, men, and youth, ensuring that every investment contributes to sustainable progress."
+                description: "Our community commitment goes beyond business. We support smallholder farmers, provide educational outreach, and empower local communities for sustainable progress."
               },
               {
                 title: "AgroTrade Cycle",
-                description: "we cultivate and produce key agricultural commodities — including palm oil, rice, beans, cocoa, maize, cashew nuts, and egusi — directly from our own plantations.\nFrom farm to storage, and onward to wholesalers, retailers, and final consumers in urban cities, we ensure every product is distributed efficiently, transparently, and affordably."
+                description: "From our plantations to urban markets, we cultivate palm oil, rice, beans, cocoa, maize, cashew nuts, and egusi — ensuring efficient, transparent distribution."
               },
               {
                 title: "Sustainability & Social Impact",
-                description: "At Drecan Commodities & Oil Palm Company, sustainability isn't an afterthought — it's the heart of our business. We protect the environment, uplift communities, and create shared prosperity through responsible agriculture and meaningful impact.",
+                description: "Sustainability is at the heart of our business. We protect the environment, uplift communities, and create shared prosperity through responsible agriculture.",
                 fullDescription: "At Drecan Commodities & Oil Palm Company, sustainability isn't an afterthought — it's the heart of our business. We protect the environment, uplift communities, and create shared prosperity through responsible agriculture and meaningful impact.\n\nOur Community Commitment:\nBeyond business, we invest in people. Through our Community Support Initiatives, Drecan Commodities supports smallholder farmers, provides educational outreach, and empowers local women, men, and youth — ensuring that every investment contributes to sustainable progress."
               }
             ].map((program, index) => (
               <motion.div
                 key={index}
-                className="bg-card p-4 sm:p-5 rounded-lg shadow-md border border-border cursor-pointer flex flex-col h-full"
+                className="bg-card p-4 sm:p-5 rounded-lg shadow-md border border-border cursor-pointer flex flex-col min-h-[240px]"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
@@ -459,7 +459,7 @@ const Home = () => {
                 }}
               >
                 <h3 className="text-lg font-bold text-foreground mb-2">{program.title}</h3>
-                <p className="text-muted-foreground text-sm whitespace-pre-line flex-grow">
+                <p className="text-muted-foreground text-sm flex-grow line-clamp-6">
                   {program.description}
                 </p>
                 {program.fullDescription && (

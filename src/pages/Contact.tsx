@@ -112,9 +112,9 @@ const Contact = () => {
                     <div>
                       <p className="font-medium text-foreground">Address</p>
                       <p className="text-muted-foreground">
-                        Suite [Insert Office Number],<br />
-                        [Insert Building Name],<br />
-                        Abuja, Nigeria
+                        Suite C6, Rosette Plaza,<br />
+                        Adj. Chicken Republic, Apo Resettlement,<br />
+                        FCT, Abuja, Nigeria
                       </p>
                     </div>
                   </div>

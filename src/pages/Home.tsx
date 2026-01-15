@@ -424,7 +424,7 @@ const Home = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 lg:gap-10 mt-8 sm:mt-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mt-8 sm:mt-12">
             {[
               {
                 title: "Premium Growth Plan",
@@ -446,7 +446,7 @@ const Home = () => {
             ].map((program, index) => (
               <motion.div
                 key={index}
-                className="bg-card p-4 sm:p-5 rounded-lg shadow-md border border-border cursor-pointer flex flex-col min-h-[240px]"
+                className="bg-card p-5 sm:p-6 rounded-lg shadow-md border border-border cursor-pointer flex flex-col"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
@@ -458,15 +458,15 @@ const Home = () => {
                   transition: { duration: 0.3 }
                 }}
               >
-                <h3 className="text-lg font-bold text-foreground mb-2">{program.title}</h3>
-                <p className="text-muted-foreground text-sm flex-grow line-clamp-6">
+                <h3 className="text-lg sm:text-xl font-bold text-foreground mb-3">{program.title}</h3>
+                <p className="text-muted-foreground text-sm sm:text-base leading-relaxed flex-grow">
                   {program.description}
                 </p>
                 {program.fullDescription && (
                   <Button
                     size="sm"
                     variant="link"
-                    className="p-0 h-auto font-medium text-teal-600 hover:text-teal-700 mt-2"
+                    className="p-0 h-auto font-medium text-teal-600 hover:text-teal-700 mt-3 self-start"
                     onClick={(e) => {
                       e.stopPropagation();
                       window.location.href = '/about#commitment';

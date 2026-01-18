@@ -7,15 +7,15 @@ const BusinessModel = () => {
   const businessSegments = [
     {
       icon: <TrendingUp className="h-8 w-8" />,
-      title: "Agricultural Investment & Partnerships",
+      title: "Agricultural Investment & Memberships",
       description: "Connect investors with profitable agricultural opportunities across Nigeria",
       details: [
-        "Direct farm investment opportunities with 15-35% annual returns",
-        "Partnership programs with farming communities",
+        "Direct farm investment opportunities with 15-35% annual shared surplus",
+        "Membership programs with farming communities",
         "Lease-to-own farmland arrangements",
         "Managed farm investment options with professional oversight"
       ],
-      engagement: "Investors can participate through direct funding, partnership agreements, or managed investment programs. Engagements are structured with clear ROI expectations, timelines, and exit strategies.",
+      engagement: "Investors can participate through direct funding, membership agreements, or managed investment programs. Engagements are structured with clear ROI expectations, timelines, and exit strategies.",
       link: "/services"
     },
     {
@@ -41,7 +41,7 @@ const BusinessModel = () => {
         "Distribution to urban markets, retailers, and exporters",
         "Value-added processing services"
       ],
-      engagement: "Partners can engage as suppliers, distributors, or buyers. We offer flexible contracting options, quality assurance guarantees, and efficient logistics solutions tailored to each partner's needs.",
+      engagement: "Members can engage as suppliers, distributors, or buyers. We offer flexible contracting options, quality assurance guarantees, and efficient logistics solutions tailored to each member's needs.",
       link: "/services"
     }
   ];
@@ -49,7 +49,7 @@ const BusinessModel = () => {
   return (
     <section className="py-12 sm:py-16 bg-background">
       <div className="container mx-auto px-4 max-w-6xl">
-        <motion.div 
+        <motion.div
           className="text-center mb-8 sm:mb-12"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -61,7 +61,7 @@ const BusinessModel = () => {
             Clear distinction and explanation of our three primary business areas
           </p>
         </motion.div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           {businessSegments.map((segment, index) => (
             <motion.div
@@ -78,7 +78,7 @@ const BusinessModel = () => {
               </div>
               <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2">{segment.title}</h3>
               <p className="text-muted-foreground text-sm sm:text-base mb-4 flex-grow">{segment.description}</p>
-              
+
               <div className="mb-4">
                 <h4 className="font-bold text-foreground mb-2">Key Features:</h4>
                 <ul className="space-y-2">
@@ -90,15 +90,15 @@ const BusinessModel = () => {
                   ))}
                 </ul>
               </div>
-              
+
               <div className="mb-4">
                 <h4 className="font-bold text-foreground mb-2">How It Works:</h4>
                 <p className="text-muted-foreground text-sm">{segment.engagement}</p>
               </div>
-              
-              <Button 
-                className="mt-auto" 
-                variant="outline" 
+
+              <Button
+                className="mt-auto"
+                variant="outline"
                 asChild
               >
                 <Link to={segment.link}>Learn More</Link>
@@ -106,8 +106,8 @@ const BusinessModel = () => {
             </motion.div>
           ))}
         </div>
-        
-        <motion.div 
+
+        <motion.div
           className="mt-12 text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

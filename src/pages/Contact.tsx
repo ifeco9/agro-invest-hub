@@ -200,7 +200,7 @@ const Contact = () => {
                           <SelectItem value="investment">
                             <div className="flex items-center gap-2">
                               <TrendingUp className="h-4 w-4" />
-                              <span>Agricultural Investment & Partnerships</span>
+                              <span>Agricultural Investment & Memberships</span>
                             </div>
                           </SelectItem>
                           <SelectItem value="storage">

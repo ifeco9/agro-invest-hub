@@ -39,10 +39,10 @@ const Opportunities = () => {
       <section className="py-12 sm:py-16 bg-teal-800 text-white animate-fade-in">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 animate-slide-up">
-            Drecan Partnership Plans
+            Drecan Membership Plans
           </h1>
           <p className="text-base sm:text-xl max-w-md sm:max-w-3xl mx-auto animate-slide-up animation-delay-200">
-            Strategic partnership opportunities with flexible durations, transparent interest structures, and credible returns backed by real agricultural ventures
+            Strategic membership opportunities with flexible durations, transparent expected surplus structures, and credible shared surplus backed by real agricultural ventures
           </p>
         </div>
       </section>
@@ -51,10 +51,10 @@ const Opportunities = () => {
       <section className="py-12 sm:py-16 bg-background">
         <div className="container mx-auto px-4">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-6 text-center">
-            Partnership Tiers
+            Membership Tiers
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground mb-8 max-w-3xl mx-auto text-center">
-            Drecan accommodates different partnering capacities with three main tiers
+            Drecan accommodates different membership capacities with three main tiers
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 max-w-5xl mx-auto">
@@ -66,7 +66,7 @@ const Opportunities = () => {
                 <h3 className="text-xl font-bold text-foreground">Tier 1</h3>
               </div>
               <p className="text-2xl font-bold text-primary mb-2">₦500,000 Min</p>
-              <p className="text-muted-foreground">Small-scale partners or first-time partners. Can invest in 3-month, 6-month, or 1-year plans.</p>
+              <p className="text-muted-foreground">Small-scale members or first-time members. Can invest in 3-month, 6-month, or 1-year plans.</p>
             </div>
 
             <div className="bg-card p-6 rounded-lg shadow-md border border-border">
@@ -98,10 +98,10 @@ const Opportunities = () => {
       <section className="py-12 sm:py-20 bg-gradient-to-br from-teal-50 to-emerald-50">
         <div className="container mx-auto px-4">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-6 text-center">
-            Partnership Plans
+            Membership Plans
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground mb-12 max-w-3xl mx-auto text-center">
-            Choose from multiple partnership durations designed to provide high and credible returns while keeping capital deployment transparent and diversified
+            Choose from multiple membership durations designed to provide high and credible shared surplus while keeping capital deployment transparent and diversified
           </p>
 
           <div className="space-y-12 sm:space-y-16">
@@ -110,16 +110,16 @@ const Opportunities = () => {
               <div className="bg-teal-800 text-white p-4 sm:p-6">
                 <div className="flex items-center gap-2 sm:gap-3 mb-2">
                   <Zap className="h-5 w-5 sm:h-6 sm:w-6" />
-                  <h2 className="text-2xl sm:text-3xl font-bold">3-Month Partnership Plan</h2>
+                  <h2 className="text-2xl sm:text-3xl font-bold">3-Month Membership Plan</h2>
                 </div>
-                <p className="text-teal-100 text-sm sm:text-base">Short-term engagement for quick returns</p>
+                <p className="text-teal-100 text-sm sm:text-base">Short-term engagement for quick shared surplus</p>
               </div>
               <div className="p-4 sm:p-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
                   <div>
                     <h3 className="text-lg sm:text-xl font-bold text-foreground mb-3 sm:mb-4 flex items-center gap-2">
                       <DollarSign className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
-                      Partnership Details
+                      Membership Details
                     </h3>
                     <ul className="space-y-2 sm:space-y-3 text-muted-foreground">
                       <li className="flex justify-between border-b pb-2">
@@ -131,7 +131,7 @@ const Opportunities = () => {
                         <span className="font-semibold text-sm sm:text-base">₦1,000,000</span>
                       </li>
                       <li className="flex justify-between border-b pb-2">
-                        <span className="text-sm sm:text-base">Interest Rate:</span>
+                        <span className="text-sm sm:text-base">Expected Surplus:</span>
                         <span className="font-semibold text-sm sm:text-base text-primary">20% - 25%</span>
                       </li>
                       <li className="flex justify-between border-b pb-2">
@@ -149,7 +149,7 @@ const Opportunities = () => {
                     </h3>
                     <div className="bg-secondary rounded-lg p-3 sm:p-4 mb-4">
                       <p className="text-muted-foreground text-sm sm:text-base mb-3">
-                        Interest is paid starting from the second month of investment to the end of investment period. Interest can also be calculated and paid at the end of investment period; principal returned at the end of three months.
+                        Shared surplus is paid starting from the second month of investment to the end of investment period. Shared surplus can also be calculated and paid at the end of investment period; principal returned at the end of three months.
                       </p>
                     </div>
                   </div>
@@ -161,7 +161,7 @@ const Opportunities = () => {
                     className="bg-primary hover:bg-primary-hover text-primary-foreground shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 ease-in-out px-6 sm:px-8 py-3 rounded-full font-bold text-base sm:text-lg"
                     onClick={handleReserveSlot}
                   >
-                    Reserve Partnership Slot
+                    Reserve Membership Slot
                   </Button>
                 </div>
               </div>
@@ -172,16 +172,16 @@ const Opportunities = () => {
               <div className="bg-teal-800 text-white p-4 sm:p-6">
                 <div className="flex items-center gap-2 sm:gap-3 mb-2">
                   <TrendingUp className="h-5 w-5 sm:h-6 sm:w-6" />
-                  <h2 className="text-2xl sm:text-3xl font-bold">6-Month Partnership Plan</h2>
+                  <h2 className="text-2xl sm:text-3xl font-bold">6-Month Membership Plan</h2>
                 </div>
-                <p className="text-teal-100 text-sm sm:text-base">Balanced duration with strong returns</p>
+                <p className="text-teal-100 text-sm sm:text-base">Balanced duration with strong shared surplus</p>
               </div>
               <div className="p-4 sm:p-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
                   <div>
                     <h3 className="text-lg sm:text-xl font-bold text-foreground mb-3 sm:mb-4 flex items-center gap-2">
                       <DollarSign className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
-                      Partnership Details
+                      Membership Details
                     </h3>
                     <ul className="space-y-2 sm:space-y-3 text-muted-foreground">
                       <li className="flex justify-between border-b pb-2">
@@ -193,7 +193,7 @@ const Opportunities = () => {
                         <span className="font-semibold text-sm sm:text-base">₦5,000,000</span>
                       </li>
                       <li className="flex justify-between border-b pb-2">
-                        <span className="text-sm sm:text-base">Interest Rate:</span>
+                        <span className="text-sm sm:text-base">Expected Surplus:</span>
                         <span className="font-semibold text-sm sm:text-base text-primary">35% - 45%</span>
                       </li>
                       <li className="flex justify-between border-b pb-2">
@@ -211,7 +211,7 @@ const Opportunities = () => {
                     </h3>
                     <div className="bg-secondary rounded-lg p-3 sm:p-4 mb-4">
                       <p className="text-muted-foreground text-sm sm:text-base mb-3">
-                        Interest is paid starting from the third month of investment to the end of investment period. Interest can also be calculated and paid at the end of investment period; principal returned at the end of six months.
+                        Shared surplus is paid starting from the third month of investment to the end of investment period. Shared surplus can also be calculated and paid at the end of investment period; principal returned at the end of six months.
                       </p>
                       <p className="text-muted-foreground text-sm sm:text-base">
                         Capital is deployed in high-value crops and small-scale livestock operations.
@@ -226,7 +226,7 @@ const Opportunities = () => {
                     className="bg-primary hover:bg-primary-hover text-primary-foreground shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 ease-in-out px-6 sm:px-8 py-3 rounded-full font-bold text-base sm:text-lg"
                     onClick={handleReserveSlot}
                   >
-                    Reserve Partnership Slot
+                    Reserve Membership Slot
                   </Button>
                 </div>
               </div>
@@ -237,16 +237,16 @@ const Opportunities = () => {
               <div className="bg-teal-800 text-white p-4 sm:p-6">
                 <div className="flex items-center gap-2 sm:gap-3 mb-2">
                   <Award className="h-5 w-5 sm:h-6 sm:w-6" />
-                  <h2 className="text-2xl sm:text-3xl font-bold">1-Year Partnership Plan</h2>
+                  <h2 className="text-2xl sm:text-3xl font-bold">1-Year Membership Plan</h2>
                 </div>
-                <p className="text-teal-100 text-sm sm:text-base">High-yield annual partnership</p>
+                <p className="text-teal-100 text-sm sm:text-base">High-yield annual membership</p>
               </div>
               <div className="p-4 sm:p-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
                   <div>
                     <h3 className="text-lg sm:text-xl font-bold text-foreground mb-3 sm:mb-4 flex items-center gap-2">
                       <DollarSign className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
-                      Partnership Details
+                      Membership Details
                     </h3>
                     <ul className="space-y-2 sm:space-y-3 text-muted-foreground">
                       <li className="flex justify-between border-b pb-2">
@@ -258,7 +258,7 @@ const Opportunities = () => {
                         <span className="font-semibold text-sm sm:text-base">₦10,000,000</span>
                       </li>
                       <li className="flex justify-between border-b pb-2">
-                        <span className="text-sm sm:text-base">Interest Rate:</span>
+                        <span className="text-sm sm:text-base">Expected Surplus:</span>
                         <span className="font-semibold text-sm sm:text-base text-primary">75% - 100%</span>
                       </li>
                       <li className="flex justify-between border-b pb-2">
@@ -276,10 +276,10 @@ const Opportunities = () => {
                     </h3>
                     <div className="bg-secondary rounded-lg p-3 sm:p-4 mb-4">
                       <p className="text-muted-foreground text-sm sm:text-base mb-3">
-                        Interest is paid starting from the fourth month of investment to the end of investment period. Interest can also be calculated and paid at the end of the year; principal returned at the end of one year.
+                        Shared surplus is paid starting from the fourth month of investment to the end of investment period. Shared surplus can also be calculated and paid at the end of the year; principal returned at the end of one year.
                       </p>
                       <p className="text-muted-foreground text-sm sm:text-base">
-                        Capital is used for palm oil, grains, cocoa, cashew, poultry, and small livestock operations. Partners have the option to receive interest only at the end of the year, ensuring maximum growth.
+                        Capital is used for palm oil, grains, cocoa, cashew, poultry, and small livestock operations. Members have the option to receive shared surplus only at the end of the year, ensuring maximum growth.
                       </p>
                     </div>
                   </div>
@@ -291,7 +291,7 @@ const Opportunities = () => {
                     className="bg-primary hover:bg-primary-hover text-primary-foreground shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 ease-in-out px-6 sm:px-8 py-3 rounded-full font-bold text-base sm:text-lg"
                     onClick={handleReserveSlot}
                   >
-                    Reserve Partnership Slot
+                    Reserve Membership Slot
                   </Button>
                 </div>
               </div>
@@ -302,16 +302,16 @@ const Opportunities = () => {
               <div className="bg-teal-800 text-white p-4 sm:p-6">
                 <div className="flex items-center gap-2 sm:gap-3 mb-2">
                   <Shield className="h-5 w-5 sm:h-6 sm:w-6" />
-                  <h2 className="text-2xl sm:text-3xl font-bold">2-Year Partnership Plan</h2>
+                  <h2 className="text-2xl sm:text-3xl font-bold">2-Year Membership Plan</h2>
                 </div>
-                <p className="text-teal-100 text-sm sm:text-base">Long-term growth with premium returns</p>
+                <p className="text-teal-100 text-sm sm:text-base">Long-term growth with premium shared surplus</p>
               </div>
               <div className="p-4 sm:p-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
                   <div>
                     <h3 className="text-lg sm:text-xl font-bold text-foreground mb-3 sm:mb-4 flex items-center gap-2">
                       <DollarSign className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
-                      Partnership Details
+                      Membership Details
                     </h3>
                     <ul className="space-y-2 sm:space-y-3 text-muted-foreground">
                       <li className="flex justify-between border-b pb-2">
@@ -319,7 +319,7 @@ const Opportunities = () => {
                         <span className="font-semibold text-sm sm:text-base">₦1,000,000</span>
                       </li>
                       <li className="flex justify-between border-b pb-2">
-                        <span className="text-sm sm:text-base">Interest Rate:</span>
+                        <span className="text-sm sm:text-base">Expected Surplus:</span>
                         <span className="font-semibold text-sm sm:text-base text-primary">100% - 150%</span>
                       </li>
                       <li className="flex justify-between border-b pb-2">
@@ -337,10 +337,10 @@ const Opportunities = () => {
                     </h3>
                     <div className="bg-secondary rounded-lg p-3 sm:p-4 mb-4">
                       <p className="text-muted-foreground text-sm sm:text-base mb-3">
-                        <strong>Annual Interest Payout:</strong> Interest is paid starting from the fourth month of investment to the end of investment period. Interest can also be calculated per year and paid at the end of each year while principal is retained. At the end of the second year, the remaining interest and principal are returned.
+                        <strong>Annual Shared Surplus Payout:</strong> Shared surplus is paid starting from the fourth month of investment to the end of investment period. Shared surplus can also be calculated per year and paid at the end of each year while principal is retained. At the end of the second year, the remaining shared surplus and principal are returned.
                       </p>
                       <p className="text-muted-foreground text-sm sm:text-base">
-                        Capital is used in high-value crop plantations, large-scale livestock, aquaculture, and agro-processing. Partners are encouraged to take advantage of the longer term to maximize returns and exposure to export-oriented products like cowhide and processed palm oil.
+                        Capital is used in high-value crop plantations, large-scale livestock, aquaculture, and agro-processing. Members are encouraged to take advantage of the longer term to maximize shared surplus and exposure to export-oriented products like cowhide and processed palm oil.
                       </p>
                     </div>
                   </div>
@@ -352,7 +352,7 @@ const Opportunities = () => {
                     className="bg-primary hover:bg-primary-hover text-primary-foreground shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 ease-in-out px-6 sm:px-8 py-3 rounded-full font-bold text-base sm:text-lg"
                     onClick={handleReserveSlot}
                   >
-                    Reserve Partnership Slot
+                    Reserve Membership Slot
                   </Button>
                 </div>
               </div>
@@ -363,16 +363,16 @@ const Opportunities = () => {
               <div className="bg-teal-800 text-white p-4 sm:p-6">
                 <div className="flex items-center gap-2 sm:gap-3 mb-2">
                   <Award className="h-5 w-5 sm:h-6 sm:w-6" />
-                  <h2 className="text-2xl sm:text-3xl font-bold">3-Year Partnership Plan</h2>
+                  <h2 className="text-2xl sm:text-3xl font-bold">3-Year Membership Plan</h2>
                 </div>
-                <p className="text-teal-100 text-sm sm:text-base">Maximum returns for large-scale partners</p>
+                <p className="text-teal-100 text-sm sm:text-base">Maximum shared surplus for large-scale members</p>
               </div>
               <div className="p-4 sm:p-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
                   <div>
                     <h3 className="text-lg sm:text-xl font-bold text-foreground mb-3 sm:mb-4 flex items-center gap-2">
                       <DollarSign className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
-                      Partnership Details
+                      Membership Details
                     </h3>
                     <ul className="space-y-2 sm:space-y-3 text-muted-foreground">
                       <li className="flex justify-between border-b pb-2">
@@ -380,7 +380,7 @@ const Opportunities = () => {
                         <span className="font-semibold text-sm sm:text-base">₦5,000,000</span>
                       </li>
                       <li className="flex justify-between border-b pb-2">
-                        <span className="text-sm sm:text-base">Interest Rate:</span>
+                        <span className="text-sm sm:text-base">Expected Surplus:</span>
                         <span className="font-semibold text-sm sm:text-base text-primary">180% - 250%</span>
                       </li>
                       <li className="flex justify-between border-b pb-2">
@@ -398,7 +398,7 @@ const Opportunities = () => {
                     </h3>
                     <div className="bg-secondary rounded-lg p-3 sm:p-4 mb-4">
                       <p className="text-muted-foreground text-sm sm:text-base mb-3">
-                        <strong>Annual Interest Payout:</strong> Interest is paid starting from the fourth month of investment to the end of investment period. Interest can also be calculated per year and paid at the end of each year while principal is retained. At the end of the third year, the remaining interest and principal are returned.
+                        <strong>Annual Shared Surplus Payout:</strong> Shared surplus is paid starting from the fourth month of investment to the end of investment period. Shared surplus can also be calculated per year and paid at the end of each year while principal is retained. At the end of the third year, the remaining shared surplus and principal are returned.
                       </p>
                     </div>
                   </div>
@@ -448,7 +448,7 @@ const Opportunities = () => {
                     className="bg-primary hover:bg-primary-hover text-primary-foreground shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 ease-in-out px-6 sm:px-8 py-3 rounded-full font-bold text-base sm:text-lg"
                     onClick={handleReserveSlot}
                   >
-                    Reserve Partnership Slot
+                    Reserve Membership Slot
                   </Button>
                 </div>
               </div>
@@ -461,10 +461,10 @@ const Opportunities = () => {
       <section className="py-12 sm:py-16 bg-background">
         <div className="container mx-auto px-4">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-6 text-center">
-            Drecan Agricultural Partnership Portfolio
+            Drecan Agricultural Membership Portfolio
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground mb-12 max-w-3xl mx-auto text-center">
-            Drecan actively uses partner capital in high-value agricultural and agro-industrial projects to ensure sustainable and profitable growth
+            Drecan actively uses membership funds in high-value agricultural and agro-industrial projects to ensure sustainable and profitable growth
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -565,10 +565,10 @@ const Opportunities = () => {
       <section className="py-12 sm:py-16 bg-teal-900 text-white">
         <div className="container mx-auto px-4">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-center">
-            Partnership Impact & Security
+            Membership Impact & Security
           </h2>
           <p className="text-base sm:text-lg mb-12 max-w-3xl mx-auto text-center">
-            Partnering with Drecan ensures that funds are actively deployed in real, tangible, and revenue-generating projects
+            Partnering with Drecan ensures that membership funds are actively deployed in real, tangible, and revenue-generating projects
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
@@ -587,7 +587,7 @@ const Opportunities = () => {
             <div className="bg-white/10 backdrop-blur-sm p-6 rounded-lg border border-white/20">
               <Clock className="h-12 w-12 text-teal-300 mb-4" />
               <h3 className="text-xl font-bold mb-2">Transparent</h3>
-              <p className="text-teal-100">Regular performance updates for all partners throughout the partnership period</p>
+              <p className="text-teal-100">Regular performance updates for all members throughout the membership period</p>
             </div>
 
             <div className="bg-white/10 backdrop-blur-sm p-6 rounded-lg border border-white/20">
@@ -603,10 +603,10 @@ const Opportunities = () => {
       <section className="py-12 sm:py-20 bg-gradient-to-br from-teal-50 to-emerald-50">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 text-foreground">
-            Ready to Start Your Partnership?
+            Ready to Become a Member?
           </h2>
           <p className="text-base sm:text-xl mb-6 sm:mb-8 max-w-md sm:max-w-2xl mx-auto text-muted-foreground">
-            Join our community of partners and start earning credible returns from Nigerian agriculture
+            Join our community of members and start earning credible shared surplus from Nigerian agriculture
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button

@@ -8,13 +8,13 @@ import { motion } from "framer-motion";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [cartCount, setCartCount] = useState(0);
-  const [user, setUser] = useState<{name: string, email: string} | null>(null);
+  const [user, setUser] = useState<{ name: string, email: string } | null>(null);
   const location = useLocation();
 
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "Shop", path: "/shop" },
-    { name: "Partner with Us", path: "/opportunities" },
+    { name: "Become a Member", path: "/opportunities" },
     { name: "Services", path: "/services" },
     { name: "About", path: "/about" },
     { name: "Contact", path: "/contact" },
@@ -38,7 +38,7 @@ const Navbar = () => {
     };
 
     updateCartCount();
-    
+
     // Listen for storage changes (when cart is updated in another tab/component)
     window.addEventListener('storage', updateCartCount);
     return () => window.removeEventListener('storage', updateCartCount);
@@ -61,7 +61,7 @@ const Navbar = () => {
     };
 
     checkUserStatus();
-    
+
     // Listen for storage changes (when user logs in/out)
     window.addEventListener('storage', checkUserStatus);
     return () => window.removeEventListener('storage', checkUserStatus);
@@ -72,13 +72,13 @@ const Navbar = () => {
   const handleLogout = () => {
     localStorage.removeItem('user');
     setUser(null);
-    
+
     // Dispatch storage event to notify Navbar of logout
     window.dispatchEvent(new StorageEvent('storage', {
       key: 'user',
       newValue: null
     }));
-    
+
     // Redirect to home page or login page
     window.location.href = '/';
   };
@@ -111,12 +111,11 @@ const Navbar = () => {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`text-sm font-medium transition-colors hover:text-teal-700 relative ${
-                  isActive(link.path) ? "text-teal-900" : "text-foreground"
-                }`}
+                className={`text-sm font-medium transition-colors hover:text-teal-700 relative ${isActive(link.path) ? "text-teal-900" : "text-foreground"
+                  }`}
               >
                 {isActive(link.path) && (
-                  <motion.span 
+                  <motion.span
                     className="absolute -bottom-1 left-0 w-full h-0.5 bg-teal-700 rounded-full"
                     layoutId="navbar-indicator"
                   />
@@ -124,7 +123,7 @@ const Navbar = () => {
                 {link.name}
               </Link>
             ))}
-            
+
             {/* Cart icon */}
             <Link to="/shop" className="relative p-2 text-teal-900 hover:text-teal-700">
               <ShoppingCart className="h-5 w-5" />
@@ -134,7 +133,7 @@ const Navbar = () => {
                 </span>
               )}
             </Link>
-            
+
             {/* Auth buttons for desktop */}
             <div className="flex items-center gap-2">
               {user ? (
@@ -161,7 +160,7 @@ const Navbar = () => {
                 </span>
               )}
             </Link>
-            
+
             {/* Auth buttons for mobile */}
             <div className="md:hidden">
               {user ? (
@@ -177,7 +176,7 @@ const Navbar = () => {
                 </Button>
               )}
             </div>
-            
+
             <button
               className="md:hidden p-2 text-teal-900"
               onClick={() => setIsOpen(!isOpen)}
@@ -190,7 +189,7 @@ const Navbar = () => {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <motion.div 
+          <motion.div
             className="md:hidden py-4 border-t border-teal-100"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
@@ -202,9 +201,8 @@ const Navbar = () => {
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`text-sm font-medium transition-colors hover:text-teal-700 relative py-2 ${
-                    isActive(link.path) ? "text-teal-900" : "text-foreground"
-                  }`}
+                  className={`text-sm font-medium transition-colors hover:text-teal-700 relative py-2 ${isActive(link.path) ? "text-teal-900" : "text-foreground"
+                    }`}
                   onClick={() => setIsOpen(false)}
                 >
                   {isActive(link.path) && (
@@ -214,8 +212,8 @@ const Navbar = () => {
                 </Link>
               ))}
               {user ? (
-                <Button 
-                  size="sm" 
+                <Button
+                  size="sm"
                   className="w-full bg-teal-700 hover:bg-teal-800 text-white"
                   onClick={() => {
                     handleLogout();

@@ -53,9 +53,9 @@ const Services = () => {
               {
                 icon: <TrendingUp className="h-8 w-8" />,
                 title: "AgroTrade Investment",
-                description: "Short-term trading opportunities with consistent returns. We purchase agricultural commodities directly from farmers and distribute them to urban markets, providing investors with transparent and profitable opportunities.",
+                description: "Short-term trading opportunities with consistent shared surplus. We purchase agricultural commodities directly from farmers and distribute them to urban markets, providing investors with transparent and profitable opportunities.",
                 features: [
-                  "8-12% annual returns",
+                  "8-12% annual shared surplus",
                   "6-12 month duration",
                   "Monthly payouts",
                   "Low-medium risk"
@@ -63,10 +63,10 @@ const Services = () => {
               },
               {
                 icon: <Leaf className="h-8 w-8" />,
-                title: "AgroFarm Partnership",
-                description: "Long-term farming partnerships with higher returns. Investors can lease farmlands or fund managed farms, allowing them to participate in agriculture without direct involvement.",
+                title: "AgroFarm Membership",
+                description: "Long-term farming memberships with higher shared surplus. Investors can lease farmlands or fund managed farms, allowing them to participate in agriculture without direct involvement.",
                 features: [
-                  "15-25% annual returns",
+                  "15-25% annual shared surplus",
                   "12-24 month duration",
                   "At harvest payouts",
                   "Medium risk"
@@ -86,9 +86,9 @@ const Services = () => {
               {
                 icon: <Shield className="h-8 w-8" />,
                 title: "AgroReserve Premium",
-                description: "Premium long-term investment with maximum returns. Our flagship program offers investors the opportunity to participate in large-scale agricultural projects with significant potential for returns.",
+                description: "Premium long-term investment with maximum shared surplus. Our flagship program offers investors the opportunity to participate in large-scale agricultural projects with significant potential for shared surplus.",
                 features: [
-                  "25-35% annual returns",
+                  "25-35% annual shared surplus",
                   "24-36 month duration",
                   "At maturity payouts",
                   "Medium-high risk"
@@ -185,13 +185,13 @@ const Services = () => {
               },
               {
                 step: "05",
-                title: "Returns Distribution",
-                description: "Receive your returns according to the agreed schedule. For short-term investments, this is monthly; for long-term investments, returns are distributed at harvest or maturity."
+                title: "Shared Surplus Distribution",
+                description: "Receive your shared surplus according to the agreed schedule. For short-term investments, this is monthly; for long-term investments, shared surplus are distributed at harvest or maturity."
               },
               {
                 step: "06",
                 title: "Reinvestment Opportunity",
-                description: "Reinvest your returns in new opportunities or withdraw your profits. Our team will work with you to plan your next investment steps based on your evolving goals."
+                description: "Reinvest your shared surplus in new opportunities or withdraw your profits. Our team will work with you to plan your next investment steps based on your evolving goals."
               }
             ].map((process, index) => (
               <motion.div
@@ -260,8 +260,8 @@ const Services = () => {
               },
               {
                 icon: <TrendingUp className="h-5 w-5" />,
-                title: "Competitive Returns",
-                description: "Industry-leading returns backed by real agricultural commodities and professional farm management."
+                title: "Competitive Shared Surplus",
+                description: "Industry-leading shared surplus backed by real agricultural commodities and professional farm management."
               }
             ].map((benefit, index) => (
               <motion.div
@@ -313,7 +313,7 @@ const Services = () => {
               <div className="text-primary mb-3">
                 <TrendingUp className="h-8 w-8" />
               </div>
-              <h3 className="text-lg sm:text-xl font-bold text-foreground mb-3">Investment & Partnerships</h3>
+              <h3 className="text-lg sm:text-xl font-bold text-foreground mb-3">Investment & Memberships</h3>
               <div className="space-y-3 mb-4 flex-grow">
                 <div className="flex items-start gap-2">
                   <Mail className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
@@ -415,7 +415,7 @@ const Services = () => {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            Join our community of investors and start earning sustainable returns from Nigerian agriculture
+            Join our community of investors and start earning sustainable shared surplus from Nigerian agriculture
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}

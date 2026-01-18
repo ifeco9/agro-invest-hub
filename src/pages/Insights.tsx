@@ -7,7 +7,7 @@ const Insights = () => {
   const articles = [
     {
       title: "Why Agricultural Investments Beat Stocks in 2025",
-      excerpt: "Discover how sustainable farming investments are outperforming traditional stock market returns with lower volatility and positive environmental impact.",
+      excerpt: "Discover how sustainable farming investments are outperforming traditional stock market shared surplus with lower volatility and positive environmental impact.",
       category: "Market Analysis",
       date: "January 15, 2025",
       readTime: "5 min read",
@@ -34,15 +34,15 @@ const Insights = () => {
       readTime: "7 min read",
     },
     {
-      title: "Understanding ROI Calculations in Crop Yield Investments",
-      excerpt: "A detailed breakdown of how we calculate projected returns, including factors like weather patterns, market prices, and operational costs.",
+      title: "Understanding Shared Surplus Calculations in Crop Yield Investments",
+      excerpt: "A detailed breakdown of how we calculate projected shared surplus, including factors like weather patterns, market prices, and operational costs.",
       category: "Education",
       date: "December 20, 2024",
       readTime: "10 min read",
     },
     {
       title: "Equipment Leasing: The Hidden Gem of Agro Investments",
-      excerpt: "Why equipment leasing offers steady returns with lower risk compared to direct farmland investment.",
+      excerpt: "Why equipment leasing offers steady shared surplus with lower risk compared to direct farmland investment.",
       category: "Investment Types",
       date: "December 15, 2024",
       readTime: "5 min read",
@@ -73,11 +73,10 @@ const Insights = () => {
               <Badge
                 key={category}
                 variant={category === "All" ? "default" : "outline"}
-                className={`cursor-pointer transition-colors ${
-                  category === "All" 
-                    ? "bg-teal-600 hover:bg-teal-700" 
+                className={`cursor-pointer transition-colors ${category === "All"
+                    ? "bg-teal-600 hover:bg-teal-700"
                     : "border-mint-200 text-teal-800 hover:bg-teal-600 hover:text-white"
-                }`}
+                  }`}
               >
                 {category}
               </Badge>
@@ -111,7 +110,7 @@ const Insights = () => {
                     </div>
                   </div>
                   <Button variant="outline" className="w-full group border-teal-600 text-teal-600 hover:bg-teal-50">
-                    Read More 
+                    Read More
                     <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </CardFooter>

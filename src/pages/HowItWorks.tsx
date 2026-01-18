@@ -20,10 +20,10 @@ const HowItWorks = () => {
     {
       number: "2",
       icon: Calculator,
-      title: "Calculate Returns",
-      description: "Use our free ROI calculator to estimate your potential returns based on your investment amount and selected opportunity. Get instant projections tailored to your goals.",
+      title: "Calculate Shared Surplus",
+      description: "Use our free ROI calculator to estimate your potential shared surplus based on your investment amount and selected opportunity. Get instant projections tailored to your goals.",
       details: [
-        "Personalized return projections",
+        "Personalized shared surplus projections",
         "Investment timeline visualization",
         "Risk-adjusted calculations",
         "Comparison tools for multiple opportunities",
@@ -56,8 +56,8 @@ const HowItWorks = () => {
     },
     {
       icon: TrendingUp,
-      title: "Verified Returns",
-      description: "All projected returns are based on verified historical data and conservative estimates.",
+      title: "Verified Shared Surplus",
+      description: "All projected shared surplus are based on verified historical data and conservative estimates.",
     },
   ];
 
@@ -82,9 +82,8 @@ const HowItWorks = () => {
             {steps.map((step, index) => (
               <div
                 key={index}
-                className={`flex flex-col ${
-                  index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
-                } gap-8 items-center animate-fade-in`}
+                className={`flex flex-col ${index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
+                  } gap-8 items-center animate-fade-in`}
               >
                 <div className="flex-1">
                   <div className="flex items-center gap-4 mb-4">
@@ -155,7 +154,7 @@ const HowItWorks = () => {
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-teal-900">Ready to Get Started?</h2>
           <p className="text-lg text-teal-800 mb-8 max-w-2xl mx-auto">
-            Join hundreds of investors who are already earning sustainable returns from Nigerian agriculture.
+            Join hundreds of investors who are already earning sustainable shared surplus from Nigerian agriculture.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="bg-teal-600 hover:bg-teal-700 text-white" asChild>

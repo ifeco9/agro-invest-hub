@@ -14,7 +14,7 @@ const Hero = () => {
 
   useEffect(() => {
     setIsVisible(true);
-    
+
     // Parallax scroll effect
     const handleScroll = () => {
       setScrollY(window.scrollY);
@@ -45,12 +45,12 @@ const Hero = () => {
     <section className="relative min-h-screen flex items-center pb-32 overflow-hidden bg-teal-900">
       {/* Sparkling Effect */}
       <SparkleEffect />
-      
+
       {/* Background Image with Overlay and Parallax */}
       <div className="absolute inset-0 z-0 mb-0 pb-0 overflow-hidden">
-        <div 
+        <div
           className="w-full h-full bg-cover bg-center bg-no-repeat transition-transform duration-300"
-          style={{ 
+          style={{
             backgroundImage: `url(${heroImage})`,
             transform: `translateY(${scrollY * 0.3}px) scale(1.1)`,
             backgroundPosition: "center",
@@ -61,7 +61,7 @@ const Hero = () => {
         />
         {/* Improved semi-transparent overlay for better image visibility */}
         <div className="absolute inset-0 bg-teal-900/70" />
-        
+
         {/* Floating Particles */}
         <div ref={particlesRef} className="absolute inset-0 pointer-events-none" />
       </div>
@@ -75,7 +75,7 @@ const Hero = () => {
                 key={wordIndex}
                 initial={{ opacity: 0, y: 20 }}
                 animate={isVisible ? { opacity: 1, y: 0 } : {}}
-                transition={{ 
+                transition={{
                   duration: 0.3, // Reduced duration for smoother performance
                   delay: wordIndex * 0.05, // Reduced delay
                   type: "tween", // Using tween instead of spring for better performance
@@ -110,7 +110,7 @@ const Hero = () => {
           <div className={`flex flex-wrap gap-4 transition-all duration-1000 delay-800 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <div className="flex items-center gap-2 bg-teal-50/15 backdrop-blur-md px-5 py-3 rounded-full border border-teal-200/30 hover:bg-teal-50/25 transition-all hover:scale-105 shadow-lg shadow-teal-900/20">
               <TrendingUp className="h-5 w-5 text-white" />
-              <span className="text-sm font-semibold text-white">Proven Returns</span>
+              <span className="text-sm font-semibold text-white">Proven Shared Surplus</span>
             </div>
             <div className="flex items-center gap-2 bg-teal-50/15 backdrop-blur-md px-5 py-3 rounded-full border border-teal-200/30 hover:bg-teal-50/25 transition-all hover:scale-105 shadow-lg shadow-teal-900/20">
               <Shield className="h-5 w-5 text-white" />

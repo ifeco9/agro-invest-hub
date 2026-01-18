@@ -6,7 +6,7 @@ import { TrendingUp, Calendar, DollarSign, Package, CheckCircle, Clock, XCircle 
 
 const Orders = () => {
   const [activeTab, setActiveTab] = useState("all");
-  
+
   // Mock data for orders
   const orders = [
     {
@@ -23,7 +23,7 @@ const Orders = () => {
       date: "2023-07-22",
       amount: 5000000,
       status: "processing",
-      type: "AgroFarm Partnership",
+      type: "AgroFarm Membership",
       returns: 750000,
       duration: "12 months"
     },
@@ -47,8 +47,8 @@ const Orders = () => {
     }
   ];
 
-  const filteredOrders = activeTab === "all" 
-    ? orders 
+  const filteredOrders = activeTab === "all"
+    ? orders
     : orders.filter(order => order.status === activeTab);
 
   const getStatusIcon = (status: string) => {
@@ -104,7 +104,7 @@ const Orders = () => {
             Investment Dashboard
           </h1>
           <p className="text-base sm:text-lg text-teal-700 max-w-md sm:max-w-2xl mx-auto">
-            Track your agricultural investments and monitor returns
+            Track your agricultural investments and monitor shared surplus
           </p>
         </motion.div>
 
@@ -127,7 +127,7 @@ const Orders = () => {
               <p className="text-xs text-teal-600">+12.5% from last month</p>
             </CardContent>
           </Card>
-          
+
           <Card className="bg-white border-teal-200 shadow-md">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium text-teal-700">
@@ -140,11 +140,11 @@ const Orders = () => {
               <p className="text-xs text-teal-600">4 new this month</p>
             </CardContent>
           </Card>
-          
+
           <Card className="bg-white border-teal-200 shadow-md">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium text-teal-700">
-                Returns Earned
+                Shared Surplus Earned
               </CardTitle>
               <Calendar className="h-4 w-4 text-teal-500" />
             </CardHeader>
@@ -153,7 +153,7 @@ const Orders = () => {
               <p className="text-xs text-teal-600">This financial year</p>
             </CardContent>
           </Card>
-          
+
           <Card className="bg-white border-teal-200 shadow-md">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium text-teal-700">
@@ -187,7 +187,7 @@ const Orders = () => {
                   New Investment
                 </Button>
               </div>
-              
+
               {/* Tabs */}
               <div className="flex space-x-4 mt-4 border-b border-teal-200">
                 {[
@@ -198,11 +198,10 @@ const Orders = () => {
                 ].map((tab) => (
                   <button
                     key={tab.id}
-                    className={`pb-2 px-1 text-sm font-medium ${
-                      activeTab === tab.id
+                    className={`pb-2 px-1 text-sm font-medium ${activeTab === tab.id
                         ? "text-teal-600 border-b-2 border-teal-600"
                         : "text-teal-500 hover:text-teal-700"
-                    }`}
+                      }`}
                     onClick={() => setActiveTab(tab.id)}
                   >
                     {tab.label}
@@ -210,7 +209,7 @@ const Orders = () => {
                 ))}
               </div>
             </CardHeader>
-            
+
             <CardContent>
               <div className="space-y-4">
                 {filteredOrders.map((order, index) => (
@@ -233,13 +232,13 @@ const Orders = () => {
                         <p className="text-sm text-teal-700">{order.type}</p>
                         <p className="text-xs text-teal-500 mt-1">{order.date} • {order.duration}</p>
                       </div>
-                      
+
                       <div className="text-right">
                         <p className="font-medium text-teal-900">₦{order.amount.toLocaleString()}</p>
-                        <p className="text-sm text-teal-700">Returns: ₦{order.returns.toLocaleString()}</p>
-                        <Button 
-                          variant="outline" 
-                          size="sm" 
+                        <p className="text-sm text-teal-700">Shared Surplus: ₦{order.returns.toLocaleString()}</p>
+                        <Button
+                          variant="outline"
+                          size="sm"
                           className="mt-2 border-teal-300 text-teal-700 hover:bg-teal-50"
                         >
                           View Details
@@ -249,14 +248,14 @@ const Orders = () => {
                   </motion.div>
                 ))}
               </div>
-              
+
               {filteredOrders.length === 0 && (
                 <div className="text-center py-8">
                   <Package className="mx-auto h-12 w-12 text-teal-400" />
                   <h3 className="mt-2 text-sm font-medium text-teal-900">No orders found</h3>
                   <p className="mt-1 text-sm text-teal-500">
-                    {activeTab === "all" 
-                      ? "Get started by creating a new investment." 
+                    {activeTab === "all"
+                      ? "Get started by creating a new investment."
                       : `No ${activeTab} orders at this time.`}
                   </p>
                   <div className="mt-6">

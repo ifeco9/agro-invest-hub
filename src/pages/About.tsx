@@ -10,7 +10,7 @@ const About = () => {
       {/* Hero Section */}
       <section className="py-12 sm:py-16 bg-teal-900 text-white">
         <div className="container mx-auto px-4 text-center">
-          <motion.h1 
+          <motion.h1
             className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -18,7 +18,7 @@ const About = () => {
           >
             Empowering Agriculture. Empowering Communities.
           </motion.h1>
-          <motion.p 
+          <motion.p
             className="text-base sm:text-xl max-w-md sm:max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -48,7 +48,7 @@ const About = () => {
               <p>
                 Our innovative, AI and tech-driven approach to managing our oil palm plantations and farms ensures unparalleled transparency and sustainability. This model is the core of our disruption, guaranteeing long-term economic viability while positively impacting our communities and environment.
               </p>
-              
+
               <h4 className="text-lg font-bold text-foreground">Our Disruptive Ambition: Redefining Tropical Agriculture</h4>
               <p>
                 At Drecan, our mission is to challenge the status quo. We implement key initiatives that merge high-performance agriculture with robust social and environmental governance (ESG). Our integrated focus ensures:
@@ -69,7 +69,7 @@ const About = () => {
       {/* Core Values */}
       <section className="py-12 sm:py-16 bg-teal-900">
         <div className="container mx-auto px-4 max-w-6xl">
-          <motion.div 
+          <motion.div
             className="text-center mb-8 sm:mb-12"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -81,7 +81,7 @@ const About = () => {
               The principles that guide everything we do at Drecan Commodities
             </p>
           </motion.div>
-          
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {[
               {
@@ -92,12 +92,12 @@ const About = () => {
               {
                 icon: <Users className="h-8 w-8" />,
                 title: "Community Impact",
-                description: "We measure our success not just by financial returns, but by the positive impact we create in farming communities and the lives we touch through food access initiatives."
+                description: "We measure our success not just by financial shared surplus, but by the positive impact we create in farming communities and the lives we touch through food access initiatives."
               },
               {
                 icon: <TrendingUp className="h-8 w-8" />,
-                title: "Sustainable Returns",
-                description: "We are committed to delivering consistent, sustainable returns to our investors through well-managed agricultural investments backed by real commodities."
+                title: "Sustainable Shared Surplus",
+                description: "We are committed to delivering consistent, sustainable shared surplus to our investors through well-managed agricultural investments backed by real commodities."
               },
               {
                 icon: <Leaf className="h-8 w-8" />,
@@ -155,7 +155,7 @@ const About = () => {
             <div className="absolute inset-0 bg-black/10"></div>
             <div className="relative z-10">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <motion.div 
+                <motion.div
                   className="bg-white/90 backdrop-blur-sm rounded-xl p-6 shadow-lg"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -188,7 +188,7 @@ const About = () => {
                   </ul>
                 </motion.div>
 
-                <motion.div 
+                <motion.div
                   className="bg-white/90 backdrop-blur-sm rounded-xl p-6 shadow-lg"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -210,7 +210,7 @@ const About = () => {
                   </p>
                 </motion.div>
 
-                <motion.div 
+                <motion.div
                   className="bg-white/90 backdrop-blur-sm rounded-xl p-6 shadow-lg"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -255,7 +255,7 @@ const About = () => {
             transition={{ duration: 0.5 }}
           >
             <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6 text-center">Our Purpose: Building a Sustainable Agricultural Future for Nigeria</h2>
-            
+
             <div className="space-y-6 text-white/90">
               <div>
                 <h3 className="text-xl font-bold text-white mb-3">Vision Statement:</h3>
@@ -263,14 +263,14 @@ const About = () => {
                   To be the leading sustainable agribusiness in Nigeria, revolutionizing the industry through innovative farming technology and ethical cultivation practices that deliver unparalleled growth for all our stakeholders.
                 </p>
               </div>
-              
+
               <div>
                 <h3 className="text-xl font-bold text-white mb-3">Mission Statement:</h3>
                 <p>
-                  To leverage our resources and precision agriculture expertise to achieve optimal returns and lasting positive impact. We are dedicated to empowering local communities, enhancing rural development, and serving as guardians of the environment through every operation.
+                  To leverage our resources and precision agriculture expertise to achieve optimal shared surplus and lasting positive impact. We are dedicated to empowering local communities, enhancing rural development, and serving as guardians of the environment through every operation.
                 </p>
               </div>
-              
+
               <div>
                 <h3 className="text-xl font-bold text-white mb-3">Our Core Values: The Drecan Difference</h3>
                 <p>
@@ -283,7 +283,7 @@ const About = () => {
                   <li><span className="font-medium">Recognition & Respect:</span> Valuing and rewarding the contributions of our team and partners.</li>
                 </ul>
               </div>
-              
+
               <div>
                 <h3 className="text-xl font-bold text-white mb-3">Strategic Pillars: Our Focus for Impact</h3>
                 <p>
@@ -314,28 +314,28 @@ const About = () => {
                 <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-4 sm:mb-6">Our Story</h2>
                 <div className="space-y-4 text-muted-foreground">
                   <p>
-                    Drecan Commodities Ltd was founded in 2014 in Osun State, Nigeria, with a simple yet powerful mission: 
+                    Drecan Commodities Ltd was founded in 2014 in Osun State, Nigeria, with a simple yet powerful mission:
                     to create a more efficient and equitable agricultural supply chain that benefits everyone involved.
                   </p>
                   <p>
-                    Our journey began when our founder witnessed firsthand the challenges faced by smallholder farmers 
-                    who struggled to get fair prices for their produce, while urban consumers paid inflated prices for basic 
+                    Our journey began when our founder witnessed firsthand the challenges faced by smallholder farmers
+                    who struggled to get fair prices for their produce, while urban consumers paid inflated prices for basic
                     food items. This disconnect inspired the founding team to build a bridge between rural producers and urban markets.
                   </p>
                   <p>
-                    Over the years, we have grown from a small local trading operation into a comprehensive agricultural 
-                    investment platform that connects thousands of investors with profitable opportunities in Nigeria's 
-                    agricultural sector. Today, we work with 150 farmers across multiple states and have facilitated 
+                    Over the years, we have grown from a small local trading operation into a comprehensive agricultural
+                    investment platform that connects thousands of investors with profitable opportunities in Nigeria's
+                    agricultural sector. Today, we work with 150 farmers across multiple states and have facilitated
                     investments worth millions of naira.
                   </p>
                   <p>
-                    Our commitment to sustainable development and community impact has earned us recognition from various 
+                    Our commitment to sustainable development and community impact has earned us recognition from various
                     stakeholders, including partnerships with local government agencies and international development organizations.
                   </p>
                 </div>
               </motion.div>
             </div>
-            
+
             <motion.div
               className="bg-card p-5 sm:p-6 rounded-lg shadow-md border border-border"
               initial={{ opacity: 0, x: 20 }}
@@ -376,7 +376,7 @@ const About = () => {
           >
 
           </motion.div>
-          
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -400,14 +400,14 @@ const About = () => {
                 </p>
               </div>
             </motion.div>
-            
+
             <motion.div
               className="bg-white/10 backdrop-blur-sm rounded-xl p-6 sm:p-8"
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.5 }}
-              whileHover={{ 
+              whileHover={{
                 scale: 1.02,
                 boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
                 transition: { duration: 0.3 }
@@ -479,7 +479,7 @@ const About = () => {
                       <div className="w-2 h-2 bg-white rounded-full"></div>
                     </div>
                     <div>
-                      <span className="font-bold">Crude Palm Oil (CPO):</span> 
+                      <span className="font-bold">Crude Palm Oil (CPO):</span>
                       <span className="opacity-90"> Known for its natural red color and high beta-carotene content.</span>
                     </div>
                   </li>
@@ -488,7 +488,7 @@ const About = () => {
                       <div className="w-2 h-2 bg-white rounded-full"></div>
                     </div>
                     <div>
-                      <span className="font-bold">Palm Kernel (PK):</span> 
+                      <span className="font-bold">Palm Kernel (PK):</span>
                       <span className="opacity-90"> The raw seed extracted from the oil palm fruit.</span>
                     </div>
                   </li>
@@ -497,7 +497,7 @@ const About = () => {
                       <div className="w-2 h-2 bg-white rounded-full"></div>
                     </div>
                     <div>
-                      <span className="font-bold">Palm Kernel Oil (PKO):</span> 
+                      <span className="font-bold">Palm Kernel Oil (PKO):</span>
                       <span className="opacity-90"> Oil extracted from the palm kernels, used in cosmetics and food.</span>
                     </div>
                   </li>
@@ -506,7 +506,7 @@ const About = () => {
                       <div className="w-2 h-2 bg-white rounded-full"></div>
                     </div>
                     <div>
-                      <span className="font-bold">Palm Kernel Cake (PKC):</span> 
+                      <span className="font-bold">Palm Kernel Cake (PKC):</span>
                       <span className="opacity-90"> A nutritious by-product ideal for poultry, livestock, and fish feed.</span>
                     </div>
                   </li>
@@ -515,7 +515,7 @@ const About = () => {
                       <div className="w-2 h-2 bg-white rounded-full"></div>
                     </div>
                     <div>
-                      <span className="font-bold">Palm Seedlings:</span> 
+                      <span className="font-bold">Palm Seedlings:</span>
                       <span className="opacity-90"> High-yield, quality seedlings for expanding sustainable cultivation.</span>
                     </div>
                   </li>
@@ -583,13 +583,13 @@ const About = () => {
       {/* AI-Powered Disruption */}
       <section className="relative py-12 sm:py-16">
         <div className="absolute inset-0 bg-cover bg-center z-0">
-          <div 
+          <div
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: `url(${heroImage})` }}
           ></div>
           <div className="absolute inset-0 bg-black/60"></div>
         </div>
-        
+
         <div className="container mx-auto px-4 max-w-6xl relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -607,7 +607,7 @@ const About = () => {
           <div className="relative overflow-hidden rounded-2xl bg-white/10 backdrop-blur-sm p-8 sm:p-12 border border-white/20">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
               <div className="space-y-8">
-                <motion.div 
+                <motion.div
                   className="bg-white/90 backdrop-blur-sm rounded-xl p-6 sm:p-8 shadow-lg"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -626,7 +626,7 @@ const About = () => {
                   </p>
                 </motion.div>
 
-                <motion.div 
+                <motion.div
                   className="bg-white/90 backdrop-blur-sm rounded-xl p-6 sm:p-8 shadow-lg"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -645,7 +645,7 @@ const About = () => {
                   </p>
                 </motion.div>
 
-                <motion.div 
+                <motion.div
                   className="bg-white/90 backdrop-blur-sm rounded-xl p-6 sm:p-8 shadow-lg"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -680,7 +680,7 @@ const About = () => {
                       <div className="w-2 h-2 bg-teal-600 rounded-full"></div>
                     </div>
                     <div>
-                      <span className="font-bold">Higher Returns:</span> 
+                      <span className="font-bold">Higher Shared Surplus:</span>
                       <span className="opacity-90"> Increased yield and lower costs mean significantly higher profit margins and stronger dividends.</span>
                     </div>
                   </li>
@@ -689,7 +689,7 @@ const About = () => {
                       <div className="w-2 h-2 bg-emerald-600 rounded-full"></div>
                     </div>
                     <div>
-                      <span className="font-bold">Scalable Model:</span> 
+                      <span className="font-bold">Scalable Model:</span>
                       <span className="opacity-90"> Our AI-driven system is a scalable asset, making expansion more profitable and less risky than traditional competitors.</span>
                     </div>
                   </li>
@@ -698,7 +698,7 @@ const About = () => {
                       <div className="w-2 h-2 bg-cyan-600 rounded-full"></div>
                     </div>
                     <div>
-                      <span className="font-bold">Competitive Moats:</span> 
+                      <span className="font-bold">Competitive Moats:</span>
                       <span className="opacity-90"> This technology creates a high barrier to entry, positioning Drecan as the future-proof, high-tech leader in Nigerian palm oil.</span>
                     </div>
                   </li>
@@ -726,7 +726,7 @@ const About = () => {
             <p className="text-base sm:text-lg text-muted-foreground mb-8 sm:mb-12 max-w-md sm:max-w-2xl mx-auto">
               The experienced leader driving Drecan Commodities forward
             </p>
-            
+
             <div className="grid grid-cols-1 gap-6 sm:gap-8 justify-items-center">
               <div className="bg-card p-5 sm:p-6 rounded-lg shadow-md border border-border max-w-md w-full">
                 <div className="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16 mx-auto mb-4" />
@@ -744,7 +744,7 @@ const About = () => {
       {/* Call to Action */}
       <section className="py-12 sm:py-16 bg-teal-900 text-white">
         <div className="container mx-auto px-4 text-center">
-          <motion.h2 
+          <motion.h2
             className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -753,7 +753,7 @@ const About = () => {
           >
             Ready to Join Our Mission?
           </motion.h2>
-          <motion.p 
+          <motion.p
             className="text-base sm:text-xl mb-6 sm:mb-8 max-w-md sm:max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -768,7 +768,7 @@ const About = () => {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <Button 
+            <Button
               className="bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 px-6 sm:px-8 rounded-full text-base sm:text-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl"
               asChild
             >

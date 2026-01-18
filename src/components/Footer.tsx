@@ -17,7 +17,7 @@ const Footer = () => {
               <span>Drecan Commodities</span>
             </Link>
             <p className="text-sm text-teal-800">
-              Transparent agricultural investment opportunities with sustainable returns.
+              Transparent agricultural investment opportunities with sustainable shared surplus.
             </p>
             <div className="flex gap-4">
               <a href="https://www.linkedin.com/company/drecan-agriculture/" className="text-teal-800 hover:text-teal-600 transition-colors" target="_blank" rel="noopener noreferrer">

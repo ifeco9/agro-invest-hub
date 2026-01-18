@@ -73,7 +73,7 @@ const Home = () => {
               className="bg-white/20 backdrop-blur-sm border border-white/30 text-white hover:bg-white/30 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 ease-in-out px-6 sm:px-8 py-3 rounded-full font-bold text-base sm:text-lg"
               asChild
             >
-              <Link to="/contact">Partner With Us</Link>
+              <Link to="/contact">Become a Member</Link>
             </Button>
           </motion.div>
 
@@ -196,7 +196,7 @@ const Home = () => {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6 }}
           >
-            Partnership Plans
+            Drecan Multipurpose Corporative Society
           </motion.h2>
           <motion.p
             className="text-base sm:text-lg text-muted-foreground mb-8 sm:mb-12 max-w-md sm:max-w-2xl mx-auto text-center"
@@ -205,7 +205,7 @@ const Home = () => {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            Flexible partnership durations with transparent interest structures and credible returns
+            Become a member and contribute to grains, fruit and vegetables
           </motion.p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
@@ -225,7 +225,7 @@ const Home = () => {
                 <h3 className="text-xl font-bold text-foreground">3-Month Plan</h3>
               </div>
               <p className="text-muted-foreground mb-4">
-                Short-term engagement for quick returns
+                Short-term engagement for quick shared surplus
               </p>
               <div className="space-y-3">
                 <div className="flex justify-between">
@@ -237,7 +237,7 @@ const Home = () => {
                   <span className="font-medium">₦500K - ₦1M</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">Interest Rate:</span>
+                  <span className="text-muted-foreground">Expected Surplus:</span>
                   <span className="font-medium text-primary">20% - 25%</span>
                 </div>
 
@@ -263,7 +263,7 @@ const Home = () => {
                 <h3 className="text-xl font-bold text-foreground">6-Month Plan</h3>
               </div>
               <p className="text-muted-foreground mb-4">
-                Balanced duration with strong returns
+                Balanced duration with strong shared surplus
               </p>
               <div className="space-y-3">
                 <div className="flex justify-between">
@@ -275,7 +275,7 @@ const Home = () => {
                   <span className="font-medium">₦500K - ₦5M</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">Interest Rate:</span>
+                  <span className="text-muted-foreground">Expected Surplus:</span>
                   <span className="font-medium text-primary">35% - 45%</span>
                 </div>
 
@@ -313,7 +313,7 @@ const Home = () => {
                   <span className="font-medium">₦1M - ₦10M</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">Interest Rate:</span>
+                  <span className="text-muted-foreground">Expected Surplus:</span>
                   <span className="font-medium text-primary">75% - 100%</span>
                 </div>
 
@@ -339,7 +339,7 @@ const Home = () => {
                 <h3 className="text-xl font-bold text-foreground">2-Year Plan</h3>
               </div>
               <p className="text-muted-foreground mb-4">
-                Long-term growth with premium returns
+                Long-term growth with premium shared surplus
               </p>
               <div className="space-y-3">
                 <div className="flex justify-between">
@@ -351,7 +351,7 @@ const Home = () => {
                   <span className="font-medium">₦1M</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">Interest Rate:</span>
+                  <span className="text-muted-foreground">Expected Surplus:</span>
                   <span className="font-medium text-primary">100% - 150%</span>
                 </div>
 
@@ -377,7 +377,7 @@ const Home = () => {
                 <h3 className="text-xl font-bold text-foreground">3-Year Plan</h3>
               </div>
               <p className="text-muted-foreground mb-4">
-                Maximum returns for large-scale partners
+                Maximum shared surplus for large-scale partners
               </p>
               <div className="space-y-3">
                 <div className="flex justify-between">
@@ -389,7 +389,7 @@ const Home = () => {
                   <span className="font-medium">₦5M</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">Interest Rate:</span>
+                  <span className="text-muted-foreground">Expected Surplus:</span>
                   <span className="font-medium text-primary">180% - 250%</span>
                 </div>
 
@@ -420,7 +420,7 @@ const Home = () => {
               We specialize in sourcing farm produce directly from farmers in rural communities, moving them efficiently into urban markets, and distributing them to wholesalers, retailers, and community food programs at fair and affordable prices.
             </p>
             <p>
-              By simplifying the agricultural supply chain, we eliminate unnecessary middlemen, ensuring that both farmers earn more and consumers pay less — while investors enjoy steady and transparent returns.
+              By simplifying the agricultural supply chain, we eliminate unnecessary middlemen, ensuring that both farmers earn more and consumers pay less — while investors enjoy steady and transparent shared surplus.
             </p>
           </motion.div>
 
@@ -428,7 +428,7 @@ const Home = () => {
             {[
               {
                 title: "Premium Growth Plan",
-                description: "Designed for investors seeking sustainable, high-yield returns backed by real agricultural trade. Combines short-term turnover with long-term commodity value growth."
+                description: "Designed for investors seeking sustainable, high-yield shared surplus backed by real agricultural trade. Combines short-term turnover with long-term commodity value growth."
               },
               {
                 title: "AgroLink Program",
@@ -552,10 +552,10 @@ const Home = () => {
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
             <Button size="lg" className="bg-teal-600 hover:bg-teal-700 text-white text-base sm:text-lg" asChild>
-              <Link to="/opportunities">Partner with Us</Link>
+              <Link to="/opportunities">Become a Member</Link>
             </Button>
             <Button size="lg" className="bg-white/20 backdrop-blur-sm border border-white/30 text-white hover:bg-white/30 text-base sm:text-lg" asChild>
-              <Link to="/contact">Partner With Us</Link>
+              <Link to="/contact">Become a Member</Link>
             </Button>
           </motion.div>
         </div>
@@ -793,7 +793,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Bouncing Partner with Us Button */}
+      {/* Bouncing Become a Member Button */}
       <motion.div
         className="fixed bottom-6 right-6 z-50"
         animate={{

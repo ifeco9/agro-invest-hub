@@ -152,6 +152,9 @@ const Contact = () => {
                       <a href="https://www.linkedin.com/company/drecan-agriculture/" className="text-foreground hover:text-primary transition-colors" target="_blank" rel="noopener noreferrer">
                         <Linkedin className="h-5 w-5" />
                       </a>
+                      <a href="https://facebook.com" className="text-foreground hover:text-primary transition-colors" target="_blank" rel="noopener noreferrer">
+                        <Facebook className="h-5 w-5" />
+                      </a>
                       <a href="https://www.instagram.com/drecan_commodities?igsh=cXVsZmVydGdmbTI5" className="text-foreground hover:text-primary transition-colors" target="_blank" rel="noopener noreferrer">
                         <Instagram className="h-5 w-5" />
                       </a>

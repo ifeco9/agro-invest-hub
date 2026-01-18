@@ -52,8 +52,8 @@ const Services = () => {
             {[
               {
                 icon: <TrendingUp className="h-8 w-8" />,
-                title: "AgroTrade Investment",
-                description: "Short-term trading opportunities with consistent shared surplus. We purchase agricultural commodities directly from farmers and distribute them to urban markets, providing investors with transparent and profitable opportunities.",
+                title: "AgroTrade Contribution",
+                description: "Short-term trading opportunities with consistent shared surplus. We purchase agricultural commodities directly from farmers and distribute them to urban markets, providing members with transparent and profitable opportunities.",
                 features: [
                   "8-12% annual shared surplus",
                   "6-12 month duration",
@@ -64,7 +64,7 @@ const Services = () => {
               {
                 icon: <Leaf className="h-8 w-8" />,
                 title: "AgroFarm Membership",
-                description: "Long-term farming memberships with higher shared surplus. Investors can lease farmlands or fund managed farms, allowing them to participate in agriculture without direct involvement.",
+                description: "Long-term farming memberships with higher shared surplus. Members can lease farmlands or fund managed farms, allowing them to participate in agriculture without direct involvement.",
                 features: [
                   "15-25% annual shared surplus",
                   "12-24 month duration",
@@ -86,7 +86,7 @@ const Services = () => {
               {
                 icon: <Shield className="h-8 w-8" />,
                 title: "AgroReserve Premium",
-                description: "Premium long-term investment with maximum shared surplus. Our flagship program offers investors the opportunity to participate in large-scale agricultural projects with significant potential for shared surplus.",
+                description: "Premium long-term contribution with maximum shared surplus. Our flagship program offers members the opportunity to participate in large-scale agricultural projects with significant potential for shared surplus.",
                 features: [
                   "25-35% annual shared surplus",
                   "24-36 month duration",
@@ -155,9 +155,9 @@ const Services = () => {
             transition={{ duration: 0.5 }}
             className="text-center mb-8 sm:mb-12"
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4">How Our Investment Process Works</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4">How Our Contribution Process Works</h2>
             <p className="text-base sm:text-lg text-muted-foreground max-w-md sm:max-w-2xl mx-auto">
-              Simple, transparent, and profitable steps to start your agricultural investment journey
+              Simple, transparent, and profitable steps to start your agricultural contribution journey
             </p>
           </motion.div>
 
@@ -166,7 +166,7 @@ const Services = () => {
               {
                 step: "01",
                 title: "Initial Consultation",
-                description: "Contact our investment team to discuss your goals and explore suitable opportunities. We'll provide detailed information about our programs and help you choose the best fit for your investment objectives."
+                description: "Contact our membership team to discuss your goals and explore suitable opportunities. We'll provide detailed information about our programs and help you choose the best fit for your contribution objectives."
               },
               {
                 step: "02",
@@ -175,23 +175,23 @@ const Services = () => {
               },
               {
                 step: "03",
-                title: "Investment Agreement",
-                description: "Sign our transparent investment agreement that clearly outlines terms, returns, timelines, and your rights as an investor. All agreements are legally binding and SEC-compliant."
+                title: "Contribution Agreement",
+                description: "Sign our transparent contribution agreement that clearly outlines terms, shared surplus, timelines, and your rights as a member. All agreements are legally binding and SEC-compliant."
               },
               {
                 step: "04",
                 title: "Active Participation",
-                description: "Receive regular updates on your investment performance, including monthly reports, farm inspection photos, and market analysis. Stay informed throughout the investment period."
+                description: "Receive regular updates on your contribution performance, including monthly reports, farm inspection photos, and market analysis. Stay informed throughout the contribution period."
               },
               {
                 step: "05",
                 title: "Shared Surplus Distribution",
-                description: "Receive your shared surplus according to the agreed schedule. For short-term investments, this is monthly; for long-term investments, shared surplus are distributed at harvest or maturity."
+                description: "Receive your shared surplus according to the agreed schedule. For short-term contributions, this is monthly; for long-term contributions, shared surplus are distributed at harvest or maturity."
               },
               {
                 step: "06",
-                title: "Reinvestment Opportunity",
-                description: "Reinvest your shared surplus in new opportunities or withdraw your profits. Our team will work with you to plan your next investment steps based on your evolving goals."
+                title: "Re-contribution Opportunity",
+                description: "Re-contribute your shared surplus in new opportunities or withdraw your profits. Our team will work with you to plan your next contribution steps based on your evolving goals."
               }
             ].map((process, index) => (
               <motion.div
@@ -313,7 +313,7 @@ const Services = () => {
               <div className="text-primary mb-3">
                 <TrendingUp className="h-8 w-8" />
               </div>
-              <h3 className="text-lg sm:text-xl font-bold text-foreground mb-3">Investment & Memberships</h3>
+              <h3 className="text-lg sm:text-xl font-bold text-foreground mb-3">Contributions & Memberships</h3>
               <div className="space-y-3 mb-4 flex-grow">
                 <div className="flex items-start gap-2">
                   <Mail className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
@@ -406,7 +406,7 @@ const Services = () => {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.5 }}
           >
-            Ready to Start Investing?
+            Ready to Start Contributing?
           </motion.h2>
           <motion.p
             className="text-base sm:text-xl mb-6 sm:mb-8 max-w-md sm:max-w-2xl mx-auto"
@@ -415,7 +415,7 @@ const Services = () => {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            Join our community of investors and start earning sustainable shared surplus from Nigerian agriculture
+            Join our community of members and start earning sustainable shared surplus from Nigerian agriculture
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -427,7 +427,7 @@ const Services = () => {
               className="bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 px-6 sm:px-8 rounded-full text-base sm:text-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl"
               asChild
             >
-              <Link to="/opportunities">Explore Investment Opportunities</Link>
+              <Link to="/opportunities">Explore Contribution Opportunities</Link>
             </Button>
           </motion.div>
         </div>

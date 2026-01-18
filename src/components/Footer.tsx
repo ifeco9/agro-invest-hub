@@ -17,11 +17,14 @@ const Footer = () => {
               <span>Drecan Commodities</span>
             </Link>
             <p className="text-sm text-teal-800">
-              Transparent agricultural investment opportunities with sustainable shared surplus.
+              Transparent agricultural contribution opportunities with sustainable shared surplus.
             </p>
             <div className="flex gap-4">
               <a href="https://www.linkedin.com/company/drecan-agriculture/" className="text-teal-800 hover:text-teal-600 transition-colors" target="_blank" rel="noopener noreferrer">
                 <Linkedin className="h-5 w-5" />
+              </a>
+              <a href="https://facebook.com" className="text-teal-800 hover:text-teal-600 transition-colors" target="_blank" rel="noopener noreferrer">
+                <Facebook className="h-5 w-5" />
               </a>
               <a href="https://www.instagram.com/drecan_commodities?igsh=cXVsZmVydGdmbTI5" className="text-teal-800 hover:text-teal-600 transition-colors" target="_blank" rel="noopener noreferrer">
                 <Instagram className="h-5 w-5" />
@@ -35,7 +38,7 @@ const Footer = () => {
             <ul className="space-y-2 text-sm">
               <li>
                 <Link to="/opportunities" className="text-teal-800 hover:text-teal-600 transition-colors">
-                  Investment Opportunities
+                  Contribution Opportunities
                 </Link>
               </li>
               <li>
@@ -87,7 +90,7 @@ const Footer = () => {
           <div>
             <h3 className="font-semibold mb-4 text-teal-900">Stay Updated</h3>
             <p className="text-sm text-teal-800 mb-4">
-              Get the latest investment opportunities and insights.
+              Get the latest contribution opportunities and insights.
             </p>
             <div className="flex gap-2">
               <Input type="email" placeholder="Your email" className="flex-1 border-teal-100 focus:border-teal-700 focus:ring-teal-700 placeholder:text-teal-400" />

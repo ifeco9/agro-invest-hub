@@ -149,7 +149,7 @@ const Opportunities = () => {
                     </h3>
                     <div className="bg-secondary rounded-lg p-3 sm:p-4 mb-4">
                       <p className="text-muted-foreground text-sm sm:text-base mb-3">
-                        Shared surplus is paid starting from the second month of investment to the end of investment period. Shared surplus can also be calculated and paid at the end of investment period; principal returned at the end of three months.
+                        Shared surplus is paid starting from the second month of contribution to the end of contribution period. Shared surplus can also be calculated and paid at the end of contribution period; principal returned at the end of three months.
                       </p>
                     </div>
                   </div>

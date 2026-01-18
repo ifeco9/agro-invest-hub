@@ -57,7 +57,7 @@ export interface InvestmentOpportunity {
   image?: string;
   region: string;
   crop: string;
-  minInvestment: string;
+  minContribution: string;
   roi: string;
   duration: string;
   slotsAvailable: number;
@@ -153,7 +153,7 @@ const Shop = () => {
       title: "3-Month Membership Plan",
       region: "Multi-State",
       crop: "Various Commodities",
-      minInvestment: "₦500,000",
+      minContribution: "₦500,000",
       roi: "20% - 25%",
       duration: "3 Months",
       slotsAvailable: 50,
@@ -166,7 +166,7 @@ const Shop = () => {
       title: "6-Month Membership Plan",
       region: "Multi-State",
       crop: "High-Value Crops",
-      minInvestment: "₦500,000",
+      minContribution: "₦500,000",
       roi: "35% - 45%",
       duration: "6 Months",
       slotsAvailable: 40,
@@ -179,7 +179,7 @@ const Shop = () => {
       title: "1-Year Membership Plan",
       region: "Multi-State",
       crop: "Export Commodities",
-      minInvestment: "₦1,000,000",
+      minContribution: "₦1,000,000",
       roi: "75% - 100%",
       duration: "12 Months",
       slotsAvailable: 30,
@@ -192,7 +192,7 @@ const Shop = () => {
       title: "2-Year Membership Plan",
       region: "Nationwide",
       crop: "Integrated Farming",
-      minInvestment: "₦1,000,000",
+      minContribution: "₦1,000,000",
       roi: "100% - 150%",
       duration: "24 Months",
       slotsAvailable: 20,
@@ -205,7 +205,7 @@ const Shop = () => {
       title: "3-Year Membership Plan",
       region: "Nationwide",
       crop: "Agro-Industrial",
-      minInvestment: "₦5,000,000",
+      minContribution: "₦5,000,000",
       roi: "180% - 250%",
       duration: "36 Months",
       slotsAvailable: 10,
@@ -757,7 +757,7 @@ const Shop = () => {
               aria-label="Investment tab"
               className="data-[state=active]:bg-teal-600 data-[state=active]:text-white transition-all duration-300"
             >
-              Investment
+              Contribution
             </TabsTrigger>
           </TabsList>
 

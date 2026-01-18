@@ -133,8 +133,8 @@ const Home = () => {
               <div className="text-primary mb-3 flex justify-center">
                 <TrendingUp className="h-8 w-8" />
               </div>
-              <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2">Agricultural Investment & Partnerships</h3>
-              <p className="text-muted-foreground text-sm sm:text-base mb-4 flex-grow">Connect investors with profitable agricultural opportunities across Nigeria</p>
+              <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2">Agricultural Contribution & Memberships</h3>
+              <p className="text-muted-foreground text-sm sm:text-base mb-4 flex-grow">Connect members with profitable agricultural opportunities across Nigeria</p>
               <Button variant="outline" asChild>
                 <Link to="/services#investment">Learn More</Link>
               </Button>
@@ -233,7 +233,7 @@ const Home = () => {
                   <span className="font-medium">3 Months</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">Investment Range:</span>
+                  <span className="text-muted-foreground">Contribution Range:</span>
                   <span className="font-medium">₦500K - ₦1M</span>
                 </div>
                 <div className="flex justify-between">
@@ -271,7 +271,7 @@ const Home = () => {
                   <span className="font-medium">6 Months</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">Investment Range:</span>
+                  <span className="text-muted-foreground">Contribution Range:</span>
                   <span className="font-medium">₦500K - ₦5M</span>
                 </div>
                 <div className="flex justify-between">
@@ -309,7 +309,7 @@ const Home = () => {
                   <span className="font-medium">12 Months</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">Investment Range:</span>
+                  <span className="text-muted-foreground">Contribution Range:</span>
                   <span className="font-medium">₦1M - ₦10M</span>
                 </div>
                 <div className="flex justify-between">
@@ -524,7 +524,7 @@ const Home = () => {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            Whether you are a farmer, investor, or partner organization, there's a place for you in our mission.
+            Whether you are a farmer, member, or partner organization, there's a place for you in our mission.
           </motion.p>
           <motion.p
             className="text-base sm:text-lg mb-6 sm:mb-8"
@@ -542,7 +542,7 @@ const Home = () => {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            Be part of the change. Invest in agriculture. Invest in people. Invest with Drecan.
+            Be part of the change. Contribute to agriculture. Contribute to people. Contribute with Drecan.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -652,7 +652,7 @@ const Home = () => {
             >
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-teal-500 to-emerald-500"></div>
               <p className="text-muted-foreground text-base sm:text-lg italic mb-4">
-                "At Drecan, we believe investment should go beyond profit, it should build legacies. Your investment with us drives food security, empowers farmers, and fuels sustainable growth across communities."
+                "At Drecan, we believe contribution should go beyond profit, it should build legacies. Your contribution with us drives food security, empowers farmers, and fuels sustainable growth across communities."
               </p>
               <p className="text-muted-foreground text-base sm:text-lg">
                 We are not just another agricultural company; we are an epitome of agricultural excellence, combining deep rooted expertise with responsible resource management and long-term value creation.
@@ -781,9 +781,9 @@ const Home = () => {
               transition={{ duration: 0.6 }}
               whileHover={{ x: 5, transition: { duration: 0.3 } }}
             >
-              <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2 sm:mb-3">3. AgroFarm Partnership</h3>
+              <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2 sm:mb-3">3. AgroFarm Membership</h3>
               <p className="text-muted-foreground">
-                The Premium Growth Plan is designed for investors who want sustainable, high yield returns backed by the strength of real agricultural trade.
+                The Premium Growth Plan is designed for members who want sustainable, high yield shared surplus backed by the strength of real agricultural trade.
               </p>
               <p className="text-muted-foreground mt-2">
                 It combines Drecan's short-term turnover system with long-term commodity value growth ensuring consistent profit while contributing to national food security and market balance.
@@ -813,7 +813,7 @@ const Home = () => {
           asChild
         >
           <Link to="/opportunities">
-            <span className="text-[8px] font-extrabold tracking-wide">Partner<br />With Us</span>
+            <span className="text-[8px] font-extrabold tracking-wide">Become<br />Member</span>
           </Link>
         </Button>
       </motion.div>

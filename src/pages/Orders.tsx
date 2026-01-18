@@ -101,10 +101,10 @@ const Orders = () => {
           className="text-center mb-8 sm:mb-12"
         >
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-teal-900 mb-3 sm:mb-4">
-            Investment Dashboard
+            Contribution Dashboard
           </h1>
           <p className="text-base sm:text-lg text-teal-700 max-w-md sm:max-w-2xl mx-auto">
-            Track your agricultural investments and monitor shared surplus
+            Track your agricultural contributions and monitor shared surplus
           </p>
         </motion.div>
 
@@ -118,7 +118,7 @@ const Orders = () => {
           <Card className="bg-white border-teal-200 shadow-md">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium text-teal-700">
-                Total Investments
+                Total Contributions
               </CardTitle>
               <DollarSign className="h-4 w-4 text-teal-500" />
             </CardHeader>
@@ -131,7 +131,7 @@ const Orders = () => {
           <Card className="bg-white border-teal-200 shadow-md">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium text-teal-700">
-                Active Investments
+                Active Contributions
               </CardTitle>
               <TrendingUp className="h-4 w-4 text-teal-500" />
             </CardHeader>
@@ -178,13 +178,13 @@ const Orders = () => {
             <CardHeader>
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <div>
-                  <CardTitle className="text-xl font-bold text-teal-900">Investment Orders</CardTitle>
+                  <CardTitle className="text-xl font-bold text-teal-900">Contribution Orders</CardTitle>
                   <CardDescription className="text-teal-700">
-                    Manage and track all your agricultural investments
+                    Manage and track all your agricultural contributions
                   </CardDescription>
                 </div>
                 <Button className="bg-teal-600 hover:bg-teal-700 text-white">
-                  New Investment
+                  New Contribution
                 </Button>
               </div>
 
@@ -199,8 +199,8 @@ const Orders = () => {
                   <button
                     key={tab.id}
                     className={`pb-2 px-1 text-sm font-medium ${activeTab === tab.id
-                        ? "text-teal-600 border-b-2 border-teal-600"
-                        : "text-teal-500 hover:text-teal-700"
+                      ? "text-teal-600 border-b-2 border-teal-600"
+                      : "text-teal-500 hover:text-teal-700"
                       }`}
                     onClick={() => setActiveTab(tab.id)}
                   >
@@ -255,12 +255,12 @@ const Orders = () => {
                   <h3 className="mt-2 text-sm font-medium text-teal-900">No orders found</h3>
                   <p className="mt-1 text-sm text-teal-500">
                     {activeTab === "all"
-                      ? "Get started by creating a new investment."
+                      ? "Get started by creating a new contribution."
                       : `No ${activeTab} orders at this time.`}
                   </p>
                   <div className="mt-6">
                     <Button className="bg-teal-600 hover:bg-teal-700 text-white">
-                      Create New Investment
+                      Create New Contribution
                     </Button>
                   </div>
                 </div>

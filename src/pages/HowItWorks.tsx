@@ -6,48 +6,83 @@ import { Search, Calculator, CheckCircle, Shield, FileText, TrendingUp } from "l
 const HowItWorks = () => {
   const steps = [
     {
-      number: "1",
+      number: "01",
       icon: Search,
-      title: "From Our Own Plantations",
-      description: "Integrated model: our plantations → secure storage — ethical, sustainable, and fully controlled.",
+      title: "Initial Engagement",
+      description: "Contact our team to discuss cooperative membership or product services suitable to your needs.",
       details: [
-        "Interactive map showing farm locations",
-        "Comprehensive project documentation",
-        "Historical performance data",
-        "Risk analysis and mitigation strategies",
+        "Initial consultation with our team",
+        "Understand available programs",
+        "Assess your participation goals",
+        "Review membership or service options"
       ],
     },
     {
-      number: "2",
-      icon: Calculator,
-      title: "Calculate Shared Surplus",
-      description: "Use our free ROI calculator to estimate your potential shared surplus based on your investment amount and selected opportunity. Get instant projections tailored to your goals.",
+      number: "02",
+      icon: FileText,
+      title: "Information & Documentation",
+      description: "Review participation guidelines, operational structures, and engagement terms applicable to the selected program.",
       details: [
-        "Personalized shared surplus projections",
-        "Investment timeline visualization",
-        "Risk-adjusted calculations",
-        "Comparison tools for multiple opportunities",
+        "Access detailed program information",
+        "Review cooperative bylaws and guidelines",
+        "Understand roles and responsibilities",
+        "Clarify terms and expectations"
       ],
     },
     {
-      number: "3",
+      number: "03",
       icon: CheckCircle,
-      title: "Reserve Your Slot",
-      description: "Submit your expression of interest through our secure platform. Our team will guide you through the verification process and finalize your investment.",
+      title: "Participation Agreement",
+      description: "Execute cooperative membership or service agreements outlining roles, responsibilities, timelines, and surplus-sharing principles (where applicable).",
       details: [
-        "Quick online interest form",
-        "Secure document upload",
-        "Expert guidance throughout",
-        "Transparent fee structure",
+        "Sign membership or service agreements",
+        "Complete registration process",
+        "Formalize participation terms",
+        "Establish communication channels"
       ],
     },
+    {
+      number: "04",
+      icon: TrendingUp,
+      title: "Active Participation",
+      description: "Receive regular updates on operations, storage status, distribution activities, and cooperative programs.",
+      details: [
+        "Access to member portal",
+        "Regular operational updates",
+        "Participation in cooperative activities",
+        "Transparent reporting and tracking"
+      ],
+    },
+    {
+      number: "05",
+      icon: Calculator,
+      title: "Outcome & Distribution",
+      description: "Surpluses, products, or service outcomes are shared or delivered based on agreed cooperative or service terms.",
+      details: [
+        "Transparent surplus distribution",
+        "Product delivery as scheduled",
+        "Clear accounting and records",
+        "Member benefit realization"
+      ],
+    },
+    {
+      number: "06",
+      icon: Shield,
+      title: "Continuity or Exit",
+      description: "Members and partners may continue participation, scale involvement, or disengage based on agreed terms.",
+      details: [
+        "Flexible continuation options",
+        "Scale up participation",
+        "Graceful exit procedures",
+        "Reinvestment opportunities"
+      ],
+    }
   ];
 
   const benefits = [
     {
       icon: Shield,
-      title: "SEC Regulated",
-      description: "Fully compliant with Nigerian financial regulations, ensuring your investments are protected.",
+      description: "Fully compliant with Cooperative Society regulations, ensuring member rights are protected.",
     },
     {
       icon: FileText,
@@ -70,7 +105,7 @@ const HowItWorks = () => {
             How It Works
           </h1>
           <p className="text-lg text-teal-800 max-w-2xl mx-auto">
-            Start your agricultural investment journey with our simple, transparent three-step process.
+            Simple, transparent, and structured participation process
           </p>
         </div>
       </section>
@@ -128,7 +163,7 @@ const HowItWorks = () => {
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-teal-900">Why Trust Drecan Commodities?</h2>
             <p className="text-lg text-teal-800 max-w-2xl mx-auto">
-              We prioritize transparency, security, and investor success in every aspect of our platform.
+              We prioritize transparency, security, and member success in every aspect of our platform.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -154,7 +189,7 @@ const HowItWorks = () => {
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-teal-900">Ready to Get Started?</h2>
           <p className="text-lg text-teal-800 mb-8 max-w-2xl mx-auto">
-            Join hundreds of investors who are already earning sustainable shared surplus from Nigerian agriculture.
+            Join hundreds of members who are already earning sustainable shared surplus from Nigerian agriculture.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="bg-teal-600 hover:bg-teal-700 text-white" asChild>

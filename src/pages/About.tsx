@@ -24,7 +24,7 @@ const About = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            Building a sustainable future through ethical agricultural investment and community empowerment
+            Building a sustainable future through ethical cooperative participation and community empowerment
           </motion.p>
         </div>
       </section>
@@ -66,6 +66,52 @@ const About = () => {
         </div>
       </section>
 
+      {/* Cooperative Governance */}
+      <section className="py-12 sm:py-16 bg-secondary">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-6">Cooperative Governance Framework</h2>
+            <div className="space-y-6 text-muted-foreground">
+              <p>
+                Drecan Multipurpose Cooperative Society operates under a strictly democratic framework where every member has a voice. Our governance structure is designed to ensure transparency, accountability, and fair representation.
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                <div className="bg-card p-6 rounded-lg shadow-sm border border-border">
+                  <h3 className="text-xl font-bold text-foreground mb-3 flex items-center gap-2">
+                    <Users className="h-5 w-5 text-teal-600" /> Democratic Membership
+                  </h3>
+                  <p>
+                    Membership is voluntary and open to all persons able to use our services and willing to accept the responsibilities of membership, without gender, social, racial, political or religious discrimination. Members actively participate in setting policies and making decisions.
+                  </p>
+                </div>
+
+                <div className="bg-card p-6 rounded-lg shadow-sm border border-border">
+                  <h3 className="text-xl font-bold text-foreground mb-3 flex items-center gap-2">
+                    <Shield className="h-5 w-5 text-teal-600" /> Board of Directors
+                  </h3>
+                  <p>
+                    Our Board is elected from the membership and by the membership. They serve as accountable stewards, serving on committees that oversee audit, finance, and community projects, ensuring the cooperative remains aligned with its mission and values.
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-teal-50 p-6 rounded-lg border border-teal-100 mt-6">
+                <h3 className="text-xl font-bold text-teal-800 mb-2">Member Economic Participation</h3>
+                <p className="text-teal-700">
+                  Members contribute equitably to, and democratically control, the capital of their cooperative. Surpluses are allocated to developing the cooperative, setting up reserves, and benefiting members in proportion to their transactions with the cooperative.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Core Values */}
       <section className="py-12 sm:py-16 bg-teal-900">
         <div className="container mx-auto px-4 max-w-6xl">
@@ -87,7 +133,7 @@ const About = () => {
               {
                 icon: <Heart className="h-8 w-8" />,
                 title: "Integrity",
-                description: "We conduct all our business with honesty, transparency, and ethical standards. Every transaction is documented and every investor receives regular updates."
+                description: "We conduct all our business with honesty, transparency, and ethical standards. Every transaction is documented and every member receives regular updates."
               },
               {
                 icon: <Users className="h-8 w-8" />,
@@ -97,7 +143,7 @@ const About = () => {
               {
                 icon: <TrendingUp className="h-8 w-8" />,
                 title: "Sustainable Shared Surplus",
-                description: "We are committed to delivering consistent, sustainable shared surplus to our investors through well-managed agricultural investments backed by real commodities."
+                description: "We are committed to delivering consistent, sustainable shared surplus to our members through well-managed agricultural operations backed by real commodities."
               },
               {
                 icon: <Leaf className="h-8 w-8" />,
@@ -107,7 +153,7 @@ const About = () => {
               {
                 icon: <Award className="h-8 w-8" />,
                 title: "Excellence",
-                description: "We strive for excellence in every aspect of our operations, from farm management to investor relations, ensuring the highest standards in all we do."
+                description: "We strive for excellence in every aspect of our operations, from farm management to member relations, ensuring the highest standards in all we do."
               },
               {
                 icon: <Zap className="h-8 w-8" />,
@@ -324,7 +370,7 @@ const About = () => {
                   </p>
                   <p>
                     Over the years, we have grown from a small local trading operation into a comprehensive agricultural
-                    investment platform that connects thousands of investors with profitable opportunities in Nigeria's
+                    cooperative society that connects members with agricultural opportunities in Nigeria's
                     agricultural sector. Today, we work with 150 farmers across multiple states and have facilitated
                     investments worth millions of naira.
                   </p>
@@ -349,7 +395,7 @@ const About = () => {
                   { year: "2014", event: "Company founded in Osun State" },
                   { year: "2016", event: "Expanded operations to Abuja" },
                   { year: "2018", event: "Launched AgroFarm Partnership program" },
-                  { year: "2020", event: "Reached 1,000+ satisfied investors" },
+                  { year: "2020", event: "Reached 1,000+ cooperative members" },
                   { year: "2022", event: "Partnered with 150 farmers across 5 states" },
                   { year: "2024", event: "Launched AgroReserve premium investment program" }
                 ].map((milestone, index) => (
@@ -673,7 +719,7 @@ const About = () => {
                 transition={{ duration: 0.5 }}
                 whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
               >
-                <h3 className="text-xl sm:text-2xl font-bold mb-4">The Investor & Partner Advantage:</h3>
+                <h3 className="text-xl sm:text-2xl font-bold mb-4">The Member Advantage:</h3>
                 <ul className="space-y-4">
                   <li className="flex items-start gap-3">
                     <div className="mt-1 flex-shrink-0">
@@ -760,7 +806,7 @@ const About = () => {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            Discover how you can invest in agriculture and make a positive impact
+            Discover how you can join our cooperative and make a positive impact
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -772,7 +818,7 @@ const About = () => {
               className="bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 px-6 sm:px-8 rounded-full text-base sm:text-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl"
               asChild
             >
-              <Link to="/opportunities">Explore Investment Opportunities</Link>
+              <Link to="/opportunities">Explore Membership Opportunities</Link>
             </Button>
           </motion.div>
         </div>

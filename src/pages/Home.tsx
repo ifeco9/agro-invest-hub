@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { TrendingUp, Zap, Award, Shield, Leaf, Globe, Warehouse, ShoppingCart } from "lucide-react";
+import { TrendingUp, Zap, Award, Shield, Leaf, Globe, Warehouse, ShoppingCart, CheckCircle, MessageSquare, Phone, Mail, Clock, Calendar, FileText, CheckCircle2, Users, Sliders } from "lucide-react";
 import heroImage from "@/assets/hero-farm.jpg";
+import BusinessModel from "@/components/BusinessModel";
 import kadunaRice from "@/assets/Kaduna Rice Yield Fund.jpeg";
 import ogunCassava from "@/assets/Ogun Cassava Processing Investment.jpeg";
 import kanoWheat from "@/assets/Kano Wheat Farming Project.jpeg";
@@ -14,23 +15,9 @@ import sorghumGrains from "@/assets/sorghum  grains.jpg";
 import ofadaRice from "@/assets/ofada rice.jpg";
 
 const Home = () => {
-  const [investmentAmount, setInvestmentAmount] = useState(300000);
-
-  // Auto-increment counter for investment return
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setInvestmentAmount(prev => {
-        if (prev >= 315000) return 300000;
-        return prev + 1000;
-      });
-    }, 100);
-
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
+      {/* Hero Section - Restored Hardcoded Rich Design */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden bg-teal-900">
         <div className="absolute inset-0 bg-black/50 z-10"></div>
         <div
@@ -38,45 +25,48 @@ const Home = () => {
           style={{ backgroundImage: `url(${heroImage})` }}
         ></div>
 
-        <div className="relative z-20 text-center text-white px-4 max-w-4xl mx-auto">
-          <motion.h1
-            className="text-3xl sm:text-4xl md:text-6xl font-bold mb-6"
-            initial={{ opacity: 0, y: 20 }}
+        <div className="relative z-20 text-center text-white px-4 max-w-5xl mx-auto mt-16 sm:mt-0">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            Empowering Agriculture...
-          </motion.h1>
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-serif font-bold mb-6 leading-tight drop-shadow-lg tracking-wide">
+              Comprehensive Agricultural<br />
+              Solutions
+            </h1>
+          </motion.div>
+
           <motion.p
-            className="text-lg sm:text-xl md:text-2xl mb-8"
-            initial={{ opacity: 0, y: 20 }}
+            className="text-lg sm:text-xl md:text-2xl mb-10 font-light max-w-3xl mx-auto text-teal-50 leading-relaxed drop-shadow-md"
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Empowering Agriculture. Empowering Communities. Feeding the Future.
+            From farm to market, we deliver practical, member-driven agricultural services that build sustainable wealth.
           </motion.p>
+
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
+            className="flex flex-col sm:flex-row gap-5 justify-center"
           >
             <Button
               size="lg"
-              className="bg-teal-700 hover:bg-teal-800 text-white shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 ease-in-out px-6 sm:px-8 py-3 rounded-full font-bold text-base sm:text-lg"
+              className="bg-gradient-to-r from-teal-500 to-emerald-600 hover:from-teal-600 hover:to-emerald-700 text-white shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 ease-in-out px-8 py-6 rounded-full font-bold text-lg tracking-wide"
               asChild
             >
-              <Link to="/shop">Shop Now</Link>
+              <Link to="/opportunities">Join the Cooperative</Link>
             </Button>
             <Button
               size="lg"
-              className="bg-white/20 backdrop-blur-sm border border-white/30 text-white hover:bg-white/30 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 ease-in-out px-6 sm:px-8 py-3 rounded-full font-bold text-base sm:text-lg"
+              className="bg-white/10 backdrop-blur-md border border-white/40 text-white hover:bg-white/20 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 ease-in-out px-8 py-6 rounded-full font-bold text-lg tracking-wide"
               asChild
             >
-              <Link to="/contact">Become a Member</Link>
+              <Link to="/shop">Explore Products</Link>
             </Button>
           </motion.div>
-
         </div>
 
         {/* Floating particles animation */}
@@ -98,88 +88,15 @@ const Home = () => {
               transition={{
                 duration: Math.random() * 10 + 10,
                 repeat: Infinity,
-                delay: Math.random() * 5
+                ease: "linear",
+                delay: Math.random() * 10
               }}
             />
           ))}
         </div>
       </section>
 
-      {/* Business Segments */}
-      <section className="py-12 sm:py-16 bg-background">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <motion.div
-            className="text-center mb-8 sm:mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.5 }}
-          >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4">Our Core Business Segments</h2>
-            <p className="text-base sm:text-lg text-muted-foreground max-w-md sm:max-w-2xl mx-auto">
-              Comprehensive solutions designed to maximize value across the agricultural value chain
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-            <motion.div
-              className="bg-card p-5 sm:p-6 rounded-lg shadow-md border border-border flex flex-col h-full text-center"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              whileHover={{ y: -5, transition: { duration: 0.3 } }}
-            >
-              <div className="text-primary mb-3 flex justify-center">
-                <TrendingUp className="h-8 w-8" />
-              </div>
-              <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2">Agricultural Contribution & Memberships</h3>
-              <p className="text-muted-foreground text-sm sm:text-base mb-4 flex-grow">Connect members with profitable agricultural opportunities across Nigeria</p>
-              <Button variant="outline" asChild>
-                <Link to="/services#investment">Learn More</Link>
-              </Button>
-            </motion.div>
-
-            <motion.div
-              className="bg-card p-5 sm:p-6 rounded-lg shadow-md border border-border flex flex-col h-full text-center"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              whileHover={{ y: -5, transition: { duration: 0.3 } }}
-            >
-              <div className="text-primary mb-3 flex justify-center">
-                <Warehouse className="h-8 w-8" />
-              </div>
-              <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2">Storage & Scarcity-Based Sales</h3>
-              <p className="text-muted-foreground text-sm sm:text-base mb-4 flex-grow">Strategic warehousing and seasonal commodity trading</p>
-              <Button variant="outline" asChild>
-                <Link to="/services#storage">Learn More</Link>
-              </Button>
-            </motion.div>
-
-            <motion.div
-              className="bg-card p-5 sm:p-6 rounded-lg shadow-md border border-border flex flex-col h-full text-center"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              whileHover={{ y: -5, transition: { duration: 0.3 } }}
-            >
-              <div className="text-primary mb-3 flex justify-center">
-                <ShoppingCart className="h-8 w-8" />
-              </div>
-              <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2">Purchase & Resale of Agricultural Products</h3>
-              <p className="text-muted-foreground text-sm sm:text-base mb-4 flex-grow">Streamlined supply chain from farm to market</p>
-              <Button variant="outline" asChild>
-                <Link to="/services#procurement">Learn More</Link>
-              </Button>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Investment Highlights - Enhanced with artistic background and animations */}
+      {/* Business Model Segments - Rich Background */}
       <section className="py-12 sm:py-16 bg-gradient-to-br from-teal-50 to-emerald-50 relative overflow-hidden">
         {/* Decorative animated elements */}
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
@@ -187,224 +104,14 @@ const Home = () => {
           <div className="absolute top-10 right-10 w-64 h-64 bg-emerald-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse animation-delay-2000"></div>
           <div className="absolute bottom-10 left-1/2 w-64 h-64 bg-cyan-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse animation-delay-4000"></div>
         </div>
-
-        <div className="container mx-auto px-4 relative z-10">
-          <motion.h2
-            className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4 text-center"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6 }}
-          >
-            Drecan Multipurpose Corporative Society
-          </motion.h2>
-          <motion.p
-            className="text-base sm:text-lg text-muted-foreground mb-8 sm:mb-12 max-w-md sm:max-w-2xl mx-auto text-center"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            Become a member and contribute to grains, fruit and vegetables
-          </motion.p>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {/* 3-Month Partnership Plan */}
-            <motion.div
-              className="bg-card rounded-lg shadow-lg p-6 sm:p-8 border border-border backdrop-blur-sm bg-white/80"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6 }}
-              whileHover={{ y: -10, transition: { duration: 0.3 } }}
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 bg-teal-100 rounded-lg">
-                  <Zap className="h-6 w-6 text-teal-600" />
-                </div>
-                <h3 className="text-xl font-bold text-foreground">3-Month Plan</h3>
-              </div>
-              <p className="text-muted-foreground mb-4">
-                Short-term engagement for quick shared surplus
-              </p>
-              <div className="space-y-3">
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Duration:</span>
-                  <span className="font-medium">3 Months</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Contribution Range:</span>
-                  <span className="font-medium">₦500K - ₦1M</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Expected Surplus:</span>
-                  <span className="font-medium text-primary">20% - 25%</span>
-                </div>
-
-              </div>
-              <Button size="sm" className="w-full mt-4" variant="outline" asChild>
-                <Link to="/opportunities#three-month">Learn More</Link>
-              </Button>
-            </motion.div>
-
-            {/* 6-Month Partnership Plan */}
-            <motion.div
-              className="bg-card rounded-lg shadow-lg p-6 sm:p-8 border border-border backdrop-blur-sm bg-white/80"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              whileHover={{ y: -10, transition: { duration: 0.3 } }}
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 bg-emerald-100 rounded-lg">
-                  <TrendingUp className="h-6 w-6 text-emerald-600" />
-                </div>
-                <h3 className="text-xl font-bold text-foreground">6-Month Plan</h3>
-              </div>
-              <p className="text-muted-foreground mb-4">
-                Balanced duration with strong shared surplus
-              </p>
-              <div className="space-y-3">
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Duration:</span>
-                  <span className="font-medium">6 Months</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Contribution Range:</span>
-                  <span className="font-medium">₦500K - ₦5M</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Expected Surplus:</span>
-                  <span className="font-medium text-primary">35% - 45%</span>
-                </div>
-
-              </div>
-              <Button size="sm" className="w-full mt-4" variant="outline" asChild>
-                <Link to="/opportunities#six-month">Learn More</Link>
-              </Button>
-            </motion.div>
-
-            {/* 1-Year Partnership Plan */}
-            <motion.div
-              className="bg-card rounded-lg shadow-lg p-6 sm:p-8 border border-border backdrop-blur-sm bg-white/80"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              whileHover={{ y: -10, transition: { duration: 0.3 } }}
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 bg-cyan-100 rounded-lg">
-                  <Award className="h-6 w-6 text-cyan-600" />
-                </div>
-                <h3 className="text-xl font-bold text-foreground">1-Year Plan</h3>
-              </div>
-              <p className="text-muted-foreground mb-4">
-                High-yield annual partnership
-              </p>
-              <div className="space-y-3">
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Duration:</span>
-                  <span className="font-medium">12 Months</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Contribution Range:</span>
-                  <span className="font-medium">₦1M - ₦10M</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Expected Surplus:</span>
-                  <span className="font-medium text-primary">75% - 100%</span>
-                </div>
-
-              </div>
-              <Button size="sm" className="w-full mt-4" variant="outline" asChild>
-                <Link to="/opportunities#one-year">Learn More</Link>
-              </Button>
-            </motion.div>
-
-            {/* 2-Year Partnership Plan */}
-            <motion.div
-              className="bg-card rounded-lg shadow-lg p-6 sm:p-8 border border-border backdrop-blur-sm bg-white/80"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              whileHover={{ y: -10, transition: { duration: 0.3 } }}
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 bg-purple-100 rounded-lg">
-                  <Shield className="h-6 w-6 text-purple-600" />
-                </div>
-                <h3 className="text-xl font-bold text-foreground">2-Year Plan</h3>
-              </div>
-              <p className="text-muted-foreground mb-4">
-                Long-term growth with premium shared surplus
-              </p>
-              <div className="space-y-3">
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Duration:</span>
-                  <span className="font-medium">24 Months</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Minimum Investment:</span>
-                  <span className="font-medium">₦1M</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Expected Surplus:</span>
-                  <span className="font-medium text-primary">100% - 150%</span>
-                </div>
-
-              </div>
-              <Button size="sm" className="w-full mt-4" variant="outline" asChild>
-                <Link to="/opportunities#two-year">Learn More</Link>
-              </Button>
-            </motion.div>
-
-            {/* 3-Year Partnership Plan */}
-            <motion.div
-              className="bg-card rounded-lg shadow-lg p-6 sm:p-8 border border-border backdrop-blur-sm bg-white/80 md:col-span-2 lg:col-span-1"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              whileHover={{ y: -10, transition: { duration: 0.3 } }}
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 bg-amber-100 rounded-lg">
-                  <Award className="h-6 w-6 text-amber-600" />
-                </div>
-                <h3 className="text-xl font-bold text-foreground">3-Year Plan</h3>
-              </div>
-              <p className="text-muted-foreground mb-4">
-                Maximum shared surplus for large-scale partners
-              </p>
-              <div className="space-y-3">
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Duration:</span>
-                  <span className="font-medium">36 Months</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Minimum Investment:</span>
-                  <span className="font-medium">₦5M</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Expected Surplus:</span>
-                  <span className="font-medium text-primary">180% - 250%</span>
-                </div>
-
-              </div>
-              <Button size="sm" className="w-full mt-4" variant="outline" asChild>
-                <Link to="/opportunities#three-year">Learn More</Link>
-              </Button>
-            </motion.div>
-          </div>
+        <div className="relative z-10">
+          <BusinessModel />
         </div>
       </section>
 
-      {/* Who We Are */}
+      {/* Our Core Services */}
       <section className="py-12 sm:py-16 bg-teal-900 text-white">
-        <div className="container mx-auto px-4 max-w-4xl">
+        <div className="container mx-auto px-4 max-w-7xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -412,78 +119,77 @@ const Home = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-8 sm:mb-12"
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">Who We Are</h2>
-            <p className="text-base sm:text-lg mb-6 sm:mb-8">
-              Drecan Commodities Ltd is an agricultural trading and investment company based in Abuja, Nigeria.
-            </p>
-            <p className="mb-4">
-              We specialize in sourcing farm produce directly from farmers in rural communities, moving them efficiently into urban markets, and distributing them to wholesalers, retailers, and community food programs at fair and affordable prices.
-            </p>
-            <p>
-              By simplifying the agricultural supply chain, we eliminate unnecessary middlemen, ensuring that both farmers earn more and consumers pay less — while investors enjoy steady and transparent shared surplus.
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">Our Core Services</h2>
+            <p className="text-base sm:text-lg text-teal-100 max-w-2xl mx-auto">
+              Practical agricultural services designed to support farmers, members, and markets
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mt-8 sm:mt-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {[
               {
-                title: "Premium Growth Plan",
-                description: "Designed for investors seeking sustainable, high-yield shared surplus backed by real agricultural trade. Combines short-term turnover with long-term commodity value growth."
+                title: "AgroTrade Operations",
+                description: "Short-term commodity aggregation and market distribution. We purchase agricultural produce from farmers and cooperative members and supply urban and institutional markets through structured sales channels.",
+                features: ["Market-driven pricing", "Seasonal trading cycles", "Transparent supply records", "Managed operational risk"]
               },
               {
-                title: "AgroLink Program",
-                description: "Our community commitment goes beyond business. We support smallholder farmers, provide educational outreach, and empower local communities for sustainable progress."
+                title: "AgroFarm Cooperative Program",
+                description: "Long-term cooperative farming programs that allow members to participate in agriculture through collective production and professionally managed farms.",
+                features: ["Cooperative membership structure", "Shared operational outcomes", "Crop-cycle based participation", "Moderate operational risk"]
               },
               {
-                title: "AgroTrade Cycle",
-                description: "From our plantations to urban markets, we cultivate palm oil, rice, beans, cocoa, maize, cashew nuts, and egusi — ensuring efficient, transparent distribution."
+                title: "AgroLink Community Supply Program",
+                description: "A community-focused supply initiative delivering affordable food products to schools, hospitals, markets, and community programs while supporting farmer livelihoods.",
+                features: ["Community impact focus", "Affordable food access", "Direct farmer support", "Sustainable supply model"]
               },
               {
-                title: "Sustainability & Social Impact",
-                description: "Sustainability is at the heart of our business. We protect the environment, uplift communities, and create shared prosperity through responsible agriculture.",
-                fullDescription: "At Drecan Commodities & Oil Palm Company, sustainability isn't an afterthought — it's the heart of our business. We protect the environment, uplift communities, and create shared prosperity through responsible agriculture and meaningful impact.\n\nOur Community Commitment:\nBeyond business, we invest in people. Through our Community Support Initiatives, Drecan Commodities supports smallholder farmers, provides educational outreach, and empowers local women, men, and youth — ensuring that every investment contributes to sustainable progress."
+                title: "AgroReserve Storage Program",
+                description: "Long-term produce storage and market-stabilization service supporting price balance and food security.",
+                features: ["Controlled storage facilities", "Market-timed release", "Supply stabilization", "Quality preservation"]
+              },
+              {
+                title: "Supply Chain Management",
+                description: "End-to-end logistics services covering transportation, storage, and distribution from rural farms to urban markets.",
+                features: ["Nationwide logistics", "Cold-chain options", "Inventory tracking", "Quality assurance"]
+              },
+              {
+                title: "Farmer Support Services",
+                description: "Support services aimed at improving farmer productivity and sustainability.",
+                features: ["Technical training", "Input access", "Market linkage", "Cooperative support services"]
               }
-            ].map((program, index) => (
+            ].map((service, index) => (
               <motion.div
                 key={index}
-                className="bg-card p-5 sm:p-6 rounded-lg shadow-md border border-border cursor-pointer flex flex-col"
-                initial={{ opacity: 0, y: 30 }}
+                className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20 hover:bg-white/20 transition-colors"
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{
-                  y: -5,
-                  scale: 1.02,
-                  boxShadow: "0 15px 20px -5px rgba(0, 0, 0, 0.1), 0 5px 10px -5px rgba(0, 0, 0, 0.04)",
-                  transition: { duration: 0.3 }
-                }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <h3 className="text-lg sm:text-xl font-bold text-foreground mb-3">{program.title}</h3>
-                <p className="text-muted-foreground text-sm sm:text-base leading-relaxed flex-grow">
-                  {program.description}
-                </p>
-                {program.fullDescription && (
-                  <Button
-                    size="sm"
-                    variant="link"
-                    className="p-0 h-auto font-medium text-teal-600 hover:text-teal-700 mt-3 self-start"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      window.location.href = '/about#commitment';
-                    }}
-                  >
-                    Learn More
-                  </Button>
-                )}
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="bg-teal-500/20 p-2 rounded-lg">
+                    <Leaf className="h-6 w-6 text-teal-300" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white">{service.title}</h3>
+                </div>
+                <p className="text-teal-100 mb-4 text-sm leading-relaxed">{service.description}</p>
+                <ul className="space-y-2">
+                  {service.features.map((feature, i) => (
+                    <li key={i} className="flex items-center gap-2 text-sm text-teal-50">
+                      <CheckCircle className="h-4 w-4 text-emerald-400" />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Our Purpose */}
-      <section className="py-12 sm:py-16 bg-teal-900 text-white">
-        <div className="container mx-auto px-4 max-w-4xl">
+      {/* How Our Cooperative & Product Engagement Works */}
+      <section className="py-12 sm:py-16 bg-background">
+        <div className="container mx-auto px-4 max-w-5xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -491,21 +197,102 @@ const Home = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-8 sm:mb-12"
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">Our Purpose</h2>
-            <p className="mb-4">
-              We believe that food should never be a privilege; it should be accessible to every Nigerian household, regardless of income level.
-            </p>
-            <p>
-              That's why Drecan Commodities is building a sustainable agricultural ecosystem — one that connects production, distribution, and investment in a way that benefits all.
-            </p>
-            <p className="mt-4">
-              Our work directly supports the United Nations Sustainable Development Goal 2 (Zero Hunger), which aims to end hunger, achieve food security, and promote sustainable agriculture.
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4 sm:mb-6">How Our Cooperative & Product Engagement Works</h2>
+            <p className="text-base sm:text-lg text-muted-foreground">
+              Simple, transparent, and structured participation process
             </p>
           </motion.div>
+
+          <div className="space-y-6">
+            {[
+              { step: "01", title: "Initial Engagement", desc: "Contact our team to discuss cooperative membership or product services suitable to your needs.", icon: MessageSquare },
+              { step: "02", title: "Information & Documentation", desc: "Review participation guidelines, operational structures, and engagement terms applicable to the selected program.", icon: FileText },
+              { step: "03", title: "Participation Agreement", desc: "Execute cooperative membership or service agreements outlining roles, responsibilities, timelines, and surplus-sharing principles (where applicable).", icon: CheckCircle2 },
+              { step: "04", title: "Active Participation", desc: "Receive regular updates on operations, storage status, distribution activities, and cooperative programs.", icon: TrendingUp },
+              { step: "05", title: "Outcome & Distribution", desc: "Surpluses, products, or service outcomes are shared or delivered based on agreed cooperative or service terms.", icon: Award },
+              { step: "06", title: "Continuity or Exit", desc: "Members and partners may continue participation, scale involvement, or disengage based on agreed terms.", icon: Sliders }
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start bg-card p-6 rounded-xl shadow-sm border border-border"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <div className="flex-shrink-0 bg-teal-100 text-teal-800 font-bold text-xl w-12 h-12 rounded-full flex items-center justify-center">
+                  {item.step}
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-foreground mb-2 flex items-center gap-2">
+                    {item.title}
+                  </h3>
+                  <p className="text-muted-foreground">{item.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Join the Movement */}
+      {/* Direct Engagement Channels */}
+      <section className="py-12 sm:py-16 bg-gradient-to-br from-teal-50 to-emerald-50">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-8 sm:mb-12"
+          >
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4">Direct Engagement Channels</h2>
+            <p className="text-lg text-muted-foreground">Reach out directly to the department that suits your needs</p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-white p-8 rounded-xl shadow-lg border-t-4 border-teal-600 text-center hover:-translate-y-2 transition-transform duration-300">
+              <Users className="h-10 w-10 text-teal-600 mx-auto mb-4" />
+              <h3 className="font-bold text-xl mb-4 text-teal-900">Cooperative Membership & Participation</h3>
+              <div className="space-y-3 mb-6 text-sm text-gray-600">
+                <p className="flex items-center justify-center gap-2"><Mail className="h-4 w-4" /> drecanagriculture@gmail.com</p>
+                <p className="flex items-center justify-center gap-2"><Phone className="h-4 w-4" /> +234 702 684 1214</p>
+                <p className="flex items-center justify-center gap-2"><Clock className="h-4 w-4" /> Mon–Fri, 9:00 AM – 6:00 PM</p>
+              </div>
+              <Button className="w-full bg-teal-600 hover:bg-teal-700 text-white" asChild>
+                <Link to="/opportunities">Apply for Membership</Link>
+              </Button>
+            </div>
+
+            <div className="bg-white p-8 rounded-xl shadow-lg border-t-4 border-emerald-600 text-center hover:-translate-y-2 transition-transform duration-300">
+              <Warehouse className="h-10 w-10 text-emerald-600 mx-auto mb-4" />
+              <h3 className="font-bold text-xl mb-4 text-emerald-900">Storage & Product Services</h3>
+              <div className="space-y-3 mb-6 text-sm text-gray-600">
+                <p className="flex items-center justify-center gap-2"><Mail className="h-4 w-4" /> drecanagriculture@gmail.com</p>
+                <p className="flex items-center justify-center gap-2"><Phone className="h-4 w-4" /> +234 702 684 1214</p>
+                <p className="flex items-center justify-center gap-2"><Clock className="h-4 w-4" /> Mon–Fri, 9:00 AM – 6:00 PM</p>
+              </div>
+              <Button className="w-full bg-emerald-600 hover:bg-emerald-700 text-white" asChild>
+                <Link to="/services">Request a Quote</Link>
+              </Button>
+            </div>
+
+            <div className="bg-white p-8 rounded-xl shadow-lg border-t-4 border-cyan-600 text-center hover:-translate-y-2 transition-transform duration-300">
+              <ShoppingCart className="h-10 w-10 text-cyan-600 mx-auto mb-4" />
+              <h3 className="font-bold text-xl mb-4 text-cyan-900">Procurement & Distribution</h3>
+              <div className="space-y-3 mb-6 text-sm text-gray-600">
+                <p className="flex items-center justify-center gap-2"><Mail className="h-4 w-4" /> drecanagriculture@gmail.com</p>
+                <p className="flex items-center justify-center gap-2"><Phone className="h-4 w-4" /> +234 702 684 1214</p>
+                <p className="flex items-center justify-center gap-2"><Clock className="h-4 w-4" /> Mon–Fri, 9:00 AM – 6:00 PM</p>
+              </div>
+              <Button className="w-full bg-cyan-600 hover:bg-cyan-700 text-white" asChild>
+                <Link to="/contact">Submit Inquiry</Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Ready to Work With Us */}
       <section className="py-12 sm:py-16 bg-teal-900 text-white">
         <div className="container mx-auto px-4 text-center">
           <motion.h2
@@ -515,47 +302,25 @@ const Home = () => {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6 }}
           >
-            Join the Movement
+            Ready to Work With Us?
           </motion.h2>
           <motion.p
-            className="text-lg sm:text-xl mb-6 sm:mb-8 max-w-md sm:max-w-2xl mx-auto"
+            className="text-lg sm:text-xl mb-6 sm:mb-8 text-teal-100"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            Whether you are a farmer, member, or partner organization, there's a place for you in our mission.
-          </motion.p>
-          <motion.p
-            className="text-base sm:text-lg mb-6 sm:mb-8"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            Together, we can feed communities, create jobs, and build a stronger, hunger-free Nigeria.
-          </motion.p>
-          <motion.p
-            className="text-base sm:text-lg mb-6 sm:mb-8"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            Be part of the change. Contribute to agriculture. Contribute to people. Contribute with Drecan.
+            Join our cooperative or access our agricultural products and services.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <Button size="lg" className="bg-teal-600 hover:bg-teal-700 text-white text-base sm:text-lg" asChild>
-              <Link to="/opportunities">Become a Member</Link>
-            </Button>
-            <Button size="lg" className="bg-white/20 backdrop-blur-sm border border-white/30 text-white hover:bg-white/30 text-base sm:text-lg" asChild>
-              <Link to="/contact">Become a Member</Link>
+            <Button size="lg" className="bg-teal-500 hover:bg-teal-600 text-white text-lg" asChild>
+              <Link to="/services">Explore Our Services</Link>
             </Button>
           </motion.div>
         </div>
@@ -624,9 +389,9 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Why Choose Us */}
+      {/* Why Choose Drecan - Rich Cards */}
       <section className="py-12 sm:py-16 bg-secondary">
-        <div className="container mx-auto px-4 max-w-4xl">
+        <div className="container mx-auto px-4 max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -634,162 +399,117 @@ const Home = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-8 sm:mb-12"
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4 sm:mb-6">Why Choose Drecan Commodities</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4 sm:mb-6">Why Choose Drecan</h2>
+            <p className="text-base sm:text-lg text-muted-foreground">What sets us apart in Nigeria’s agricultural ecosystem</p>
           </motion.div>
 
-          <div className="space-y-6 sm:space-y-8">
-            <motion.div
-              className="bg-card p-5 sm:p-7 rounded-xl shadow-lg border border-border relative overflow-hidden"
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6 }}
-              whileHover={{
-                x: 5,
-                boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
-                transition: { duration: 0.3 }
-              }}
-            >
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-teal-500 to-emerald-500"></div>
-              <p className="text-muted-foreground text-base sm:text-lg italic mb-4">
-                "At Drecan, we believe contribution should go beyond profit, it should build legacies. Your contribution with us drives food security, empowers farmers, and fuels sustainable growth across communities."
-              </p>
-              <p className="text-muted-foreground text-base sm:text-lg">
-                We are not just another agricultural company; we are an epitome of agricultural excellence, combining deep rooted expertise with responsible resource management and long-term value creation.
-              </p>
-            </motion.div>
-
-            <div className="space-y-5 sm:space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {[
+              {
+                title: "Proven Experience",
+                description: "Years of hands-on agricultural operations and market engagement."
+              },
+              {
+                title: "Transparent Operations",
+                description: "Clear reporting on cooperative activities, storage, and product movement."
+              },
+              {
+                title: "Sustainable Practices",
+                description: "Environmentally responsible farming and supply methods."
+              },
+              {
+                title: "Community Impact",
+                description: "Supporting farmers, food access, and local economies."
+              },
+              {
+                title: "Regulatory Alignment",
+                description: "Registered entities operating in line with applicable cooperative, commercial, and agricultural regulations."
+              },
+              {
+                title: "Fair Value Distribution",
+                description: "Equitable value sharing based on contribution and participation."
+              }
+            ].map((item, index) => (
               <motion.div
+                key={index}
+                className="bg-card p-6 rounded-xl shadow-lg border border-border relative overflow-hidden"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.5 }}
-                className="text-center"
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{
+                  y: -5,
+                  boxShadow: "0 15px 30px -5px rgba(0, 0, 0, 0.1)",
+                  transition: { duration: 0.3 }
+                }}
               >
-                <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-3">Our Pillars of Excellence</h3>
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-teal-500 to-emerald-500"></div>
+                <div className="p-2 bg-teal-100/50 rounded-lg w-fit mb-4">
+                  <CheckCircle className="h-6 w-6 text-teal-700" />
+                </div>
+                <h3 className="text-xl font-bold text-foreground mb-3">{item.title}</h3>
+                <p className="text-muted-foreground leading-relaxed">{item.description}</p>
               </motion.div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
-                <motion.div
-                  className="bg-card p-5 sm:p-6 rounded-lg shadow-md border border-border"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
-                  whileHover={{
-                    y: -5,
-                    boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
-                    transition: { duration: 0.3 }
-                  }}
-                >
-                  <div className="flex items-start gap-3 mb-3">
-                    <div className="bg-teal-100 p-2 rounded-lg">
-                      <Leaf className="h-6 w-6 text-teal-600" />
-                    </div>
-                    <h4 className="text-lg font-bold text-foreground">1. A Rooted and Experienced Agricultural Background</h4>
-                  </div>
-                  <p className="text-muted-foreground">
-                    Built on years of field experience, Drecan integrates modern agribusiness strategies with local agricultural knowledge. We cultivate, process, and distribute premium commodities such as palm oil, rice, maize, beans, cocoa, cashew nuts, and egusi, ensuring consistent quality and reliability.
-                  </p>
-                </motion.div>
-
-                <motion.div
-                  className="bg-card p-5 sm:p-6 rounded-lg shadow-md border border-border"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                  whileHover={{
-                    y: -5,
-                    boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
-                    transition: { duration: 0.3 }
-                  }}
-                >
-                  <div className="flex items-start gap-3 mb-3">
-                    <div className="bg-emerald-100 p-2 rounded-lg">
-                      <Award className="h-6 w-6 text-emerald-600" />
-                    </div>
-                    <h4 className="text-lg font-bold text-foreground">2. Quality You Can Trust</h4>
-                  </div>
-                  <p className="text-muted-foreground">
-                    Every product that leaves our storage meets the highest standards. We maintain strict quality control from cultivation to packaging ensuring ethically sourced, properly stored, and transparently traded commodities.
-                  </p>
-                </motion.div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* What We Do */}
-      <section className="py-12 sm:py-16 bg-background">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <motion.div
+      {/* Join the Movement - Dark Footer-like Section */}
+      <section className="py-12 sm:py-16 bg-teal-900 text-white relative overflow-hidden">
+        {/* Decorative background circle */}
+        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-full h-full max-w-4xl opacity-10 pointer-events-none">
+          <div className="w-full pt-[100%] rounded-full bg-teal-400 blur-3xl"></div>
+        </div>
+
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <motion.h2
+            className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-8 sm:mb-12"
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4 sm:mb-6">The Wealth Initiative Focus Areas</h2>
+            Join the Movement
+          </motion.h2>
+          <motion.p
+            className="text-lg sm:text-xl mb-6 sm:mb-8 max-w-md sm:max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            Whether you are a farmer, member, or partner organization, there's a place for you in our mission.
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="space-y-4"
+          >
+            <p className="text-base sm:text-lg">
+              Together, we can feed communities, create jobs, and build a stronger, hunger-free Nigeria.
+            </p>
+            <p className="text-base sm:text-lg font-medium text-teal-200">
+              Be part of the change. Contribute to agriculture. Contribute to people. Contribute with Drecan.
+            </p>
           </motion.div>
 
-          <div className="space-y-6 sm:space-y-8">
-            <motion.div
-              className="bg-card p-4 sm:p-6 rounded-lg shadow-sm border border-border"
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6 }}
-              whileHover={{ x: 5, transition: { duration: 0.3 } }}
-            >
-              <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2 sm:mb-3">1. AgroTrade Cycle</h3>
-              <p className="text-muted-foreground">
-                we cultivate and produce key agricultural commodities — including palm oil, rice, beans, cocoa, maize, cashew nuts, and egusi — directly from our own plantations.
-              </p>
-              <p className="text-muted-foreground mt-2">
-                From farm to storage, and onward to wholesalers, retailers, and final consumers in urban cities, we ensure every product is distributed efficiently, transparently, and affordably.
-              </p>
-            </motion.div>
-
-            <motion.div
-              className="bg-card p-4 sm:p-6 rounded-lg shadow-sm border border-border"
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6 }}
-              whileHover={{ x: -5, transition: { duration: 0.3 } }}
-            >
-              <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2 sm:mb-3">2. AgroLink Program</h3>
-              <p className="text-muted-foreground">
-                Our Community Commitment:
-              </p>
-              <p className="text-muted-foreground mt-2">
-                Beyond business, we invest in people.
-              </p>
-              <p className="text-muted-foreground mt-2">
-                Through our Community Support Initiatives, Drecan Commodities supports smallholder farmers, provides educational outreach, and empowers local women, men, and youth, ensuring that every investment contributes to sustainable progress.
-              </p>
-            </motion.div>
-
-            <motion.div
-              className="bg-card p-4 sm:p-6 rounded-lg shadow-sm border border-border"
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6 }}
-              whileHover={{ x: 5, transition: { duration: 0.3 } }}
-            >
-              <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2 sm:mb-3">3. AgroFarm Membership</h3>
-              <p className="text-muted-foreground">
-                The Premium Growth Plan is designed for members who want sustainable, high yield shared surplus backed by the strength of real agricultural trade.
-              </p>
-              <p className="text-muted-foreground mt-2">
-                It combines Drecan's short-term turnover system with long-term commodity value growth ensuring consistent profit while contributing to national food security and market balance.
-              </p>
-            </motion.div>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center mt-8"
+          >
+            <Button size="lg" className="bg-teal-500 hover:bg-teal-600 text-white text-base sm:text-lg shadow-lg border-none" asChild>
+              <Link to="/opportunities">Become a Member</Link>
+            </Button>
+            <Button size="lg" variant="outline" className="text-white border-white hover:bg-white/10 text-base sm:text-lg bg-transparent" asChild>
+              <Link to="/contact">Contact Us</Link>
+            </Button>
+          </motion.div>
         </div>
       </section>
 

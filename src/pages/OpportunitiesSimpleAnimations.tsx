@@ -14,7 +14,7 @@ const Opportunities = () => {
     setTimeout(() => setShowConfetti(false), 3000);
 
     // Show alert
-    alert("Thank you for your interest! Our team will contact you shortly to finalize your partnership.");
+    alert("Thank you for your interest! Our team will contact you shortly to finalize your membership.");
   };
 
   // Auto-rotate investment amount for demo purposes
@@ -211,7 +211,7 @@ const Opportunities = () => {
                     </h3>
                     <div className="bg-secondary rounded-lg p-3 sm:p-4 mb-4">
                       <p className="text-muted-foreground text-sm sm:text-base mb-3">
-                        Shared surplus is paid starting from the third month of investment to the end of investment period. Shared surplus can also be calculated and paid at the end of investment period; principal returned at the end of six months.
+                        Shared surplus is paid starting from the third month of contribution to the end of contribution period. Shared surplus can also be calculated and paid at the end of contribution period; principal returned at the end of six months.
                       </p>
                       <p className="text-muted-foreground text-sm sm:text-base">
                         Capital is deployed in high-value crops and small-scale livestock operations.
@@ -276,7 +276,7 @@ const Opportunities = () => {
                     </h3>
                     <div className="bg-secondary rounded-lg p-3 sm:p-4 mb-4">
                       <p className="text-muted-foreground text-sm sm:text-base mb-3">
-                        Shared surplus is paid starting from the fourth month of investment to the end of investment period. Shared surplus can also be calculated and paid at the end of the year; principal returned at the end of one year.
+                        Shared surplus is paid starting from the fourth month of contribution to the end of contribution period. Shared surplus can also be calculated and paid at the end of the year; principal returned at the end of one year.
                       </p>
                       <p className="text-muted-foreground text-sm sm:text-base">
                         Capital is used for palm oil, grains, cocoa, cashew, poultry, and small livestock operations. Members have the option to receive shared surplus only at the end of the year, ensuring maximum growth.
@@ -337,7 +337,7 @@ const Opportunities = () => {
                     </h3>
                     <div className="bg-secondary rounded-lg p-3 sm:p-4 mb-4">
                       <p className="text-muted-foreground text-sm sm:text-base mb-3">
-                        <strong>Annual Shared Surplus Payout:</strong> Shared surplus is paid starting from the fourth month of investment to the end of investment period. Shared surplus can also be calculated per year and paid at the end of each year while principal is retained. At the end of the second year, the remaining shared surplus and principal are returned.
+                        <strong>Annual Shared Surplus Payout:</strong> Shared surplus is paid starting from the fourth month of contribution to the end of contribution period. Shared surplus can also be calculated per year and paid at the end of each year while principal is retained. At the end of the second year, the remaining shared surplus and principal are returned.
                       </p>
                       <p className="text-muted-foreground text-sm sm:text-base">
                         Capital is used in high-value crop plantations, large-scale livestock, aquaculture, and agro-processing. Members are encouraged to take advantage of the longer term to maximize shared surplus and exposure to export-oriented products like cowhide and processed palm oil.
@@ -376,7 +376,7 @@ const Opportunities = () => {
                     </h3>
                     <ul className="space-y-2 sm:space-y-3 text-muted-foreground">
                       <li className="flex justify-between border-b pb-2">
-                        <span className="text-sm sm:text-base">Minimum Investment:</span>
+                        <span className="text-sm sm:text-base">Minimum Contribution:</span>
                         <span className="font-semibold text-sm sm:text-base">₦5,000,000</span>
                       </li>
                       <li className="flex justify-between border-b pb-2">
@@ -398,7 +398,7 @@ const Opportunities = () => {
                     </h3>
                     <div className="bg-secondary rounded-lg p-3 sm:p-4 mb-4">
                       <p className="text-muted-foreground text-sm sm:text-base mb-3">
-                        <strong>Annual Shared Surplus Payout:</strong> Shared surplus is paid starting from the fourth month of investment to the end of investment period. Shared surplus can also be calculated per year and paid at the end of each year while principal is retained. At the end of the third year, the remaining shared surplus and principal are returned.
+                        <strong>Annual Shared Surplus Payout:</strong> Shared surplus is paid starting from the fourth month of contribution to the end of contribution period. Shared surplus can also be calculated per year and paid at the end of each year while principal is retained. At the end of the third year, the remaining shared surplus and principal are returned.
                       </p>
                     </div>
                   </div>
@@ -411,7 +411,7 @@ const Opportunities = () => {
                   </h3>
                   <div className="bg-secondary rounded-lg p-4 mb-4">
                     <p className="text-muted-foreground text-sm sm:text-base mb-3">
-                      Designed for large-scale investors aiming for maximum returns. Funds deployed into long-term, high-value agricultural projects, including:
+                      Designed for large-scale members aiming for maximum returns. Funds deployed into long-term, high-value agricultural projects, including:
                     </p>
                     <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-muted-foreground text-sm sm:text-base">
                       <li className="flex items-start">

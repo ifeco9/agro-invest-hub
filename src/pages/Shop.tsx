@@ -154,7 +154,7 @@ const Shop = () => {
       region: "Multi-State",
       crop: "Various Commodities",
       minContribution: "₦500,000",
-      roi: "20% - 25%",
+      roi: "Market-driven",
       duration: "3 Months",
       slotsAvailable: 50,
       type: "Short Term",
@@ -167,7 +167,7 @@ const Shop = () => {
       region: "Multi-State",
       crop: "High-Value Crops",
       minContribution: "₦500,000",
-      roi: "35% - 45%",
+      roi: "Variable",
       duration: "6 Months",
       slotsAvailable: 40,
       type: "Medium Term",
@@ -180,7 +180,7 @@ const Shop = () => {
       region: "Multi-State",
       crop: "Export Commodities",
       minContribution: "₦1,000,000",
-      roi: "75% - 100%",
+      roi: "Market-driven",
       duration: "12 Months",
       slotsAvailable: 30,
       type: "Long Term",
@@ -193,7 +193,7 @@ const Shop = () => {
       region: "Nationwide",
       crop: "Integrated Farming",
       minContribution: "₦1,000,000",
-      roi: "100% - 150%",
+      roi: "Variable",
       duration: "24 Months",
       slotsAvailable: 20,
       type: "Premium",
@@ -206,7 +206,7 @@ const Shop = () => {
       region: "Nationwide",
       crop: "Agro-Industrial",
       minContribution: "₦5,000,000",
-      roi: "180% - 250%",
+      roi: "Market-driven",
       duration: "36 Months",
       slotsAvailable: 10,
       type: "Premium",
@@ -1119,7 +1119,7 @@ const Shop = () => {
                           <span className="font-medium">{opportunity.minInvestment}</span>
                         </div>
                         <div className="flex justify-between text-sm">
-                          <span className="text-muted-foreground">ROI:</span>
+                          <span className="text-muted-foreground">Expected Surplus:</span>
                           <span className="font-medium text-primary">{opportunity.roi}</span>
                         </div>
                         <div className="flex justify-between text-sm">

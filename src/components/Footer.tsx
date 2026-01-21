@@ -17,7 +17,7 @@ const Footer = () => {
               <span>Drecan Commodities</span>
             </Link>
             <p className="text-sm text-teal-800">
-              Transparent agricultural contribution opportunities with sustainable shared surplus.
+              Empowering members through cooperative agricultural participation and sustainable shared surplus.
             </p>
             <div className="flex gap-4">
               <a href="https://www.linkedin.com/company/drecan-agriculture/" className="text-teal-800 hover:text-teal-600 transition-colors" target="_blank" rel="noopener noreferrer">
@@ -90,7 +90,7 @@ const Footer = () => {
           <div>
             <h3 className="font-semibold mb-4 text-teal-900">Stay Updated</h3>
             <p className="text-sm text-teal-800 mb-4">
-              Get the latest contribution opportunities and insights.
+              Get the latest membership opportunities and cooperative insights.
             </p>
             <div className="flex gap-2">
               <Input type="email" placeholder="Your email" className="flex-1 border-teal-100 focus:border-teal-700 focus:ring-teal-700 placeholder:text-teal-400" />
@@ -119,7 +119,7 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="pt-8 mt-8 border-t border-teal-100 text-center text-sm text-teal-800">
-          <p>&copy; {new Date().getFullYear()} Drecan Commodities. All rights reserved. SEC Regulated.</p>
+          <p>&copy; {new Date().getFullYear()} Drecan Commodities. All rights reserved.<br />Operates through product services and a registered multipurpose cooperative society.</p>
         </div>
       </div>
     </footer>

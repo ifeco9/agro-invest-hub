@@ -9,7 +9,7 @@ import SparkleEffect from "./SparkleEffect";
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [scrollY, setScrollY] = useState(0);
-  const titleText = "Invest in Nigerian Agriculture Today";
+  const titleText = "Join Drecan Cooperative Society";
   const particlesRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -95,7 +95,7 @@ const Hero = () => {
           </div>
 
           <p className={`text-xl md:text-2xl mb-8 text-white/95 drop-shadow-lg transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            Yields up to 12% with transparent, low-risk opportunities
+            From farm to market, we deliver practical, member-driven agricultural services
           </p>
           <div className={`flex flex-col sm:flex-row gap-4 mb-12 transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <Button size="lg" className="bg-teal-700 text-white hover:bg-teal-800 shadow-2xl hover:shadow-teal-900/50 transition-all hover:scale-105 font-semibold text-lg px-8 py-6" asChild>
@@ -114,7 +114,7 @@ const Hero = () => {
             </div>
             <div className="flex items-center gap-2 bg-teal-50/15 backdrop-blur-md px-5 py-3 rounded-full border border-teal-200/30 hover:bg-teal-50/25 transition-all hover:scale-105 shadow-lg shadow-teal-900/20">
               <Shield className="h-5 w-5 text-white" />
-              <span className="text-sm font-semibold text-white">SEC Regulated</span>
+              <span className="text-sm font-semibold text-white">Registered Cooperative Society</span>
             </div>
             <div className="flex items-center gap-2 bg-teal-50/15 backdrop-blur-md px-5 py-3 rounded-full border border-teal-200/30 hover:bg-teal-50/25 transition-all hover:scale-105 shadow-lg shadow-teal-900/20">
               <Leaf className="h-5 w-5 text-white" />

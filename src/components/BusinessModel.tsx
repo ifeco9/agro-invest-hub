@@ -1,54 +1,54 @@
 import { motion } from "framer-motion";
-import { Leaf, Warehouse, ShoppingBag, Users, TrendingUp, Shield } from "lucide-react";
+import { Users, Warehouse, ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
 const BusinessModel = () => {
   const businessSegments = [
     {
-      icon: <TrendingUp className="h-8 w-8" />,
-      title: "Agricultural Investment & Memberships",
-      description: "Connect investors with profitable agricultural opportunities across Nigeria",
+      icon: <Users className="h-8 w-8" />,
+      title: "Cooperative Membership & Agricultural Participation",
+      description: "Empowering members through structured agricultural participation across Nigeria",
       details: [
-        "Direct farm investment opportunities with 15-35% annual shared surplus",
-        "Membership programs with farming communities",
-        "Lease-to-own farmland arrangements",
-        "Managed farm investment options with professional oversight"
+        "Membership-based participation in agricultural value chains",
+        "Collective farming and produce aggregation through the Cooperative Society",
+        "Access to farmland through lease-to-use and cooperative farming arrangements",
+        "Professionally managed agricultural projects for cooperative members"
       ],
-      engagement: "Investors can participate through direct funding, membership agreements, or managed investment programs. Engagements are structured with clear ROI expectations, timelines, and exit strategies.",
-      link: "/services"
+      engagement: "Members participate through cooperative membership, joint production programs, or managed agricultural projects coordinated by the Cooperative Society. All activities are structured around shared responsibility, transparent surplus sharing, and agreed participation terms, in line with cooperative principles.",
+      link: "/opportunities"
     },
     {
       icon: <Warehouse className="h-8 w-8" />,
-      title: "Storage & Scarcity-Based Sales",
-      description: "Strategic warehousing and seasonal commodity trading",
+      title: "Storage & Scarcity-Based Sales (Product Department)",
+      description: "Strategic warehousing, preservation, and market-timed commodity release",
       details: [
         "Secure storage facilities for agricultural commodities",
-        "Seasonal buying during harvest periods at lower prices",
-        "Strategic release during off-season for premium pricing",
-        "Risk mitigation through diversified storage locations"
+        "Seasonal aggregation during harvest periods",
+        "Controlled release during off-season to stabilize supply and pricing",
+        "Risk management through diversified storage locations"
       ],
-      engagement: "Clients can engage through bulk storage contracts, seasonal trading partnerships, or futures agreements. We provide transparent reporting on inventory levels, storage conditions, and market timing strategies.",
+      engagement: "Clients and members engage through storage services, produce aggregation programs, and structured commodity sales arrangements. We provide transparent inventory records, storage conditions, and market distribution schedules.",
       link: "/services"
     },
     {
-      icon: <ShoppingBag className="h-8 w-8" />,
-      title: "Purchase & Resale of Agricultural Products",
-      description: "Streamlined supply chain from farm to market",
+      icon: <ShoppingCart className="h-8 w-8" />,
+      title: "Purchase & Resale of Agricultural Products (Product Department)",
+      description: "Efficient supply chain connecting farms to markets",
       details: [
-        "Direct procurement from farmers at competitive rates",
-        "Quality control and packaging for market readiness",
-        "Distribution to urban markets, retailers, and exporters",
-        "Value-added processing services"
+        "Direct sourcing from farmers and cooperative members",
+        "Quality control, grading, and packaging",
+        "Distribution to urban markets, retailers, and institutional buyers",
+        "Value-addition and basic processing services"
       ],
-      engagement: "Members can engage as suppliers, distributors, or buyers. We offer flexible contracting options, quality assurance guarantees, and efficient logistics solutions tailored to each member's needs.",
-      link: "/services"
+      engagement: "Members and partners may participate as suppliers, distributors, or buyers. Transactions are guided by transparent pricing, quality standards, and efficient logistics tailored to each engagement.",
+      link: "/shop"
     }
   ];
 
   return (
     <section className="py-12 sm:py-16 bg-background">
-      <div className="container mx-auto px-4 max-w-6xl">
+      <div className="container mx-auto px-4 max-w-7xl">
         <motion.div
           className="text-center mb-8 sm:mb-12"
           initial={{ opacity: 0, y: 20 }}
@@ -58,7 +58,7 @@ const BusinessModel = () => {
         >
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4">Our Core Business Segments</h2>
           <p className="text-base sm:text-lg text-muted-foreground max-w-md sm:max-w-2xl mx-auto">
-            Clear distinction and explanation of our three primary business areas
+            Clear distinction and explanation of our two operational platforms
           </p>
         </motion.div>
 
@@ -85,7 +85,7 @@ const BusinessModel = () => {
                   {segment.details.map((detail, detailIndex) => (
                     <li key={detailIndex} className="flex items-start text-sm sm:text-base">
                       <span className="text-primary font-bold mr-2">•</span>
-                      <span className="text-muted-foreground">{detail}</span>
+                      <span className="text-muted-foreground text-left">{detail}</span>
                     </li>
                   ))}
                 </ul>
@@ -93,7 +93,7 @@ const BusinessModel = () => {
 
               <div className="mb-4">
                 <h4 className="font-bold text-foreground mb-2">How It Works:</h4>
-                <p className="text-muted-foreground text-sm">{segment.engagement}</p>
+                <p className="text-muted-foreground text-sm text-left">{segment.engagement}</p>
               </div>
 
               <Button
@@ -116,7 +116,7 @@ const BusinessModel = () => {
         >
           <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-4">Ready to Engage With Us?</h3>
           <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-            Contact our business development team to discuss how we can create value together through any of our three core business segments.
+            Contact our team to explore cooperative membership or product-based services.
           </p>
           <Button asChild size="lg">
             <Link to="/contact">Get in Touch</Link>

@@ -24,7 +24,7 @@ const Services = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            From farm to market, we provide end-to-end services that connect producers, investors, and consumers
+            From farm to market, we provide end-to-end services that connect producers, members, and consumers
           </motion.p>
         </div>
       </section>
@@ -44,7 +44,7 @@ const Services = () => {
           >
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4">Our Core Services</h2>
             <p className="text-base sm:text-lg text-muted-foreground max-w-md sm:max-w-2xl mx-auto">
-              Comprehensive solutions designed to maximize value for farmers, investors, and consumers
+              Practical agricultural services designed to support farmers, members, and markets
             </p>
           </motion.div>
 
@@ -52,68 +52,68 @@ const Services = () => {
             {[
               {
                 icon: <TrendingUp className="h-8 w-8" />,
-                title: "AgroTrade Contribution",
-                description: "Short-term trading opportunities with consistent shared surplus. We purchase agricultural commodities directly from farmers and distribute them to urban markets, providing members with transparent and profitable opportunities.",
+                title: "AgroTrade Operations",
+                description: "Short-term commodity aggregation and market distribution. We purchase agricultural produce from farmers and cooperative members and supply urban and institutional markets through structured sales channels.",
                 features: [
-                  "8-12% annual shared surplus",
-                  "6-12 month duration",
-                  "Monthly payouts",
-                  "Low-medium risk"
+                  "Market-driven pricing",
+                  "Seasonal trading cycles",
+                  "Transparent supply records",
+                  "Managed operational risk"
                 ]
               },
               {
                 icon: <Leaf className="h-8 w-8" />,
-                title: "AgroFarm Membership",
-                description: "Long-term farming memberships with higher shared surplus. Members can lease farmlands or fund managed farms, allowing them to participate in agriculture without direct involvement.",
+                title: "AgroFarm Cooperative Program",
+                description: "Long-term cooperative farming programs that allow members to participate in agriculture through collective production and professionally managed farms.",
                 features: [
-                  "15-25% annual shared surplus",
-                  "12-24 month duration",
-                  "At harvest payouts",
-                  "Medium risk"
+                  "Cooperative membership structure",
+                  "Shared operational outcomes",
+                  "Crop-cycle based participation",
+                  "Moderate operational risk"
                 ]
               },
               {
                 icon: <Users className="h-8 w-8" />,
-                title: "AgroLink Program",
-                description: "Community supply initiative connecting farmers with consumers. We deliver affordable food packages to local markets, schools, hospitals, and community programs, ensuring food access for all income levels.",
+                title: "AgroLink Community Supply Program",
+                description: "A community-focused supply initiative delivering affordable food products to schools, hospitals, markets, and community programs while supporting farmer livelihoods.",
                 features: [
                   "Community impact focus",
-                  "Affordable pricing",
+                  "Affordable food access",
                   "Direct farmer support",
-                  "Sustainable model"
+                  "Sustainable supply model"
                 ]
               },
               {
                 icon: <Shield className="h-8 w-8" />,
-                title: "AgroReserve Premium",
-                description: "Premium long-term contribution with maximum shared surplus. Our flagship program offers members the opportunity to participate in large-scale agricultural projects with significant potential for shared surplus.",
+                title: "AgroReserve Storage Program",
+                description: "Long-term produce storage and market-stabilization service supporting price balance and food security.",
                 features: [
-                  "25-35% annual shared surplus",
-                  "24-36 month duration",
-                  "At maturity payouts",
-                  "Medium-high risk"
+                  "Controlled storage facilities",
+                  "Market-timed release",
+                  "Supply stabilization",
+                  "Quality preservation"
                 ]
               },
               {
                 icon: <Truck className="h-8 w-8" />,
                 title: "Supply Chain Management",
-                description: "End-to-end logistics and distribution services. We handle transportation, storage, and distribution of agricultural commodities from rural farms to urban markets, ensuring efficiency and quality.",
+                description: "End-to-end logistics services covering transportation, storage, and distribution from rural farms to urban markets.",
                 features: [
-                  "Nationwide distribution",
-                  "Cold chain storage",
-                  "Real-time tracking",
+                  "Nationwide logistics",
+                  "Cold-chain options",
+                  "Inventory tracking",
                   "Quality assurance"
                 ]
               },
               {
                 icon: <Award className="h-8 w-8" />,
                 title: "Farmer Support Services",
-                description: "Comprehensive support for farming communities. We provide technical training, access to quality inputs, and market linkage services to help farmers increase productivity and income.",
+                description: "Support services aimed at improving farmer productivity and sustainability.",
                 features: [
                   "Technical training",
-                  "Input supply",
-                  "Market access",
-                  "Financial services"
+                  "Input access",
+                  "Market linkage",
+                  "Cooperative support services"
                 ]
               }
             ].map((service, index) => (
@@ -227,7 +227,7 @@ const Services = () => {
           >
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4">Why Choose Drecan Commodities</h2>
             <p className="text-base sm:text-lg text-muted-foreground max-w-md sm:max-w-2xl mx-auto">
-              What sets us apart in the agricultural investment landscape
+              What sets us apart in the agricultural cooperative landscape
             </p>
           </motion.div>
 
@@ -236,12 +236,12 @@ const Services = () => {
               {
                 icon: <Zap className="h-5 w-5" />,
                 title: "Proven Track Record",
-                description: "Over a decade of successful agricultural investments with consistent returns and satisfied investors."
+                description: "Over a decade of successful agricultural operations with consistent shared surplus and satisfied members."
               },
               {
                 icon: <Shield className="h-5 w-5" />,
                 title: "Transparent Operations",
-                description: "Real-time access to farm operations, financial reports, and performance metrics through our investor portal."
+                description: "Real-time access to farm operations, financial reports, and performance metrics through our member portal."
               },
               {
                 icon: <Leaf className="h-5 w-5" />,
@@ -251,12 +251,12 @@ const Services = () => {
               {
                 icon: <Users className="h-5 w-5" />,
                 title: "Community Impact",
-                description: "Every investment directly supports farming families and improves food access for local communities."
+                description: "Every contribution directly supports farming families and improves food access for local communities."
               },
               {
                 icon: <Award className="h-5 w-5" />,
                 title: "Regulatory Compliance",
-                description: "Fully registered with relevant authorities and compliant with all SEC regulations for agricultural investments."
+                description: "Fully registered with relevant authorities and compliant with Cooperative Society regulations."
               },
               {
                 icon: <TrendingUp className="h-5 w-5" />,
@@ -329,7 +329,7 @@ const Services = () => {
                 </div>
               </div>
               <Button variant="outline" className="w-full" asChild>
-                <Link to="/contact?topic=investment">Schedule Consultation</Link>
+                <Link to="/contact?topic=membership">Schedule Consultation</Link>
               </Button>
             </motion.div>
 

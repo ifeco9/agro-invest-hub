@@ -14,7 +14,7 @@ const Orders = () => {
       date: "2023-06-15",
       amount: 2500000,
       status: "completed",
-      type: "AgroTrade Investment",
+      type: "AgroTrade Contribution",
       returns: 150000,
       duration: "6 months"
     },
@@ -41,7 +41,7 @@ const Orders = () => {
       date: "2023-05-30",
       amount: 3000000,
       status: "completed",
-      type: "AgroTrade Investment",
+      type: "AgroTrade Contribution",
       returns: 180000,
       duration: "6 months"
     }

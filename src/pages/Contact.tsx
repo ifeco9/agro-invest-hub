@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { Mail, Phone, MapPin, Clock, Download, Send, Facebook, Twitter, Linkedin, Instagram, TrendingUp, Warehouse, ShoppingCart } from "lucide-react";
+import { Mail, Phone, MapPin, Send, MessageSquare, User, Clock, Users, Warehouse, ShoppingCart } from "lucide-react";
 import { z } from "zod";
 import { motion } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
@@ -102,66 +102,95 @@ const Contact = () => {
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.5 }}
             >
-              <Card className="bg-card border border-border h-full">
-                <CardHeader>
-                  <h2 className="text-2xl font-bold text-foreground">Our Office</h2>
-                </CardHeader>
-                <CardContent className="space-y-6">
-                  <div className="flex items-start gap-3">
-                    <MapPin className="h-5 w-5 text-primary mt-0.5" />
-                    <div>
-                      <p className="font-medium text-foreground">Address</p>
-                      <p className="text-muted-foreground">
-                        Suite C6, Rosette Plaza,<br />
-                        Adj. Chicken Republic, Apo Resettlement,<br />
-                        FCT, Abuja, Nigeria
-                      </p>
-                    </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="flex flex-col items-start text-left p-6 bg-card rounded-lg shadow-sm border border-border">
+                  <div className="p-3 bg-teal-100 rounded-full mb-4">
+                    <Users className="h-6 w-6 text-teal-600" />
                   </div>
+                  <h3 className="font-bold text-lg mb-2">Cooperative Membership & Participation</h3>
+                  <div className="text-muted-foreground space-y-2 mt-2">
+                    <p className="flex items-center gap-2">
+                      <Mail className="h-4 w-4" />
+                      <a href="mailto:drecanagriculture@gmail.com" className="hover:text-primary transition-colors">drecanagriculture@gmail.com</a>
+                    </p>
+                    <p className="flex items-center gap-2">
+                      <Phone className="h-4 w-4" />
+                      <a href="tel:+2347026841214" className="hover:text-primary transition-colors">+234 702 684 1214</a>
+                    </p>
+                    <p className="flex items-center gap-2">
+                      <Clock className="h-4 w-4" />
+                      <span>Mon–Fri, 9:00 AM – 6:00 PM (WAT)</span>
+                    </p>
+                  </div>
+                  <Button className="mt-4 w-full" asChild>
+                    <Link to="/opportunities">Apply for Membership</Link>
+                  </Button>
+                </div>
 
-                  <div className="flex items-start gap-3">
-                    <Mail className="h-5 w-5 text-primary mt-0.5" />
-                    <div>
-                      <p className="font-medium text-foreground">Email</p>
-                      <p className="text-muted-foreground">drecanagriculture@gmail.com</p>
-                    </div>
+                <div className="flex flex-col items-start text-left p-6 bg-card rounded-lg shadow-sm border border-border">
+                  <div className="p-3 bg-teal-100 rounded-full mb-4">
+                    <Warehouse className="h-6 w-6 text-teal-600" />
                   </div>
+                  <h3 className="font-bold text-lg mb-2">Storage & Product Services</h3>
+                  <div className="text-muted-foreground space-y-2 mt-2">
+                    <p className="flex items-center gap-2">
+                      <Mail className="h-4 w-4" />
+                      <a href="mailto:drecanagriculture@gmail.com" className="hover:text-primary transition-colors">drecanagriculture@gmail.com</a>
+                    </p>
+                    <p className="flex items-center gap-2">
+                      <Phone className="h-4 w-4" />
+                      <a href="tel:+2347026841214" className="hover:text-primary transition-colors">+234 702 684 1214</a>
+                    </p>
+                    <p className="flex items-center gap-2">
+                      <Clock className="h-4 w-4" />
+                      <span>Mon–Fri, 9:00 AM – 6:00 PM (WAT)</span>
+                    </p>
+                  </div>
+                  <Button className="mt-4 w-full" variant="outline" asChild>
+                    <Link to="/services">Request a Quote</Link>
+                  </Button>
+                </div>
 
-                  <div className="flex items-start gap-3">
-                    <Phone className="h-5 w-5 text-primary mt-0.5" />
-                    <div>
-                      <p className="font-medium text-foreground">Phone</p>
-                      <p className="text-muted-foreground">+234 702 684 1214</p>
-                    </div>
+                <div className="flex flex-col items-start text-left p-6 bg-card rounded-lg shadow-sm border border-border">
+                  <div className="p-3 bg-teal-100 rounded-full mb-4">
+                    <ShoppingCart className="h-6 w-6 text-teal-600" />
                   </div>
+                  <h3 className="font-bold text-lg mb-2">Procurement & Distribution</h3>
+                  <div className="text-muted-foreground space-y-2 mt-2">
+                    <p className="flex items-center gap-2">
+                      <Mail className="h-4 w-4" />
+                      <a href="mailto:drecanagriculture@gmail.com" className="hover:text-primary transition-colors">drecanagriculture@gmail.com</a>
+                    </p>
+                    <p className="flex items-center gap-2">
+                      <Phone className="h-4 w-4" />
+                      <a href="tel:+2347026841214" className="hover:text-primary transition-colors">+234 702 684 1214</a>
+                    </p>
+                    <p className="flex items-center gap-2">
+                      <Clock className="h-4 w-4" />
+                      <span>Mon–Fri, 9:00 AM – 6:00 PM (WAT)</span>
+                    </p>
+                  </div>
+                  <Button className="mt-4 w-full" variant="outline" asChild>
+                    <Link to="/contact">Submit Inquiry</Link>
+                  </Button>
+                </div>
+              </div>
 
-                  <div className="flex items-start gap-3">
-                    <Clock className="h-5 w-5 text-primary mt-0.5" />
-                    <div>
-                      <p className="font-medium text-foreground">Business Hours</p>
-                      <p className="text-muted-foreground">
-                        Monday - Friday<br />
-                        8:00 AM - 5:00 PM WAT
-                      </p>
-                    </div>
-                  </div>
+              <div className="pt-4">
+                <h3 className="text-lg font-semibold text-foreground mb-3">Follow Us</h3>
+                <div className="flex space-x-4">
+                  <a href="https://www.linkedin.com/company/drecan-agriculture/" className="text-foreground hover:text-primary transition-colors" target="_blank" rel="noopener noreferrer">
+                    <Linkedin className="h-5 w-5" />
+                  </a>
+                  <a href="https://facebook.com" className="text-foreground hover:text-primary transition-colors" target="_blank" rel="noopener noreferrer">
+                    <Facebook className="h-5 w-5" />
+                  </a>
+                  <a href="https://www.instagram.com/drecan_commodities?igsh=cXVsZmVydGdmbTI5" className="text-foreground hover:text-primary transition-colors" target="_blank" rel="noopener noreferrer">
+                    <Instagram className="h-5 w-5" />
+                  </a>
+                </div>
+              </div>
 
-                  <div className="pt-4">
-                    <h3 className="text-lg font-semibold text-foreground mb-3">Follow Us</h3>
-                    <div className="flex space-x-4">
-                      <a href="https://www.linkedin.com/company/drecan-agriculture/" className="text-foreground hover:text-primary transition-colors" target="_blank" rel="noopener noreferrer">
-                        <Linkedin className="h-5 w-5" />
-                      </a>
-                      <a href="https://facebook.com" className="text-foreground hover:text-primary transition-colors" target="_blank" rel="noopener noreferrer">
-                        <Facebook className="h-5 w-5" />
-                      </a>
-                      <a href="https://www.instagram.com/drecan_commodities?igsh=cXVsZmVydGdmbTI5" className="text-foreground hover:text-primary transition-colors" target="_blank" rel="noopener noreferrer">
-                        <Instagram className="h-5 w-5" />
-                      </a>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
             </motion.div>
 
             {/* Contact Form */}
@@ -203,7 +232,7 @@ const Contact = () => {
                           <SelectItem value="investment">
                             <div className="flex items-center gap-2">
                               <TrendingUp className="h-4 w-4" />
-                              <span>Agricultural Investment & Memberships</span>
+                              <span>Membership & Cooperative Participation</span>
                             </div>
                           </SelectItem>
                           <SelectItem value="storage">
@@ -254,7 +283,7 @@ const Contact = () => {
                         id="subject"
                         name="subject"
                         required
-                        placeholder="Investment Inquiry"
+                        placeholder="Membership Inquiry"
                         className="border-border focus:border-primary focus:ring-primary"
                       />
                     </div>
@@ -296,10 +325,10 @@ const Contact = () => {
               </Card>
             </motion.div>
           </div>
-        </div>
+        </div >
       </section >
 
-      {/* Investor Relations */}
+      {/* Member Relations */}
       < section className="py-12 sm:py-16 bg-teal-50" >
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="text-center mb-8 sm:mb-12">
@@ -310,7 +339,7 @@ const Contact = () => {
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.5 }}
             >
-              Investor Relations
+              Member Relations
             </motion.h2>
             <motion.p
               className="text-base sm:text-lg text-muted-foreground"
@@ -319,7 +348,7 @@ const Contact = () => {
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.5, delay: 0.1 }}
             >
-              Ready to take the next step in your agricultural investment journey?
+              Ready to take the next step in your agricultural cooperative journey?
             </motion.p>
           </div>
 
@@ -334,9 +363,9 @@ const Contact = () => {
             >
               <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2 sm:mb-3">Our Promise</h3>
               <p className="text-muted-foreground">
-                We are committed to providing transparent, ethical, and profitable investment opportunities
-                in Nigeria's agricultural sector. Our team ensures that every investor receives personalized
-                attention and regular updates on their investments.
+                We are committed to providing transparent, ethical, and sustainable cooperative opportunities
+                in Nigeria's agricultural sector. Our team ensures that every member receives personalized
+                attention and regular updates on their cooperative participation.
               </p>
             </motion.div>
 
@@ -348,7 +377,7 @@ const Contact = () => {
               transition={{ duration: 0.5, delay: 0.2 }}
               whileHover={{ y: -5, transition: { duration: 0.3 } }}
             >
-              <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2 sm:mb-3">Investment Categories</h3>
+              <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2 sm:mb-3">Membership Categories</h3>
               <ul className="space-y-2 text-muted-foreground">
                 <li className="flex items-start">
                   <span className="text-primary font-bold mr-2">•</span>
@@ -381,11 +410,11 @@ const Contact = () => {
                 </li>
                 <li className="flex items-start">
                   <span className="text-primary font-bold mr-2">2.</span>
-                  <span>Schedule a consultation with our investment team</span>
+                  <span>Schedule a consultation with our membership team</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-primary font-bold mr-2">3.</span>
-                  <span>Review and sign investment agreements</span>
+                  <span>Review and sign membership agreements</span>
                 </li>
               </ol>
             </motion.div>

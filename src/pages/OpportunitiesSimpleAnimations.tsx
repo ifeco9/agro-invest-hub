@@ -1,37 +1,9 @@
-import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { TrendingUp, Clock, Users, Zap, Award, Shield, Leaf, DollarSign } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Opportunities = () => {
-  const [investmentAmount, setInvestmentAmount] = useState(500000);
-  const [showConfetti, setShowConfetti] = useState(false);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
-
-  // Simple confetti effect using CSS animations
-  const handleReserveSlot = () => {
-    setShowConfetti(true);
-    setTimeout(() => setShowConfetti(false), 3000);
-
-    // Show alert
-    alert("Thank you for your interest! Our team will contact you shortly to finalize your membership.");
-  };
-
-  // Auto-rotate investment amount for demo purposes
-  useEffect(() => {
-    intervalRef.current = setInterval(() => {
-      setInvestmentAmount(prev => {
-        if (prev >= 5000000) return 500000;
-        return prev + 500000;
-      });
-    }, 3000);
-
-    return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
-    };
-  }, []);
+  const REGISTRATION_FORM_URL = "https://forms.gle/B44hiwmokEsWfKqx6";
 
   return (
     <div className="min-h-screen pt-16 sm:pt-20">
@@ -47,52 +19,92 @@ const Opportunities = () => {
         </div>
       </section>
 
-      {/* Partnership Tiers Overview */}
-      <section className="py-12 sm:py-16 bg-background">
+      {/* Our Services Section */}
+      <section className="py-12 sm:py-16 bg-gradient-to-br from-emerald-50 to-teal-50">
         <div className="container mx-auto px-4">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-6 text-center">
-            Membership Tiers
+            Our Services
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground mb-8 max-w-3xl mx-auto text-center">
-            Drecan accommodates different membership capacities with three main tiers
+            Comprehensive agricultural and cooperative services designed to support your success
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 max-w-5xl mx-auto">
-            <div className="bg-card p-6 rounded-lg shadow-md border border-border">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 bg-teal-100 rounded-lg">
-                  <Users className="h-6 w-6 text-teal-600" />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            <div className="bg-white p-6 rounded-lg shadow-md border border-border hover:shadow-lg transition-shadow">
+              <div className="flex items-start gap-3">
+                <div className="p-2 bg-teal-100 rounded-lg flex-shrink-0">
+                  <Users className="h-5 w-5 text-teal-600" />
                 </div>
-                <h3 className="text-xl font-bold text-foreground">Tier 1</h3>
+                <div>
+                  <h3 className="text-lg font-bold text-foreground mb-2">AgroLink Community Supply Program</h3>
+                  <p className="text-sm text-muted-foreground">Connecting farmers with markets and ensuring reliable supply chains</p>
+                </div>
               </div>
-              <p className="text-2xl font-bold text-primary mb-2">₦500,000 Min</p>
-              <p className="text-muted-foreground">Small-scale members or first-time members. Can invest in 3-month, 6-month, or 1-year plans.</p>
             </div>
 
-            <div className="bg-card p-6 rounded-lg shadow-md border border-border">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 bg-emerald-100 rounded-lg">
-                  <TrendingUp className="h-6 w-6 text-emerald-600" />
+            <div className="bg-white p-6 rounded-lg shadow-md border border-border hover:shadow-lg transition-shadow">
+              <div className="flex items-start gap-3">
+                <div className="p-2 bg-emerald-100 rounded-lg flex-shrink-0">
+                  <Leaf className="h-5 w-5 text-emerald-600" />
                 </div>
-                <h3 className="text-xl font-bold text-foreground">Tier 2</h3>
+                <div>
+                  <h3 className="text-lg font-bold text-foreground mb-2">AgroFarm Cooperative Program</h3>
+                  <p className="text-sm text-muted-foreground">Collaborative farming initiatives for shared growth and prosperity</p>
+                </div>
               </div>
-              <p className="text-2xl font-bold text-primary mb-2">₦2,000,000 Min</p>
-              <p className="text-muted-foreground">Medium-scale partners seeking higher returns. Can invest in 1-year or 2-year plans.</p>
             </div>
 
-            <div className="bg-card p-6 rounded-lg shadow-md border border-border">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 bg-amber-100 rounded-lg">
-                  <Award className="h-6 w-6 text-amber-600" />
+            <div className="bg-white p-6 rounded-lg shadow-md border border-border hover:shadow-lg transition-shadow">
+              <div className="flex items-start gap-3">
+                <div className="p-2 bg-amber-100 rounded-lg flex-shrink-0">
+                  <TrendingUp className="h-5 w-5 text-amber-600" />
                 </div>
-                <h3 className="text-xl font-bold text-foreground">Tier 3</h3>
+                <div>
+                  <h3 className="text-lg font-bold text-foreground mb-2">AgroTrade Operations</h3>
+                  <p className="text-sm text-muted-foreground">Strategic trading and market access for agricultural commodities</p>
+                </div>
               </div>
-              <p className="text-2xl font-bold text-primary mb-2">₦10,000,000 Min</p>
-              <p className="text-muted-foreground">Large-scale partners aiming for maximum profitability. Recommended for 2-year or 3-year plans.</p>
+            </div>
+
+            <div className="bg-white p-6 rounded-lg shadow-md border border-border hover:shadow-lg transition-shadow">
+              <div className="flex items-start gap-3">
+                <div className="p-2 bg-blue-100 rounded-lg flex-shrink-0">
+                  <Shield className="h-5 w-5 text-blue-600" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-foreground mb-2">AgroReserve Storage Program</h3>
+                  <p className="text-sm text-muted-foreground">Secure storage solutions to maximize value and reduce post-harvest losses</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white p-6 rounded-lg shadow-md border border-border hover:shadow-lg transition-shadow">
+              <div className="flex items-start gap-3">
+                <div className="p-2 bg-purple-100 rounded-lg flex-shrink-0">
+                  <Zap className="h-5 w-5 text-purple-600" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-foreground mb-2">Supply Chain Management</h3>
+                  <p className="text-sm text-muted-foreground">End-to-end logistics and distribution optimization</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white p-6 rounded-lg shadow-md border border-border hover:shadow-lg transition-shadow">
+              <div className="flex items-start gap-3">
+                <div className="p-2 bg-rose-100 rounded-lg flex-shrink-0">
+                  <Award className="h-5 w-5 text-rose-600" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-foreground mb-2">Farmer Support Management</h3>
+                  <p className="text-sm text-muted-foreground">Comprehensive support services including training, resources, and technical assistance</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
+
 
       {/* Partnership Plans */}
       <section className="py-12 sm:py-20 bg-gradient-to-br from-teal-50 to-emerald-50">
@@ -131,8 +143,8 @@ const Opportunities = () => {
                         <span className="font-semibold text-sm sm:text-base">₦1,000,000</span>
                       </li>
                       <li className="flex justify-between border-b pb-2">
-                        <span className="text-sm sm:text-base">Expected Surplus:</span>
-                        <span className="font-semibold text-sm sm:text-base text-primary">20% - 25%</span>
+                        <span className="text-sm sm:text-base">Profit Share:</span>
+                        <span className="font-semibold text-sm sm:text-base text-primary">30%</span>
                       </li>
                       <li className="flex justify-between border-b pb-2">
                         <span className="text-sm sm:text-base">Duration:</span>
@@ -159,9 +171,11 @@ const Opportunities = () => {
                   <Button
                     size="lg"
                     className="bg-primary hover:bg-primary-hover text-primary-foreground shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 ease-in-out px-6 sm:px-8 py-3 rounded-full font-bold text-base sm:text-lg"
-                    onClick={handleReserveSlot}
+                    asChild
                   >
-                    Reserve Membership Slot
+                    <a href={REGISTRATION_FORM_URL} target="_blank" rel="noopener noreferrer">
+                      Apply Now - Register
+                    </a>
                   </Button>
                 </div>
               </div>
@@ -193,8 +207,8 @@ const Opportunities = () => {
                         <span className="font-semibold text-sm sm:text-base">₦5,000,000</span>
                       </li>
                       <li className="flex justify-between border-b pb-2">
-                        <span className="text-sm sm:text-base">Expected Surplus:</span>
-                        <span className="font-semibold text-sm sm:text-base text-primary">35% - 45%</span>
+                        <span className="text-sm sm:text-base">Profit Share:</span>
+                        <span className="font-semibold text-sm sm:text-base text-primary">65%</span>
                       </li>
                       <li className="flex justify-between border-b pb-2">
                         <span className="text-sm sm:text-base">Duration:</span>
@@ -224,9 +238,11 @@ const Opportunities = () => {
                   <Button
                     size="lg"
                     className="bg-primary hover:bg-primary-hover text-primary-foreground shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 ease-in-out px-6 sm:px-8 py-3 rounded-full font-bold text-base sm:text-lg"
-                    onClick={handleReserveSlot}
+                    asChild
                   >
-                    Reserve Membership Slot
+                    <a href={REGISTRATION_FORM_URL} target="_blank" rel="noopener noreferrer">
+                      Apply Now - Register
+                    </a>
                   </Button>
                 </div>
               </div>
@@ -258,8 +274,8 @@ const Opportunities = () => {
                         <span className="font-semibold text-sm sm:text-base">₦10,000,000</span>
                       </li>
                       <li className="flex justify-between border-b pb-2">
-                        <span className="text-sm sm:text-base">Expected Surplus:</span>
-                        <span className="font-semibold text-sm sm:text-base text-primary">75% - 100%</span>
+                        <span className="text-sm sm:text-base">Profit Share:</span>
+                        <span className="font-semibold text-sm sm:text-base text-primary">126%</span>
                       </li>
                       <li className="flex justify-between border-b pb-2">
                         <span className="text-sm sm:text-base">Duration:</span>
@@ -289,9 +305,11 @@ const Opportunities = () => {
                   <Button
                     size="lg"
                     className="bg-primary hover:bg-primary-hover text-primary-foreground shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 ease-in-out px-6 sm:px-8 py-3 rounded-full font-bold text-base sm:text-lg"
-                    onClick={handleReserveSlot}
+                    asChild
                   >
-                    Reserve Membership Slot
+                    <a href={REGISTRATION_FORM_URL} target="_blank" rel="noopener noreferrer">
+                      Apply Now - Register
+                    </a>
                   </Button>
                 </div>
               </div>
@@ -302,9 +320,9 @@ const Opportunities = () => {
               <div className="bg-teal-800 text-white p-4 sm:p-6">
                 <div className="flex items-center gap-2 sm:gap-3 mb-2">
                   <Shield className="h-5 w-5 sm:h-6 sm:w-6" />
-                  <h2 className="text-2xl sm:text-3xl font-bold">2-Year Membership Plan</h2>
+                  <h2 className="text-2xl sm:text-3xl font-bold">2 Years & Above Membership Plan</h2>
                 </div>
-                <p className="text-teal-100 text-sm sm:text-base">Long-term growth with premium shared surplus</p>
+                <p className="text-teal-100 text-sm sm:text-base">Long-term growth with premium profit share</p>
               </div>
               <div className="p-4 sm:p-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
@@ -319,8 +337,8 @@ const Opportunities = () => {
                         <span className="font-semibold text-sm sm:text-base">₦1,000,000</span>
                       </li>
                       <li className="flex justify-between border-b pb-2">
-                        <span className="text-sm sm:text-base">Expected Surplus:</span>
-                        <span className="font-semibold text-sm sm:text-base text-primary">100% - 150%</span>
+                        <span className="text-sm sm:text-base">Profit Share:</span>
+                        <span className="font-semibold text-sm sm:text-base text-primary">220%</span>
                       </li>
                       <li className="flex justify-between border-b pb-2">
                         <span className="text-sm sm:text-base">Duration:</span>
@@ -350,105 +368,11 @@ const Opportunities = () => {
                   <Button
                     size="lg"
                     className="bg-primary hover:bg-primary-hover text-primary-foreground shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 ease-in-out px-6 sm:px-8 py-3 rounded-full font-bold text-base sm:text-lg"
-                    onClick={handleReserveSlot}
+                    asChild
                   >
-                    Reserve Membership Slot
-                  </Button>
-                </div>
-              </div>
-            </div>
-
-            {/* 3-Year Plan */}
-            <div id="three-year" className="bg-card rounded-lg shadow-lg border border-border overflow-hidden hover-lift transition-all duration-300">
-              <div className="bg-teal-800 text-white p-4 sm:p-6">
-                <div className="flex items-center gap-2 sm:gap-3 mb-2">
-                  <Award className="h-5 w-5 sm:h-6 sm:w-6" />
-                  <h2 className="text-2xl sm:text-3xl font-bold">3-Year Membership Plan</h2>
-                </div>
-                <p className="text-teal-100 text-sm sm:text-base">Maximum shared surplus for large-scale members</p>
-              </div>
-              <div className="p-4 sm:p-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-                  <div>
-                    <h3 className="text-lg sm:text-xl font-bold text-foreground mb-3 sm:mb-4 flex items-center gap-2">
-                      <DollarSign className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
-                      Membership Details
-                    </h3>
-                    <ul className="space-y-2 sm:space-y-3 text-muted-foreground">
-                      <li className="flex justify-between border-b pb-2">
-                        <span className="text-sm sm:text-base">Minimum Contribution:</span>
-                        <span className="font-semibold text-sm sm:text-base">₦5,000,000</span>
-                      </li>
-                      <li className="flex justify-between border-b pb-2">
-                        <span className="text-sm sm:text-base">Expected Surplus:</span>
-                        <span className="font-semibold text-sm sm:text-base text-primary">180% - 250%</span>
-                      </li>
-                      <li className="flex justify-between border-b pb-2">
-                        <span className="text-sm sm:text-base">Duration:</span>
-                        <span className="font-semibold text-sm sm:text-base">36 months</span>
-                      </li>
-
-                    </ul>
-                  </div>
-
-                  <div>
-                    <h3 className="text-lg sm:text-xl font-bold text-foreground mb-3 sm:mb-4 flex items-center gap-2">
-                      <TrendingUp className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
-                      Payment Terms
-                    </h3>
-                    <div className="bg-secondary rounded-lg p-3 sm:p-4 mb-4">
-                      <p className="text-muted-foreground text-sm sm:text-base mb-3">
-                        <strong>Annual Shared Surplus Payout:</strong> Shared surplus is paid starting from the fourth month of contribution to the end of contribution period. Shared surplus can also be calculated per year and paid at the end of each year while principal is retained. At the end of the third year, the remaining shared surplus and principal are returned.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mt-6 sm:mt-8">
-                  <h3 className="text-lg sm:text-xl font-bold text-foreground mb-3 sm:mb-4 flex items-center gap-2">
-                    <Leaf className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
-                    Fund Deployment
-                  </h3>
-                  <div className="bg-secondary rounded-lg p-4 mb-4">
-                    <p className="text-muted-foreground text-sm sm:text-base mb-3">
-                      Designed for large-scale members aiming for maximum returns. Funds deployed into long-term, high-value agricultural projects, including:
-                    </p>
-                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-muted-foreground text-sm sm:text-base">
-                      <li className="flex items-start">
-                        <span className="text-primary font-bold mr-2">✓</span>
-                        <span>Large palm oil plantations with processing facilities</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="text-primary font-bold mr-2">✓</span>
-                        <span>Export-focused grain operations</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="text-primary font-bold mr-2">✓</span>
-                        <span>Integrated livestock and poultry farms</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="text-primary font-bold mr-2">✓</span>
-                        <span>Cowhide exportation and leather processing</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="text-primary font-bold mr-2">✓</span>
-                        <span>Aquaculture for local and international markets</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="text-primary font-bold mr-2">✓</span>
-                        <span>Diversified portfolio ensures risk mitigation</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-
-                <div className="mt-6 sm:mt-8 text-center">
-                  <Button
-                    size="lg"
-                    className="bg-primary hover:bg-primary-hover text-primary-foreground shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 ease-in-out px-6 sm:px-8 py-3 rounded-full font-bold text-base sm:text-lg"
-                    onClick={handleReserveSlot}
-                  >
-                    Reserve Membership Slot
+                    <a href={REGISTRATION_FORM_URL} target="_blank" rel="noopener noreferrer">
+                      Apply Now - Register
+                    </a>
                   </Button>
                 </div>
               </div>
@@ -627,25 +551,6 @@ const Opportunities = () => {
           </div>
         </div>
       </section>
-
-      {/* Confetti overlay */}
-      {showConfetti && (
-        <div className="fixed inset-0 pointer-events-none z-50">
-          {[...Array(100)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-2 h-2 rounded-full animate-confetti"
-              style={{
-                backgroundColor: ['#0D9488', '#14B8A6', '#0F766E', '#115E59'][Math.floor(Math.random() * 4)],
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 0.5}s`,
-                animationDuration: '2s'
-              }}
-            />
-          ))}
-        </div>
-      )}
     </div>
   );
 };

@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { Mail, Phone, MapPin, Send, MessageSquare, User, Clock, Users, Warehouse, ShoppingCart } from "lucide-react";
+import { Mail, Phone, MapPin, Send, MessageSquare, User, Clock, Users, Warehouse, ShoppingCart, Linkedin, Facebook, Instagram, TrendingUp, Download } from "lucide-react";
 import { z } from "zod";
 import { motion } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
@@ -102,7 +102,7 @@ const Contact = () => {
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.5 }}
             >
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="space-y-6">
                 <div className="flex flex-col items-start text-left p-6 bg-card rounded-lg shadow-sm border border-border">
                   <div className="p-3 bg-teal-100 rounded-full mb-4">
                     <Users className="h-6 w-6 text-teal-600" />

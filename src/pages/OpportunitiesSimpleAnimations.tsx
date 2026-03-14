@@ -161,7 +161,7 @@ const Opportunities = () => {
                     </h3>
                     <div className="bg-secondary rounded-lg p-3 sm:p-4 mb-4">
                       <p className="text-muted-foreground text-sm sm:text-base mb-3">
-                        Shared surplus is paid starting from the second month of contribution to the end of contribution period. Shared surplus can also be calculated and paid at the end of contribution period; principal returned at the end of three months.
+                        Shared surplus is paid either <strong>monthly</strong> throughout the 3-month period, or as a <strong>lump sum at maturity</strong> (end of 3 months). The principal is returned in full at the end of the plan period.
                       </p>
                     </div>
                   </div>
@@ -225,7 +225,7 @@ const Opportunities = () => {
                     </h3>
                     <div className="bg-secondary rounded-lg p-3 sm:p-4 mb-4">
                       <p className="text-muted-foreground text-sm sm:text-base mb-3">
-                        Shared surplus is paid starting from the third month of contribution to the end of contribution period. Shared surplus can also be calculated and paid at the end of contribution period; principal returned at the end of six months.
+                        Shared surplus is paid either <strong>monthly</strong> throughout the 6-month period, or as a <strong>lump sum at maturity</strong> (end of 6 months). The principal is returned in full at the end of the plan period.
                       </p>
                       <p className="text-muted-foreground text-sm sm:text-base">
                         Capital is deployed in high-value crops and small-scale livestock operations.
@@ -292,10 +292,10 @@ const Opportunities = () => {
                     </h3>
                     <div className="bg-secondary rounded-lg p-3 sm:p-4 mb-4">
                       <p className="text-muted-foreground text-sm sm:text-base mb-3">
-                        Shared surplus is paid starting from the fourth month of contribution to the end of contribution period. Shared surplus can also be calculated and paid at the end of the year; principal returned at the end of one year.
+                        Shared surplus is paid either <strong>monthly</strong> throughout the 1-year period, or as a <strong>lump sum at maturity</strong> (end of 12 months). The principal is returned in full at the end of the plan period.
                       </p>
                       <p className="text-muted-foreground text-sm sm:text-base">
-                        Capital is used for palm oil, grains, cocoa, cashew, poultry, and small livestock operations. Members have the option to receive shared surplus only at the end of the year, ensuring maximum growth.
+                        Capital is used for palm oil, grains, cocoa, cashew, poultry, and small livestock operations.
                       </p>
                     </div>
                   </div>
@@ -355,10 +355,10 @@ const Opportunities = () => {
                     </h3>
                     <div className="bg-secondary rounded-lg p-3 sm:p-4 mb-4">
                       <p className="text-muted-foreground text-sm sm:text-base mb-3">
-                        <strong>Annual Shared Surplus Payout:</strong> Shared surplus is paid starting from the fourth month of contribution to the end of contribution period. Shared surplus can also be calculated per year and paid at the end of each year while principal is retained. At the end of the second year, the remaining shared surplus and principal are returned.
+                        Shared surplus is paid either <strong>monthly</strong> throughout the plan period, or as a <strong>lump sum at maturity</strong> (end of 2+ years). The principal is returned in full at the end of the plan period.
                       </p>
                       <p className="text-muted-foreground text-sm sm:text-base">
-                        Capital is used in high-value crop plantations, large-scale livestock, aquaculture, and agro-processing. Members are encouraged to take advantage of the longer term to maximize shared surplus and exposure to export-oriented products like cowhide and processed palm oil.
+                        Capital is used in high-value crop plantations, large-scale livestock, aquaculture, and agro-processing. Members are encouraged to take advantage of the longer term to maximize shared surplus.
                       </p>
                     </div>
                   </div>

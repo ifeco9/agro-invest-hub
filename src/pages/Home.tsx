@@ -24,6 +24,7 @@ import drecanLogo from "@/assets/drecanlogonew.png";
 import farmBg from "@/assets/sustainable-farm.jpg";
 
 const Home = () => {
+  const [expandedReview, setExpandedReview] = useState(false);
   return (
     <div className="min-h-screen">
       {/* Hero Section - Restored Hardcoded Rich Design */}
@@ -486,114 +487,108 @@ const Home = () => {
             </h2>
           </motion.div>
 
-          <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl p-4 sm:p-6 md:p-8">
-            <Carousel
-              opts={{
-                loop: true,
-                align: "start",
-              }}
-              className="w-full"
-            >
-              <CarouselContent>
-                {/* Review 1 - Mr Olufemi Adebodun */}
-                <CarouselItem>
-                  <div className="bg-gradient-to-br from-white to-teal-50 rounded-xl border border-teal-100 p-5 sm:p-6 max-w-2xl mx-auto">
-                    <div className="flex justify-center mb-3">
-                      <img
-                        src={drecanLogo}
-                        alt="Drecan"
-                        className="w-10 h-10 object-contain rounded-full shadow-sm"
-                      />
-                    </div>
-                    <h3 className="text-center text-xs font-semibold text-teal-700 uppercase tracking-wide mb-3">
-                      A Review from our Drecan Member
-                    </h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed italic text-center">
-                      "So far the experience have been pleasant, its been exactly as promised and I am happy so far."
+          <Carousel
+            opts={{
+              loop: true,
+              align: "start",
+            }}
+            className="w-full"
+          >
+            <CarouselContent>
+              {/* Review 1 - Mr Olufemi Adebodun */}
+              <CarouselItem>
+                <div className="bg-white/95 backdrop-blur-sm rounded-xl shadow-lg border border-teal-100 p-5 sm:p-6 max-w-xl mx-auto">
+                  <div className="flex justify-center mb-3">
+                    <img
+                      src={drecanLogo}
+                      alt="Drecan"
+                      className="w-10 h-10 object-contain rounded-full shadow-sm"
+                    />
+                  </div>
+                  <h3 className="text-center text-xs font-semibold text-teal-700 uppercase tracking-wide mb-3">
+                    A Review from our Drecan Member
+                  </h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed italic text-center">
+                    "So far the experience have been pleasant, its been exactly as promised and I am happy so far."
+                  </p>
+                  <div className="mt-4 pt-3 border-t border-teal-100 text-center">
+                    <p className="font-bold text-foreground">Mr Olufemi Adebodun</p>
+                    <p className="text-xs text-muted-foreground">FCT, Abuja</p>
+                  </div>
+                </div>
+              </CarouselItem>
+
+              {/* Review 2 - Dr. David Onabanjo (collapsible) */}
+              <CarouselItem>
+                <div className="bg-white/95 backdrop-blur-sm rounded-xl shadow-lg border border-teal-100 p-5 sm:p-6 max-w-xl mx-auto">
+                  <div className="flex justify-center mb-3">
+                    <img
+                      src={drecanLogo}
+                      alt="Drecan"
+                      className="w-10 h-10 object-contain rounded-full shadow-sm"
+                    />
+                  </div>
+                  <h3 className="text-center text-xs font-semibold text-teal-700 uppercase tracking-wide mb-3">
+                    A Review from our Drecan Member
+                  </h3>
+                  <div className="text-muted-foreground text-sm leading-relaxed italic text-left space-y-2">
+                    <p>
+                      "My Experience with Drecan Multipurpose Cooperative Society When I made my initial investment of ₦500,000 with Drecan Multipurpose Cooperative Society in February 2026, it was a deliberate test of their integrity and operational discipline. I am pleased to report that they passed convincingly.
                     </p>
-                    <div className="mt-4 pt-3 border-t border-teal-100 text-center">
-                      <p className="font-bold text-foreground">Mr Olufemi Adebodun</p>
-                      <p className="text-xs text-muted-foreground">FCT, Abuja</p>
-                    </div>
+                    {expandedReview && (
+                      <>
+                        <p>
+                          From the outset, Drecan demonstrated a clear commitment to accountability and transparency. Monthly returns on investment were paid promptly and consistently, without the delays or excuses that have become all too common in Nigeria's cooperative landscape. What truly distinguished Drecan was their follow-through on their promotional hamper gift programme. Four of the members I introduced personally redeemed their hampers exactly as promised a small but telling indicator of an organisation that honours its commitments. Based on this experience, I extended my participation significantly and introduced my wife, brothers, and business associates to the cooperative. That is not a decision I make lightly.
+                        </p>
+                        <p>
+                          Drecan is a registered entity with verifiable CAC certification and SCUML compliance. For those seeking a trustworthy, agriculture-based cooperative society in Nigeria, I recommend them with confidence. Please verify to make an informed decision also."
+                        </p>
+                      </>
+                    )}
                   </div>
-                </CarouselItem>
-
-                {/* Review 2 - Dr. David Onabanjo (FULL verbatim) */}
-                <CarouselItem>
-                  <div className="bg-gradient-to-br from-white to-teal-50 rounded-xl border border-teal-100 p-5 sm:p-6 max-w-2xl mx-auto">
-                    <div className="flex justify-center mb-3">
-                      <img
-                        src={drecanLogo}
-                        alt="Drecan"
-                        className="w-10 h-10 object-contain rounded-full shadow-sm"
-                      />
-                    </div>
-                    <h3 className="text-center text-xs font-semibold text-teal-700 uppercase tracking-wide mb-3">
-                      A Review from our Drecan Member
-                    </h3>
-                    <div className="text-muted-foreground text-sm leading-relaxed italic text-left space-y-2">
-                      <p>
-                        "My Experience with Drecan Multipurpose Cooperative Society When I made my initial investment of ₦500,000 with Drecan Multipurpose Cooperative Society in February 2026, it was a deliberate test of their integrity and operational discipline. I am pleased to report that they passed convincingly.
-                      </p>
-                      <p>
-                        From the outset, Drecan demonstrated a clear commitment to accountability and transparency. Monthly returns on investment were paid promptly and consistently, without the delays or excuses that have become all too common in Nigeria's cooperative landscape. What truly distinguished Drecan was their follow-through on their promotional hamper gift programme. Four of the members I introduced personally redeemed their hampers exactly as promised a small but telling indicator of an organisation that honours its commitments. Based on this experience, I extended my participation significantly and introduced my wife, brothers, and business associates to the cooperative. That is not a decision I make lightly.
-                      </p>
-                      <p>
-                        Drecan is a registered entity with verifiable CAC certification and SCUML compliance. For those seeking a trustworthy, agriculture-based cooperative society in Nigeria, I recommend them with confidence. Please verify to make an informed decision also."
-                      </p>
-                    </div>
-                    <div className="mt-4 pt-3 border-t border-teal-100 text-center">
-                      <p className="font-bold text-foreground">Dr. David Onabanjo</p>
-                    </div>
+                  <div className="text-center mt-2">
+                    <button
+                      onClick={() => setExpandedReview(!expandedReview)}
+                      className="text-teal-600 hover:text-teal-700 text-xs font-semibold underline underline-offset-2"
+                    >
+                      {expandedReview ? "Show less" : "Read more"}
+                    </button>
                   </div>
-                </CarouselItem>
-
-                {/* Review 3 - Mr Bright Amadi Chijioke */}
-                <CarouselItem>
-                  <div className="bg-gradient-to-br from-white to-teal-50 rounded-xl border border-teal-100 p-5 sm:p-6 max-w-2xl mx-auto">
-                    <div className="flex justify-center mb-3">
-                      <img
-                        src={drecanLogo}
-                        alt="Drecan"
-                        className="w-10 h-10 object-contain rounded-full shadow-sm"
-                      />
-                    </div>
-                    <h3 className="text-center text-xs font-semibold text-teal-700 uppercase tracking-wide mb-3">
-                      A Review from our Drecan Member
-                    </h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed italic text-center">
-                      "My name is Bright based in Port Harcourt, Rivers State and I have been with Drecan for about 2 months now and I must say that they are true to their words as they have been keeping to their promises thus far. You can be rest assured investing with them."
-                    </p>
-                    <div className="mt-4 pt-3 border-t border-teal-100 text-center">
-                      <p className="font-bold text-foreground">Mr Bright Amadi Chijioke</p>
-                      <p className="text-xs text-muted-foreground">Port Harcourt</p>
-                    </div>
+                  <div className="mt-4 pt-3 border-t border-teal-100 text-center">
+                    <p className="font-bold text-foreground">Dr. David Onabanjo</p>
                   </div>
-                </CarouselItem>
-              </CarouselContent>
+                </div>
+              </CarouselItem>
 
-              <div className="flex items-center justify-center gap-4 mt-4">
-                <CarouselPrevious className="static translate-y-0 h-8 w-8 rounded-full border-teal-300 text-teal-700 hover:bg-teal-50" />
-                <CarouselNext className="static translate-y-0 h-8 w-8 rounded-full border-teal-300 text-teal-700 hover:bg-teal-50" />
-              </div>
-            </Carousel>
+              {/* Review 3 - Mr Bright Amadi Chijioke */}
+              <CarouselItem>
+                <div className="bg-white/95 backdrop-blur-sm rounded-xl shadow-lg border border-teal-100 p-5 sm:p-6 max-w-xl mx-auto">
+                  <div className="flex justify-center mb-3">
+                    <img
+                      src={drecanLogo}
+                      alt="Drecan"
+                      className="w-10 h-10 object-contain rounded-full shadow-sm"
+                    />
+                  </div>
+                  <h3 className="text-center text-xs font-semibold text-teal-700 uppercase tracking-wide mb-3">
+                    A Review from our Drecan Member
+                  </h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed italic text-center">
+                    "My name is Bright based in Port Harcourt, Rivers State and I have been with Drecan for about 2 months now and I must say that they are true to their words as they have been keeping to their promises thus far. You can be rest assured investing with them."
+                  </p>
+                  <div className="mt-4 pt-3 border-t border-teal-100 text-center">
+                    <p className="font-bold text-foreground">Mr Bright Amadi Chijioke</p>
+                    <p className="text-xs text-muted-foreground">Port Harcourt</p>
+                  </div>
+                </div>
+              </CarouselItem>
+            </CarouselContent>
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              className="text-center mt-6"
-            >
-              <Button
-                variant="outline"
-                className="border-teal-600 text-teal-700 hover:bg-teal-50 rounded-full px-6 py-1 h-auto text-sm"
-                asChild
-              >
-                <Link to="/about">Read More Reviews</Link>
-              </Button>
-            </motion.div>
-          </div>
+            <div className="flex items-center justify-center gap-4 mt-4">
+              <CarouselPrevious className="static translate-y-0 h-8 w-8 rounded-full border-white/60 text-white hover:bg-white/20 hover:text-white" />
+              <CarouselNext className="static translate-y-0 h-8 w-8 rounded-full border-white/60 text-white hover:bg-white/20 hover:text-white" />
+            </div>
+          </Carousel>
         </div>
       </section>
 

@@ -263,7 +263,7 @@ I would like to place the following order:
                         name="phone"
                         value={customerInfo.phone}
                         onChange={handleInputChange}
-                        placeholder="+234 702 684 1214"
+                        placeholder="+234 816 297 4408"
                         className="pl-10 border-teal-200 focus:border-teal-500"
                       />
                     </div>

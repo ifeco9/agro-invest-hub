@@ -108,7 +108,7 @@ const ContactForm = ({ title = "Send Us a Message", subtitle }: ContactFormProps
               name="phone"
               type="tel"
               required
-              placeholder="+234 702 684 1214"
+              placeholder="+234 816 297 4408"
               className="border-teal-100 focus:border-teal-700 focus:ring-teal-700"
             />
           </div>

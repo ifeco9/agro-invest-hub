@@ -321,7 +321,7 @@ const Services = () => {
                 </div>
                 <div className="flex items-start gap-2">
                   <Phone className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                  <span className="text-sm text-muted-foreground">+234 702 684 1214</span>
+                  <span className="text-sm text-muted-foreground">+234 816 297 4408</span>
                 </div>
                 <div className="flex items-start gap-2">
                   <Calendar className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
@@ -351,7 +351,7 @@ const Services = () => {
                 </div>
                 <div className="flex items-start gap-2">
                   <Phone className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                  <span className="text-sm text-muted-foreground">+234 702 684 1214</span>
+                  <span className="text-sm text-muted-foreground">+234 816 297 4408</span>
                 </div>
                 <div className="flex items-start gap-2">
                   <Calendar className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
@@ -381,7 +381,7 @@ const Services = () => {
                 </div>
                 <div className="flex items-start gap-2">
                   <Phone className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                  <span className="text-sm text-muted-foreground">+234 702 684 1214</span>
+                  <span className="text-sm text-muted-foreground">+234 816 297 4408</span>
                 </div>
                 <div className="flex items-start gap-2">
                   <Calendar className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />

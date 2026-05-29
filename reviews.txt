@@ -1,0 +1,56 @@
+Create a modern, elegant testimonial card for a website homepage. White or light cream background with subtle green accents matching Drecan branding. Include the green circular Drecan logo at the top center. 
+
+Layout:
+- Top: Drecan logo
+- Bold heading: "A Review from our Drecan Member"
+- Testimonial text in clean readable font
+- Name at bottom in bold
+- Location underneath name in smaller text
+
+Style: Professional, trustworthy, agricultural/farming theme. Soft shadows, rounded corners, high resolution, matches premium cooperative website design. Background can be transparent or with very light farm field overlay.
+
+Reviews Extracted Verbatim:
+
+Review 1 (Mr Olufemi Adebodun)
+"Review from our Drecan Member"
+"So far the experience have been pleasant, its been exactly as promised and I am happy so far."
+Mr Olufemi Adebodun
+FCT, Abuja
+
+Review 2 (Dr. David Onabanjo)
+"A Review from our Drecan Member"
+"My Experience with Drecan Multipurpose Cooperative Society When I made my initial investment of ₦500,000 with Drecan Multipurpose Cooperative Society in February 2026, it was a deliberate test of their integrity and operational discipline. I am pleased to report that they passed convincingly.
+From the outset, Drecan demonstrated a clear commitment to accountability and transparency. Monthly returns on investment were paid promptly and consistently, without the delays or excuses that have become all too common in Nigeria’s cooperative landscape. What truly distinguished Drecan was their follow-through on their promotional hamper gift programme. Four of the members I introduced personally redeemed their hampers exactly as promised a small but telling indicator of an organisation that honours its commitments. Based on this experience, I extended my participation significantly and introduced my wife, brothers, and business associates to the cooperative. That is not a decision I make lightly.
+Drecan is a registered entity with verifiable CAC certification and SCUML compliance. For those seeking a trustworthy, agriculture-based cooperative society in Nigeria, I recommend them with confidence.Please verify to make an informed decision also."
+Dr. David Onabanjo
+
+Review 3 (Mr Bright Amadi Chijioke)
+"A Review from our Drecan Member"
+"My name is Bright based in Port Harcourt, Rivers State and I have been with Drecan for about 2 months now and I must say that they are true to their words as they have been keeping to their promises thus far. You can be rest assured investing with them."
+Mr Bright Amadi Chijioke
+Porthrcourt
+
+
+
+
+
+Create a full-width testimonial section for Drecan website homepage. 
+
+Background: Beautiful high-quality farm landscape (green fields, crops, livestock) with slight dark overlay for text readability.
+
+Centered white/cream content box with rounded corners containing three testimonial cards in a row.
+
+Include:
+- Section heading: "Real Stories from Happy Drecan Members"
+- Drecan logo above each review
+- All three reviews: Olufemi Adebodun (Abuja), Dr. David Onabanjo, Bright Amadi Chijioke (Port Harcourt)
+
+Modern, premium, trustworthy design with green accents. Professional typography, excellent spacing, mobile responsive.
+
+
+
+
+
+
+
+also design in a way to keep call the reviews full and verbatim

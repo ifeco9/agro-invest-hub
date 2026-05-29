@@ -758,35 +758,6 @@ const About = () => {
         </div>
       </section>
 
-      {/* Team Introduction */}
-      <section className="py-12 sm:py-16 bg-secondary">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.5 }}
-            className="text-center"
-          >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4">Meet Our CEO</h2>
-            <p className="text-base sm:text-lg text-muted-foreground mb-8 sm:mb-12 max-w-md sm:max-w-2xl mx-auto">
-              The experienced leader driving Drecan Commodities forward
-            </p>
-
-            <div className="grid grid-cols-1 gap-6 sm:gap-8 justify-items-center">
-              <div className="bg-card p-5 sm:p-6 rounded-lg shadow-md border border-border max-w-md w-full">
-                <div className="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16 mx-auto mb-4" />
-                <h3 className="text-lg sm:text-xl font-bold text-foreground">Prince Atuluku</h3>
-                <p className="text-primary font-medium mb-2">CEO</p>
-                <p className="text-muted-foreground text-sm">
-                  With over 15 years of excellence in agricultural trading and investment, Prince has been a driving force behind our mission to transform Nigeria’s agricultural landscape. Alongside the founder, he has championed innovation, growth, and sustainability—and continues to propel that vision forward with renewed passion and an even more refined strategy for impact.
-                </p>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
       {/* Call to Action */}
       <section className="py-12 sm:py-16 bg-teal-900 text-white">
         <div className="container mx-auto px-4 text-center">

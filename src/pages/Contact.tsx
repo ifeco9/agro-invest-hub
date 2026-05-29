@@ -115,7 +115,7 @@ const Contact = () => {
                     </p>
                     <p className="flex items-center gap-2">
                       <Phone className="h-4 w-4" />
-                      <a href="tel:+2347026841214" className="hover:text-primary transition-colors">+234 702 684 1214</a>
+                      <a href="tel:+2348162974408" className="hover:text-primary transition-colors">+234 816 297 4408</a>
                     </p>
                     <p className="flex items-center gap-2">
                       <Clock className="h-4 w-4" />
@@ -139,7 +139,7 @@ const Contact = () => {
                     </p>
                     <p className="flex items-center gap-2">
                       <Phone className="h-4 w-4" />
-                      <a href="tel:+2347026841214" className="hover:text-primary transition-colors">+234 702 684 1214</a>
+                      <a href="tel:+2348162974408" className="hover:text-primary transition-colors">+234 816 297 4408</a>
                     </p>
                     <p className="flex items-center gap-2">
                       <Clock className="h-4 w-4" />
@@ -163,7 +163,7 @@ const Contact = () => {
                     </p>
                     <p className="flex items-center gap-2">
                       <Phone className="h-4 w-4" />
-                      <a href="tel:+2347026841214" className="hover:text-primary transition-colors">+234 702 684 1214</a>
+                      <a href="tel:+2348162974408" className="hover:text-primary transition-colors">+234 816 297 4408</a>
                     </p>
                     <p className="flex items-center gap-2">
                       <Clock className="h-4 w-4" />
@@ -271,7 +271,7 @@ const Contact = () => {
                           name="phone"
                           type="tel"
                           required
-                          placeholder="+234 702 684 1214"
+                          placeholder="+234 816 297 4408"
                           className="border-border focus:border-primary focus:ring-primary"
                         />
                       </div>
